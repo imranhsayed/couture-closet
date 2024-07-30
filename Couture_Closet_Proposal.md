@@ -84,15 +84,20 @@ Couture Closet is an e-commerce platform designed to sell a variety of clothing 
 - Manage Orders
 - Manage Users
 
-## 6. Server Setup
-
-- **Server Provider:** AWS
-- **Server Type:** EC2 Instance
-- **Operating System:** Ubuntu 20.04 LTS
-- **Web Server:** Apache 2.4
-- **Database Server:** MySQL 8.0
-- **PHP Version:** PHP 8.0
-- **Other Software:** Composer, Git
+## 6. Server
+| Name      | Version |
+| ----------| --------|
+| Ubuntu    | 24.04   |
+| MySQL     | 8.0.37  |
+| Git       | 2.43.0  |
+| PHP       | 8.3.6   |
+| Apache    | 2.4.58  |
+| NPM       | 10.7.0  |
+| Node      | v18.20.4|
+| Composer  | 2.7.7   |
+| Laravel   | 11.9    |
+| bootstrap | 5.2.3   |
+| Zip       | 3.0     |
 
 ## 7. Security
 
