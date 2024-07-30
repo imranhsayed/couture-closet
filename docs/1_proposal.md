@@ -113,7 +113,7 @@ Couture Closet is an e-commerce platform designed to sell a variety of clothing 
 ## 8. Database
 
 ### ERD
-![ERD](exports/erd.png)
+![ERD](./exports/test.jpeg)
 
 ### Tables
 - **Users:** User information and credentials.
