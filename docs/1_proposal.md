@@ -2,16 +2,23 @@
 
 ## 1. Introduction
 
-Couture Closet is an e-commerce platform designed to sell a variety of clothing items catering to men, women, and children. This project aims to demonstrate our capabilities as a full-stack development studio, fulfilling the requirements set forth by XYZ Marketing. By leveraging Laravel, PHP, JavaScript, AWS, and MySQL, we intend to build a robust, user-friendly, and responsive website that showcases our technical and collaborative skills.
+
+This document outlines the detailed project proposal for the development of Couture Closet, an online fashion platform for men, women, and children. This project, undertaken by Commerce Crew from WDD Development, aims to demonstrate our capabilities as a full-stack development studio by presenting this project to XYZ Marketing. By leveraging Laravel, PHP, JavaScript, AWS, and MySQL, we intend to build a robust, secure, user-friendly, and responsive website that showcases our technical and collaborative skills. The proposal encompasses the project scope, target audience, key features, technical stack, development team, and timeline, outlining the vision, technical approach, and collaborative roadmap to ensure successful implementation.
+
+
+
+
+
+
 
 ## 2. Project Details
 
 ### Functionality
 
 #### Front-End
-- **Homepage:** Displaying featured products, new arrivals, and promotions.
-- **Product Listing Page:** Showing all products with filtering and sorting options.
-- **Product Detail Page:** Detailed view of each product with images, descriptions, reviews, and available sizes.
+- **Homepage (HOME):** Displaying featured products, new arrivals, and promotions.
+- **Product Listing Page (SHOP):** Showing all products with filtering and sorting options.
+- **Product Detail Page:** Detailed view of each product with images, descriptions, reviews, rating, and available sizes.
 - **Shopping Cart:** Allowing users to add, remove, and update product quantities.
 - **Checkout Process:** Seamless checkout experience with multiple payment options.
 - **User Account Management:** User registration, login, profile management, and order history.
@@ -19,10 +26,10 @@ Couture Closet is an e-commerce platform designed to sell a variety of clothing 
 
 #### Back-End
 - **Admin Dashboard:** Managing products, categories, orders, and users.
-- **Inventory Management:** Tracking product stock levels and updating quantities after purchases.
-- **Order Management:** Processing orders, updating order status, and handling returns.
-- **Payment Integration:** Secure payment processing with a payment gateway.
-- **Security Measures:** Implementing protections against XSS, CSRF, and SQL injection attacks.
+- **PRODUCT Management:** Tracking product stock levels and updating quantities after purchases.
+- **Order Management:** Processing orders, updating order status, and handling returns (USER: ONLY ADMIN).
+- **USER MANAGEMENT:** Tracking list of customers (display of user table). CRUD functionality.
+- **Review Management:** List of the feedback, reviews and rating from the users.
 
 ## 3. Proposed Design Solution
 
