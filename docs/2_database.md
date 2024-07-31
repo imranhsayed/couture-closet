@@ -62,7 +62,7 @@ CREATE TABLE products (
 ```SQL
 -- The product_images table stores image information for each product.
 CREATE TABLE product_images (
-    id SERIAL PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     product_id INTEGER NOT NULL,
     image_url VARCHAR(255) NOT NULL,
     is_primary BOOLEAN DEFAULT FALSE,
@@ -76,7 +76,7 @@ CREATE TABLE product_images (
 ```SQL
 -- The product_reviews table that allows users to leave reviews for products they've purchased
 CREATE TABLE product_reviews (
-    id SERIAL PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     product_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
     order_id INTEGER NOT NULL,
