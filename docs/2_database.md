@@ -1,7 +1,7 @@
 ```SQL
 -- The users table contains core information about registered users, including their account credentials and personal details.
 CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     password VARCHAR(255) NOT NULL,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
@@ -15,8 +15,8 @@ CREATE TABLE users (
 ```SQL
 -- The user_addresses table stores multiple shipping and billing addresses associated with each user account.
 CREATE TABLE user_addresses (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT,
     street VARCHAR(255),
     postal_code VARCHAR(20),
     city VARCHAR(255),
@@ -30,8 +30,8 @@ CREATE TABLE user_addresses (
 ```SQL
 -- The user_roles table defines different levels of access and permissions for users within the system.
 CREATE TABLE user_roles (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT NOT NULL,
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    user_id BIGINT NOT NULL,
     role_type TINYINT NOT NULL comment '0: admin, 1: customer, 2: guests',
     role_name VARCHAR(50) NOT NULL comment 'role_type = 0 -> admin, role_type = 1 -> customer, role_type = 2 -> guests',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -44,7 +44,7 @@ CREATE TABLE user_roles (
 ```SQL
 -- The products table stores detailed information about individual clothing items, including their attributes and inventory status.
 CREATE TABLE products (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     sku VARCHAR(50) UNIQUE NOT NULL comment 'Example: For a brand, medium-sized t-shirt, the SKU might be "CC-NIKE-M-001"',
     name VARCHAR(100) NOT NULL,
     description TEXT,
@@ -62,8 +62,8 @@ CREATE TABLE products (
 ```SQL
 -- The product_images table stores image information for each product.
 CREATE TABLE product_images (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    product_id INTEGER NOT NULL,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    product_id BIGINT NOT NULL,
     image_url VARCHAR(255) NOT NULL,
     is_primary BOOLEAN DEFAULT FALSE,
     display_order INTEGER,
@@ -76,11 +76,11 @@ CREATE TABLE product_images (
 ```SQL
 -- The product_reviews table that allows users to leave reviews for products they've purchased
 CREATE TABLE product_reviews (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    product_id INTEGER NOT NULL,
-    user_id INTEGER NOT NULL,
-    order_id INTEGER NOT NULL,
-    rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5),
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    product_id BIGINT NOT NULL,
+    user_id BIGINT NOT NULL,
+    order_id BIGINT NOT NULL,
+    rating INTEGER NOT NULL COMMENT 'rating >= 1 AND rating <= 5',
     title VARCHAR(255),
     review_text TEXT,
     is_verified_purchase BOOLEAN DEFAULT TRUE,
@@ -97,8 +97,8 @@ CREATE TABLE product_reviews (
 ```SQL
 -- The product_categories table organizes products into a hierarchical structure of categories and subcategories.
 CREATE TABLE product_categories (
-    category_id INT NOT NULL,
-    product_id INT NOT NULL,
+    category_id BIGINT NOT NULL,
+    product_id BIGINT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP,
@@ -110,7 +110,7 @@ CREATE TABLE product_categories (
 ```SQL
 -- The category table to store all the categories
 CREATE TABLE category (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -121,7 +121,7 @@ CREATE TABLE category (
 ```SQL
 -- The provincial_tax_rates table store all Canadian provinces tax rates
 CREATE TABLE provincial_tax_rates (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     province_code CHAR(2) NOT NULL UNIQUE,
     province_name VARCHAR(50) NOT NULL,
     gst_rate DECIMAL(5, 3) NOT NULL,
@@ -137,8 +137,9 @@ CREATE TABLE provincial_tax_rates (
 ```SQL
 -- The orders table stores overall order information.
 CREATE TABLE orders (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    provincial_tax_rate_id BIGINT NOT NULL,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     email VARCHAR(255) NOT NULL,
     pst DECIMAL(10, 2) NOT NULL,
@@ -148,17 +149,18 @@ CREATE TABLE orders (
     total_amount DECIMAL(10, 2) NOT NULL,
     shipping_address TEXT NOT NULL,
     billing_address TEXT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT,
+    FOREIGN KEY (provincial_tax_rate_id) REFERENCES provincial_tax_rates(id) ON DELETE RESTRICT
 );
 ```
 
 ```SQL
 -- The order_items table links orders to specific products and quantities. 
 CREATE TABLE order_items (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    order_id INT NOT NULL,
-    product_id INT NOT NULL,
-    quantity INT NOT NULL,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    order_id BIGINT NOT NULL,
+    product_id BIGINT NOT NULL,
+    quantity BIGINT NOT NULL,
     unit_price DECIMAL(10, 2) NOT NULL,
     line_price DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
@@ -169,14 +171,14 @@ CREATE TABLE order_items (
 ```SQL
 -- The transactions table tracks trasactions associated with each order.
 CREATE TABLE transactions (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    order_id INT NOT NULL,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    order_id BIGINT NOT NULL,
     transaction_id VARCHAR(255),
     transaction_status VARCHAR(255) NOT NULL,
     response TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP,
-    FOREIGN KEY (order_id) REFERENCES orders(id)
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE RESTRICT
 );
 ```
