@@ -77,7 +77,10 @@ The website will be responsive, ensuring usability on any device of any screen s
   4. Updates order statuses and handles customer inquiries.
 
 ## 6. Sitemaps
-
+### Font-End
+![Font-End](6_Front-End.png)
+### Back-End
+![Back-End](6_Back-End.png)
 
 
 ## 7. Server
