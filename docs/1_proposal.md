@@ -131,12 +131,18 @@ By addressing these market segments, Couture Closet aims to become the go-to onl
 ![ERD](./exports/test.jpeg)
 
 ### Tables
-- **Users:** User information and credentials.
-- **Products:** Product details and stock information.
-- **Categories:** Product categorization.
-- **Orders:** Order details and status.
-- **Order_Details:** Items within each order.
-- **Payments:** Payment transaction details.
+- **users:** The users table contains core information about registered users, including their account credentials and personal details.
+- **user_addresses:** The user_addresses table stores multiple shipping and billing addresses associated with each user account.
+- **user_roles:** The user_roles table defines different levels of access and permissions for users within the system.
+- **products:** The products table stores detailed information about individual clothing items, including their attributes and inventory status.
+- **product_images:** The product_images table stores image information for each product.
+- **product_reviews:** The product_reviews table that allows users to leave reviews for products they've purchased.
+- **product_categories:** The product_categories table organizes products into a hierarchical structure of categories and subcategories.
+- **category:** The category table to store all the categories.
+- **provincial_tax_rates:** The provincial_tax_rates table store all Canadian provinces tax rates.
+- **orders:** The orders table stores overall order information.
+- **order_items:** The order_items table links orders to specific products and quantities.
+- **transactions:** The transactions table tracks trasactions associated with each order.
 
 ## 10. Value Adds
 
