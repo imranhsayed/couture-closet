@@ -27,15 +27,15 @@ By addressing these market segments, Couture Closet aims to become the go-to onl
 - **Homepage (HOME):** Displaying featured products, new arrivals, and promotions.
 - **Product Listing Page (SHOP):** Showing all products with filtering and sorting options.
 - **Product Detail Page:** Detailed view of each product with images, descriptions, reviews, rating, and available sizes.
-- **Category Management:** Men, Women, kids.
 - **Shopping Cart:** Allowing users to add, remove, and update product quantities.
 - **Checkout Process:** Seamless checkout experience with multiple payment options.
-- **User Account Management:** User registration, login, profile management, and order history.
 - **Responsive Design:** Ensuring usability across various devices (desktops, tablets, and mobile phones).
+- **Login/register functionality**
 
 #### Back-End
 - **Admin Dashboard:** Managing products, categories, orders, and users.
 - **PRODUCT Management:** Tracking product stock levels and updating quantities after purchases.
+- **Category Management:** Men, Women, kids.
 - **Order Management:** Processing orders, updating order status, and handling returns (USER: ONLY ADMIN).
 - **USER MANAGEMENT:** Tracking list of customers (display of user table). CRUD functionality.
 - **Review Management:** List of the feedback, reviews and rating from the users.
