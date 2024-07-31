@@ -8,18 +8,20 @@ This document outlines the detailed project proposal for the development of Cout
 
 Couture Closet is a modern eCommerce platform tailored to provide a wide array of stylish and affordable clothing options for men, women, and children. Our target audience is diverse, including both fashion-conscious individuals and budget-minded shoppers, ensuring we cater to a broad spectrum of customers.
 
-Target Market Segments
+#### Target Market Segments
 
-Fashion-Forward Individuals: People who are always on the lookout for the latest trends and styles, seeking to make a fashion statement with their wardrobe choices.
-
-Budget-Conscious Shoppers: Individuals who prioritize affordability without compromising on quality, looking for the best value in their clothing purchases.
-
-Parents: Caregivers searching for stylish, comfortable, and durable clothing options for their children, balancing fashion with functionality.
+- **Fashion-Forward Individuals:** People who are always on the lookout for the latest trends and styles, seeking to make a fashion statement with their wardrobe choices.
+- **Budget-Conscious Shoppers:** Individuals who prioritize affordability without compromising on quality, looking for the best value in their clothing purchases.
+- **Parents:** Caregivers searching for stylish, comfortable, and durable clothing options for their children, balancing fashion with functionality.
 
 By addressing these market segments, Couture Closet aims to become the go-to online destination for all clothing needs, offering a seamless shopping experience that combines trendiness, quality, and affordability.
 
-
 ## 3. Project Details
+This provides a brief overview of the type of features and functionality that the project will include.
+
+Our team will maintain time logs and will aim to complete the work before delivery deadlines. We will strive to fulfill all client requirements, applying new designs and technologies to enhance user experience, satisfaction, and easy navigation throughout the website. The site will be compatible with both modern and older technologies to ensure accessibility for all age groups. We will include functionality for returning customers to easily access their previous purchases and integrate links to social media accounts for promotion. The homepage will feature our top-selling products.
+
+The website will be responsive, ensuring usability on any device of any screen size, including desktops, laptops, tablets, and mobile phones. It will also be compatible with most browsers available in the market, including older versions except those older than IE 8. Users will be able to filter categories of their choice, with a focus on marketing clothes from various brands.
 
 ### Functionality
 
@@ -101,11 +103,16 @@ By addressing these market segments, Couture Closet aims to become the go-to onl
 ### Server-Level Security
 - Regular updates and patch management.
 - Firewalls and access control lists (ACLs).
+- Restricted permissions on root directory.
+- SSH root access disabled.
+- Firewall rules to close unnecessary ports.
 
 ### Application-Level Security
-- **XSS Protection:** Output sanitization and escaping.
-- **CSRF Protection:** Tokens and secure form submissions.
-- **SQL Injection Prevention:** Prepared statements and parameterized queries.
+- **Password Encryption:** Using hashed passwords for secure storage.
+- **XSS Protection:** Output sanitization and escaping to prevent cross-site scripting.
+- **CSRF Protection:** Tokens and secure form submissions to prevent cross-site request forgery.
+- **Authentication:** Different levels of authentication for admin, authenticated users, and unauthenticated users.
+- **SQL Injection Prevention:** Prepared statements and parameterized queries to prevent SQL injection.
 
 ## 9. Database
 
@@ -128,12 +135,17 @@ By addressing these market segments, Couture Closet aims to become the go-to onl
 
 ## 10. Value Adds
 
-- **Wishlist Functionality:** Allowing users to save products for future purchases.
+The feature which adds value to the functionality is "Reviews". Users will be able to provide their reviews about the product, sharing their experience. Reviews are related to two entities of the database: users and products. Multiple reviews can be written about a product, and the same product can have multiple reviews from different users, helping other customers make informed purchase decisions. Admin can view all reviews related to a product and take appropriate action.
+
 - **Customer Reviews and Ratings:** Allowing users to leave feedback and rate products.
 
-## 11. Team
+## 11. Revised ERD for Value Adds
+
+## 12. Team
 
 ### Team Name: Commerce Crew
+
+All team members have equal contributions in programming and designing the database as well as designing the look and feel of the website from a customer perspective. Here is a brief description of our team, and the primary role served by each team member.
 
 - **Imran:** Project Management, Git, JavaScript, Checkout, Cart
 - **Donald:** Design, HTML, CSS
@@ -141,7 +153,7 @@ By addressing these market segments, Couture Closet aims to become the go-to onl
 - **Rui:** Server Setup, Database, MySQL, Login, Register, Admin Dashboard
 - **Parth:** QA, Testing, Bug Fixing
 
-## 12. Timeline
+## 13. Timeline
 
 ### Day 1
 - **Team Roles and Project Idea Pitch:** Completed by 12:00 PM
