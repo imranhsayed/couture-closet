@@ -6,15 +6,12 @@ This document outlines the detailed project proposal for the development of Cout
 
 ## 2. Target Audience & Market Analysis
 
-Couture Closet is a modern eCommerce platform tailored to provide a wide array of stylish and affordable clothing options for men, women, and children. Our target audience is diverse, including both fashion-conscious individuals and budget-minded shoppers, ensuring we cater to a broad spectrum of customers.
-
-#### Target Market Segments
-
-- **Fashion-Forward Individuals:** People who are always on the lookout for the latest trends and styles, seeking to make a fashion statement with their wardrobe choices.
-- **Budget-Conscious Shoppers:** Individuals who prioritize affordability without compromising on quality, looking for the best value in their clothing purchases.
-- **Parents:** Caregivers searching for stylish, comfortable, and durable clothing options for their children, balancing fashion with functionality.
-
-By addressing these market segments, Couture Closet aims to become the go-to online destination for all clothing needs, offering a seamless shopping experience that combines trendiness, quality, and affordability.
+Couture Closet is an eCommerce platform offering stylish and affordable clothing for men, women, and children. Our target audience includes fashion-forward individuals, budget-conscious shoppers, and parents seeking fashionable, comfortable, and durable clothing for their children.
+Target Market Segments
+Fashion-Forward Individuals: Seeking the latest trends and styles.
+Budget-Conscious Shoppers: Prioritizing affordability without sacrificing quality.
+Parents: Looking for stylish, comfortable, and durable clothing for their children.
+By catering to these segments, Couture Closet aims to be the go-to online destination for all clothing needs, providing a seamless shopping experience that combines trendiness, quality, and affordability.
 
 ## 3. Project Details
 This provides a brief overview of the type of features and functionality that the project will include.
