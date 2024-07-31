@@ -128,7 +128,7 @@ By addressing these market segments, Couture Closet aims to become the go-to onl
 ## 9. Database
 
 ### ERD
-![ERD](./exports/test.jpeg)
+![ERD](2_database_physical_mode.png)
 
 ### Tables
 - **users:** The users table contains core information about registered users, including their account credentials and personal details.
