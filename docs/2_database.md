@@ -121,7 +121,7 @@ CREATE TABLE category (
 ```SQL
 -- The provincial_tax_rates table store all Canadian provinces tax rates
 CREATE TABLE provincial_tax_rates (
-    id SERIAL PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     province_code CHAR(2) NOT NULL UNIQUE,
     province_name VARCHAR(50) NOT NULL,
     gst_rate DECIMAL(5, 3) NOT NULL,
@@ -169,8 +169,8 @@ CREATE TABLE order_items (
 ```SQL
 -- The transactions table tracks trasactions associated with each order.
 CREATE TABLE transactions (
-    id SERIAL PRIMARY KEY,
-    order_id BIGINT NOT NULL,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
     transaction_id VARCHAR(255),
     transaction_status VARCHAR(255) NOT NULL,
     response TEXT,
