@@ -27,6 +27,7 @@ By addressing these market segments, Couture Closet aims to become the go-to onl
 - **Homepage (HOME):** Displaying featured products, new arrivals, and promotions.
 - **Product Listing Page (SHOP):** Showing all products with filtering and sorting options.
 - **Product Detail Page:** Detailed view of each product with images, descriptions, reviews, rating, and available sizes.
+- **Category Management:** Men, Women, kids.
 - **Shopping Cart:** Allowing users to add, remove, and update product quantities.
 - **Checkout Process:** Seamless checkout experience with multiple payment options.
 - **User Account Management:** User registration, login, profile management, and order history.
@@ -41,14 +42,11 @@ By addressing these market segments, Couture Closet aims to become the go-to onl
 
 ## 4. Proposed Design Solution
 
-### Home Page
-![Home Page Design](exports/home_page.png)
+### Home Page image
 
-### Product Listing Page
-![Product Listing Page Design](exports/product_listing.png)
+### Product Listing Page image
 
-### Product Detail Page
-![Product Detail Page Design](exports/product_detail.png)
+### Product Detail Page image
 
 ## 5. User Personas/Use Case Diagrams
 
@@ -81,23 +79,7 @@ By addressing these market segments, Couture Closet aims to become the go-to onl
 
 ## 6. Sitemaps
 
-### Front-End
-- Home
-- Product Listing
-- Product Detail
-- Shopping Cart
-- Checkout
-- User Account
-  - Profile
-  - Order History
-- Login/Sign-Up
 
-### Back-End (Admin)
-- Dashboard
-- Manage Products
-- Manage Categories
-- Manage Orders
-- Manage Users
 
 ## 7. Server
 | Name      | Version |
@@ -146,16 +128,12 @@ By addressing these market segments, Couture Closet aims to become the go-to onl
 
 ## 10. Value Adds
 
-- **Advanced Search Functionality:** Implementing full-text search for better product discovery.
-- **Recommendation System:** Personalized product recommendations based on user behavior.
+- **Wishlist Functionality:** Allowing users to save products for future purchases.
 - **Customer Reviews and Ratings:** Allowing users to leave feedback and rate products.
-
-### Revised ERD for Value Adds
-![Revised ERD](exports/revised_erd.png)
 
 ## 11. Team
 
-### Team Name: Code Couture
+### Team Name: Commerce Crew
 
 - **Imran:** Project Management, Git, JavaScript, Checkout, Cart
 - **Donald:** Design, HTML, CSS
