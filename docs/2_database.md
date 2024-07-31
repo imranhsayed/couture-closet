@@ -33,8 +33,8 @@ CREATE TABLE user_addresses (
 CREATE TABLE user_roles (
     id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
-    role_type TINYINT NOT NULL comment '1: customer, 2: admin',
-    role_name VARCHAR(50) NOT NULL comment 'role_type = 1 -> customer, role_type = 2 -> admin',
+    role_type TINYINT NOT NULL comment '0: admin, 1: customer, 2: guests',
+    role_name VARCHAR(50) NOT NULL comment 'role_type = 0 -> admin, role_type = 1 -> customer, role_type = 2 -> guests',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     UNIQUE KEY unique_user_role (user_id, role_name),
@@ -46,11 +46,11 @@ CREATE TABLE user_roles (
 -- The products table stores detailed information about individual clothing items, including their attributes and inventory status.
 CREATE TABLE products (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    sku VARCHAR(50) UNIQUE NOT NULL comment 'Example: For a red, medium-sized t-shirt, the SKU might be "CC-RED-M-001"',
+    sku VARCHAR(50) UNIQUE NOT NULL comment 'Example: For a brand, medium-sized t-shirt, the SKU might be "CC-NIKE-M-001"',
     name VARCHAR(100) NOT NULL,
     description TEXT,
     brand VARCHAR(50),
-    gender ENUM('Men', 'Women', 'Unisex', 'Kids') NOT NULL,
+    gender ENUM('Men', 'Women', 'Kids') NOT NULL,
     size VARCHAR(20) NOT NULL comment 'XS: Extra Small, S: Small, M: Medium, L: Large, XL: Extra Large, XXL: Double Extra Large',
     price DECIMAL(10, 2) NOT NULL,
     stock_quantity INT NOT NULL,
@@ -75,6 +75,27 @@ CREATE TABLE product_images (
 ```
 
 ```SQL
+-- The product_reviews table that allows users to leave reviews for products they've purchased
+CREATE TABLE product_reviews (
+    id SERIAL PRIMARY KEY,
+    product_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    order_id INTEGER NOT NULL,
+    rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5),
+    title VARCHAR(255),
+    review_text TEXT,
+    is_verified_purchase BOOLEAN DEFAULT TRUE,
+    is_approved BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (product_id) REFERENCES products(id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    UNIQUE (user_id, product_id, order_id)
+);
+```
+
+```SQL
 -- The product_categories table organizes products into a hierarchical structure of categories and subcategories.
 CREATE TABLE product_categories (
     category_id INT NOT NULL,
@@ -85,7 +106,9 @@ CREATE TABLE product_categories (
     FOREIGN KEY (category_id) REFERENCES category(id)
     FOREIGN KEY (product_id) REFERENCES products(id)
 );
+```
 
+```SQL
 -- The category table to store all the categories
 CREATE TABLE category (
     id INT AUTO_INCREMENT PRIMARY KEY,
