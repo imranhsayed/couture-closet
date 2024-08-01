@@ -2,23 +2,27 @@
 
 ## 1. Introduction
 
-This document outlines the detailed project proposal for the development of Couture Closet, an online fashion platform for men, women, and children. This project, undertaken by Commerce Crew from WDD Development, aims to demonstrate our capabilities as a full-stack development studio by presenting this project to XYZ Marketing. By leveraging Laravel, PHP, JavaScript, AWS, and MySQL, we intend to build a robust, secure, user-friendly, and responsive website that showcases our technical and collaborative skills. The proposal encompasses the project scope, target audience, key features, technical stack, development team, and timeline, outlining the vision, technical approach, and collaborative roadmap to ensure successful implementation.
+This document outlines the detailed project proposal for the development of Couture Closet, an online fashion platform for men, women, and children.
+This project, undertaken by Commerce Crew from WDD Development, aims to demonstrate our capabilities as a full-stack development studio by presenting this project to XYZ Marketing.
+By leveraging Laravel, PHP, JavaScript, AWS, and MySQL, we intend to build a robust, secure, user-friendly, and responsive website that showcases our technical and collaborative skills.
+The proposal encompasses the project scope, target audience, key features, technical stack, development team, and timeline, outlining the vision, technical approach, and collaborative roadmap to ensure successful implementation.
 
 ## 2. Target Audience & Market Analysis
 
-Couture Closet is an eCommerce platform offering stylish and affordable clothing for men, women, and children. Our target audience includes fashion-forward individuals, budget-conscious shoppers, and parents seeking fashionable, comfortable, and durable clothing for their children.
+* Couture Closet is an eCommerce platform offering stylish and affordable clothing for men, women, and children. Our target audience includes fashion-forward individuals, budget-conscious shoppers, and parents seeking fashionable, comfortable, and durable clothing for their children.
 Target Market Segments
-Fashion-Forward Individuals: Seeking the latest trends and styles.
-Budget-Conscious Shoppers: Prioritizing affordability without sacrificing quality.
-Parents: Looking for stylish, comfortable, and durable clothing for their children.
-By catering to these segments, Couture Closet aims to be the go-to online destination for all clothing needs, providing a seamless shopping experience that combines trendiness, quality, and affordability.
+* Fashion-Forward Individuals: Seeking the latest trends and styles.
+* Budget-Conscious Shoppers: Prioritizing affordability without sacrificing quality.
+* Parents: Looking for stylish, comfortable, and durable clothing for their children.
+* By catering to these segments, Couture Closet aims to be the go-to online destination for all clothing needs, providing a seamless shopping experience that combines trendiness, quality, and affordability.
 
 ## 3. Project Details
-This provides a brief overview of the type of features and functionality that the project will include.
 
-Our team will maintain time logs and will aim to complete the work before delivery deadlines. We will strive to fulfill all client requirements, applying new designs and technologies to enhance user experience, satisfaction, and easy navigation throughout the website. The site will be compatible with both modern and older technologies to ensure accessibility for all age groups. We will include functionality for returning customers to easily access their previous purchases and integrate links to social media accounts for promotion. The homepage will feature our top-selling products.
+* This provides a brief overview of the type of features and functionality that the project will include.
 
-The website will be responsive, ensuring usability on any device of any screen size, including desktops, laptops, tablets, and mobile phones. It will also be compatible with most browsers available in the market, including older versions except those older than IE 8. Users will be able to filter categories of their choice, with a focus on marketing clothes from various brands.
+* Our team will maintain time logs and will aim to complete the work before delivery deadlines. We will strive to fulfill all client requirements, applying new designs and technologies to enhance user experience, satisfaction, and easy navigation throughout the website. The site will be compatible with both modern and older technologies to ensure accessibility for all age groups. We will include functionality for returning customers to easily access their previous purchases and integrate links to social media accounts for promotion. The homepage will feature our top-selling products.
+
+* The website will be responsive, ensuring usability on any device of any screen size, including desktops, laptops, tablets, and mobile phones. It will also be compatible with most browsers available in the market, including older versions except those older than IE 8. Users will be able to filter categories of their choice, with a focus on marketing clothes from various brands.
 
 ### Functionality
 
@@ -41,11 +45,7 @@ The website will be responsive, ensuring usability on any device of any screen s
 
 ## 4. Proposed Design Solution
 
-### Home Page image
-
-### Product Listing Page image
-
-### Product Detail Page image
+<img src="design.png" alt="profile" />
 
 ## 5. User Personas/Use Case Diagrams
 
@@ -84,6 +84,7 @@ The website will be responsive, ensuring usability on any device of any screen s
 
 
 ## 7. Server
+
 | Name      | Version |
 | ----------| --------|
 | Ubuntu    | 24.04   |
@@ -147,6 +148,8 @@ The feature which adds value to the functionality is "Reviews". Users will be ab
 ### Team Name: Commerce Crew
 
 All team members have equal contributions in programming and designing the database as well as designing the look and feel of the website from a customer perspective. Here is a brief description of our team, and the primary role served by each team member.
+
+The Couture Closet development team, known as Commerce Crew, consists of experienced and skilled professionals dedicated to delivering a high-quality and functional eCommerce solution. Each member has made equal contributions to programming, database design, and the overall look and feel of the website from a customer perspective. Below is a brief description of our team and the primary roles served by each member:
 
 - **Imran:** Project Management, Git, JavaScript, Checkout, Cart
 - **Donald:** Design, HTML, CSS
