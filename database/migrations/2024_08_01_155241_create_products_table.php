@@ -73,6 +73,16 @@ return new class extends Migration
             $table->foreign('product_id')->references('id')->on('products');
         });
 
+        Schema::create('order_items', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('order_id')->nullable(false);
+            $table->unsignedBigInteger('product_id')->nullable(false);
+            $table->unsignedBigInteger('quantity')->nullable(false);
+            $table->decimal('unit_price', 10, 2)->nullable(false);
+            $table->decimal('line_price', 10, 2)->nullable(false);
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('restrict');
+        });
     }
 
     /**
@@ -80,11 +90,12 @@ return new class extends Migration
      */
     public function down(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
         Schema::dropIfExists('products');
         Schema::dropIfExists('category');
         Schema::dropIfExists('product_images');
         Schema::dropIfExists('product_reviews');
         Schema::dropIfExists('product_categories');
-
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }
 };

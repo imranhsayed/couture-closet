@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ProductCategoriesSeeder extends Seeder
 {
@@ -14,7 +15,7 @@ class ProductCategoriesSeeder extends Seeder
     {
         $productCategories = [];
 
-        for ($i = 1; $i <= 50; $i++) {
+        for ($i = 1; $i <= 15; $i++) {
             $productCategories[] = [
                 'category_id' => rand(1, 10), // Assuming you have 10 categories
                 'product_id' => $i,
