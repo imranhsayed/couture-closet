@@ -26,8 +26,11 @@ class DatabaseSeeder extends Seeder
             ProvincialTaxRatesSeeder::class,
             OrdersSeeder::class,
             OrderItemsSeeder::class,
-            TransactionsSeeder::class,
             CategorySeeder::class,
+            ProductImagesSeeder::class,
+            ProductReviewsSeeder::class,
+            ProductCategoriesSeeder::class,
+            TransactionsSeeder::class,
             UserAddressesSeeder::class,
             UserRolesSeeder::class
 	    ]);
