@@ -139,9 +139,8 @@ The feature which adds value to the functionality is "Reviews". Users will be ab
 
 - **Customer Reviews and Ratings:** Allowing users to leave feedback and rate products.
 
-![ERD](10_ERD_Value_Adds.png)
-
 ## 11. Revised ERD for Value Adds
+![ERD](11_ERD_Value_Adds.png)
 
 ## 12. Team
 
