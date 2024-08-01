@@ -26,6 +26,18 @@ return new class extends Migration
             $table->text('billing_address');
             $table->timestamps();
         });
+
+        Schema::create('order_items', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('quantity');
+            $table->decimal('unit_price', 10, 2);
+            $table->decimal('line_price', 10, 2);
+            $table->timestamps();
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('restrict');
+        });
     }
 
     /**
@@ -33,6 +45,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('order_items');
         Schema::dropIfExists('orders');
     }
 };
