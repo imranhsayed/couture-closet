@@ -15,22 +15,37 @@ class UserSeeder extends Seeder {
     public function run(): void {
         // Admin user
         DB::table('users')->insert([
-            'name'              => 'admin',
-            'email'             => 'admin@pace.com',
+            'password' => Hash::make('mypass'),
+            'first_name' => 'admin',
+            'last_name' => '',
+            'email' => 'admin@pace.com',
+            'telephone' => '1234567890',
             'email_verified_at' => now(),
-            'password'          => Hash::make('mypass'), // Use Hash facade
-            'remember_token'    => Str::random(10),
-            'is_admin'          => true,
+            'remember_token' => Str::random(10),
         ]);
 
         // Regular user
-        DB::table('users')->insert([
-            'name'              => 'Regular User',
-            'email'             => 'user@pace.com',
-            'email_verified_at' => now(),
-            'password'          => Hash::make('mypass'), // Use Hash facade
-            'remember_token'    => Str::random(10),
-            'is_admin'          => false,
-        ]);
+        $users = [
+            [
+                'password' => Hash::make('password123'),
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'john@example.com',
+                'telephone' => '1234567890',
+                'email_verified_at' => now(),
+                'remember_token' => Str::random(10),
+            ],
+            [
+                'password' => Hash::make('password456'),
+                'first_name' => 'Jane',
+                'last_name' => 'Smith',
+                'email' => 'jane@example.com',
+                'telephone' => '9876543210',
+                'email_verified_at' => now(),
+                'remember_token' => Str::random(10),
+            ]
+        ];
+
+        DB::table('users')->insert($users);
     }
 }
