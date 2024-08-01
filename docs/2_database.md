@@ -7,6 +7,8 @@ CREATE TABLE users (
     last_name VARCHAR(255),
     email VARCHAR(255) UNIQUE NOT NULL,
     telephone VARCHAR(15),
+    email_verified_at TIMESTAMP NULL,
+    remember_token VARCHAR(100) NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -23,6 +25,8 @@ CREATE TABLE user_addresses (
     province VARCHAR(255),
     country VARCHAR(255),
     is_primary BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 ```
@@ -149,6 +153,8 @@ CREATE TABLE orders (
     total_amount DECIMAL(10, 2) NOT NULL,
     shipping_address TEXT NOT NULL,
     billing_address TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT,
     FOREIGN KEY (provincial_tax_rate_id) REFERENCES provincial_tax_rates(id) ON DELETE RESTRICT
 );

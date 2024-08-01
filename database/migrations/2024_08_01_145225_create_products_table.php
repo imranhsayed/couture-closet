@@ -15,39 +15,42 @@ return new class extends Migration
 
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('sku', 50)->unique()->comment('Example: For a brand, medium-sized t-shirt, the SKU might be "CC-NIKE-M-001"');
-            $table->string('name', 100);
-            $table->text('description')->nullable();
-            $table->string('brand', 50)->nullable();
-            $table->string('gender'); 
+            $table->string('sku', 50)->unique()->nullable(false)->comment('Example: For a brand, medium-sized t-shirt, the SKU might be "CC-NIKE-M-001"');
+            $table->string('name', 100)->nullable(false);
+            $table->text('description');
+            $table->string('brand', 50);
+            $table->enum('gender', ['Men', 'Women', 'Kids'])->nullable(false); 
             $table->string('size', 20)->comment('XS: Extra Small, S: Small, M: Medium, L: Large, XL: Extra Large, XXL: Double Extra Large');
             $table->decimal('price', 10, 2);
             $table->integer('stock_quantity');
-            $table->timestamps(); 
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate(); 
             $table->softDeletes(); 
         });
 
         Schema::create('product_images', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('product_id');
-            $table->string('image_url', 255);
+            $table->id();
+            $table->unsignedBigInteger('product_id')->nullable(false);
+            $table->string('image_url')->nullable(false);
             $table->boolean('is_primary')->default(false);
-            $table->integer('display_order')->nullable();
-            $table->timestamps(); 
+            $table->integer('display_order');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
 
         Schema::create('product_reviews', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('order_id');
-            $table->integer('rating')->comment('rating >= 1 AND rating <= 5');
-            $table->string('title', 255)->nullable();
-            $table->text('review_text')->nullable();
+            $table->id();
+            $table->unsignedBigInteger('product_id')->nullable(false);
+            $table->unsignedBigInteger('user_id')->nullable(false);
+            $table->unsignedBigInteger('order_id')->nullable(false);
+            $table->integer('rating')->nullable(false)->comment('rating >= 1 AND rating <= 5');
+            $table->string('title');
+            $table->text('review_text');
             $table->boolean('is_verified_purchase')->default(true);
             $table->boolean('is_approved')->default(false);
-            $table->timestamps(); 
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('order_id')->references('id')->on('orders');
@@ -56,16 +59,17 @@ return new class extends Migration
 
         Schema::create('category', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
+            $table->string('name')->nullable(false);
             $table->text('description');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
 
         Schema::create('product_categories', function (Blueprint $table) {
-            $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('product_id');
-            $table->timestamps(); 
+            $table->unsignedBigInteger('category_id')->nullable(false);
+            $table->unsignedBigInteger('product_id')->nullable(false);
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->softDeletes(); 
             $table->foreign('category_id')->references('id')->on('category');
             $table->foreign('product_id')->references('id')->on('products');
