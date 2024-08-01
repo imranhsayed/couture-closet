@@ -43,17 +43,6 @@ return new class extends Migration
             $table->foreign('provincial_tax_rate_id')->references('id')->on('provincial_tax_rates')->onDelete('restrict');
         });
 
-        Schema::create('order_items', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('order_id')->nullable(false);
-            $table->unsignedBigInteger('product_id')->nullable(false);
-            $table->unsignedBigInteger('quantity')->nullable(false);
-            $table->decimal('unit_price', 10, 2)->nullable(false);
-            $table->decimal('line_price', 10, 2)->nullable(false);
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('restrict');
-        });
-
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id')->nullable(false);
@@ -72,8 +61,11 @@ return new class extends Migration
      */
     public function down(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        Schema::dropIfExists('provincial_tax_rates');
         Schema::dropIfExists('order_items');
         Schema::dropIfExists('orders');
         Schema::dropIfExists('transactions');
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }
 };

@@ -21,13 +21,15 @@ class DatabaseSeeder extends Seeder
 //        ]);
 
 	    $this->call([
+            ProductSeeder::class,
 		    UserSeeder::class,
-            TransactionsSeeder::class,
-            OrderItemsSeeder::class,
             ProvincialTaxRatesSeeder::class,
             OrdersSeeder::class,
-
-
+            OrderItemsSeeder::class,
+            TransactionsSeeder::class,
+            CategorySeeder::class,
+            UserAddressesSeeder::class,
+            UserRolesSeeder::class
 	    ]);
     }
 }
