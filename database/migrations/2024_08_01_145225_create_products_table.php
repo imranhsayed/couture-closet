@@ -11,10 +11,33 @@ return new class extends Migration
      */
     public function up(): void
     {
+        
+
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('sku', 50)->unique()->comment('Example: For a brand, medium-sized t-shirt, the SKU might be "CC-NIKE-M-001"');
+            $table->string('name', 100);
+            $table->text('description')->nullable();
+            $table->string('brand', 50)->nullable();
+            $table->string('gender'); 
+            $table->string('size', 20)->comment('XS: Extra Small, S: Small, M: Medium, L: Large, XL: Extra Large, XXL: Double Extra Large');
+            $table->decimal('price', 10, 2);
+            $table->integer('stock_quantity');
+            $table->timestamps(); 
+            $table->softDeletes(); 
         });
+
+        Schema::create('product_images', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('product_id');
+            $table->string('image_url', 255);
+            $table->boolean('is_primary')->default(false);
+            $table->integer('display_order')->nullable();
+            $table->timestamps(); 
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+        });
+
+        
 
         Schema::create('category', function (Blueprint $table) {
             $table->id();
@@ -33,5 +56,7 @@ return new class extends Migration
     {
         Schema::dropIfExists('products');
         Schema::dropIfExists('category');
+        Schema::dropIfExists('product_images');
+    
     }
 };
