@@ -74,14 +74,31 @@
 
         <main>
             @if(session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
+		        <div class="d-block" id="addToCartAlert">
+			        <div class="mb-4 mb-lg-5 alert alert-error alert-dismissible fade show" role="alert">
+				        <div class="d-flex align-items-center">
+					        <p class="mb-0">
+						        {{ session('error') }}
+					        </p>
+				        </div>
+				        <button class="btn-close btn-close-white opacity-10" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+			        </div>
+		        </div>
             @endif
             @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
+	            <div class="d-block" id="addToCartAlert">
+		            <div class="mb-4 mb-lg-5 alert alert-success alert-dismissible fade show" role="alert">
+			            <div class="d-flex align-items-center">
+				            <svg class="svg-icon d-none d-sm-block w-3rem h-3rem svg-icon-light flex-shrink-0 me-3">
+					            <use xlink:href="#checked-circle-1"> </use>
+				            </svg>
+				            <p class="mb-0">
+					            {{ session('success') }}
+				            </p>
+			            </div>
+			            <button class="btn-close btn-close-white opacity-10" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+		            </div>
+	            </div>
             @endif
             @yield('content')
         </main>
@@ -164,7 +181,10 @@
 
     <!-- Bootstrap JS and dependencies -->
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/vendor/jquery/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+
 </body>
 <svg width="0" height="0" class="hidden">
 	<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="menu-hamburger-1">
@@ -184,6 +204,12 @@
 		<path data-name="layer2" fill="none" stroke="#202020" stroke-miterlimit="10" d="M4 14h56v48H4zm2 0V2h52v12" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
 		<path data-name="layer2" fill="none" stroke="#202020" stroke-miterlimit="10" d="M6.2 2.1L16 8 6 14M57.8 2.1L48 8l10 6" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
 		<path data-name="layer1" d="M42 24a10 10 0 0 1-20 0" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
+	</symbol>
+	<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="checked-circle-1">
+		<title>Checked Circle</title>
+		<desc>A line styled icon from Orion Icon Library.</desc>
+		<circle data-name="layer2" cx="32" cy="32" r="30" transform="rotate(-45 32 32)" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></circle>
+		<path data-name="layer1" fill="none" stroke="#202020" stroke-miterlimit="10" d="M20.998 32.015l8.992 8.992 16.011-16.011" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
 	</symbol>
 </svg>
 </html>
