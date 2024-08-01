@@ -62,6 +62,15 @@ return new class extends Migration
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
 
+        Schema::create('product_categories', function (Blueprint $table) {
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('product_id');
+            $table->timestamps(); 
+            $table->softDeletes(); 
+            $table->foreign('category_id')->references('id')->on('category');
+            $table->foreign('product_id')->references('id')->on('products');
+        });
+
     }
 
     /**
@@ -73,6 +82,7 @@ return new class extends Migration
         Schema::dropIfExists('category');
         Schema::dropIfExists('product_images');
         Schema::dropIfExists('product_reviews');
+        Schema::dropIfExists('product_categories');
 
     }
 };
