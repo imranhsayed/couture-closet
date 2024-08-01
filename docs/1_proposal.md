@@ -44,8 +44,26 @@ Target Market Segments
 - **Review Management:** List of the feedback, reviews and rating from the users.
 
 ## 4. Proposed Design Solution
+### General Layouts
+Pages Previews
 
 <img src="design.png" alt="profile" />
+
+### The Landing Page
+The landing page of couture closet will be used to showcase the main categories, and a list of our featured products. Along with slides and call to actions (CTA's) that will be used to get users to the Shop Listing and inner pages.
+
+![Front-End](home-page.jpg)
+
+### The Shop Page (List View)
+The shop anding page of couture closet will be used to showcase a  listing of all available products for purchase. It will also include demogrphic, size and brand filters.
+
+![Front-End](shop-page.jpg)
+
+### The Product Page (Detail View)
+The product page (detail view) will have the information of the item to be purchased, including quantity and size filters, and the category, brand, and availability of the item to be purchased. This page will also have buttons to add the item to the cart for subsequent checkout.
+
+![Front-End](product-page.jpg)
+
 
 ## 5. User Personas/Use Case Diagrams
 
