@@ -52,9 +52,6 @@ CREATE TABLE products (
     sku VARCHAR(50) UNIQUE NOT NULL comment 'Example: For a brand, medium-sized t-shirt, the SKU might be "CC-NIKE-M-001"',
     name VARCHAR(100) NOT NULL,
     description TEXT,
-    brand VARCHAR(50),
-    gender ENUM('Men', 'Women', 'Kids') NOT NULL,
-    size VARCHAR(20) NOT NULL comment 'XS: Extra Small, S: Small, M: Medium, L: Large, XL: Extra Large, XXL: Double Extra Large',
     price DECIMAL(10, 2) NOT NULL,
     stock_quantity INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -116,6 +113,7 @@ CREATE TABLE product_categories (
 CREATE TABLE category (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
+    value VARCHAR(255) NOT NUll,
     description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
