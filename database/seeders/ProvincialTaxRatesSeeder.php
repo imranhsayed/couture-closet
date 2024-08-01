@@ -103,6 +103,6 @@ class ProvincialTaxRatesSeeder extends Seeder
                 'vat_rate' => 0.00, 
                 'total_tax_rate' => 0.11
             ],
-        ]);
+        ]); 
     }
 }
