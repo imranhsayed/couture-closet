@@ -49,6 +49,18 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
+
+        Schema::create('user_roles', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->tinyInteger('role_type')->comment('0: admin, 1: customer, 2: guests');
+            $table->string('role_name', 50)->comment('role_type = 0 -> admin, role_type = 1 -> customer, role_type = 2 -> guests');
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            
+            $table->unique(['user_id', 'role_name'], 'unique_user_role');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
     }
 
     /**
@@ -60,5 +72,6 @@ return new class extends Migration
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
         Schema::dropIfExists('user_addresses');
+        Schema::dropIfExists('user_roles');
     }
 };
