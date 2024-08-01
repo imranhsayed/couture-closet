@@ -37,7 +37,22 @@ return new class extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
 
-        
+        Schema::create('product_reviews', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('order_id');
+            $table->integer('rating')->comment('rating >= 1 AND rating <= 5');
+            $table->string('title', 255)->nullable();
+            $table->text('review_text')->nullable();
+            $table->boolean('is_verified_purchase')->default(true);
+            $table->boolean('is_approved')->default(false);
+            $table->timestamps(); 
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->unique(['user_id', 'product_id', 'order_id']);
+        });
 
         Schema::create('category', function (Blueprint $table) {
             $table->id();
@@ -57,6 +72,7 @@ return new class extends Migration
         Schema::dropIfExists('products');
         Schema::dropIfExists('category');
         Schema::dropIfExists('product_images');
-    
+        Schema::dropIfExists('product_reviews');
+
     }
 };
