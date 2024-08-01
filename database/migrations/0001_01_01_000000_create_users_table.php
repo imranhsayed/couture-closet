@@ -36,6 +36,19 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        Schema::create('user_addresses', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('street', 255);
+            $table->string('postal_code', 20);
+            $table->string('city', 255);
+            $table->string('province', 255);
+            $table->string('country', 255);
+            $table->boolean('is_primary')->default(false);
+            $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
     }
 
     /**
@@ -46,5 +59,6 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('user_addresses');
     }
 };
