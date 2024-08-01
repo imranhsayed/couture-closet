@@ -11,10 +11,70 @@ return new class extends Migration
      */
     public function up(): void
     {
+        
+
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('sku', 50)->unique()->nullable(false)->comment('Example: For a brand, medium-sized t-shirt, the SKU might be "CC-NIKE-M-001"');
+            $table->string('name', 100)->nullable(false);
+            $table->text('description');
+            $table->string('brand', 50);
+            $table->enum('gender', ['Men', 'Women', 'Kids'])->nullable(false); 
+            $table->string('size', 20)->comment('XS: Extra Small, S: Small, M: Medium, L: Large, XL: Extra Large, XXL: Double Extra Large');
+            $table->decimal('price', 10, 2);
+            $table->integer('stock_quantity');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate(); 
+            $table->softDeletes(); 
         });
+
+        Schema::create('product_images', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('product_id')->nullable(false);
+            $table->string('image_url')->nullable(false);
+            $table->boolean('is_primary')->default(false);
+            $table->integer('display_order');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+        });
+
+        Schema::create('product_reviews', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('product_id')->nullable(false);
+            $table->unsignedBigInteger('user_id')->nullable(false);
+            $table->unsignedBigInteger('order_id')->nullable(false);
+            $table->integer('rating')->nullable(false)->comment('rating >= 1 AND rating <= 5');
+            $table->string('title');
+            $table->text('review_text');
+            $table->boolean('is_verified_purchase')->default(true);
+            $table->boolean('is_approved')->default(false);
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->unique(['user_id', 'product_id', 'order_id']);
+        });
+
+        Schema::create('category', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable(false);
+            $table->text('description');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+        });
+
+        Schema::create('product_categories', function (Blueprint $table) {
+            $table->unsignedBigInteger('category_id')->nullable(false);
+            $table->unsignedBigInteger('product_id')->nullable(false);
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->softDeletes(); 
+            $table->foreign('category_id')->references('id')->on('category');
+            $table->foreign('product_id')->references('id')->on('products');
+        });
+
     }
 
     /**
@@ -23,5 +83,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('products');
+        Schema::dropIfExists('category');
+        Schema::dropIfExists('product_images');
+        Schema::dropIfExists('product_reviews');
+        Schema::dropIfExists('product_categories');
+
     }
 };
