@@ -18,9 +18,6 @@ return new class extends Migration
             $table->string('sku', 50)->unique()->nullable(false)->comment('Example: For a brand, medium-sized t-shirt, the SKU might be "CC-NIKE-M-001"');
             $table->string('name', 100)->nullable(false);
             $table->text('description');
-            $table->string('brand', 50);
-            $table->enum('gender', ['Men', 'Women', 'Kids'])->nullable(false); 
-            $table->string('size', 20)->comment('XS: Extra Small, S: Small, M: Medium, L: Large, XL: Extra Large, XXL: Double Extra Large');
             $table->decimal('price', 10, 2);
             $table->integer('stock_quantity');
             $table->timestamp('created_at')->useCurrent();
@@ -60,6 +57,7 @@ return new class extends Migration
         Schema::create('category', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable(false);
+            $table->string('value')->nullable(false);
             $table->text('description');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
