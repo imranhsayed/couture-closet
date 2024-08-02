@@ -77,11 +77,29 @@
 							    <use xlink:href="#avatar-1"> </use>
 						    </svg></a>
 					    </a>
-					    <div class="dropdown-menu dropdown-menu-animated" aria-labelledby="userLoginDropdown"
-					         data-bs-popper="none">
-						    <a class="dropdown-item" href="/login">Login</a>
-						    <a class="dropdown-item" href="/register">Register</a>
-					    </div>
+					    @if (\Auth::check())
+							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+															document.getElementById('logout-form').submit();">
+									{{ __('Logout') }}
+								</a>
+
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+									@csrf
+								</form>
+								@if (\Auth::user()->is_admin)
+									<a class="dropdown-item" href="">
+										Admin Panel
+									</a>
+								@endif
+							</div>
+						@else
+							<div class="dropdown-menu dropdown-menu-animated show" aria-labelledby="userLoginDropdown"
+								data-bs-popper="none">
+								<a class="dropdown-item" href="/login">Login</a>
+								<a class="dropdown-item" href="/register">Register</a>
+							</div>
+						@endif
 				    </li>
 				    <li class="list-inline-item position-relative ml-2"><a class="text-dark text-primary-hover" href="#" data-bs-toggle="modal" data-bs-target="#sidebarCart">
 						    <svg class="svg-icon navbar-icon">
