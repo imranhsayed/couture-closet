@@ -8,12 +8,20 @@ use App\Models\ProductImage;
 
 Route::get( '/', function () {
 
-	$products = Product::with('images')->get();
-    $images = ProductImage::all();
+	//$products = Product::with('images')->get();
+    //$images = ProductImage::all();
+
+	// foreach($products as $product) {
+	// 	dd($product->images[0]->image_url);
+	// }
 	//dd($images);
-	dd($products);
+	//dd($products->images);
     // Pass the products to the view
-    return view('welcome', ['products' => $products]);
+    //return view('welcome', ['products' => $products]);
+
+	$products = Product::with('images')->get();
+    
+    return view('welcome', compact('products'));
 } );
 
 // Public Routes

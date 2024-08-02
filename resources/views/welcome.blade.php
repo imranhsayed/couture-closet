@@ -100,346 +100,41 @@
 			<div class="col-12 col-sm-auto text-center"><a class="btn btn-link px-0" href="#">All products</a></div>
 		</div>
 		<div class="row">
-					
 			@foreach($products as $product)
-				<!-- product-->
-				<div class="col-lg-3 col-md-4">
-					<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
-						<div class="product-image mb-md-3">
-							<div class="product-badge badge bg-secondary">Fresh</div><a href="detail-1.html">
-								<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="{{ $product->image_url }}" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0987188250_2_1_1.jpg" alt="product"></div></a>
-							<div class="product-hover-overlay"><a class="text-dark text-sm" href="">
-									<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
-										<use xlink:href="#retail-bag-1"> </use>
-									</svg>
-									<x-add-to-cart-button quantity="{{ $product->stock_quantity}}" />
-								</a>
-								<div><a class="text-dark text-primary-hover me-2" href="#!">
-										<svg class="svg-icon svg-icon-heavy">
-											<use xlink:href="#heart-1"> </use>
-										</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-										<svg class="svg-icon svg-icon-heavy">
-											<use xlink:href="#expand-1"> </use>
-										</svg></a></div>
+			<!-- product-->
+			<div class="col-lg-3 col-md-4">
+				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
+					<div class="product-image mb-md-3">
+						<div class="product-badge badge bg-secondary">Fresh</div><a href="detail-1.html">
+							<div class="product-swap-image">@foreach($product->images as $image)<img class="img-fluid product-swap-image-front" src="{{ $image->image_url }}" alt="product"><img class="img-fluid" src="{{ $image->image_url }}" alt="product">@endforeach</div></a>
+						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
+								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
+									<use xlink:href="#retail-bag-1"> </use>
+								</svg><span class="d-none d-sm-inline">Add to cart</span></a>
+							<div><a class="text-dark text-primary-hover me-2" href="#!">
+									<svg class="svg-icon svg-icon-heavy">
+										<use xlink:href="#heart-1"> </use>
+									</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
+									<svg class="svg-icon svg-icon-heavy">
+										<use xlink:href="#expand-1"> </use>
+									</svg></a>
 							</div>
 						</div>
-						<div class="position-relative">
-							<h3 class="text-base mb-1"><a class="text-dark" href="detail-1.html">{{ $product->name }}</a></h3>
-							<p class="text-gray-600 text-sm">
-								<s class="me-2 text-gray-500">${{ $product->price }}</s><span>${{ $product->price }}</span>
-							</p>
-							<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
-						</div>
+					</div>
+					<div class="position-relative">
+						<h3 class="text-base mb-1"><a class="text-dark" href="detail-1.html">{{$product->name}}</a></h3>
+						<p class="text-gray-600 text-sm">
+							<s class="me-2 text-gray-500">$</s><span>${{$product->price}}</span>
+						</p>
+						<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
 					</div>
 				</div>
+			</div>
 			@endforeach
 			<!-- /product   -->
-			<!-- product-->
-			<div class="col-lg-3 col-md-4">
-				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
-					<div class="product-image mb-md-3"><a href="detail-1.html">
-							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0950354513_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0950354513_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
-								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
-									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
-							<div><a class="text-dark text-primary-hover me-2" href="#!">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#heart-1"> </use>
-									</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#expand-1"> </use>
-									</svg></a></div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<h3 class="text-base mb-1"><a class="text-dark" href="detail-1.html">Black blouse</a></h3>
-						<p class="text-gray-600 text-sm"> <span>$40.00                </span>
-						</p>
-						<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
-					</div>
-				</div>
-			</div>
-			<!-- /product   -->
-			<!-- product-->
-			<div class="col-lg-3 col-md-4">
-				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
-					<div class="product-image mb-md-3">
-						<div class="product-badge badge bg-primary">Sale</div><a href="detail-1.html">
-							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/5161335400_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/5161335400_2_3_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
-								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
-									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
-							<div><a class="text-dark text-primary-hover me-2" href="#!">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#heart-1"> </use>
-									</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#expand-1"> </use>
-									</svg></a></div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<h3 class="text-base mb-1"><a class="text-dark" href="detail-1.html">College jacket</a></h3>
-						<p class="text-gray-600 text-sm">
-							<s class="me-2 text-gray-500">$30.00</s><span>$15.00</span>
-						</p>
-						<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
-					</div>
-				</div>
-			</div>
-			<!-- /product   -->
-			<!-- product-->
-			<div class="col-lg-3 col-md-4">
-				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
-					<div class="product-image mb-md-3"><a href="detail-1.html">
-							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0027211800_1_2_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0027211800_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
-								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
-									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
-							<div><a class="text-dark text-primary-hover me-2" href="#!">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#heart-1"> </use>
-									</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#expand-1"> </use>
-									</svg></a></div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<h3 class="text-base mb-1"><a class="text-dark" href="detail-1.html">Carrot-fit jeans</a></h3>
-						<p class="text-gray-600 text-sm"> <span>$60.00                </span>
-						</p>
-						<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
-					</div>
-				</div>
-			</div>
-			<!-- /product   -->
-			<!-- product-->
-			<div class="col-lg-3 col-md-4">
-				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
-					<div class="product-image mb-md-3"><a href="detail-1.html">
-							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0144074800_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0144074800_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
-								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
-									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
-							<div><a class="text-dark text-primary-hover me-2" href="#!">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#heart-1"> </use>
-									</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#expand-1"> </use>
-									</svg></a></div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<h3 class="text-base mb-1"><a class="text-dark" href="detail-1.html">Striped T-Shirt</a></h3>
-						<p class="text-gray-600 text-sm"> <span>$30.99                </span>
-						</p>
-						<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
-					</div>
-				</div>
-			</div>
-			<!-- /product   -->
-			<!-- product-->
-			<div class="col-lg-3 col-md-4">
-				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
-					<div class="product-image mb-md-3">
-						<div class="product-badge badge bg-dark">Sold out</div><a href="detail-1.html">
-							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0693492802_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0693492802_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
-								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
-									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
-							<div><a class="text-dark text-primary-hover me-2" href="#!">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#heart-1"> </use>
-									</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#expand-1"> </use>
-									</svg></a></div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<h3 class="text-base mb-1"><a class="text-dark" href="detail-1.html">Short top</a></h3>
-						<p class="text-gray-600 text-sm">
-							<s class="me-2 text-gray-500">$40.00</s><span>$16.00</span>
-						</p>
-						<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
-					</div>
-				</div>
-			</div>
-			<!-- /product   -->
-			<!-- product-->
-			<div class="col-lg-3 col-md-4">
-				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
-					<div class="product-image mb-md-3">
-						<div class="product-badge badge bg-dark">Sold out</div><a href="detail-1.html">
-							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0364326148_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0364326148_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
-								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
-									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
-							<div><a class="text-dark text-primary-hover me-2" href="#!">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#heart-1"> </use>
-									</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#expand-1"> </use>
-									</svg></a></div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<h3 class="text-base mb-1"><a class="text-dark" href="detail-1.html">Ethnic Sweater</a></h3>
-						<p class="text-gray-600 text-sm">
-							<s class="me-2 text-gray-500">$40.00</s><span>$30.00</span>
-						</p>
-						<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
-					</div>
-				</div>
-			</div>
-			<!-- /product   -->
-			<!-- product-->
-			<div class="col-lg-3 col-md-4">
-				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
-					<div class="product-image mb-md-3"><a href="detail-1.html">
-							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0931168712_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0931168712_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
-								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
-									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
-							<div><a class="text-dark text-primary-hover me-2" href="#!">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#heart-1"> </use>
-									</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#expand-1"> </use>
-									</svg></a></div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<h3 class="text-base mb-1"><a class="text-dark" href="detail-1.html">Beige</a></h3>
-						<p class="text-gray-600 text-sm"> <span>$40.00                </span>
-						</p>
-						<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
-					</div>
-				</div>
-			</div>
-			<!-- /product   -->
-			<!-- product-->
-			<div class="col-lg-3 col-md-4">
-				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
-					<div class="product-image mb-md-3"><a href="detail-1.html">
-							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/1000962306_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/1000962306_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
-								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
-									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
-							<div><a class="text-dark text-primary-hover me-2" href="#!">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#heart-1"> </use>
-									</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#expand-1"> </use>
-									</svg></a></div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<h3 class="text-base mb-1"><a class="text-dark" href="detail-1.html">Skull Tee</a></h3>
-						<p class="text-gray-600 text-sm">
-							<s class="me-2 text-gray-500">$40.00</s><span>$20.00</span>
-						</p>
-						<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
-					</div>
-				</div>
-			</div>
-			<!-- /product   -->
-			<!-- product-->
-			<div class="col-lg-3 col-md-4">
-				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
-					<div class="product-image mb-md-3"><a href="detail-1.html">
-							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0915494643_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0915494643_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
-								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
-									<use xlink:href="#retail-bag-1"> </use>
-								</svg>
-								<x-add-to-cart-button product_id="23" quantity="1" />
-							</a>
-							<div><a class="text-dark text-primary-hover me-2" href="#!">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#heart-1"> </use>
-									</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#expand-1"> </use>
-									</svg></a></div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<h3 class="text-base mb-1"><a class="text-dark" href="detail-1.html">Trucker jacket</a></h3>
-						<p class="text-gray-600 text-sm"> <span>$40.00                </span>
-						</p>
-						<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
-					</div>
-				</div>
-			</div>
-			<!-- /product   -->
-			<!-- product-->
-			<div class="col-lg-3 col-md-4">
-				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
-					<div class="product-image mb-md-3"><a href="detail-1.html">
-							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0907168607_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0907168607_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
-								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
-									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
-							<div><a class="text-dark text-primary-hover me-2" href="#!">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#heart-1"> </use>
-									</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#expand-1"> </use>
-									</svg></a></div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<h3 class="text-base mb-1"><a class="text-dark" href="detail-1.html">Blouse</a></h3>
-						<p class="text-gray-600 text-sm"> <span>$40.00                </span>
-						</p>
-						<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
-					</div>
-				</div>
-			</div>
-			<!-- /product   -->
-			<!-- product-->
-			<div class="col-lg-3 col-md-4">
-				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
-					<div class="product-image mb-md-3"><a href="detail-1.html">
-							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/5806513505_1_2_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/5806513505_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
-								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
-									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
-							<div><a class="text-dark text-primary-hover me-2" href="#!">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#heart-1"> </use>
-									</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-									<svg class="svg-icon svg-icon-heavy">
-										<use xlink:href="#expand-1"> </use>
-									</svg></a></div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<h3 class="text-base mb-1"><a class="text-dark" href="detail-1.html">Shirt</a></h3>
-						<p class="text-gray-600 text-sm"> <span>$40.00                </span>
-						</p>
-						<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
-					</div>
-				</div>
-			</div>
-			<!-- /product   -->
+			
+			
+			
 		</div>
 	</div>
 
