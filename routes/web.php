@@ -17,6 +17,17 @@ Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
  */
 Route::get( '/product', [ \App\Http\Controllers\ProductController::class, 'index' ] )->name( 'product.index' );
 
+
+// Route for the cart page
+Route::get('/cart', function () {
+    return view('cart');
+})->name('cart');
+
+// Route for the checkout page
+Route::get('/checkout', function () {
+    return view('checkout');
+})->name('checkout');
+
 // Authentication Routes
 Auth::routes();
 Route::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'home' );
