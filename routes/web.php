@@ -3,9 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
+use App\Models\Product;
+use App\Models\ProductImage;
 
 Route::get( '/', function () {
-	return view( 'welcome' );
+
+	$products = Product::with('images')->get();
+    $images = ProductImage::all();
+	//dd($images);
+	dd($products);
+    // Pass the products to the view
+    return view('welcome', ['products' => $products]);
 } );
 
 // Public Routes
@@ -15,7 +23,10 @@ Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
 /**
  * Product Route.
  */
-Route::get( '/product', [ \App\Http\Controllers\ProductController::class, 'index' ] )->name( 'product.index' );
+
+
+
+
 
 // Authentication Routes
 Auth::routes();

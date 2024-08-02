@@ -13,9 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-	    $title = "Single Product!";
-
-	    return view( 'product.index', compact( 'title' ) );
+	    
     }
 
     /**
