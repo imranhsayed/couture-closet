@@ -16,8 +16,12 @@ Route::get( '/', function () {
 Route::get( '/about', fn() => view( 'about' ) )->name( 'about' );
 Route::get( '/contact', [ ContactController::class, 'index' ] )->name( 'contact' );
 Route::post( '/contact', [ ContactController::class, 'store' ] )->name( 'InquiryStore' );
-Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
+Route::get( '/order-confirmation', fn() => view( 'order-confirmation' ) )->name( 'order-confirmation' );
 Route::get( '/shop', fn() => view( 'shop' ) )->name( 'shop' );
+Route::get( '/cart', fn() => view( 'cart' ) )->name( 'cart' );
+Route::get( '/checkout', fn() => view( 'checkout' ) )->name( 'checkout' );
+Route::get( '/order', fn() => view( 'order' ) )->name( 'order' );
+Route::get( '/profile', fn() => view( 'profile' ) )->name( 'profile' );
 
 /**
  * Product Route.

@@ -7,7 +7,7 @@
 		<div class="products-grid col-xl-9 col-lg-8 order-lg-2">
 			<!-- Hero Content-->
 			<div class="hero-content pb-5">
-				<h1>Jackets and tops</h1>
+				<h1>Shop</h1>
 				<div class="row">
 					<div class="col-xl-8"><p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>                </div>
 				</div>
@@ -19,16 +19,7 @@
 			</ol>
 			<header class="product-grid-header">
 				<div class="me-3 mb-3">
-					Showing <strong>1-12 </strong>of <strong>158 </strong>products</div>
-				<div class="me-3 mb-3"><span class="me-2">Show</span><a class="product-grid-header-show active" href="#">12    </a><a class="product-grid-header-show " href="#">24    </a><a class="product-grid-header-show " href="#">All    </a>
-				</div>
-				<div class="mb-3 d-flex align-items-center"><span class="d-inline-block me-2">Sort by</span>
-					<div class="dropdown bootstrap-select"><select class="selectpicker" name="sort" id="form_sort" data-style="btn-selectpicker border-0" title="">
-							<option value="sortBy_0">Default     </option>
-							<option value="sortBy_1">Popularity     </option>
-							<option value="sortBy_2">Rating     </option>
-							<option value="sortBy_3">Newest first     </option>
-						</select><button type="button" tabindex="-1" class="btn dropdown-toggle btn-selectpicker border-0" data-bs-toggle="dropdown" role="combobox" aria-owns="bs-select-1" aria-haspopup="listbox" aria-expanded="false" title="Default" data-id="form_sort"><div class="filter-option"><div class="filter-option-inner"><div class="filter-option-inner-inner">Default</div></div> </div></button><div class="dropdown-menu "><div class="inner show" role="listbox" id="bs-select-1" tabindex="-1"><ul class="dropdown-menu inner show" role="presentation"></ul></div></div></div>
+					Showing <strong>1-12 </strong>of <strong>158 </strong>products
 				</div>
 			</header>
 			<div class="row">
