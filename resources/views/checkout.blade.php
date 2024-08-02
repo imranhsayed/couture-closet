@@ -74,12 +74,40 @@
                     <!-- /Shipping Address-->
                 </div>
                 <!-- Billing Address-->
-
+                <div class="collapse" id="shippingAddress">
+                    <h5 class="text-primary my-4">Billing address </h5>
+                    <div class="row">
+                        <div class="mb-3 col-md-6 mb-4">
+                            <label class="form-label" for="street_shipping">Street</label>
+                            <input class="form-control form-control-underlined ps-0" type="text" name="street_shipping"
+                                id="street_shipping">
+                        </div>
+                        <div class="mb-3 col-md-6 mb-4">
+                            <label class="form-label" for="city_shipping">City</label>
+                            <input class="form-control form-control-underlined ps-0" type="text" name="city_shipping"
+                                id="city_shipping">
+                        </div>
+                        <div class="mb-3 col-md-6 mb-4">
+                            <label class="form-label" for="zip_shipping">ZIP</label>
+                            <input class="form-control form-control-underlined ps-0" type="text" name="zip_shipping"
+                                id="zip_shipping">
+                        </div>
+                        <div class="mb-3 col-md-6 mb-4">
+                            <label class="form-label" for="state_shipping">State</label>
+                            <input class="form-control form-control-underlined ps-0" type="text" name="state_shipping"
+                                id="state_shipping">
+                        </div>
+                        <div class="mb-3 col-md-6 mb-4">
+                            <label class="form-label" for="phonenumber_shipping">Phone Number</label>
+                            <input class="form-control form-control-underlined ps-0" type="text"
+                                name="phonenumber_shipping" id="phonenumber_shipping">
+                        </div>
+                    </div>
+                </div>
                 <!-- /Billing Address -->
             </form>
         </div>
-        <div class="col-lg-5 summary">
-        </div>
+
     </div>
 </div>
 @endsection
