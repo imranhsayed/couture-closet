@@ -8,6 +8,15 @@ use App\Http\Requests\UpdateOrdersRequest;
 
 class OrdersController extends Controller
 {
+    public function showConfirmation(Order $order)
+    {
+        $customerName = $order->user->name;
+
+        return view('order-confirmation', [
+            'order' => $order,
+            'customerName' => $customerName,
+        ]);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -63,4 +72,6 @@ class OrdersController extends Controller
     {
         //
     }
+
+    
 }
