@@ -107,7 +107,54 @@
                 <!-- /Billing Address -->
             </form>
         </div>
-
+        <div class="col-lg-5 summary">
+            <h5 class="text-primary mb-5">Order Summary</h5>
+            <table class="table border-bottom border-dark mb-5">
+                <tbody>
+                    <tr class="text-sm">
+                        <th class="py-4 fw-normal text-muted">Black T-Shirt <span>x 4</span></th>
+                        <td class="py-4 text-end text-muted">$260.00</td>
+                    </tr>
+                    <tr class="text-sm">
+                        <th class="py-4 fw-normal text-muted">Zipped Blazers <span>x 3</span></th>
+                        <td class="py-4 text-end text-muted">$165.00</td>
+                    </tr>
+                    <tr class="text-sm">
+                        <th class="py-4 fw-normal text-muted">Street Wear Sweater <span>x 3</span></th>
+                        <td class="py-4 text-end text-muted">$165.00</td>
+                    </tr>
+                    <tr>
+                        <th class="py-4 text-uppercase fw-bold text-sm align-bottom">Order Subtotal </th>
+                        <td class="py-4 text-end fw-bold">$390.00</td>
+                    </tr>
+                    <tr>
+                        <th class="py-5 border-dark" colspan="2">
+                            <div class="mb-4">Shipping &amp; Taxes</div>
+                            <p class="fw-normal"><img src="pictures/checked.svg" alt="Right Icon" class="ms-2"
+                                    style="width: 16px; height: 16px; margin-right:10px;"> GST <span class="fw-bold">
+                                    $20</span></p>
+                            <p class="fw-normal"><img src="pictures/checked.svg" alt="Right Icon" class="ms-2"
+                                    style="width: 16px; height: 16px; margin-right:10px;"> HST <span class="fw-bold">
+                                    $17.5</span></p>
+                            <p class="fw-normal"><img src="pictures/checked.svg" alt="Right Icon" class="ms-2"
+                                    style="width: 16px; height: 16px; margin-right:10px;"> Shipping and Handling <span
+                                    class="fw-bold"> $20</span></p>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="py-4 text-uppercase fw-bold border-dark align-bottom">Total</th>
+                        <td class="py-4 text-end h3 fw-bold border-dark">$400.00</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-muted text-sm">Your personal data will be used to process your order,
+                support your experience throughout this website, and for other purposes described in our<a
+                    href="#">privacy policy</a>.
+            </p>
+            <div class="d-grid"><a class="btn btn-dark btn-lg mb-5 mt-4 text-uppercase fw-normal text-sm" href="#">Place
+                    Your order</a>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
