@@ -46,7 +46,7 @@
 						    <div class="row">
 							    <div class="col-lg-4 col-sm-6 p-lg-5">
 								    <h6 class="dropdown-header h6 ps-lg-0">Shop pages</h6>
-								    <a class="dropdown-item ps-lg-0" href="category-full.html">Full width </a><a class="dropdown-item ps-lg-0" href="category-full-sidebar.html">Full width with category menu </a><a class="dropdown-item ps-lg-0" href="category-big-products.html">Full width with big products </a><a class="dropdown-item ps-lg-0" href="category-boxed.html">Fixed width </a><a class="dropdown-item ps-lg-0" href="category-sidebar.html">Fixed width &amp; sidebar </a><a class="dropdown-item ps-lg-0" href="category-masonry.html">Fixed width &amp; masonry layout<span class="badge badge-primary-light ms-1">New</span> </a><a class="dropdown-item ps-lg-0" href="category-categories.html">Subcategories </a>
+								    <a class="dropdown-item ps-lg-0" href="/shop">Shop Products </a><a class="dropdown-item ps-lg-0" href="category-full-sidebar.html">Full width with category menu </a><a class="dropdown-item ps-lg-0" href="category-big-products.html">Full width with big products </a><a class="dropdown-item ps-lg-0" href="category-boxed.html">Fixed width </a><a class="dropdown-item ps-lg-0" href="category-sidebar.html">Fixed width &amp; sidebar </a><a class="dropdown-item ps-lg-0" href="category-masonry.html">Fixed width &amp; masonry layout<span class="badge badge-primary-light ms-1">New</span> </a><a class="dropdown-item ps-lg-0" href="category-categories.html">Subcategories </a>
 							    </div>
 							    <div class="col-lg-4 col-sm-6 p-lg-5">
 								    <h6 class="dropdown-header h6 ps-lg-0">Product pages</h6>

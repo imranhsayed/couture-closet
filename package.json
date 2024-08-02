@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+	    "build-images": "rm -rf public/images && php artisan storage:link"
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
