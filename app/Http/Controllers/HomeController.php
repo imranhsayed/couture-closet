@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //TODO prepare user's data: users profile, orders, reviews
-        return view('home');
+        // prepare user's data
+        // users profile
+        // orders
+        $orders = Order::latest()->paginate(10);
+        
+        // reviews
+        return view( 'home' ,  compact( 'orders' ) );
     }
 }

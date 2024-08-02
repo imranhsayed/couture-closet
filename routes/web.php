@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
@@ -23,6 +24,11 @@ Route::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] )->
 
 // User Routes
 Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( function () {
+	// User Profile
+	Route::get( '/profile', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'profile' );
+
+	// Order
+	Route::get( '/order/{order}', [ OrderController::class, 'show' ] ) ->name( 'order.show' );
 	// Route::get( '/projects', [ ProjectController::class, 'index' ] )->name( 'projects.index' );
 	// Route::get( '/projects/{project}', [ ProjectController::class, 'show' ] )->name( 'projects.show' );
 } );

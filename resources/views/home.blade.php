@@ -56,16 +56,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>2024-08-02 10:34:55</td>
-                                        <td>$999</td>
-                                        <td>
-                                            <a class="btn btn-primary btn-sm" href="#" role="button">View Order</a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($orders as $order)
+                                        <tr>
+                                            <td>{{ $order->id }}</td>
+                                            <td>{{ $order->order_date }}</td>
+                                            <td>${{ $order->total_amount }}</td>
+                                            <td>
+                                                <a class="btn btn-primary btn-sm" href="/order/{{ $order->id }}" role="button">View Order</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
+                            <nav>
+                                {{ $orders->links('pagination::bootstrap-5') }}
+                            </nav>
                         </div>
 
                         <!-- Addresses tab content -->
