@@ -109,7 +109,9 @@
 						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><span class="d-none d-sm-inline">Add to cart</span></a>
+								</svg>
+								<x-add-to-cart-button product_id="23" quantity="1" />
+							</a>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -137,7 +139,7 @@
 						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><span class="d-none d-sm-inline">Add to cart</span></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -165,7 +167,7 @@
 						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><span class="d-none d-sm-inline">Add to cart</span></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -193,7 +195,7 @@
 						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><span class="d-none d-sm-inline">Add to cart</span></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -220,7 +222,7 @@
 						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><span class="d-none d-sm-inline">Add to cart</span></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -248,7 +250,7 @@
 						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><span class="d-none d-sm-inline">Add to cart</span></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -277,7 +279,7 @@
 						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><span class="d-none d-sm-inline">Add to cart</span></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -305,7 +307,7 @@
 						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><span class="d-none d-sm-inline">Add to cart</span></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -332,7 +334,7 @@
 						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><span class="d-none d-sm-inline">Add to cart</span></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -360,7 +362,9 @@
 						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><span class="d-none d-sm-inline">Add to cart</span></a>
+								</svg>
+								<x-add-to-cart-button product_id="23" quantity="1" />
+							</a>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -387,7 +391,7 @@
 						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><span class="d-none d-sm-inline">Add to cart</span></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -414,7 +418,7 @@
 						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><span class="d-none d-sm-inline">Add to cart</span></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
