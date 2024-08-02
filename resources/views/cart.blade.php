@@ -32,7 +32,7 @@
                                     <div class="d-flex align-items-center"><a href="#"><img class="cart-item-img"
                                                 src="/pictures/Mask.jpg" alt=""></a>
                                         <div class="cart-title text-start"><a class="text-dark link-animated"
-                                                href="detail-1.html"><strong>Skull Tee</strong></a><br><span
+                                                href="#"><strong>Skull Tee</strong></a><br><span
                                                 class="text-muted text-sm">Size: Large</span><br>
                                         </div>
                                     </div>
@@ -80,12 +80,12 @@
                             <div class="row d-flex align-items-center text-start text-md-center">
                                 <div class="col-12 col-md-5"><a class="cart-remove close mt-3 d-md-none" href="#"><i
                                             class="fa fa-times"> </i></a>
-                                    <div class="d-flex align-items-center"><a href="detail-1.html"><img
+                                    <div class="d-flex align-items-center"><a href="#"><img
                                                 class="cart-item-img"
                                                 src="pictures/group.jpg"
                                                 alt="icon"></a>
                                         <div class="cart-title text-start"><a class="text-dark link-animated"
-                                                href="detail-1.html"><strong>Transparent Blouse</strong></a><br><span
+                                                href="#"><strong>Transparent Blouse</strong></a><br><span
                                                 class="text-muted text-sm">Size: Medium</span>
                                         </div>
                                     </div>
@@ -132,12 +132,12 @@
                             <div class="row d-flex align-items-center text-start text-md-center">
                                 <div class="col-12 col-md-5"><a class="cart-remove close mt-3 d-md-none" href="#"><i
                                             class="fa fa-times"> </i></a>
-                                    <div class="d-flex align-items-center"><a href="detail-1.html"><img
+                                    <div class="d-flex align-items-center"><a href="#"><img
                                                 class="cart-item-img"
                                                 src="pictures/mask-group.jpg"
                                                 alt="icon"></a>
                                         <div class="cart-title text-start"><a class="text-dark link-animated"
-                                                href="detail-1.html"><strong>White Tee</strong></a><br><span
+                                                href="#"><strong>White Tee</strong></a><br><span
                                                 class="text-muted text-sm">Size: Medium</span>
                                         </div>
                                     </div>
@@ -188,7 +188,44 @@
 					</a>
 				</div>
             </div>
-
+            <div class="col-lg-4">
+                <div class="card mb-5 bg-light shadow-none">
+                    <div class="card-header bg-dark shadow-none">
+                        <h6 class="mb-0 text-white">Order Summary</h6>
+                    </div>
+                    <div class="card-body py-4">
+                        <p class="text-muted text-sm">Proceed to checkout to calculate <span class="fw-bold">Shipping</span> and <span class="fw-bold">taxes</span></p>
+                        <table class="table card-text">
+                            <tbody>
+                                <tr>
+                                    <th class="py-4">Order Subtotal </th>
+                                    <td class="py-4 text-end text-muted">$390.00</td>
+                                </tr>
+                                <tr>
+                                    <th class="py-4">Shipping and handling</th>
+                                    <td class="py-4 text-end text-muted"> -- </td>
+                                </tr>
+                                <tr>
+                                    <th class="py-4">Taxes</th>
+                                    <td class="py-4 text-end text-muted">--</td>
+                                </tr>
+                                <tr>
+                                    <th class="pt-4 border-0">Total</th>
+                                    <td class="pt-4 text-end h3 fw-normal border-0">$390.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer overflow-hidden p-0">
+                        <div class="d-grid"> <a class="btn btn-primary py-3 text-white" href="#">
+                                Proceed to Checkout
+                                <img src="pictures/white-right.svg" alt="Right Icon" class="ms-2"
+                                    style="width: 16px; height: 16px;">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
