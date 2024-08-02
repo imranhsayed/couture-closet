@@ -13,8 +13,12 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
+	<!-- JQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap CSS and JS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -94,7 +98,7 @@
 								@endif
 							</div>
 						@else
-							<div class="dropdown-menu dropdown-menu-animated show" aria-labelledby="userLoginDropdown"
+							<div class="dropdown-menu dropdown-menu-animated" aria-labelledby="userLoginDropdown"
 								data-bs-popper="none">
 								<a class="dropdown-item" href="/login">Login</a>
 								<a class="dropdown-item" href="/register">Register</a>

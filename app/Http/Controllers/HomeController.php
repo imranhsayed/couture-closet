@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //TODO prepare user's data: users profile, orders, reviews
         return view('home');
     }
 }
