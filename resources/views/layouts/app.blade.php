@@ -187,9 +187,9 @@
 				</div>
 				<div class="col-lg-8">
 					<ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-lg-end">
-						<li class="list-inline-item"> <a class="text-reset" href="#">Home</a></li>
-						<li class="list-inline-item"> <a class="text-reset" href="#">About</a></li>
-						<li class="list-inline-item"> <a class="text-reset" href="#">Shop</a></li>
+						<li class="list-inline-item"> <a class="text-reset" href="/">Home</a></li>
+						<li class="list-inline-item"> <a class="text-reset" href="/about">About</a></li>
+						<li class="list-inline-item"> <a class="text-reset" href="/shop">Shop</a></li>
 					</ul>
 				</div>
 			</div>
