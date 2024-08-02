@@ -18,6 +18,9 @@ Route::get( '/about', fn() => view( 'about' ) )->name( 'about' );
 Route::get( '/contact', [ ContactController::class, 'index' ] )->name( 'contact' );
 Route::post( '/contact', [ ContactController::class, 'store' ] )->name( 'InquiryStore' );
 Route::get( '/order-confirmation', fn() => view( 'order-confirmation' ) )->name( 'order-confirmation' );
+Route::get('/order-details', function () {
+    return view('order-details');
+})->name('order.details');
 Route::get( '/shop', fn() => view( 'shop' ) )->name( 'shop' );
 Route::get( '/cart', fn() => view( 'cart' ) )->name( 'cart' );
 Route::get( '/checkout', fn() => view( 'checkout' ) )->name( 'checkout' );
