@@ -32,11 +32,10 @@
 			    </svg>
 		    </button>
 		    <div class="collapse navbar-collapse" id="navbarContent">
+				{{--Menu--}}
 			    <ul class="navbar-nav mt-3 mt-lg-0">
-				    <li class="nav-item dropdown active">
-					    <a class="nav-link dropdown-toggle" id="homeDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
-					    <div class="dropdown-menu dropdown-menu-animated" aria-labelledby="homeDropdown"><a class="dropdown-item" href="index.html">Home 1 - Fashion </a><a class="dropdown-item" href="index-2.html">Home 2 - Fashion </a><a class="dropdown-item" href="index-3.html">Home 3 - Design <span class="badge badge-primary-light ms-1">New</span> </a><a class="dropdown-item" href="index-4.html">Home 4 - Design <span class="badge badge-primary-light ms-1">New</span> </a>
-					    </div>
+				    <li class="nav-item active">
+					    <a class="nav-link" href="#" aria-haspopup="true" aria-expanded="false">Home</a>
 				    </li>
 				    <li class="nav-item">
 					    <a class="nav-link" href="#" aria-haspopup="true" aria-expanded="false">About</a>
@@ -58,11 +57,32 @@
 					    </div>
 				    </li>
 			    </ul>
+				{{--Search--}}
+			    <form class="" action="#">
+				    <div class="input-group input-group-underlined">
+					    <input class="form-control form-control-underlined ps-3" type="text" placeholder="Search" aria-label="Search" aria-describedby="button-search">
+					    <button class="btn btn-underlined" id="button-search" type="button">
+						    <svg class="svg-icon navbar-icon">
+							    <use xlink:href="#search-1"> </use>
+						    </svg>
+					    </button>
+				    </div>
+			    </form>
 			    <ul class="list-inline mb-0 d-none d-lg-block">
-				    <li class="list-inline-item me-3"><a class="text-dark text-primary-hover" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+				    <li class="nav-item dropdown">
+					    <a class="nav-link dropdown-toggle show" id="userLoginDropdown" href="#"
+				                                     data-bs-toggle="dropdown" aria-haspopup="true"
+				                                     aria-expanded="true">
 						    <svg class="svg-icon navbar-icon">
 							    <use xlink:href="#avatar-1"> </use>
-						    </svg></a></li>
+						    </svg></a>
+					    </a>
+					    <div class="dropdown-menu dropdown-menu-animated show" aria-labelledby="userLoginDropdown"
+					         data-bs-popper="none">
+						    <a class="dropdown-item" href="/login">Login</a>
+						    <a class="dropdown-item" href="/register">Register</a>
+					    </div>
+				    </li>
 				    <li class="list-inline-item position-relative me-3"><a class="text-dark text-primary-hover" href="#" data-bs-toggle="modal" data-bs-target="#sidebarCart">
 						    <svg class="svg-icon navbar-icon">
 							    <use xlink:href="#retail-bag-1"> </use>
@@ -210,6 +230,18 @@
 		<desc>A line styled icon from Orion Icon Library.</desc>
 		<circle data-name="layer2" cx="32" cy="32" r="30" transform="rotate(-45 32 32)" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></circle>
 		<path data-name="layer1" fill="none" stroke="#202020" stroke-miterlimit="10" d="M20.998 32.015l8.992 8.992 16.011-16.011" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
+	</symbol>
+	<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="search-1">
+		<title>Search</title>
+		<desc>A line styled icon from Orion Icon Library.</desc>
+		<path data-name="layer2" fill="none" stroke="#202020" stroke-miterlimit="10" d="M39.049 39.049L56 56" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
+		<circle data-name="layer1" cx="27" cy="27" r="17" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></circle>
+	</symbol>
+	<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="avatar-1">
+		<title>Avatar</title>
+		<desc>A line styled icon from Orion Icon Library.</desc>
+		<path data-name="layer2" d="M24 40.8V44c0 2-1 5.2-11 7A13.4 13.4 0 0 0 2 62h60a15.5 15.5 0 0 0-12-11c-10-1.9-10-5-10-7v-3.2" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
+		<path data-name="layer1" d="M46 25.6c0 10-6.3 18.4-14 18.4s-14-8-14-18v-9.6C18 6 25.4 2 32 2s14 3.6 14 14z" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
 	</symbol>
 </svg>
 </html>
