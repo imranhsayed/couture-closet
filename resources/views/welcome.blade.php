@@ -106,12 +106,12 @@
 					<div class="product-image mb-md-3">
 						<div class="product-badge badge bg-secondary">Fresh</div><a href="detail-1.html">
 							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0987188250_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0987188250_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
+						<div class="product-hover-overlay"><div class="text-dark text-sm">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
 								</svg>
 								<x-add-to-cart-button product_id="23" quantity="1" />
-							</a>
+							</div>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -136,10 +136,10 @@
 				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 					<div class="product-image mb-md-3"><a href="detail-1.html">
 							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0950354513_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0950354513_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
+						<div class="product-hover-overlay"><div class="text-dark text-sm">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></div>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -164,10 +164,10 @@
 					<div class="product-image mb-md-3">
 						<div class="product-badge badge bg-primary">Sale</div><a href="detail-1.html">
 							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/5161335400_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/5161335400_2_3_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
+						<div class="product-hover-overlay"><div class="text-dark text-sm">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></div>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -192,10 +192,10 @@
 				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 					<div class="product-image mb-md-3"><a href="detail-1.html">
 							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0027211800_1_2_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0027211800_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
+						<div class="product-hover-overlay"><div class="text-dark text-sm">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></div>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -219,10 +219,10 @@
 				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 					<div class="product-image mb-md-3"><a href="detail-1.html">
 							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0144074800_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0144074800_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
+						<div class="product-hover-overlay"><div class="text-dark text-sm">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></div>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -247,10 +247,10 @@
 					<div class="product-image mb-md-3">
 						<div class="product-badge badge bg-dark">Sold out</div><a href="detail-1.html">
 							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0693492802_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0693492802_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
+						<div class="product-hover-overlay"><div class="text-dark text-sm">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></div>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -276,10 +276,10 @@
 					<div class="product-image mb-md-3">
 						<div class="product-badge badge bg-dark">Sold out</div><a href="detail-1.html">
 							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0364326148_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0364326148_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
+						<div class="product-hover-overlay"><div class="text-dark text-sm">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></div>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -304,10 +304,10 @@
 				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 					<div class="product-image mb-md-3"><a href="detail-1.html">
 							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0931168712_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0931168712_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
+						<div class="product-hover-overlay"><div class="text-dark text-sm">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></div>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -331,10 +331,10 @@
 				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 					<div class="product-image mb-md-3"><a href="detail-1.html">
 							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/1000962306_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/1000962306_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
+						<div class="product-hover-overlay"><div class="text-dark text-sm">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></div>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -359,12 +359,12 @@
 				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 					<div class="product-image mb-md-3"><a href="detail-1.html">
 							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0915494643_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0915494643_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
+						<div class="product-hover-overlay"><div class="text-dark text-sm">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
 								</svg>
 								<x-add-to-cart-button product_id="23" quantity="1" />
-							</a>
+							</div>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -388,10 +388,10 @@
 				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 					<div class="product-image mb-md-3"><a href="detail-1.html">
 							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0907168607_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0907168607_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
+						<div class="product-hover-overlay"><div class="text-dark text-sm">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></div>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
@@ -415,10 +415,10 @@
 				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 					<div class="product-image mb-md-3"><a href="detail-1.html">
 							<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/5806513505_1_2_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/5806513505_2_1_1.jpg" alt="product"></div></a>
-						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
+						<div class="product-hover-overlay"><div class="text-dark text-sm">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
-								</svg><x-add-to-cart-button product_id="23" quantity="1" /></a>
+								</svg><x-add-to-cart-button product_id="23" quantity="1" /></div>
 							<div><a class="text-dark text-primary-hover me-2" href="#!">
 									<svg class="svg-icon svg-icon-heavy">
 										<use xlink:href="#heart-1"> </use>
