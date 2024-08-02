@@ -17,6 +17,7 @@ Route::get( '/about', fn() => view( 'about' ) )->name( 'about' );
 Route::get( '/contact', [ ContactController::class, 'index' ] )->name( 'contact' );
 Route::post( '/contact', [ ContactController::class, 'store' ] )->name( 'InquiryStore' );
 Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
+Route::get( '/shop', fn() => view( 'shop' ) )->name( 'shop' );
 
 /**
  * Product Route.
