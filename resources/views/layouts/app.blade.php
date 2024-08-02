@@ -61,29 +61,29 @@
 			    <form class="" action="#">
 				    <div class="input-group input-group-underlined">
 					    <input class="form-control form-control-underlined ps-3" type="text" placeholder="Search" aria-label="Search" aria-describedby="button-search">
-					    <button class="btn btn-underlined" id="button-search" type="button">
+					    <button class="btn btn-underlined" id="button-search" type="button" style="margin-top: -3px">
 						    <svg class="svg-icon navbar-icon">
 							    <use xlink:href="#search-1"> </use>
 						    </svg>
 					    </button>
 				    </div>
 			    </form>
-			    <ul class="list-inline mb-0 d-none d-lg-block">
+			    <ul class="list-inline mb-0 d-none d-lg-flex align-items-center">
 				    <li class="nav-item dropdown">
 					    <a class="nav-link dropdown-toggle show" id="userLoginDropdown" href="#"
 				                                     data-bs-toggle="dropdown" aria-haspopup="true"
-				                                     aria-expanded="true">
+				                                     aria-expanded="false">
 						    <svg class="svg-icon navbar-icon">
 							    <use xlink:href="#avatar-1"> </use>
 						    </svg></a>
 					    </a>
-					    <div class="dropdown-menu dropdown-menu-animated show" aria-labelledby="userLoginDropdown"
+					    <div class="dropdown-menu dropdown-menu-animated" aria-labelledby="userLoginDropdown"
 					         data-bs-popper="none">
 						    <a class="dropdown-item" href="/login">Login</a>
 						    <a class="dropdown-item" href="/register">Register</a>
 					    </div>
 				    </li>
-				    <li class="list-inline-item position-relative me-3"><a class="text-dark text-primary-hover" href="#" data-bs-toggle="modal" data-bs-target="#sidebarCart">
+				    <li class="list-inline-item position-relative ml-2"><a class="text-dark text-primary-hover" href="#" data-bs-toggle="modal" data-bs-target="#sidebarCart">
 						    <svg class="svg-icon navbar-icon">
 							    <use xlink:href="#retail-bag-1"> </use>
 						    </svg>
@@ -187,9 +187,9 @@
 				</div>
 				<div class="col-lg-8">
 					<ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-lg-end">
-						<li class="list-inline-item"> <a class="text-reset" href="#">Home</a></li>
-						<li class="list-inline-item"> <a class="text-reset" href="#">About</a></li>
-						<li class="list-inline-item"> <a class="text-reset" href="#">Shop</a></li>
+						<li class="list-inline-item"> <a class="text-reset" href="/">Home</a></li>
+						<li class="list-inline-item"> <a class="text-reset" href="/about">About</a></li>
+						<li class="list-inline-item"> <a class="text-reset" href="/shop">Shop</a></li>
 					</ul>
 				</div>
 			</div>
