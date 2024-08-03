@@ -1,2 +1,5 @@
 import './bootstrap';
-import './add-to-cart.js';
+import './store/zustand.js';
+import './store/data.js';
+import './main.js';
+import './cart/add-to-cart.js';
