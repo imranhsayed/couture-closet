@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                @include('partials.flash')
+                <div class="card">
+                    <div class="card-header">{{ __('Dashboard') }}</div>
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -19,11 +19,17 @@
                         <hr>
                         <!-- the summary of user -->
                         <ul class="nav nav-tabs" id="profile" role="tablist">
+                            <script>
+                                // set active tab
+                                function setActiveTab(tabValue) {
+                                    localStorage.setItem('activeTab', tabValue);
+                                }
+                            </script>
                             <!-- Orders tab -->
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="orders-tab" data-bs-toggle="tab"
+                                <button class="nav-link" id="orders-tab" data-bs-toggle="tab"
                                         data-bs-target="#orders" type="button" role="tab" aria-controls="orders"
-                                        aria-selected="true">Orders
+                                        aria-selected="true" onclick="setActiveTab('orders')">Orders
                                 </button>
                             </li>
 
@@ -32,14 +38,15 @@
                                 <button class="nav-link" id="addresses-tab" data-bs-toggle="tab"
                                         data-bs-target="#addresses"
                                         type="button" role="tab" aria-controls="addresses"
-                                        aria-selected="true">Addresses
+                                        aria-selected="true" onclick="setActiveTab('addresses')">Addresses
                                 </button>
                             </li>
 
                             <!-- Reviews tab -->
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
-                                        type="button" role="tab" aria-controls="reviews" aria-selected="true">Reviews
+                                        type="button" role="tab" aria-controls="reviews" aria-selected="true"
+                                        onclick="setActiveTab('reviews')">Reviews
                                 </button>
                             </li>
                         </ul>
@@ -47,7 +54,7 @@
                         <!-- the tab content -->
                         <div class="tab-content" id="order_content">
                             <!-- Orders tab content -->
-                            <div class="tab-pane fade show active" id="orders" role="tabpanel"
+                            <div class="tab-pane fade" id="orders" role="tabpanel"
                                  aria-labelledby="orders-tab">
                                 <p></p>
                                 <h3>Your Orders</h3>
@@ -91,7 +98,7 @@
                                 <h3>Your Addresses
                                     <!-- Button to trigger modal -->
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#formModal">
+                                            data-bs-target="#addressModal">
                                         Add New Address
                                     </button>
                                 </h3>
@@ -113,7 +120,7 @@
                                         @foreach ($userAddresses as $key=>$userAddress)
                                             <tr>
                                                 <td>{{ ++$key }}</td>
-                                                <td>{{ $userAddress->street }}</td>
+                                                <td>{{ Str::limit($userAddress->street, 10, '...') }}</td>
                                                 <td>{{ $userAddress->postal_code }}</td>
                                                 <td>{{ $userAddress->city }}</td>
                                                 <td>{{ $userAddress->province }}</td>
@@ -138,7 +145,7 @@
                                 </nav>
 
                                 <!-- modal for add a new address -->
-                                <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel"
+                                <div class="modal fade" id="addressModal" tabindex="-1" aria-labelledby="formModalLabel"
                                      aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -149,22 +156,29 @@
                                                         aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form id="user_address" method="POST" action="{{ route( 'user.address.store' ) }}" class="form">
+                                                <form id="user_address" class="form">
                                                     @csrf
+                                                    <input type="hidden" id="user_id" name="user_id"
+                                                           value="{{ \Auth::user()->id }}">
                                                     <div class="mb-3">
                                                         <label for="street" class="form-label">Street</label>
-                                                        <input type="text" class="form-control" id="street" required>
-                                                        <x-val-error field="street"/>
+                                                        <input type="text" class="form-control" id="street"
+                                                               name="street" required>
+                                                        <span id="street_error"
+                                                              class="text text-danger user_address_error"></span>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="postal_code" class="form-label">Postal Code</label>
                                                         <input type="text" class="form-control" id="postal_code"
+                                                               name="postal_code"
                                                                required>
-                                                        <x-val-error field="postal_code"/>
+                                                        <span id="postal_code_error"
+                                                              class="text text-danger user_address_error"></span>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="province" class="form-label">Province</label>
-                                                        <select id="province" class="form-select" required>
+                                                        <select id="province" class="form-select" name="province"
+                                                                required>
                                                             <option value="">Select a province</option>
                                                             <option value="AB">Alberta</option>
                                                             <option value="BC">British Columbia</option>
@@ -177,18 +191,22 @@
                                                             <option value="QC">Quebec</option>
                                                             <option value="SK">Saskatchewan</option>
                                                         </select>
-                                                        <x-val-error field="province"/>
+                                                        <span id="province_error"
+                                                              class="text text-danger user_address_error"></span>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="city" class="form-label">City</label>
-                                                        <select id="city" class="form-select" disabled required>
+                                                        <select id="city" class="form-select" name="city" disabled
+                                                                required>
                                                             <option value="">Select a city</option>
                                                         </select>
-                                                        <x-val-error field="city"/>
+                                                        <span id="city_error"
+                                                              class="text text-danger user_address_error"></span>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="country" class="form-label">Country</label>
-                                                        <select id="country" class="form-select" required>
+                                                        <select id="country" class="form-select" name="country"
+                                                                required>
                                                             <option value="CA">Canada</option>
                                                         </select>
                                                     </div>
@@ -198,16 +216,11 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <script>
-{{--                                    @if ($errors->any())--}}
-{{--                                        $('#formModal').show();--}}
-{{--                                    @endif--}}
-                                </script>
                             </div>
 
                             <!-- Reviews tab content -->
-                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                            <div class="tab-pane fade"
+                                 id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                                 <p></p>
                                 <h3>Your Reviews</h3>
                                 <table class="table table-striped">

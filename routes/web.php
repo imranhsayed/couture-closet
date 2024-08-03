@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
-use App\Models\UserAddress;
+use App\Http\Controllers\UserAddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
@@ -28,7 +28,7 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 	Route::get( '/user/profile', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'user.profile' );
 
     // User Address
-    Route::post('/user/address', [ UserAddress::class, 'store' ])->name( 'user.address.store' );
+    Route::post('/user/address', [ UserAddressController::class, 'store' ])->name( 'user.address.store' );
 
     // Order
 	Route::get( '/order/{order}', [ OrderController::class, 'show' ] ) ->name( 'order.show' );

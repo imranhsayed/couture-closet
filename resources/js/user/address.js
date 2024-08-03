@@ -12,6 +12,17 @@ const cities = {
 };
 
 $(document).ready(function () {
+    // to activate the tab
+    let activeTab = localStorage.getItem('activeTab');
+    if (activeTab) {
+        let tabTrigger = $('#' + activeTab + '-tab');
+        tabTrigger.trigger('click');
+    } else {
+        // default active tab
+        $('#orders-tab').trigger('click');
+    }
+
+    // cities from each province
     $('#user_address #province').change(function () {
         const selectedProvince = $(this).val();
         const citySelect = $('#city');
@@ -27,4 +38,43 @@ $(document).ready(function () {
             citySelect.prop('disabled', true);
         }
     });
+
+    // user's address
+    $('#user_address').submit(function (e) {
+        e.preventDefault();
+
+        // reset the error
+        $('.user_address_error').empty();
+
+        $.ajax({
+            url: '/user/address',
+            method: 'POST',
+            data: $(this).serialize(),
+            dataType: 'json',
+            success: function (response) {
+                console.log(response);
+                if (response.success) {
+                    $('#addressModal').modal('hide');
+                    //reset the form's data
+                    document.getElementById('user_address').reset();
+                    window.location.href = '/user/profile';
+                }
+            },
+            error: function (xhr) {
+                if (xhr.status === 422) {
+                    var errors = xhr.responseJSON.errors;
+                    displayErrors(errors);
+                }
+            }
+        });
+    });
+
+    // show errors
+    function displayErrors(errors) {
+        $.each(errors, function (field, messages) {
+            const errorElement = $('#' + field + '_error');
+            errorElement.empty();
+            errorElement.html(messages.join('<br>'));
+        });
+    }
 });

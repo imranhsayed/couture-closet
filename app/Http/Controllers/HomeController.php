@@ -31,11 +31,11 @@ class HomeController extends Controller
         // prepare user's data
         $userId = \Auth::user()->id;
         // orders
-        $orders = Order::where('user_id', $userId)->paginate(10);
+        $orders = Order::where('user_id', $userId)->latest()->paginate(10);
         // addresses
-        $userAddresses = UserAddress::where('user_id', $userId)->paginate(10);
+        $userAddresses = UserAddress::where('user_id', $userId)->latest()->paginate(10);
         // product reviews
-        $productReviews = ProductReview::where('user_id', $userId)->paginate(10);
+        $productReviews = ProductReview::where('user_id', $userId)->latest()->paginate(10);
 
 	    return view( 'home', compact( 'products' , 'orders', 'userAddresses', 'productReviews' ) );
     }

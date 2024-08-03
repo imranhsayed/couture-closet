@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UserAddressRequest extends FormRequest
 {
@@ -22,7 +24,7 @@ class UserAddressRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'street' => 'required|string|max:255',
+            'street' => 'required|string|min:5|max:255',
             'postal_code' => 'required|string|regex:/^[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d$/|min:6|max:7',
             'province' => 'required|string|min:2|max:2',
             'city' => 'required|string|max:255',
@@ -39,5 +41,10 @@ class UserAddressRequest extends FormRequest
         return [
             'postal_code.regex' => 'The postal code must be a valid Canadian postal code.'
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json(['errors' => $validator->errors()], 422));
     }
 }
