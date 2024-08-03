@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Product;
 use App\Models\Order;
+use App\Models\ProductReview;
+use App\Models\UserAddress;
 
 class HomeController extends Controller
 {
@@ -24,12 +26,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+	    $products = Product::with('images')->get();
+
         // prepare user's data
-        // users profile
+        $userId = \Auth::user()->id;
         // orders
-        $orders = Order::latest()->paginate(10);
-        
-        // reviews
-        return view( 'home' ,  compact( 'orders' ) );
+        $orders = Order::where('user_id', $userId)->paginate(10);
+        // addresses
+        $userAddresses = UserAddress::where('user_id', $userId)->paginate(10);
+        // product reviews
+        $productReviews = ProductReview::where('user_id', $userId)->paginate(10);
+
+	    return view( 'home', compact( 'products' , 'orders', 'userAddresses', 'productReviews' ) );
     }
 }

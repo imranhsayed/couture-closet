@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
+use App\Models\UserAddress;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
 
-Route::get( '/', function () {
-	return view( 'welcome' );
-} );
+Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welcome' );
 
 // Public Routes
 Route::get( '/about', fn() => view( 'about' ) )->name( 'about' );
@@ -16,7 +16,7 @@ Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
 /**
  * Product Route.
  */
-Route::get( '/product', [ \App\Http\Controllers\ProductController::class, 'index' ] )->name( 'product.index' );
+Route::get( '/product', [ ProductController::class, 'index' ] )->name( 'product.index' );
 
 // Authentication Routes
 Auth::routes();
@@ -25,9 +25,12 @@ Route::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] )->
 // User Routes
 Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( function () {
 	// User Profile
-	Route::get( '/profile', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'profile' );
+	Route::get( '/user/profile', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'user.profile' );
 
-	// Order
+    // User Address
+    Route::post('/user/address', [ UserAddress::class, 'store' ])->name( 'user.address.store' );
+
+    // Order
 	Route::get( '/order/{order}', [ OrderController::class, 'show' ] ) ->name( 'order.show' );
 	// Route::get( '/projects', [ ProjectController::class, 'index' ] )->name( 'projects.index' );
 	// Route::get( '/projects/{project}', [ ProjectController::class, 'show' ] )->name( 'projects.show' );

@@ -105,11 +105,14 @@
 							</div>
 						@endif
 				    </li>
-				    <li class="list-inline-item position-relative ml-2"><a class="text-dark text-primary-hover" href="#" data-bs-toggle="modal" data-bs-target="#sidebarCart">
+				    <li class="list-inline-item position-relative ml-2">
+					    <a class="text-dark text-primary-hover" href="#" data-bs-toggle="modal" data-bs-target="#sidebarCart">
 						    <svg class="svg-icon navbar-icon">
 							    <use xlink:href="#retail-bag-1"> </use>
 						    </svg>
-						    <div class="navbar-icon-badge">5</div></a></li>
+						    <cc-product-count class="navbar-icon-badge">5</cc-product-count>
+					    </a>
+				    </li>
 			    </ul>
 		    </div>
 	    </nav>

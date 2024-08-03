@@ -8,4 +8,4 @@
   - Donald
   - Rui 
   - Parth
-  - Shigdha
+  - Snigdha
