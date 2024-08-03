@@ -1,9 +1,12 @@
-import { addToCart } from '../store/actions.js';
-
 /**
  * Global variables.
  */
 const { customElements, HTMLElement, zustand } = window;
+
+/**
+ * Internal Dependencies.
+ */
+import { addToCart } from '../store/actions.js';
 
 /**
  * Get Store.
