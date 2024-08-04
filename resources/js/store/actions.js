@@ -18,7 +18,7 @@ const { setState, getState } = zustand.stores.globalStore;
 export const initialize = ( settings = {}) => {
 	// Get current state.
 	const currentState = getState();
-	
+
 	// Initialize: Add settings in state.
 	setState( {
 		...currentState,
@@ -39,13 +39,13 @@ export const addToCart = ( productId = 0, quantity = 1 ) => {
 	if ( ! productId ) {
 		return null;
 	}
-	
+
 	// Initialize.
 	let productExists = false;
 	const { cart } = getState();
 	const newProduct = { productId, quantity };
 	const updatedProducts = cart.products;
-	
+
 	// Loop through existing cart array and check if the product already exists.
 	for( let i = 0; i < updatedProducts.length; i++ ) {
 		// If product exists.
@@ -56,7 +56,7 @@ export const addToCart = ( productId = 0, quantity = 1 ) => {
 			break;
 		}
 	}
-	
+
 	/**
 	 * If the new product does already exist in the cart,
 	 * then just add it to the cart as an object.
@@ -64,7 +64,7 @@ export const addToCart = ( productId = 0, quantity = 1 ) => {
 	if ( ! productExists ) {
 		updatedProducts.push( newProduct );
 	}
-	
+
 	/**
 	 * Set the updated cart into the state.
 	 */
@@ -86,13 +86,40 @@ const getTotalProductCount = ( products = [] ) => {
 	if ( ! products.length ) {
 		return 0;
 	}
-	
+
 	let totalCount = 0;
-	
+
 	// Loop through all the products and increment the count.
 	for( let i = 0; i < products.length; i++ ) {
 		totalCount += products[ i ].quantity;
 	}
-	
+
 	return totalCount;
 };
+
+/**
+ * set active tab name
+ * @param name tab name
+ */
+export const setActiveTab = (name) => {
+    // set active tab
+    setState({
+        user_profile: {
+            activateTab: name
+        }
+    });
+}
+
+/**
+ * activate tab
+ */
+export const activateTab = () => {
+    const { user_profile } = getState();
+    if (user_profile.activateTab) {
+        let tabTrigger = $('#' + user_profile.activateTab + '-tab');
+        tabTrigger.trigger('click');
+    } else {
+        // default active tab
+        $('#orders-tab').trigger('click');
+    }
+}

@@ -19,34 +19,28 @@
                         <hr>
                         <!-- the summary of user -->
                         <ul class="nav nav-tabs" id="profile" role="tablist">
-                            <script>
-                                // set active tab
-                                function setActiveTab(tabValue) {
-                                    localStorage.setItem('activeTab', tabValue);
-                                }
-                            </script>
                             <!-- Orders tab -->
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="orders-tab" data-bs-toggle="tab"
+                                <button class="nav-link tab-button" id="orders-tab" data-bs-toggle="tab"
                                         data-bs-target="#orders" type="button" role="tab" aria-controls="orders"
-                                        aria-selected="true" onclick="setActiveTab('orders')">Orders
+                                        aria-selected="true" data-tab-name="orders">Orders
                                 </button>
                             </li>
 
                             <!-- Addresses tab -->
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="addresses-tab" data-bs-toggle="tab"
+                                <button class="nav-link tab-button" id="addresses-tab" data-bs-toggle="tab"
                                         data-bs-target="#addresses"
                                         type="button" role="tab" aria-controls="addresses"
-                                        aria-selected="true" onclick="setActiveTab('addresses')">Addresses
+                                        aria-selected="true" data-tab-name="addresses">Addresses
                                 </button>
                             </li>
 
                             <!-- Reviews tab -->
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
+                                <button class="nav-link tab-button" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
                                         type="button" role="tab" aria-controls="reviews" aria-selected="true"
-                                        onclick="setActiveTab('reviews')">Reviews
+                                        data-tab-name="reviews">Reviews
                                 </button>
                             </li>
                         </ul>
@@ -75,7 +69,7 @@
                                                 <td>{{ $order->order_date }}</td>
                                                 <td>${{ $order->total_amount }}</td>
                                                 <td>
-                                                    <a class="btn btn-primary btn-sm" href="/order/{{ $order->id }}"
+                                                    <a class="btn btn-primary btn-sm user_profile_btn" href="/order/{{ $order->id }}"
                                                        role="button">View Order</a>
                                                 </td>
                                             </tr>
@@ -93,11 +87,11 @@
                             </div>
 
                             <!-- Addresses tab content -->
-                            <div class="tab-pane fade" id="addresses" role="tabpanel" aria-labelledby="addresses-tab">
+                            <div class="tab-pane fade table-responsive" id="addresses" role="tabpanel" aria-labelledby="addresses-tab">
                                 <p></p>
                                 <h3>Your Addresses
                                     <!-- Button to trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-primary user_profile_btn" data-bs-toggle="modal"
                                             data-bs-target="#addressModal">
                                         Add New Address
                                     </button>
@@ -112,7 +106,7 @@
                                         <th>City</th>
                                         <th>Province</th>
                                         <th>Country</th>
-                                        <th></th>
+                                        <th colspan="3"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -126,9 +120,35 @@
                                                 <td>{{ $userAddress->province }}</td>
                                                 <td>{{ $userAddress->country }}</td>
                                                 <td>
-                                                    <a href="#" class="btn btn-primary btn-sm">Set As Default</a>
-                                                    <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                    <a href="#" class="btn btn-primary btn-sm">Del</a>
+                                                    @if ($userAddress->is_primary == 1)
+                                                        <button type="button" class="btn btn-success btn-sm" disabled>
+                                                            Default
+                                                        </button>
+                                                    @else
+                                                        <form action="" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-primary btn-sm user_profile_btn"
+                                                                    onclick="return confirm('Are you really want to delete this musician?')">
+                                                                Save as Default
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary btn-sm user_profile_btn"
+                                                            onclick="openModal({{ $userAddress->id }})">Edit
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <form action="" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-primary btn-sm user_profile_btn"
+                                                                onclick="return confirm('Are you really want to delete this musician?')">
+                                                            Del
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -252,7 +272,7 @@
 
                                                 @if (empty($productReview->review_text))
                                                     <td>
-                                                        <a class="btn btn-primary btn-sm" href="#" role="button">Leave a
+                                                        <a class="btn btn-primary btn-sm user_profile_btn" href="#" role="button">Leave a
                                                             review</a>
                                                     </td>
                                                 @else
@@ -268,6 +288,12 @@
                                         </tr>
                                     @endif
                                     </tbody>
+                                    <script>
+                                        // open modal
+                                        function openModal(id) {
+                                            alert(id);
+                                        }
+                                    </script>
                                 </table>
                             </div>
                         </div>

@@ -13,15 +13,11 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-	<!-- JQuery -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <!-- Bootstrap CSS and JS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss'])
 </head>
 <body>
     <div id="app">
@@ -224,8 +220,10 @@
 
     </div>
 
+    <!-- Custom js -->
+    @vite(['resources/js/app.js'])
+
     <!-- Bootstrap JS and dependencies -->
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/vendor/jquery/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
