@@ -106,7 +106,7 @@
 				<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 					<div class="product-image mb-md-3">
 						<div class="product-badge badge bg-secondary">Fresh</div><a href="detail-1.html">
-							<div class="product-swap-image">@foreach($product->images as $image)<img class="img-fluid product-swap-image-front" src="{{ $image->image_url }}" alt="product"><img class="img-fluid" src="{{ $image->image_url }}" alt="product">@endforeach</div></a>
+							<div class="product-swap-image">@foreach($product->images as $image)<img  style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" width="300" height="450" class="img-fluid product-swap-image-front" src="{{ $image->image_url }}" alt="product"><img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" width="300" height="450" class="img-fluid" src="{{ $image->image_url }}" alt="product">@endforeach</div></a>
 						<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
 								<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 									<use xlink:href="#retail-bag-1"> </use>
@@ -132,9 +132,6 @@
 			</div>
 			@endforeach
 			<!-- /product   -->
-			
-			
-			
 		</div>
 	</div>
 

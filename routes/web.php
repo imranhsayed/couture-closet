@@ -8,18 +8,7 @@ use App\Models\ProductImage;
 
 Route::get( '/', function () {
 
-	//$products = Product::with('images')->get();
-    //$images = ProductImage::all();
-
-	// foreach($products as $product) {
-	// 	dd($product->images[0]->image_url);
-	// }
-	//dd($images);
-	//dd($products->images);
-    // Pass the products to the view
-    //return view('welcome', ['products' => $products]);
-
-	$products = Product::with('images')->get();
+	$products = Product::with('images')->paginate(12);
     
     return view('welcome', compact('products'));
 } );
@@ -31,10 +20,6 @@ Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
 /**
  * Product Route.
  */
-
-
-
-
 
 // Authentication Routes
 Auth::routes();
