@@ -104,7 +104,7 @@ const getTotalProductCount = ( products = [] ) => {
 export const setActiveTab = (name) => {
     // set active tab
     setState({
-        user_profile: {
+        userProfile: {
             activateTab: name
         }
     });
@@ -114,9 +114,9 @@ export const setActiveTab = (name) => {
  * activate tab
  */
 export const activateTab = () => {
-    const { user_profile } = getState();
-    if (user_profile.activateTab) {
-        let tabTrigger = $('#' + user_profile.activateTab + '-tab');
+    const { userProfile } = getState();
+    if (userProfile.activateTab) {
+        let tabTrigger = $(`#${userProfile.activateTab}-tab`);
         tabTrigger.trigger('click');
     } else {
         // default active tab

@@ -66,8 +66,8 @@
                                         @foreach ($orders as $key=>$order)
                                             <tr>
                                                 <td>{{ ++$key }}</td>
-                                                <td>{{ $order->order_date }}</td>
-                                                <td>${{ $order->total_amount }}</td>
+                                                <td>{{ $order->order_date ?? '' }}</td>
+                                                <td>${{ $order->total_amount ?? '' }}</td>
                                                 <td>
                                                     <a class="btn btn-primary btn-sm user_profile_btn" href="/order/{{ $order->id }}"
                                                        role="button">View Order</a>
@@ -114,25 +114,21 @@
                                         @foreach ($userAddresses as $key=>$userAddress)
                                             <tr>
                                                 <td>{{ ++$key }}</td>
-                                                <td>{{ Str::limit($userAddress->street, 10, '...') }}</td>
-                                                <td>{{ $userAddress->postal_code }}</td>
-                                                <td>{{ $userAddress->city }}</td>
-                                                <td>{{ $userAddress->province }}</td>
-                                                <td>{{ $userAddress->country }}</td>
+                                                <td>{{ Str::limit($userAddress->street ?? '', 10, '...') }}</td>
+                                                <td>{{ $userAddress->postal_code ?? '' }}</td>
+                                                <td>{{ $userAddress->city ?? '' }}</td>
+                                                <td>{{ $userAddress->province ?? '' }}</td>
+                                                <td>{{ $userAddress->country ?? '' }}</td>
                                                 <td>
-                                                    @if ($userAddress->is_primary == 1)
+                                                    @if ($userAddress->is_primary === 1)
                                                         <button type="button" class="btn btn-success btn-sm" disabled>
                                                             Default
                                                         </button>
                                                     @else
-                                                        <form action="" method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-primary btn-sm user_profile_btn"
-                                                                    onclick="return confirm('Are you really want to delete this musician?')">
-                                                                Save as Default
-                                                            </button>
-                                                        </form>
+                                                        <a href="{{ route('user.address.default', [ 'id' => $userAddress->id ]) }}" class="btn btn-primary btn-sm user_profile_btn"
+                                                                onclick="return confirm('Are you want to set this as default address?')">
+                                                            Set as Default
+                                                        </a>
                                                     @endif
                                                 </td>
                                                 <td>
@@ -141,11 +137,11 @@
                                                     </button>
                                                 </td>
                                                 <td>
-                                                    <form action="" method="POST">
+                                                    <form action="{{ route('user.address.delete', [ 'id' => $userAddress->id ]) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-primary btn-sm user_profile_btn"
-                                                                onclick="return confirm('Are you really want to delete this musician?')">
+                                                                onclick="return confirm('Are you really want to delete this address?')">
                                                             Del
                                                         </button>
                                                     </form>
@@ -258,9 +254,9 @@
                                         @foreach ($productReviews as $key=>$productReview)
                                             <tr>
                                                 <td>{{ ++$key }}</td>
-                                                <td>{{ $productReview->title }}</td>
-                                                <td>{{ $productReview->created_at }}</td>
-                                                @if ($productReview->rating = 0 || empty($productReview->rating))
+                                                <td>{{ $productReview->title ?? '' }}</td>
+                                                <td>{{ $productReview->created_at ?? '' }}</td>
+                                                @if ($productReview->rating == 0 || empty($productReview->rating))
                                                     <td>
                                                         {!! str_repeat('&#9734;', 5) !!}
                                                     </td>
@@ -277,7 +273,7 @@
                                                     </td>
                                                 @else
                                                     <td>
-                                                        {{ Str::limit($productReview->review_text, 20, '...') }}
+                                                        {{ Str::limit($productReview->review_text ?? '', 20, '...') }}
                                                     </td>
                                                 @endif
                                             </tr>

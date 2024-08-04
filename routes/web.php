@@ -29,6 +29,8 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 
     // User Address
     Route::post('/user/address', [ UserAddressController::class, 'store' ])->name( 'user.address.store' );
+    Route::get('/user/address/default/{id}', [ UserAddressController::class, 'setDefault' ])->name( 'user.address.default' );
+    Route::delete('/user/address/delete/{id}', [ UserAddressController::class, 'destroy' ])->name( 'user.address.delete' );
 
     // Order
 	Route::get( '/order/{order}', [ OrderController::class, 'show' ] ) ->name( 'order.show' );

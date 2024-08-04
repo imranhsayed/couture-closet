@@ -30,9 +30,9 @@ class UserAddressController extends Controller
     {
         // if request is validated, save user's address
         if (UserAddress::create($request->all())) {
-            session()->flash('user.success', "added a address successfully!");
+            session()->flash('user.success', "Added a address successfully!");
         } else {
-            session()->flash('user.error', "added a address failed!");
+            session()->flash('user.error', "Added a address failed!");
         }
 
         return response()->json(['success' => true]);
@@ -54,6 +54,31 @@ class UserAddressController extends Controller
         //
     }
 
+
+    /**
+     * set default address
+     */
+    public function setDefault(string $id)
+    {
+        $userAddresses = UserAddress::where('is_primary', 1)
+                                    ->where('user_id', \Auth::user()->id)
+                                    ->get();
+        foreach ($userAddresses as $userAddress) {
+            $userAddress->is_primary = 0;
+            $userAddress->save();
+        }
+
+        $defaultAddress = UserAddress::find($id);
+        $defaultAddress->is_primary = true;
+        if ($defaultAddress->save()) {
+            session()->flash('user.success', 'Set default address successfully!');
+        } else {
+            session()->flash('user.error', 'Set default address failed!');
+        }
+
+        return redirect('/user/profile');
+    }
+
     /**
      * Update the specified resource in storage.
      */
@@ -67,6 +92,14 @@ class UserAddressController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $userAddress = UserAddress::find($id);
+        if ($userAddress->is_primary === 1) {
+            session()->flash('user.error', 'Sorry, the default address cannot be deleted!');
+        } else {
+            if ($userAddress->delete()) {
+                session()->flash('user.success', 'Deleted address successfully!');
+            }
+        }
+        return redirect('/user/profile');
     }
 }
