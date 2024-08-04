@@ -4,9 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
 
-Route::get( '/', function () {
-	return view( 'welcome' );
-} );
+Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welcome' );
 
 // Public Routes
 Route::get( '/about', fn() => view( 'about' ) )->name( 'about' );
