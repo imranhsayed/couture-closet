@@ -9,6 +9,15 @@ class ProductReview extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'product_id',
+        'user_id',
+        'order_id',
+        'rating',
+        'title',
+        'review_text'
+    ];
+
     public function getAllRawOriginals()
     {
         $rawOriginals = [];

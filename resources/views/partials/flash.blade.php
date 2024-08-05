@@ -9,3 +9,9 @@
         {{ session('user.error') }}
     </div>
 @endif
+
+@if (session('user.warning'))
+    <div class="alert alert-warning text-dark" role="alert">
+        {{ session('user.warning') }}
+    </div>
+@endif

@@ -29,7 +29,9 @@ class UserAddressController extends Controller
     public function store(UserAddressRequest $request)
     {
         // if request is validated, save user's address
-        if (UserAddress::create($request->all())) {
+        $params = $request->all();
+        $params['user_id'] = \Auth::user()->id;
+        if (UserAddress::create($params)) {
             session()->flash('user.success', "Added a address successfully!");
         } else {
             session()->flash('user.error', "Added a address failed!");

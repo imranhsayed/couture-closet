@@ -190,8 +190,6 @@
                                             <div class="modal-body">
                                                 <form id="user_address" class="form">
                                                     @csrf
-                                                    <input type="hidden" id="user_id" name="user_id"
-                                                           value="{{ \Auth::user()->id }}">
                                                     <div class="mb-3">
                                                         <label for="street" class="form-label">Street</label>
                                                         <input type="text" class="form-control" id="street"
@@ -278,13 +276,13 @@
                                                     </td>
                                                 @else
                                                     <td>
-                                                        {!! str_repeat('&#9733;', $productReview->getRawOriginal('rating')) !!}
+                                                        {!! str_repeat('&#9733;', $productReview->getRawOriginal('rating')) . str_repeat('&#9734;', (5 - $productReview->getRawOriginal('rating'))) !!}
                                                     </td>
                                                 @endif
 
                                                 @if (empty($productReview->review_text))
                                                     <td>
-                                                        <a class="btn btn-primary btn-sm user_profile_btn" href="#"
+                                                        <a class="btn btn-primary btn-sm user_profile_btn" href="{{ route('product.leave.review', ['productId' => $productReview->product_id, 'orderId' => $productReview->order_id]) }}"
                                                            role="button">Leave a review</a>
                                                     </td>
                                                 @else
