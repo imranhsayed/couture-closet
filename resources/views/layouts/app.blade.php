@@ -117,7 +117,7 @@
 						@endif
 				    </li>
 				    <li class="list-inline-item position-relative ml-2">
-					    <a class="text-dark text-primary-hover" href="/cart" data-bs-toggle="modal" data-bs-target="#sidebarCart">
+					    <a class="text-dark text-primary-hover" href="/cart">
 						    <svg class="svg-icon navbar-icon">
 							    <use xlink:href="#retail-bag-1"> </use>
 						    </svg>
