@@ -22,7 +22,7 @@
 <body>
     <div id="app">
 	    <nav class="navbar navbar-expand-lg bg-transparent border-0 shadow-0 navbar-light px-lg-5 ">
-		    <a class="navbar-brand" href="index.html">
+		    <a class="navbar-brand" href="#">
 			    <img src="/images/site-logo.svg" alt="Site logo" width="200" height="50">
 				Couture Closet
 		    </a>
@@ -46,12 +46,26 @@
 					    <div class="dropdown-menu dropdown-menu-md dropdown-menu-animated py-0" aria-labelledby="shopDropdown">
 						    <div class="row">
 							    <div class="col-lg-4 col-sm-6 p-lg-5">
-								    <h6 class="dropdown-header h6 ps-lg-0">Shop pages</h6>
-								    <a class="dropdown-item ps-lg-0" href="/shop">Shop Products </a><a class="dropdown-item ps-lg-0" href="category-full-sidebar.html">Full width with category menu </a><a class="dropdown-item ps-lg-0" href="category-big-products.html">Full width with big products </a><a class="dropdown-item ps-lg-0" href="category-boxed.html">Fixed width </a><a class="dropdown-item ps-lg-0" href="category-sidebar.html">Fixed width &amp; sidebar </a><a class="dropdown-item ps-lg-0" href="category-masonry.html">Fixed width &amp; masonry layout<span class="badge badge-primary-light ms-1">New</span> </a><a class="dropdown-item ps-lg-0" href="category-categories.html">Subcategories </a>
+								    <h6 class="dropdown-header h6 ps-lg-0">Category</h6>
+								    <a class="dropdown-item ps-lg-0" href="/shop">Shop</a>
+									<a class="dropdown-item ps-lg-0" href="/shop">Men </a>
+									<a class="dropdown-item ps-lg-0" href="/shop">Women </a>
+									<!-- <a class="dropdown-item ps-lg-0" href="category-full-sidebar.html">Full width with category menu </a>
+									<a class="dropdown-item ps-lg-0" href="category-big-products.html">Full width with big products </a>
+									<a class="dropdown-item ps-lg-0" href="category-boxed.html">Fixed width </a>
+									<a class="dropdown-item ps-lg-0" href="category-sidebar.html">Fixed width &amp; sidebar </a>
+									<a class="dropdown-item ps-lg-0" href="category-masonry.html">Fixed width &amp; masonry layout<span class="badge badge-primary-light ms-1">New</span> </a>
+									<a class="dropdown-item ps-lg-0" href="category-categories.html">Subcategories </a> -->
 							    </div>
 							    <div class="col-lg-4 col-sm-6 p-lg-5">
-								    <h6 class="dropdown-header h6 ps-lg-0">Product pages</h6>
-								    <a class="dropdown-item ps-lg-0" href="detail-1.html">Product with sticky info </a><a class="dropdown-item ps-lg-0" href="detail-2.html">Product with background </a><a class="dropdown-item ps-lg-0" href="detail-3.html">Product standard  </a>
+								    <h6 class="dropdown-header h6 ps-lg-0">Brand</h6>
+									<a class="dropdown-item ps-lg-0" href="/shop">Nike</a>
+									<a class="dropdown-item ps-lg-0" href="/shop">Adidas</a>
+									<a class="dropdown-item ps-lg-0" href="/shop">Gucci</a>
+									<a class="dropdown-item ps-lg-0" href="/shop">Versace</a>
+								    <!-- <a class="dropdown-item ps-lg-0" href="detail-1.html">Product with sticky info </a>
+									<a class="dropdown-item ps-lg-0" href="detail-2.html">Product with background </a>
+									<a class="dropdown-item ps-lg-0" href="detail-3.html">Product standard  </a> -->
 							    </div>
 							    <div class="col-lg-4 d-none d-lg-block position-relative"><img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/kyle-loftus-596319-unsplash-cropped.jpg" alt=""></div>
 						    </div>
