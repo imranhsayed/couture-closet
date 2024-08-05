@@ -164,7 +164,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-5 pe-lg-5 pe-xl-6 mb-5 mb-lg-0">
-					<a href="/"><img src="/images/site-logo-white.svg" alt="Site logo" width="200" height="50"></a>
+					<a href="/"><img src="/images/site-logo-white.svg" alt="Site logo" width="50" height="50" class="mb-2"></a>
+					<span class="h5 mb-0 ml-1">Couture Closet</span>
 					<p class="text-sm mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur cum dolor doloribus harum, hic incidunt maxime reiciendis repellendus temporibus velit? Commodi, earum eveniet illum laudantium maxime minus nam pariatur voluptatum.</p>
 				</div>
 				<div class="col-lg-7">
