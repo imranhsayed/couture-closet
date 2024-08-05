@@ -22,14 +22,14 @@
 <body>
     <div id="app">
 	    <nav class="navbar navbar-expand-lg bg-transparent border-0 shadow-0 navbar-light px-lg-5 ">
-		    <a class="navbar-brand" href="#">
-			    <img src="/images/site-logo.svg" alt="Site logo" width="200" height="50">
-				Couture Closet
+		    <a class="navbar-brand d-flex align-items-center" href="#">
+			    <img src="/images/site-logo.svg" alt="Site logo" width="50" height="50" class="mr-1">
+				<span class="h5 mb-0 ml-1">Couture Closet</span>
 		    </a>
 
 		    <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
 			    <svg class="svg-icon navbar-icon">
-				    <use xlink:href="#menu-hamburger-1"> </use>
+				    <use xlink:href="#menu-hamburger-1"></use>
 			    </svg>
 		    </button>
 		    <div class="collapse navbar-collapse" id="navbarContent">
