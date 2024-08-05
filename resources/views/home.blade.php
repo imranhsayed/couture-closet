@@ -96,7 +96,8 @@
                                     <!-- Button to trigger modal -->
                                     <button type="button" class="btn btn-primary user_profile_btn"
                                             data-bs-toggle="modal"
-                                            data-bs-target="#addressModal">
+                                            data-bs-target="#addressModal"
+                                            data-operation="add">
                                         Add New Address
                                     </button>
                                 </h3>
@@ -141,6 +142,7 @@
                                                             class="btn btn-primary btn-sm user_profile_btn"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#addressModal"
+                                                            data-operation="edit"
                                                             data-id="{{ $userAddress->id }}"
                                                             data-street="{{ $userAddress->street }}"
                                                             data-postal-code="{{ $userAddress->postal_code }}"
