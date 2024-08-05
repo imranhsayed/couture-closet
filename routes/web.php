@@ -18,6 +18,17 @@ Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
  */
 Route::get( '/product', [ ProductController::class, 'index' ] )->name( 'product.index' );
 
+
+// Route for the cart page
+Route::get('/cart', function () {
+    return view('cart');
+})->name('cart');
+
+// Route for the checkout page
+Route::get('/checkout', function () {
+    return view('checkout');
+})->name('checkout');
+
 // Authentication Routes
 Auth::routes();
 Route::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'home' );
@@ -28,9 +39,10 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 	Route::get( '/user/profile', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'user.profile' );
 
     // User Address
-    Route::post('/user/address', [ UserAddressController::class, 'store' ])->name( 'user.address.store' );
+	Route::post('/user/address', [ UserAddressController::class, 'store' ])->name( 'user.address.store' );
+	Route::put('/user/address/{id}', [ UserAddressController::class, 'update' ])->name( 'user.address.update' );
     Route::get('/user/address/default/{id}', [ UserAddressController::class, 'setDefault' ])->name( 'user.address.default' );
-    Route::delete('/user/address/delete/{id}', [ UserAddressController::class, 'destroy' ])->name( 'user.address.delete' );
+	Route::delete('/user/address/delete/{id}', [ UserAddressController::class, 'destroy' ])->name( 'user.address.delete' );
 
     // Order
 	Route::get( '/order/{order}', [ OrderController::class, 'show' ] ) ->name( 'order.show' );

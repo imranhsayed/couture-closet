@@ -38,7 +38,8 @@
 
                             <!-- Reviews tab -->
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link tab-button" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
+                                <button class="nav-link tab-button" id="reviews-tab" data-bs-toggle="tab"
+                                        data-bs-target="#reviews"
                                         type="button" role="tab" aria-controls="reviews" aria-selected="true"
                                         data-tab-name="reviews">Reviews
                                 </button>
@@ -69,7 +70,8 @@
                                                 <td>{{ $order->order_date ?? '' }}</td>
                                                 <td>${{ $order->total_amount ?? '' }}</td>
                                                 <td>
-                                                    <a class="btn btn-primary btn-sm user_profile_btn" href="/order/{{ $order->id }}"
+                                                    <a class="btn btn-primary btn-sm user_profile_btn"
+                                                       href="/order/{{ $order->id }}"
                                                        role="button">View Order</a>
                                                 </td>
                                             </tr>
@@ -87,11 +89,13 @@
                             </div>
 
                             <!-- Addresses tab content -->
-                            <div class="tab-pane fade table-responsive" id="addresses" role="tabpanel" aria-labelledby="addresses-tab">
+                            <div class="tab-pane fade table-responsive" id="addresses" role="tabpanel"
+                                 aria-labelledby="addresses-tab">
                                 <p></p>
                                 <h3>Your Addresses
                                     <!-- Button to trigger modal -->
-                                    <button type="button" class="btn btn-primary user_profile_btn" data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-primary user_profile_btn"
+                                            data-bs-toggle="modal"
                                             data-bs-target="#addressModal">
                                         Add New Address
                                     </button>
@@ -125,22 +129,34 @@
                                                             Default
                                                         </button>
                                                     @else
-                                                        <a href="{{ route('user.address.default', [ 'id' => $userAddress->id ]) }}" class="btn btn-primary btn-sm user_profile_btn"
-                                                                onclick="return confirm('Are you want to set this as default address?')">
+                                                        <a href="{{ route('user.address.default', [ 'id' => $userAddress->id ]) }}"
+                                                           class="btn btn-primary btn-sm user_profile_btn"
+                                                           onclick="return confirm('Are you want to set this as default address?')">
                                                             Set as Default
                                                         </a>
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <button type="button" class="btn btn-primary btn-sm user_profile_btn"
-                                                            onclick="openModal({{ $userAddress->id }})">Edit
+                                                    <button type="button"
+                                                            class="btn btn-primary btn-sm user_profile_btn"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#addressModal"
+                                                            data-id="{{ $userAddress->id }}"
+                                                            data-street="{{ $userAddress->street }}"
+                                                            data-postal-code="{{ $userAddress->postal_code }}"
+                                                            data-province="{{ $userAddress->province }}"
+                                                            data-city="{{ $userAddress->city }}"
+                                                            data-country="{{ $userAddress->country }}">Edit
                                                     </button>
                                                 </td>
                                                 <td>
-                                                    <form action="{{ route('user.address.delete', [ 'id' => $userAddress->id ]) }}" method="POST">
+                                                    <form
+                                                        action="{{ route('user.address.delete', [ 'id' => $userAddress->id ]) }}"
+                                                        method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-primary btn-sm user_profile_btn"
+                                                        <button type="submit"
+                                                                class="btn btn-primary btn-sm user_profile_btn"
                                                                 onclick="return confirm('Are you really want to delete this address?')">
                                                             Del
                                                         </button>
@@ -166,7 +182,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="formModalLabel">Add Address
+                                                <h5 class="modal-title" id="modal_title">Add Address
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
@@ -268,8 +284,8 @@
 
                                                 @if (empty($productReview->review_text))
                                                     <td>
-                                                        <a class="btn btn-primary btn-sm user_profile_btn" href="#" role="button">Leave a
-                                                            review</a>
+                                                        <a class="btn btn-primary btn-sm user_profile_btn" href="#"
+                                                           role="button">Leave a review</a>
                                                     </td>
                                                 @else
                                                     <td>
@@ -284,13 +300,10 @@
                                         </tr>
                                     @endif
                                     </tbody>
-                                    <script>
-                                        // open modal
-                                        function openModal(id) {
-                                            alert(id);
-                                        }
-                                    </script>
                                 </table>
+                                <nav>
+                                    {{ $productReviews->links('pagination::bootstrap-5') }}
+                                </nav>
                             </div>
                         </div>
                     </div>

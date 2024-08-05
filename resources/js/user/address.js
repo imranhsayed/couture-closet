@@ -50,7 +50,7 @@ TabManager.init();
  * @type {{user_address(): void, user_address_province(): void}}
  */
 const EventManager = {
-    user_address_province() {
+    show_user_address_province() {
         // cities from each province
         $('#user_address #province').change(function () {
             const selectedProvince = $(this).val();
@@ -68,7 +68,7 @@ const EventManager = {
             }
         });
     },
-    user_address() {
+    add_user_address() {
         // user's address
         $('#user_address').submit(function (e) {
             e.preventDefault();
@@ -76,9 +76,18 @@ const EventManager = {
             // reset the error
             $('.user_address_error').empty();
 
+            // url
+            let url = '/user/address';
+            let method = 'POST';
+            if ($('#user_address').find('#address_id').length > 0) {
+                let addressId = $('#address_id').val();
+                url = '/user/address/' + addressId;
+                method = 'PUT';
+            }
+
             $.ajax({
-                url: '/user/address',
-                method: 'POST',
+                url: url,
+                method: method,
                 data: $(this).serialize(),
                 dataType: 'json',
                 success: function (response) {
@@ -107,9 +116,46 @@ const EventManager = {
                 errorElement.html(messages.join('<br>'));
             });
         }
+    },
+    address_modal_listener() {
+        let modal = $('#addressModal');
+        // on show
+        modal.on('show.bs.modal', function (event) {
+            // get related button
+            let button = $(event.relatedTarget);
+            let addressId = button.data('id');
+            // append address id
+            $('#user_address').append(`<input type="hidden" id="address_id" name="address_id" value="${addressId}">`)
+            // change title
+            $('#modal_title').text('Edit Address');
+            // set form values
+            $('#street').val(button.data('street'));
+            $('#postal_code').val(button.data('postal-code'));
+            $('#province').val(button.data('province'));
+            let citySelect = $('#city');
+            if (button.data('province')) {
+                cities[button.data('province')].forEach(function (city) {
+                    if (city === button.data('city')) {
+                        citySelect.append($('<option selected></option>').attr('value', city).text(city));
+                    } else {
+                        citySelect.append($('<option></option>').attr('value', city).text(city));
+                    }
+                });
+                citySelect.prop('disabled', false);
+            } else {
+                citySelect.prop('disabled', true);
+            }
+            $('#country').val(button.data('country'));
+        });
+        // on hide
+        modal.on('hide.bs.modal', function () {
+            $('#address_id').remove();
+        })
     }
 }
 
 // invoke event
-EventManager.user_address_province();
-EventManager.user_address();
+EventManager.show_user_address_province();
+EventManager.add_user_address();
+EventManager.address_modal_listener();
+
