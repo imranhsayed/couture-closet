@@ -24,6 +24,7 @@
 	    <nav class="navbar navbar-expand-lg bg-transparent border-0 shadow-0 navbar-light px-lg-5 ">
 		    <a class="navbar-brand" href="index.html">
 			    <img src="/images/site-logo.svg" alt="Site logo" width="200" height="50">
+				Couture Closet
 		    </a>
 
 		    <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
