@@ -88,7 +88,7 @@ class UserAddressController extends Controller
     {
         // if request is validated, save user's address
         $validated = $request->all();
-        $userAddress = UserAddress::where('user_id', $validated['user_id'])
+        $userAddress = UserAddress::where('user_id', \AUth::user()->id)
                                   ->where('id', $id)->first();
         $userAddress->street = $validated['street'];
         $userAddress->postal_code = $validated['postal_code'];

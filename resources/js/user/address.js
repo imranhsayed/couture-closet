@@ -123,33 +123,47 @@ const EventManager = {
         modal.on('show.bs.modal', function (event) {
             // get related button
             let button = $(event.relatedTarget);
-            let addressId = button.data('id');
-            // append address id
-            $('#user_address').append(`<input type="hidden" id="address_id" name="address_id" value="${addressId}">`)
-            // change title
-            $('#modal_title').text('Edit Address');
-            // set form values
-            $('#street').val(button.data('street'));
-            $('#postal_code').val(button.data('postal-code'));
-            $('#province').val(button.data('province'));
-            let citySelect = $('#city');
-            if (button.data('province')) {
-                cities[button.data('province')].forEach(function (city) {
-                    if (city === button.data('city')) {
-                        citySelect.append($('<option selected></option>').attr('value', city).text(city));
-                    } else {
-                        citySelect.append($('<option></option>').attr('value', city).text(city));
-                    }
-                });
-                citySelect.prop('disabled', false);
-            } else {
-                citySelect.prop('disabled', true);
+            let operation = button.data('operation');
+            if (operation === 'edit') {
+                let addressId = button.data('id');
+                // append address id
+                $('#user_address').append(`<input type="hidden" id="address_id" name="address_id" value="${addressId ?? ''}">`)
+                // change title
+                $('#modal_title').text('Edit Address');
+                // set form values
+                $('#street').val(button.data('street'));
+                $('#postal_code').val(button.data('postal-code'));
+                $('#province').val(button.data('province'));
+                let citySelect = $('#city');
+                if (button.data('province')) {
+                    cities[button.data('province')].forEach(function (city) {
+                        if (city === button.data('city')) {
+                            citySelect.append($('<option selected></option>').attr('value', city).text(city));
+                        } else {
+                            citySelect.append($('<option></option>').attr('value', city).text(city));
+                        }
+                    });
+                    citySelect.prop('disabled', false);
+                } else {
+                    citySelect.prop('disabled', true);
+                }
+                $('#country').val(button.data('country'));
             }
-            $('#country').val(button.data('country'));
         });
         // on hide
         modal.on('hide.bs.modal', function () {
+            // remove address id
             $('#address_id').remove();
+            // reset title
+            $('#modal_title').text('Add Address');
+            // reset form except select tag
+            $('#user_address')[0].reset();
+            // reset select tag
+            $('#user_address select').each(function() {
+                // Select the first option
+                $(this).prop('selectedIndex', 0);
+            });
+            $('#user_address #city').prop('disabled', true);
         })
     }
 }
