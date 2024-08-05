@@ -13,11 +13,11 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS and JS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss'])
 </head>
 <body>
     <div id="app">
@@ -94,7 +94,7 @@
 								@endif
 							</div>
 						@else
-							<div class="dropdown-menu dropdown-menu-animated show" aria-labelledby="userLoginDropdown"
+							<div class="dropdown-menu dropdown-menu-animated" aria-labelledby="userLoginDropdown"
 								data-bs-popper="none">
 								<a class="dropdown-item" href="/login">Login</a>
 								<a class="dropdown-item" href="/register">Register</a>
@@ -220,8 +220,10 @@
 
     </div>
 
+    <!-- Custom js -->
+    @vite(['resources/js/app.js'])
+
     <!-- Bootstrap JS and dependencies -->
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/vendor/jquery/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>

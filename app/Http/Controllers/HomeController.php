@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\ProductReview;
+use App\Models\UserAddress;
 
 class HomeController extends Controller
 {
@@ -26,6 +28,15 @@ class HomeController extends Controller
     {
 	    $products = Product::with('images')->get();
 
-	    return view( 'home', compact( 'products' ) );
+        // prepare user's data
+        $userId = \Auth::user()->id;
+        // orders
+        $orders = Order::where('user_id', $userId)->latest()->paginate(10);
+        // addresses
+        $userAddresses = UserAddress::where('user_id', $userId)->latest()->paginate(10);
+        // product reviews
+        $productReviews = ProductReview::where('user_id', $userId)->latest()->paginate(10);
+
+	    return view( 'home', compact( 'products' , 'orders', 'userAddresses', 'productReviews' ) );
     }
 }
