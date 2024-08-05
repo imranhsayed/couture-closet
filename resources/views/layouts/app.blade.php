@@ -35,7 +35,7 @@
 				{{--Menu--}}
 			    <ul class="navbar-nav mt-3 mt-lg-0">
 				    <li class="nav-item active">
-					    <a class="nav-link" href="#" aria-haspopup="true" aria-expanded="false">Home</a>
+					    <a class="nav-link" href="/" aria-haspopup="true" aria-expanded="false">Home</a>
 				    </li>
 				    <li class="nav-item">
 					    <a class="nav-link" href="/about" aria-haspopup="true" aria-expanded="false">About</a>
@@ -160,11 +160,11 @@
 							<div class="expand-lg collapse" id="footerMenu0">
 								<h6 class="letter-spacing-1 mb-4 d-none d-lg-block">Shop</h6>
 								<ul class="list-unstyled text-sm pt-2 pt-lg-0">
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">For Women</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">For Men</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Stores</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Our Blog</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Shop</a></li>
+									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Men</a></li>
+									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Women</a></li>
+									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Bags</a></li>
+									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Accessories</a></li>
+									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="/shop">Shop</a></li>
 								</ul>
 							</div>
 						</div>
@@ -173,11 +173,12 @@
 							<div class="expand-lg collapse" id="footerMenu2">
 								<h6 class="letter-spacing-1 mb-4 d-none d-lg-block">Your account</h6>
 								<ul class="list-unstyled text-sm pt-2 pt-lg-0">
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Login</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Register</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Wishlist</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Our Products</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Checkouts</a></li>
+									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="/login">Login</a></li>
+									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="/register">Register</a></li>
+									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="/cart">Cart</a></li>
+									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="/checkout">Checkout</a></li>
+									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="/wishlist">Wishlist</a></li>
+									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="/shop">Our Products</a></li>
 								</ul>
 							</div>
 						</div>
@@ -186,11 +187,11 @@
 							<div class="expand-lg collapse" id="footerMenu1">
 								<h6 class="letter-spacing-1 mb-4 d-none d-lg-block">Company</h6>
 								<ul class="list-unstyled text-sm pt-2 pt-lg-0">
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Login</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Register</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Wishlist</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Our Products</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Checkouts</a></li>
+									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="/login">Login</a></li>
+									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="/register">Register</a></li>
+									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="/about">About Us</a></li>
+									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="/">Home</a></li>
+									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="/shop">Shop</a></li>
 								</ul>
 							</div>
 						</div>
