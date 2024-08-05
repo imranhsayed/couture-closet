@@ -38,7 +38,7 @@
 					    <a class="nav-link" href="#" aria-haspopup="true" aria-expanded="false">Home</a>
 				    </li>
 				    <li class="nav-item">
-					    <a class="nav-link" href="#" aria-haspopup="true" aria-expanded="false">About</a>
+					    <a class="nav-link" href="/about" aria-haspopup="true" aria-expanded="false">About</a>
 				    </li>
 				    <li class="nav-item dropdown">
 					    <a class="nav-link dropdown-toggle" id="shopDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
@@ -102,7 +102,7 @@
 						@endif
 				    </li>
 				    <li class="list-inline-item position-relative ml-2">
-					    <a class="text-dark text-primary-hover" href="#" data-bs-toggle="modal" data-bs-target="#sidebarCart">
+					    <a class="text-dark text-primary-hover" href="/cart" data-bs-toggle="modal" data-bs-target="#sidebarCart">
 						    <svg class="svg-icon navbar-icon">
 							    <use xlink:href="#retail-bag-1"> </use>
 						    </svg>
