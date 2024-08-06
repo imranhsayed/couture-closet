@@ -12,8 +12,8 @@ Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welc
 
 // Public Routes
 Route::get( '/about', fn() => view( 'about' ) )->name( 'about' );
+Route::get('/shop', fn() => view('shop'))->name('shop');
 
-Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
 
 
 /**
@@ -49,8 +49,15 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 	Route::delete( '/user/address/delete/{id}', [ UserAddressController::class, 'destroy' ])->name( 'user.address.delete' );
 
     // Order
+	Route::get('/order-confirmation', function () {
+		return view('order-confirmation');
+	})->name('order-confirmation');
+	Route::get('/order-details', function () {
+		return view('order-details');
+	})->name('order-details');
 	Route::get( '/order/{order}', [ OrderController::class, 'show' ] ) ->name( 'order.show' );
 } );
+
 
 // Admin Routes
 Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {

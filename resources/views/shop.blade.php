@@ -678,7 +678,7 @@
 							<div class="d-flex align-items-center">
 								<svg class="svg-icon sidebar-icon">
 									<use xlink:href="#woman"> </use>
-								</svg><a class="sidebar-icon-menu-link fw-bold me-2" href="#">Woman's</a><span class="sidebar-icon-menu-count"> 55</span>
+								</svg><a class="sidebar-icon-menu-link fw-bold me-2" href="#">Women's</a><span class="sidebar-icon-menu-count"> 55</span>
 							</div>
 							<div class="collapse" id="subcategories_1">
 								<ul class="sidebar-icon-menu sidebar-icon-submenu">
@@ -693,7 +693,7 @@
 							<div class="d-flex align-items-center">
 								<svg class="svg-icon sidebar-icon">
 									<use xlink:href="#shirt5-1"> </use>
-								</svg><a class="sidebar-icon-menu-link fw-bold me-2" href="#">T-Shirts</a><span class="sidebar-icon-menu-count"> 33</span>
+								</svg><a class="sidebar-icon-menu-link fw-bold me-2" href="#">Kid's</a><span class="sidebar-icon-menu-count"> 33</span>
 							</div>
 							<div class="collapse" id="subcategories_2">
 								<ul class="sidebar-icon-menu sidebar-icon-submenu">
