@@ -15,6 +15,8 @@ class Welcome extends Controller
 	 */
 	public function index()
 	{
+		$user = \Auth::user();
+
 		$products = Product::with('images')->get();
 
 		// Fetch all categories from the Category model
@@ -24,6 +26,6 @@ class Welcome extends Controller
         
 		$brands = Category::where('name','Brand')->get();
 		
-		return view( 'welcome', compact( 'products' , 'categories', 'brands') );
+		return view( 'welcome', compact('user', 'products' , 'categories', 'brands') );
 	}
 }
