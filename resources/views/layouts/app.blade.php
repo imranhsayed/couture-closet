@@ -57,12 +57,17 @@
 							    </div>
 							    <div class="col-lg-4 col-sm-6 p-lg-5">
 								    <h6 class="dropdown-header h6 ps-lg-0">Brand</h6>
-									<a class="dropdown-item ps-lg-0" href="/shop">Nike</a>
-									<a class="dropdown-item ps-lg-0" href="/shop">Adidas</a>
-									<a class="dropdown-item ps-lg-0" href="/shop">Gucci</a>
-									<a class="dropdown-item ps-lg-0" href="/shop">Versace</a>
+									@if(isset($brands))
+									@foreach($brands as $brand)
+									<a class="dropdown-item ps-lg-0" href="/shop">{{ $brand->value}}</a>
+									@endforeach
+									@else 
+									<p>No Brand found.</p>
+									@endif
 							    </div>
-							    <div class="col-lg-4 d-none d-lg-block position-relative"><img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/kyle-loftus-596319-unsplash-cropped.jpg" alt=""></div>
+							    <div class="col-lg-4 d-none d-lg-block position-relative">
+									<img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/kyle-loftus-596319-unsplash-cropped.jpg" alt="">
+									</div>
 						    </div>
 					    </div>
 				    </li>
