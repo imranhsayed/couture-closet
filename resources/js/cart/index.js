@@ -25,7 +25,7 @@ class Cart extends HTMLElement {
 	}
 	
 	update( state ) {
-		// this.updateCartMarkup( state.cart );
+		this.updateCartMarkup( state.cart );
 	}
 	
 	updateCartMarkup( cartData ) {
@@ -51,10 +51,10 @@ class Cart extends HTMLElement {
 				return response.json();
 			} )
 			.then( data => {
-				console.log( 'data', data.html );
+				console.log( 'data', data );
 				if ( data.success ) {
 					// Update data.
-					this.innerHTML = data.html;
+					// this.innerHTML = data.html;
 				}
 			} )
 			.catch( error => {

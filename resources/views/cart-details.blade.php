@@ -25,13 +25,7 @@
 								</div>
 								<div class="col-md-4">
 									<div class="row align-items-center">
-										<div class="d-md-none col-7 col-sm-9 text-muted">Quantity</div>
-										<div class="col-5 col-sm-3 col-md-12">
-											<div class="d-flex align-items-center">
-												<div class="btn btn-items btn-items-decrease">-</div>
-												<x-increment-decrement id="search-filter" label="No of products" name="products" value="2" min_value="2" max_value="12" />
-											</div>
-										</div>
+										<x-increment-decrement id="search-filter" label="No of products" name="products" value="2" min_value="2" max_value="12" />
 									</div>
 								</div>
 								<div class="col-md-3">

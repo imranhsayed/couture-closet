@@ -14,18 +14,18 @@
 @endphp
 
 <lb-increment-decrement-controls
-		class="search-filters__selection-controls"
-		min-value="{{ $min_value }}"
-		max-value="{{ $max_value }}"
-		selected-value="{{ $min_value }}"
+	class="search-filters__selection-controls"
+	min-value="{{ $min_value }}"
+	max-value="{{ $max_value }}"
+	selected-value="{{ $min_value }}"
 >
 	<label for="{{ $id }}" style="display: none;">
 		{{$label}}
 	</label>
 	<div class="search-filters__selection-control-buttons">
 		<button
-				class="search-filters__decrement-btn"
-				type="button"
+			class="search-filters__decrement-btn"
+			type="button"
 		>
 			-
 		</button>
