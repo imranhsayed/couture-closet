@@ -49,20 +49,11 @@
 								    <h6 class="dropdown-header h6 ps-lg-0">Category</h6>
 									@if(isset($categories))
                 					@foreach ($categories as $category)
-                    				<a class="dropdown-item ps-lg-0" href="/shop?category={{ $category->value }}">{{ $category->value }}</a>
+                    				<a class="dropdown-item ps-lg-0" href="/shop{category={{ $category->value }}}">{{ $category->value }}</a>
                 					@endforeach
             						@else
                 					<p>No categories found.</p>
             						@endif
-								    <a class="dropdown-item ps-lg-0" href="/shop">Shop</a>
-									<a class="dropdown-item ps-lg-0" href="/shop">Men </a>
-									<a class="dropdown-item ps-lg-0" href="/shop">Women </a>
-									<!-- <a class="dropdown-item ps-lg-0" href="category-full-sidebar.html">Full width with category menu </a>
-									<a class="dropdown-item ps-lg-0" href="category-big-products.html">Full width with big products </a>
-									<a class="dropdown-item ps-lg-0" href="category-boxed.html">Fixed width </a>
-									<a class="dropdown-item ps-lg-0" href="category-sidebar.html">Fixed width &amp; sidebar </a>
-									<a class="dropdown-item ps-lg-0" href="category-masonry.html">Fixed width &amp; masonry layout<span class="badge badge-primary-light ms-1">New</span> </a>
-									<a class="dropdown-item ps-lg-0" href="category-categories.html">Subcategories </a> -->
 							    </div>
 							    <div class="col-lg-4 col-sm-6 p-lg-5">
 								    <h6 class="dropdown-header h6 ps-lg-0">Brand</h6>
@@ -70,9 +61,6 @@
 									<a class="dropdown-item ps-lg-0" href="/shop">Adidas</a>
 									<a class="dropdown-item ps-lg-0" href="/shop">Gucci</a>
 									<a class="dropdown-item ps-lg-0" href="/shop">Versace</a>
-								    <!-- <a class="dropdown-item ps-lg-0" href="detail-1.html">Product with sticky info </a>
-									<a class="dropdown-item ps-lg-0" href="detail-2.html">Product with background </a>
-									<a class="dropdown-item ps-lg-0" href="detail-3.html">Product standard  </a> -->
 							    </div>
 							    <div class="col-lg-4 d-none d-lg-block position-relative"><img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/kyle-loftus-596319-unsplash-cropped.jpg" alt=""></div>
 						    </div>
@@ -183,11 +171,13 @@
 							<div class="expand-lg collapse" id="footerMenu0">
 								<h6 class="letter-spacing-1 mb-4 d-none d-lg-block">Shop</h6>
 								<ul class="list-unstyled text-sm pt-2 pt-lg-0">
-									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="#">Men</a></li>
-									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="#">Women</a></li>
-									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="#">Bags</a></li>
-									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="#">Accessories</a></li>
-									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/shop">Shop</a></li>
+									@if(isset($categories))
+									@foreach ($categories as $category)
+									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/shop{category={{ $category->value }}}">{{ $category->value }}</a></li>
+									@endforeach
+									@else
+									<p>Default</p>
+									@endif
 								</ul>
 							</div>
 						</div>
@@ -210,8 +200,6 @@
 							<div class="expand-lg collapse" id="footerMenu1">
 								<h6 class="letter-spacing-1 mb-4 d-none d-lg-block">Company</h6>
 								<ul class="list-unstyled text-sm pt-2 pt-lg-0">
-									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/login">Login</a></li>
-									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/register">Register</a></li>
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/about">About Us</a></li>
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/">Home</a></li>
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/shop">Shop</a></li>
