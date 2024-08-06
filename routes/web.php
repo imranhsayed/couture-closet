@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
 
- 
+
 Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welcome' );
 
 // Public Routes
@@ -31,9 +31,7 @@ Route::get('/cart', function () {
 
 // Cart Details.
 Route::post( '/cart-details', function () {
-	$view = view( 'cart-details' )->render();
-
-	return response()->json( [ 'html' => $view, 'success' => true, ] );
+	return response()->json( [ 'data'=> [], 'success' => true, ] );
 } )->name( 'cart-details' );
 
 // Route for the checkout page
@@ -66,11 +64,11 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 	Route::get('/checkout', function () {
 		return view('checkout');
 	})->name('checkout');
-	
+
 	Route::get('/order', function () {
 		return view('order');
 	})->name('order');
-	
+
 	// Route::get( '/projects', [ ProjectController::class, 'index' ] )->name( 'projects.index' );
 	// Route::get( '/projects/{project}', [ ProjectController::class, 'show' ] )->name( 'projects.show' );
 } );
