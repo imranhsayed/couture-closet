@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
+use App\Http\Controllers\ProductController;
  
 Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welcome' );
 
@@ -10,6 +11,8 @@ Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welc
 Route::get( '/about', fn() => view( 'about' ) )->name( 'about' );
 Route::get( '/shop', fn() => view( 'shop' ) )->name( 'shop' );
 Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
+
+Route::get('/categories', [ProductController::class, 'fetchCategories']);
 
 /**
  * Product Route.

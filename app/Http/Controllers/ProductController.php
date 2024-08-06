@@ -18,6 +18,17 @@ class ProductController extends Controller
 	    return view( 'product.index', compact( 'title' ) );
     }
 
+    public function fetchCategories()
+    {
+        // Fetch all categories from the Category model
+        $categories = Category::where('name','demography')->get();
+        $products = Product::all();
+        dd($products);
+        dd($categories);
+        // Pass the categories to the view
+        return view('layouts.app', compact('categories'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

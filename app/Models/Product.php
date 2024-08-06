@@ -9,6 +9,8 @@ class Product extends Model
 {
     use HasFactory;
 
+	protected $fillable = ['name', 'value', 'description'];
+
 	// Define the relationship
 	public function images()
 	{
