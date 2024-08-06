@@ -8,6 +8,11 @@ use App\Http\Requests\UpdateOrdersRequest;
 
 class OrderController extends Controller
 {
+    public function showConfirmation(Orders $order)
+    {
+        $order = Orders::with('user')->findOrFail($orderId);
+        return view('order-confirmation', ['order' => $order]);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -63,4 +68,6 @@ class OrderController extends Controller
     {
         //
     }
+
+    
 }

@@ -12,10 +12,9 @@ use App\Http\Middleware\EnsureUserIsAuthenticated;
 Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welcome' );
 
 // Public Routes
-Route::get( '/about', fn() => view( 'about' ) )->name( 'about' );
 Route::get( '/shop', fn() => view( 'shop' ) )->name( 'shop' );
+Route::get( '/about', fn() => view( 'about' ) )->name( 'about' );
 Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
-
 Route::get('/categories', [ProductController::class, 'fetchCategories']);
 
 /**
@@ -29,6 +28,13 @@ Route::post( '/product/review', [ ProductReviewController::class, 'store' ] )->n
 Route::get('/cart', function () {
     return view('cart');
 })->name('cart');
+
+// Cart Details.
+Route::post( '/cart-details', function () {
+	$view = view( 'cart-details' )->render();
+
+	return response()->json( [ 'html' => $view, 'success' => true, ] );
+} )->name( 'cart-details' );
 
 // Route for the checkout page
 // Route::get('/checkout', function () {
