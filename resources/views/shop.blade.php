@@ -662,8 +662,8 @@
 						<div class="sidebar-icon-menu-item active" data-bs-toggle="collapse" data-bs-target="#subcategories_0" aria-expanded="" aria-controls="subcategories_0" role="menuitem">
 							<div class="d-flex align-items-center">
 								<svg class="svg-icon sidebar-icon">
-									<use xlink:href="#trousers-1"> </use>
-								</svg><a class="sidebar-icon-menu-link fw-bold me-2" href="#">Trousers</a><span class="sidebar-icon-menu-count"> 120</span>
+									<use xlink:href="#man"> </use>
+								</svg><a class="sidebar-icon-menu-link fw-bold me-2" href="#">Men's</a><span class="sidebar-icon-menu-count"> 120</span>
 							</div>
 							<div class="collapse show" id="subcategories_0">
 								<ul class="sidebar-icon-menu sidebar-icon-submenu">
@@ -677,8 +677,8 @@
 						<div class="sidebar-icon-menu-item" data-bs-toggle="collapse" data-bs-target="#subcategories_1" aria-controls="subcategories_1" role="menuitem">
 							<div class="d-flex align-items-center">
 								<svg class="svg-icon sidebar-icon">
-									<use xlink:href="#suit-1"> </use>
-								</svg><a class="sidebar-icon-menu-link fw-bold me-2" href="#">Jackets</a><span class="sidebar-icon-menu-count"> 55</span>
+									<use xlink:href="#woman"> </use>
+								</svg><a class="sidebar-icon-menu-link fw-bold me-2" href="#">Woman's</a><span class="sidebar-icon-menu-count"> 55</span>
 							</div>
 							<div class="collapse" id="subcategories_1">
 								<ul class="sidebar-icon-menu sidebar-icon-submenu">

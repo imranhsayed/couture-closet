@@ -12,7 +12,9 @@ Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welc
 
 // Public Routes
 Route::get( '/about', fn() => view( 'about' ) )->name( 'about' );
+
 Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
+
 
 /**
  * Product Route.

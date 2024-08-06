@@ -1,14 +1,53 @@
 @extends('layouts.app')
 
 @section('content')
-<section id="thank-you" class="py-5">
+<section class="hero py-6">
     <div class="container">
-        <h1 class="text-center">Thank You for Contacting Us!</h1>
-        <p class="text-center text-secondary">Thank you for contacting <strong>TechVista Innovations Ltd.</strong> We appreciate your interest in our website development services.</p>
-        <p class="text-center text-secondary">Your message has been successfully submitted, and our team will review your inquiry promptly. We are committed to providing you with exceptional service and will get back to you within the next 24-48 hours.</p>
-        <p class="text-center text-secondary">If your inquiry is urgent, please feel free to call us at <a href="tel:+1234567890">+123-456-7890</a>. We look forward to the opportunity to work with you and bring your ideas to life.</p>
-        <p class="text-center text-secondary">Best Regards,</p>
-        <p class="text-center text-secondary">The <strong>TechVista Innovations Ltd.</strong> Team</p>
+        <!-- Breadcrumbs -->
+        <ol class="breadcrumb ps-0">
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+            <li class="breadcrumb-item active">Order Confirmed</li>
+        </ol>
+        <!-- Hero Content-->
+        <div class="hero-content">
+            <h1 class="hero-heading">Order Confirmed</h1>
+            <div>
+                <div role="alert" class="d-flex align-items-center alert alert-success" style="background-color: #6AC17D;">
+                    <svg class="svg-icon w-3rem h-3rem svg-icon-light flex-shrink-0 me-3">
+                        <use xlink:href="#checked-circle-1"></use>
+                    </svg>
+                    <span style="color: white;">Your Order is confirmed</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pb-6">
+    <div class="container">
+        <p class="lead">Thank you, <strong>Donald</strong>. Your order is confirmed.</p>
+        <p class="lead mb-5">Your order hasn't shipped yet but we will send you an email when it does.</p>
+        <p class="mb-6"><a class="btn btn-outline-dark" style="background-color: #EFEBDF; color: #646464;" href="#">View or manage your order</a></p>
+        <div class="p-5 bg-gray-100" style="background-color: #F8F8F8;">
+            <div class="row">
+                <div class="col-6 col-lg-3 mb-5 mb-lg-0">
+                    <div class="text-sm text-uppercase text-muted mb-3">Order no.</div>
+                    <span class="h5">#01283742</span>
+                </div>
+                <div class="col-6 col-lg-3 mb-5 mb-lg-0">
+                    <div class="text-sm text-uppercase text-muted mb-3">Date</div>
+                    <span class="h5">Aug 31, 2024</span>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="text-sm text-uppercase text-muted mb-3">Total</div>
+                    <span class="h5">$555.50</span>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="text-sm text-uppercase text-muted mb-3">Shipping</div>
+                    <span class="h5">Standard</span>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 @endsection
