@@ -28,6 +28,13 @@ Route::get('/cart', function () {
     return view('cart');
 })->name('cart');
 
+// Cart Details.
+Route::post( '/cart-details', function () {
+	$view = view( 'cart-details' )->render();
+
+	return response()->json( [ 'html' => $view, 'success' => true, ] );
+} )->name( 'cart-details' );
+
 // Route for the checkout page
 Route::get('/checkout', function () {
     return view('checkout');
