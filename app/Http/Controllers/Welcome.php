@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class Welcome extends Controller
 {
@@ -16,6 +17,13 @@ class Welcome extends Controller
 	{
 		$products = Product::with('images')->get();
 
-		return view( 'welcome', compact( 'products' ) );
+		// Fetch all categories from the Category model
+        $categories = Category::where('name','demography')->get();
+        
+		$products = Product::paginate(12);
+        
+		$brands = Category::where('name','Brand')->get();
+		
+		return view( 'welcome', compact( 'products' , 'categories', 'brands') );
 	}
 }

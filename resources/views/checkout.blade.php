@@ -151,7 +151,7 @@
                 support your experience throughout this website, and for other purposes described in our<a
                     href="#">privacy policy</a>.
             </p>
-            <div class="d-grid"><a class="btn btn-dark btn-lg mb-5 mt-4 text-uppercase fw-normal text-sm" href="#">Place
+            <div class="d-grid"><a class="btn btn-dark btn-lg mb-5 mt-4 text-uppercase fw-normal text-sm" href="/order">Place
                     Your order</a>
             </div>
         </div>

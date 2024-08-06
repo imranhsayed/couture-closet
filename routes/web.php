@@ -8,13 +8,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
 
+ 
 Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welcome' );
 
 // Public Routes
+Route::get( '/shop', fn() => view( 'shop' ) )->name( 'shop' );
 Route::get( '/about', fn() => view( 'about' ) )->name( 'about' );
-
 Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
-
+Route::get('/categories', [ProductController::class, 'fetchCategories']);
 
 /**
  * Product Route.
@@ -37,9 +38,13 @@ Route::post( '/cart-details', function () {
 } )->name( 'cart-details' );
 
 // Route for the checkout page
-Route::get('/checkout', function () {
-    return view('checkout');
-})->name('checkout');
+// Route::get('/checkout', function () {
+//     return view('checkout');
+// })->name('checkout');
+
+// Route::get('/order', function () {
+//     return view('order');
+// })->name('order');
 
 // Authentication Routes
 Auth::routes();
@@ -58,6 +63,17 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 
     // Order
 	Route::get( '/order/{order}', [ OrderController::class, 'show' ] ) ->name( 'order.show' );
+
+	Route::get('/checkout', function () {
+		return view('checkout');
+	})->name('checkout');
+	
+	Route::get('/order', function () {
+		return view('order');
+	})->name('order');
+	
+	// Route::get( '/projects', [ ProjectController::class, 'index' ] )->name( 'projects.index' );
+	// Route::get( '/projects/{project}', [ ProjectController::class, 'show' ] )->name( 'projects.show' );
 } );
 
 // Admin Routes
