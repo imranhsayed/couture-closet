@@ -16,6 +16,9 @@ export const DEFAULT_STATE = {
 		products: [],
 		totalProductsCount: 0,
 	},
+    userProfile: {
+        activeTab: 'orders'
+    },
 	loading: false,
 	initialized: false,
 };
@@ -23,7 +26,7 @@ export const DEFAULT_STATE = {
 /**
  * Persistent keys.
  */
-export const PERSISTENT_STATE_KEYS = [ 'cart' ];
+export const PERSISTENT_STATE_KEYS = [ 'cart' , 'userProfile' ];
 
 /**
  * Create store.
@@ -40,7 +43,7 @@ const store = create(
 					// Set persistent state.
 					persistentState[ key ] = state[ key ];
 				} );
-				
+
 				// Return persistent state.
 				return persistentState;
 			},

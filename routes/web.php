@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductReviewController;
+use App\Http\Controllers\UserAddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
@@ -17,8 +21,9 @@ Route::get('/categories', [ProductController::class, 'fetchCategories']);
 /**
  * Product Route.
  */
-Route::get( '/product', [ \App\Http\Controllers\ProductController::class, 'index' ] )->name( 'product.index' );
-
+Route::get( '/product', [ ProductController::class, 'index' ] )->name( 'product.index' );
+Route::get( '/product/review/', [ ProductReviewController::class, 'create' ] )->name( 'product.leave.review' );
+Route::post( '/product/review', [ ProductReviewController::class, 'store' ] )->name( 'product.review.store' );
 
 // Route for the cart page
 Route::get('/cart', function () {
@@ -40,8 +45,18 @@ Route::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] )->
 
 // User Routes
 Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( function () {
-	// Route::get( '/projects', [ ProjectController::class, 'index' ] )->name( 'projects.index' );
-	// Route::get( '/projects/{project}', [ ProjectController::class, 'show' ] )->name( 'projects.show' );
+	// User Profile
+	Route::get( '/user/profile', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'user.profile' );
+
+    // User Address
+	Route::post( '/user/address', [ UserAddressController::class, 'store' ])->name( 'user.address.store' );
+	Route::put( '/user/address/{id}', [ UserAddressController::class, 'update' ])->name( 'user.address.update' );
+	Route::get( '/user/address/default/{id}', [ UserAddressController::class, 'setDefault' ])->name( 'user.address.default' );
+	Route::delete( '/user/address/delete/{id}', [ UserAddressController::class, 'destroy' ])->name( 'user.address.delete' );
+
+    // Order
+	Route::get( '/order/{order}', [ OrderController::class, 'show' ] ) ->name( 'order.show' );
+
 	Route::get('/checkout', function () {
 		return view('checkout');
 	})->name('checkout');
@@ -50,6 +65,8 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 		return view('order');
 	})->name('order');
 	
+	// Route::get( '/projects', [ ProjectController::class, 'index' ] )->name( 'projects.index' );
+	// Route::get( '/projects/{project}', [ ProjectController::class, 'show' ] )->name( 'projects.show' );
 } );
 
 // Admin Routes
