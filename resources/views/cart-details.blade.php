@@ -29,10 +29,7 @@
 										<div class="col-5 col-sm-3 col-md-12">
 											<div class="d-flex align-items-center">
 												<div class="btn btn-items btn-items-decrease">-</div>
-												<input
-														class="form-control text-center border-0 border-md input-items"
-														type="text" value="4">
-												<div class="btn btn-items btn-items-increase">+</div>
+												<x-increment-decrement id="search-filter" label="No of products" name="products" value="2" min_value="2" max_value="12" />
 											</div>
 										</div>
 									</div>

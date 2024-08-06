@@ -22,12 +22,10 @@ class Cart extends HTMLElement {
 		
 		// Subscribe.
 		subscribe( this.update.bind( this ) );
-		console.log( 'sdsd', document.querySelector('meta[name="csrf-token"]').content );
-		
 	}
 	
 	update( state ) {
-		this.updateCartMarkup( state.cart );
+		// this.updateCartMarkup( state.cart );
 	}
 	
 	updateCartMarkup( cartData ) {
