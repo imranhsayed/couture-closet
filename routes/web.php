@@ -20,6 +20,7 @@ Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
  * Product Route.
  */
 Route::get( '/product', [ ProductController::class, 'index' ] )->name( 'product.index' );
+Route::get('/product/{product}', [ ProductController::class, 'show' ])->name( 'product.show' );
 Route::get( '/product/review/', [ ProductReviewController::class, 'create' ] )->name( 'product.leave.review' );
 Route::post( '/product/review', [ ProductReviewController::class, 'store' ] )->name( 'product.review.store' );
 
