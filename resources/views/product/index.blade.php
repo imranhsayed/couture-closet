@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('partials.flash')
 	<div class="container">
 		{{--BreadCrumb--}}
 		<ul class="breadcrumb">
@@ -201,13 +202,16 @@
 								</div>
 								<div class="py-5 px-3">
 									<h5 class="mb-4">Leave a review</h5>
-									<form class="mb-4 form" id="reviewForm" method="post" action="contact.php">
-										<div class="row">
+									<form class="mb-4 form" id="reviewForm" method="post" action="{{ route('product.review.store') }}">
+                                        @csrf
+                                        <input type="hidden" id="product_id" name="product_id" value="{{ session('productId') ?? '' }}">
+                                        <input type="hidden" id="order_id" name="order_id" value="{{ session('orderId') ?? '' }}">
+                                        <div class="row">
 											<div class="col-sm-6">
 												<div class="mb-3">
-													<label class="form-label" for="name">Your name *</label>
-													<input class="form-control" type="text" name="name" id="name" placeholder="Enter your name" required="required">
-												</div>
+                                                    <label class="form-label" for="name">Your title *</label>
+                                                    <input class="form-control" type="text" name="title" id="title" placeholder="Enter your title" required="required">
+                                                </div>
 											</div>
 											<div class="col-sm-6">
 												<div class="mb-3">
@@ -223,12 +227,8 @@
 											</div>
 										</div>
 										<div class="mb-3">
-											<label class="form-label" for="emailReview">Your email *</label>
-											<input class="form-control" type="email" name="email" id="emailReview" placeholder="Enter your  email" required="required">
-										</div>
-										<div class="mb-3">
 											<label class="form-label" for="reviewReview">Review text *</label>
-											<textarea class="form-control" rows="4" name="review" id="reviewReview" placeholder="Enter your review" required="required"></textarea>
+											<textarea class="form-control" rows="4" name="review_text" id="review_text" placeholder="Enter your review" required="required"></textarea>
 										</div>
 										<button class="btn btn-outline-dark" type="submit">Post review</button>
 									</form>

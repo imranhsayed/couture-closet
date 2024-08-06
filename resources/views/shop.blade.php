@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid container-fluid-px py-6">
+<div class="container-fluid container-fluid-px py-4">
 	<div class="row">
 		<!-- Grid -->
 		<div class="products-grid col-xl-9 col-lg-8 order-lg-2">

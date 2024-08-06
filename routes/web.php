@@ -1,36 +1,37 @@
 <?php
 
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductReviewController;
+use App\Http\Controllers\UserAddressController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\InquiryController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\OrdersController;
-use App\Http\Controllers\Admin\ProjectManagementController;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
 
-Route::get( '/', function () {
-	return view( 'welcome' );
-} );
+Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welcome' );
 
 // Public Routes
 Route::get( '/about', fn() => view( 'about' ) )->name( 'about' );
-Route::get( '/contact', [ ContactController::class, 'index' ] )->name( 'contact' );
-Route::post( '/contact', [ ContactController::class, 'store' ] )->name( 'InquiryStore' );
-Route::get( '/order-confirmation', fn() => view( 'order-confirmation' ) )->name( 'order-confirmation' );
-Route::get('/order-details', function () {
-    return view('order-details');
-})->name('order.details');
-Route::get( '/shop', fn() => view( 'shop' ) )->name( 'shop' );
-Route::get( '/cart', fn() => view( 'cart' ) )->name( 'cart' );
-Route::get( '/checkout', fn() => view( 'checkout' ) )->name( 'checkout' );
-Route::get( '/order', fn() => view( 'order' ) )->name( 'order' );
-Route::get( '/profile', fn() => view( 'profile' ) )->name( 'profile' );
+
+Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
+
 
 /**
  * Product Route.
  */
-Route::get( '/product', [ \App\Http\Controllers\ProductController::class, 'index' ] )->name( 'product.index' );
+Route::get( '/product', [ ProductController::class, 'index' ] )->name( 'product.index' );
+Route::get( '/product/review/', [ ProductReviewController::class, 'create' ] )->name( 'product.leave.review' );
+Route::post( '/product/review', [ ProductReviewController::class, 'store' ] )->name( 'product.review.store' );
+
+// Route for the cart page
+Route::get('/cart', function () {
+    return view('cart');
+})->name('cart');
+
+// Route for the checkout page
+Route::get('/checkout', function () {
+    return view('checkout');
+})->name('checkout');
 
 // Authentication Routes
 Auth::routes();
@@ -38,35 +39,24 @@ Route::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] )->
 
 // User Routes
 Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( function () {
-	Route::get( '/projects', [ ProjectController::class, 'index' ] )->name( 'projects.index' );
+	// User Profile
+	Route::get( '/user/profile', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'user.profile' );
 
-	Route::get( '/projects/{project}', [ ProjectController::class, 'show' ] )->name( 'projects.show' );
+    // User Address
+	Route::post( '/user/address', [ UserAddressController::class, 'store' ])->name( 'user.address.store' );
+	Route::put( '/user/address/{id}', [ UserAddressController::class, 'update' ])->name( 'user.address.update' );
+	Route::get( '/user/address/default/{id}', [ UserAddressController::class, 'setDefault' ])->name( 'user.address.default' );
+	Route::delete( '/user/address/delete/{id}', [ UserAddressController::class, 'destroy' ])->name( 'user.address.delete' );
 
+    // Order
+	Route::get( '/order/{order}', [ OrderController::class, 'show' ] ) ->name( 'order.show' );
 } );
 
 // Admin Routes
 Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
-	// Inquiry Routes
-	Route::get( '/admin/inquiries', [ InquiryController::class, 'index' ] )->name( 'admin.inquiries.index' );
-	Route::get( '/admin/inquiries/{id}', [ InquiryController::class, 'show' ] )->name( 'admin.inquiries.show' );
-	Route::post( '/admin/inquiries', [ InquiryController::class, 'store' ] )->name( 'admin.inquiries.store' );
-	Route::get( '/admin/inquiries/create', [ InquiryController::class, 'create' ] )->name( 'admin.inquiries.create' );
-	Route::get( '/admin/inquiries/edit/{id}', [ InquiryController::class, 'edit' ] )->name( 'admin.inquiries.edit' );
-	Route::put( '/admin/inquiries/{id}', [ InquiryController::class, 'update' ] )->name( 'admin.inquiries.update' );
-	Route::delete( '/admin/inquiries/{id}', [
-		InquiryController::class,
-		'destroy',
-	] )->name( 'admin.inquiries.destroy' );
-	Route::put( '/admin/inquiries/{id}/update-status', [
-		InquiryController::class,
-		'updateStatus',
-	] )->name( 'admin.inquiries.updateStatus' );
-	Route::put( '/admin/inquiries/{id}/update-notes', [
-		InquiryController::class,
-		'updateNotes',
-	] )->name( 'admin.inquiries.updateNotes' );
-
-	// Project Management Routes
-	Route::resource( '/admin/projects', ProjectManagementController::class, [ 'as' => 'admin' ] );
+	// Product Management Routes
+	// Route::get( '/admin/inquiries', [ InquiryController::class, 'index' ] )->name( 'admin.inquiries.index' );
+	// Route::post( '/admin/inquiries', [ InquiryController::class, 'store' ] )->name( 'admin.inquiries.store' );
+	// Route::put( '/admin/inquiries/{id}', [ InquiryController::class, 'update' ] )->name( 'admin.inquiries.update' );
+	// Route::delete( '/admin/inquiries/{id}', [ InquiryController::class, 'destroy', ] )->name( 'admin.inquiries.destroy' );
 } );
-

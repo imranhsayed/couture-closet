@@ -13,11 +13,11 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS and JS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss'])
 </head>
 <body>
     <div id="app">
@@ -61,33 +61,54 @@
 			    <form class="" action="#">
 				    <div class="input-group input-group-underlined">
 					    <input class="form-control form-control-underlined ps-3" type="text" placeholder="Search" aria-label="Search" aria-describedby="button-search">
-					    <button class="btn btn-underlined" id="button-search" type="button">
+					    <button class="btn btn-underlined" id="button-search" type="button" style="margin-top: -3px">
 						    <svg class="svg-icon navbar-icon">
 							    <use xlink:href="#search-1"> </use>
 						    </svg>
 					    </button>
 				    </div>
 			    </form>
-			    <ul class="list-inline mb-0 d-none d-lg-block">
+			    <ul class="list-inline mb-0 d-none d-lg-flex align-items-center">
 				    <li class="nav-item dropdown">
 					    <a class="nav-link dropdown-toggle show" id="userLoginDropdown" href="#"
 				                                     data-bs-toggle="dropdown" aria-haspopup="true"
-				                                     aria-expanded="true">
+				                                     aria-expanded="false">
 						    <svg class="svg-icon navbar-icon">
 							    <use xlink:href="#avatar-1"> </use>
 						    </svg></a>
 					    </a>
-					    <div class="dropdown-menu dropdown-menu-animated show" aria-labelledby="userLoginDropdown"
-					         data-bs-popper="none">
-						    <a class="dropdown-item" href="/login">Login</a>
-						    <a class="dropdown-item" href="/register">Register</a>
-					    </div>
+					    @if (\Auth::check())
+							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+															document.getElementById('logout-form').submit();">
+									{{ __('Logout') }}
+								</a>
+
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+									@csrf
+								</form>
+								@if (\Auth::user()->is_admin)
+									<a class="dropdown-item" href="">
+										Admin Panel
+									</a>
+								@endif
+							</div>
+						@else
+							<div class="dropdown-menu dropdown-menu-animated" aria-labelledby="userLoginDropdown"
+								data-bs-popper="none">
+								<a class="dropdown-item" href="/login">Login</a>
+								<a class="dropdown-item" href="/register">Register</a>
+							</div>
+						@endif
 				    </li>
-				    <li class="list-inline-item position-relative me-3"><a class="text-dark text-primary-hover" href="#" data-bs-toggle="modal" data-bs-target="#sidebarCart">
+				    <li class="list-inline-item position-relative ml-2">
+					    <a class="text-dark text-primary-hover" href="#" data-bs-toggle="modal" data-bs-target="#sidebarCart">
 						    <svg class="svg-icon navbar-icon">
 							    <use xlink:href="#retail-bag-1"> </use>
 						    </svg>
-						    <div class="navbar-icon-badge">5</div></a></li>
+						    <cc-product-count class="navbar-icon-badge">5</cc-product-count>
+					    </a>
+				    </li>
 			    </ul>
 		    </div>
 	    </nav>
@@ -187,9 +208,9 @@
 				</div>
 				<div class="col-lg-8">
 					<ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-lg-end">
-						<li class="list-inline-item"> <a class="text-reset" href="#">Home</a></li>
-						<li class="list-inline-item"> <a class="text-reset" href="#">About</a></li>
-						<li class="list-inline-item"> <a class="text-reset" href="#">Shop</a></li>
+						<li class="list-inline-item"> <a class="text-reset" href="/">Home</a></li>
+						<li class="list-inline-item"> <a class="text-reset" href="/about">About</a></li>
+						<li class="list-inline-item"> <a class="text-reset" href="/shop">Shop</a></li>
 					</ul>
 				</div>
 			</div>
@@ -199,8 +220,10 @@
 
     </div>
 
+    <!-- Custom js -->
+    @vite(['resources/js/app.js'])
+
     <!-- Bootstrap JS and dependencies -->
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/vendor/jquery/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>

@@ -53,96 +53,101 @@
 	</div>
 
 	<div class="container">
-		<section class="py-5">
-	        <div class="row justify-content-center row-cols-2 g-3">
-		        <div class="col">
-			        <div class="card">
-				        <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
-			        </div>
-		        </div>
-		        <div class="col">
-			        <div class="card">
-				        <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
-			        </div>
-		        </div>
-	        </div>
-		</section>
 
-		<section>
-			<h2>Lorem Ipsum</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid atque consectetur distinctio doloribus est inventore odit ratione veniam. Dolorum excepturi magnam praesentium qui? Autem dolore ipsa odit officiis repellendus?</p>
-		</section>
-
-		<section>
-			<ul class="product-categories">
-				<li><a href="#">All products</a></li>
-				<li><a href="#">Men's</a></li>
-				<li><a href="#">Women's</a></li>
-				<li><a href="#">Bags</a></li>
-				<li><a href="#">Accessories</a></li>
-			</ul>
-		</section>
-
-		<section class="product-listing py-5">
-			<div class="row justify-content-center row-cols-4 g-3">
-				<div class="col">
-					<div class="card">
-						<img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
-						<h3>Grey Sweater</h3>
-						<p>$20</p>
+		<div class="bg-gray-100 position-relative">
+			<div class="container py-6">
+				<div class="row">
+					<div class="col-sm-6 mb-5 mb-sm-0">
+						<div class="card card-scale shadow-0 border-0 text-white text-hover-gray-900 overlay-hover-light text-center"><img class="card-img img-scale" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/category-women.jpg" alt="Card image">
+							<div class="card-img-overlay d-flex align-items-center">
+								<div class="w-100 py-3">
+									<h2 class="display-3 fw-bold mb-0">Women</h2><a class="stretched-link" href="category-full.html"><span class="sr-only">See </span></a>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="col">
-					<div class="card">
-						<img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
-						<h3>Grey Sweater</h3>
-						<p>$20</p>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card">
-						<img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
-						<h3>Grey Sweater</h3>
-						<p>$20</p>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card">
-						<img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
-						<h3>Grey Sweater</h3>
-						<p>$20</p>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card">
-						<img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
-						<h3>Grey Sweater</h3>
-						<p>$20</p>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card">
-						<img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
-						<h3>Grey Sweater</h3>
-						<p>$20</p>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card">
-						<img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
-						<h3>Grey Sweater</h3>
-						<p>$20</p>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card">
-						<img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
-						<h3>Grey Sweater</h3>
-						<p>$20</p>
+					<div class="col-sm-6 mb-5 mb-sm-0">
+						<div class="card card-scale shadow-0 border-0 text-white text-hover-gray-900 overlay-hover-light text-center"><img class="card-img img-scale" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/category-men.jpg" alt="Card image">
+							<div class="card-img-overlay d-flex align-items-center">
+								<div class="w-100 py-3">
+									<h2 class="display-3 fw-bold mb-0">Men</h2><a class="stretched-link" href="category-full.html"><span class="sr-only">See </span></a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
+
+		{{--Categories--}}
+		<div class="row">
+			<div class="col-lg-10 col-xl-8 text-center mx-auto">
+				<h2 class="display-3 mb-5">New Arrivals</h2>
+				<p class="lead text-muted mb-6">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections</p>
+			</div>
+		</div>
+
+		<div class="row justify-content-between align-items-center mb-4">
+			<div class="col-12 col-sm">
+				<ul class="list-inline text-center text-sm-start mb-3 mb-sm-0">
+					<li class="list-inline-item"><a class="text-dark" href="#">All Products </a></li>
+					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Clothing </a></li>
+					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Bags</a></li>
+					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Shoes</a></li>
+					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Accessories</a></li>
+				</ul>
+			</div>
+			<div class="col-12 col-sm-auto text-center"><a class="btn btn-link px-0" href="#">All products</a></div>
+		</div>
+
+		@if( $products->isEmpty() )
+			<p>No products found.</p>
+		@else
+		<div class="row">
+			@foreach( $products as $product )
+				<!-- product-->
+				<div class="col-lg-3 col-md-4">
+					<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
+						<div class="product-image mb-md-3">
+							<div class="product-badge badge bg-secondary">Fresh</div>
+							<a href="/product?id={{ $product->id }}">
+								<div class="product-swap-image">
+									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="{{ $product->images[0]['image_url'] ?? '' }}" alt="product">
+									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="{{ $product->images[1]['image_url'] ?? '' }}" alt="product">
+								</div>
+							</a>
+							<div class="product-hover-overlay"><div class="text-dark text-sm">
+									<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
+										<use xlink:href="#retail-bag-1"> </use>
+									</svg>
+									<x-add-to-cart-button product_id="{{ $product->id }}" quantity="1" />
+								</div>
+								<div><a class="text-dark text-primary-hover me-2" href="#!">
+										<svg class="svg-icon svg-icon-heavy">
+											<use xlink:href="#heart-1"> </use>
+										</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
+										<svg class="svg-icon svg-icon-heavy">
+											<use xlink:href="#expand-1"> </use>
+										</svg></a></div>
+							</div>
+						</div>
+						<div class="position-relative">
+							<h3 class="text-base mb-1">
+								<a class="text-dark" href="/product?id={{ $product->id }}">
+									{{ $product->name }}
+								</a>
+							</h3>
+							<p class="text-gray-600 text-sm">
+								<span>${{ $product->price }}</span>
+							</p>
+							<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
+						</div>
+					</div>
+				</div>
+				<!-- /product   -->
+			@endforeach
+		</div>
+		@endif
 	</div>
 
 @endsection
