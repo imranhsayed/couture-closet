@@ -26,9 +26,13 @@ Route::get('/cart', function () {
 })->name('cart');
 
 // Route for the checkout page
-Route::get('/checkout', function () {
-    return view('checkout');
-})->name('checkout');
+// Route::get('/checkout', function () {
+//     return view('checkout');
+// })->name('checkout');
+
+// Route::get('/order', function () {
+//     return view('order');
+// })->name('order');
 
 // Authentication Routes
 Auth::routes();
@@ -38,6 +42,14 @@ Route::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] )->
 Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( function () {
 	// Route::get( '/projects', [ ProjectController::class, 'index' ] )->name( 'projects.index' );
 	// Route::get( '/projects/{project}', [ ProjectController::class, 'show' ] )->name( 'projects.show' );
+	Route::get('/checkout', function () {
+		return view('checkout');
+	})->name('checkout');
+	
+	Route::get('/order', function () {
+		return view('order');
+	})->name('order');
+	
 } );
 
 // Admin Routes
