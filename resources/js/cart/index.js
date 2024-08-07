@@ -100,6 +100,7 @@ class Cart extends HTMLElement {
 							 <div class="row align-items-center">
 								<lb-increment-decrement-controls
 									class="search-filters__selection-controls"
+									product-id="${product?.id ?? ''}"
 									min-value="1"
 									max-value="100"
 									selected-value="${ product?.quantity ?? 1 }"
