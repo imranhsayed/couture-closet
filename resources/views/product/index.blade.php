@@ -52,15 +52,6 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-sm-6 col-lg-12 detail-option mb-5">
-								<h6 class="detail-option-heading">Type <span>(required)</span></h6>
-								<label class="btn btn-sm btn-outline-primary detail-option-btn-label" for="material_0"> Hoodie
-									<input class="input-invisible" type="radio" name="material" value="value_0" id="material_0" required="">
-								</label>
-								<label class="btn btn-sm btn-outline-primary detail-option-btn-label" for="material_1"> College
-									<input class="input-invisible" type="radio" name="material" value="value_1" id="material_1" required="">
-								</label>
-							</div>
 						</div>
 						<div class="input-group w-100 mb-4">
 							<input class="form-control form-control-lg detail-quantity" name="items" type="number" value="1">
