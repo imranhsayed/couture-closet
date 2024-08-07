@@ -120,6 +120,6 @@ export const activateTab = () => {
         tabTrigger.trigger('click');
     } else {
         // default active tab
-        $('#orders-tab').trigger('click');
+        $('#user-tab').trigger('click');
     }
 }

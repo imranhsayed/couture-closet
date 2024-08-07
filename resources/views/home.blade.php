@@ -19,6 +19,14 @@
                         <hr>
                         <!-- the summary of user -->
                         <ul class="nav nav-tabs" id="profile" role="tablist">
+                            <!-- User tab -->
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link tab-button" id="user-tab" data-bs-toggle="tab"
+                                        data-bs-target="#user" type="button" role="tab" aria-controls="user"
+                                        aria-selected="true" data-tab-name="user">Info
+                                </button>
+                            </li>    
+
                             <!-- Orders tab -->
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link tab-button" id="orders-tab" data-bs-toggle="tab"
@@ -48,6 +56,52 @@
 
                         <!-- the tab content -->
                         <div class="tab-content" id="order_content">
+                            <!-- User info tab content -->
+                            <div class="tab-pane fade" id="user" role="tabpanel"
+                                 aria-labelledby="user-tab">
+                                <p></p>
+                                <h3>Your Information</h3>
+                                <div class="mb-4">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">First Name</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p class="text-muted mb-0">{{ \Auth::user()->first_name ?? '' }}</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Last Name</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p class="text-muted mb-0">{{ \Auth::user()->last_name ?? '' }}</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Email</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p class="text-muted mb-0">{{ \Auth::user()->email ?? '' }}</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Phone</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p class="text-muted mb-0">{{ \Auth::user()->telephone ?? '' }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <!-- Orders tab content -->
                             <div class="tab-pane fade" id="orders" role="tabpanel"
                                  aria-labelledby="orders-tab">

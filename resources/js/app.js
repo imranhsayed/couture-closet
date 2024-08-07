@@ -7,3 +7,7 @@ import './cart/index.js';
 import './cart/increment-decrement.js';
 import './cart/product-count.js';
 import './user/address.js';
+
+// load js for admin CRM
+import './admin/main.js';
+import './admin/polyfill.js';

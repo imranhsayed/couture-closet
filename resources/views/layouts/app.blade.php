@@ -93,7 +93,10 @@
 					    </a>
 					    @if (\Auth::check())
 							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                <a class="dropdown-item" href="{{ route('user.profile') }}">
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
 															document.getElementById('logout-form').submit();">
 									{{ __('Logout') }}
 								</a>
@@ -102,7 +105,7 @@
 									@csrf
 								</form>
 								@if (\Auth::user()->is_admin)
-									<a class="dropdown-item" href="">
+									<a class="dropdown-item" href="{{ route('admin.index') }}">
 										Admin Panel
 									</a>
 								@endif

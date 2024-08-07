@@ -103,6 +103,9 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 // Admin Routes
 Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
 	// Product Management Routes
+    Route::get( '/admin', function() {
+        return view( 'admin.index' );
+    } )->name( 'admin.index' );
 	// Route::get( '/admin/inquiries', [ InquiryController::class, 'index' ] )->name( 'admin.inquiries.index' );
 	// Route::post( '/admin/inquiries', [ InquiryController::class, 'store' ] )->name( 'admin.inquiries.store' );
 	// Route::put( '/admin/inquiries/{id}', [ InquiryController::class, 'update' ] )->name( 'admin.inquiries.update' );
