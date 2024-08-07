@@ -23,8 +23,7 @@
     <div id="app">
 	    <nav class="navbar navbar-expand-lg bg-transparent border-0 shadow-0 navbar-light px-lg-5 ">
 		    <a class="navbar-brand d-flex align-items-center" href="#">
-			    <img src="/images/site-logo.svg" alt="Site logo" width="50" height="50" class="mr-1">
-				<span class="h5 mb-0 ml-1">Couture Closet</span>
+			    <img src="/images/site-logo.svg" alt="Site logo" width="200" height="50" class="mr-1">
 		    </a>
 
 		    <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,26 +44,7 @@
 					    <a class="nav-link dropdown-toggle" id="shopDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
 					    <div class="dropdown-menu dropdown-menu-md dropdown-menu-animated py-0" aria-labelledby="shopDropdown">
 						    <div class="row">
-							    <div class="col-lg-4 col-sm-6 p-lg-5">
-								    <h6 class="dropdown-header h6 ps-lg-0">Category</h6>
-									@if(isset($categories))
-                					@foreach ($categories as $category)
-                    				<a class="dropdown-item ps-lg-0" href="/shop{category={{ $category->value }}}">{{ $category->value }}</a>
-                					@endforeach
-            						@else
-                					<p>No categories found.</p>
-            						@endif
-							    </div>
-							    <div class="col-lg-4 col-sm-6 p-lg-5">
-								    <h6 class="dropdown-header h6 ps-lg-0">Brand</h6>
-									@if(isset($brands))
-									@foreach($brands as $brand)
-									<a class="dropdown-item ps-lg-0" href="/shop">{{ $brand->value}}</a>
-									@endforeach
-									@else 
-									<p>No Brand found.</p>
-									@endif
-							    </div>
+							    @include('partials.header')
 							    <div class="col-lg-4 d-none d-lg-block position-relative">
 									<img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/kyle-loftus-596319-unsplash-cropped.jpg" alt="">
 									</div>
@@ -165,28 +145,13 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-5 pe-lg-5 pe-xl-6 mb-5 mb-lg-0">
-					<a href="/"><img src="/images/site-logo-white.svg" alt="Site logo" width="50" height="50" class="mb-2"></a>
-					<span class="h5 mb-0 ml-1">Couture Closet</span>
+					<a href="/"><img src="/images/site-logo-white.svg" alt="Site logo" width="200" height="50" class="mb-2"></a>
 					<p class="text-sm mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur cum dolor doloribus harum, hic incidunt maxime reiciendis repellendus temporibus velit? Commodi, earum eveniet illum laudantium maxime minus nam pariatur voluptatum.</p>
 				</div>
 				<div class="col-lg-7">
 					<div class="row">
-						<div class="col-lg-4">
-							<a class="d-lg-none block-toggler my-3" data-bs-toggle="collapse" href="#footerMenu0" aria-expanded="false" aria-controls="footerMenu0">Shop<span class="block-toggler-icon"></span></a>
-							<!-- Footer collapsible menu-->
-							<div class="expand-lg collapse" id="footerMenu0">
-								<h6 class="letter-spacing-1 mb-4 d-none d-lg-block">Shop</h6>
-								<ul class="list-unstyled text-sm pt-2 pt-lg-0">
-									@if(isset($categories))
-									@foreach ($categories as $category)
-									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/shop{category={{ $category->value }}}">{{ $category->value }}</a></li>
-									@endforeach
-									@else
-									<p>Default</p>
-									@endif
-								</ul>
-							</div>
-						</div>
+					@include('partials.menu')
+						
 						<div class="col-lg-4"><a class="d-lg-none block-toggler my-3" data-bs-toggle="collapse" href="#footerMenu2" aria-expanded="false" aria-controls="footerMenu2">Your account<span class="block-toggler-icon"></span></a>
 							<!-- Footer collapsible menu-->
 							<div class="expand-lg collapse" id="footerMenu2">

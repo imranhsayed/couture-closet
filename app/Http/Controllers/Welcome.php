@@ -19,12 +19,12 @@ class Welcome extends Controller
 		$products = Product::with('images')->get();
 
 		// Fetch all categories from the Category model
-        $categories = Category::where('name','demography')->get();
+        //$categories = Category::where('name','demography')->get();
 
 		$products = Product::paginate(12);
 
-		$brands = Category::where('name','Brand')->get();
+		//$brands = Category::where('name','Brand')->get();
 		
-		return view( 'welcome', compact( 'products' , 'categories', 'brands') );
+		return view( 'welcome', compact( 'products' ) );
 	}
 }
