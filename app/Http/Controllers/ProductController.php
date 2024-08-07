@@ -50,9 +50,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $product = Product::with('categories')->find($product->id);
-
-        
+        $product = Product::with(['categories', 'images'])
+                          ->find($product->id);
+        //dd($product->toJson());
         return view('product.show', compact('product'));
         //return response()->json($product->toJson());
     }

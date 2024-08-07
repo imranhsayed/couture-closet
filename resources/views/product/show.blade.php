@@ -11,13 +11,13 @@
 		</ul>
 		{{--Product Details--}}
 		<div class="row">
-			<div class="col-lg-6 col-xl-7 pt-4 order-2 order-lg-1 photoswipe-gallery"><a class="d-block mb-4" href="img/product/detail-3-gray.jpg" data-caption="Push-up Jeans 1 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
-					<div data-toggle="zoom" data-image="img/product/detail-3-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-3-gray.jpg" alt="Push-up Jeans 1"><img role="presentation" alt="" src="img/product/detail-3-gray.jpg" class="zoomImg" style="position: absolute; top: -94.9611px; left: -187.658px; opacity: 0; width: 1313px; height: 1313px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="img/product/detail-1-gray.jpg" data-caption="Push-up Jeans 2 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
-					<div data-toggle="zoom" data-image="img/product/detail-1-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-1-gray.jpg" alt="Push-up Jeans 2"><img role="presentation" alt="" src="img/product/detail-1-gray.jpg" class="zoomImg" style="position: absolute; top: -409.275px; left: -607.565px; opacity: 0; width: 1313px; height: 1313px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="img/product/detail-2-gray.jpg" data-caption="Push-up Jeans 3 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
-					<div data-toggle="zoom" data-image="img/product/detail-2-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-2-gray.jpg" alt="Push-up Jeans 3"><img role="presentation" alt="" src="img/product/detail-2-gray.jpg" class="zoomImg" style="position: absolute; top: -517.351px; left: -389.25px; opacity: 0; width: 1313px; height: 1313px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="img/product/detail-4-gray.jpg" data-caption="Push-up Jeans 4 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
-					<div data-toggle="zoom" data-image="img/product/detail-4-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-4-gray.jpg" alt="Push-up Jeans 4"><img role="presentation" alt="" src="img/product/detail-4-gray.jpg" class="zoomImg" style="position: absolute; top: 0px; left: 0px; opacity: 0; width: 1313px; height: 1313px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="img/product/detail-5-gray.jpg" data-caption="Push-up Jeans 5 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
-					<div data-toggle="zoom" data-image="img/product/detail-5-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-5-gray.jpg" alt="Push-up Jeans 5"><img role="presentation" alt="" src="img/product/detail-5-gray.jpg" class="zoomImg" style="position: absolute; top: -279.173px; left: -390.482px; opacity: 0; width: 1315px; height: 1315px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="img/product/detail-6.jpg" data-caption="Push-up Jeans 6 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
-					<div data-toggle="zoom" data-image="img/product/detail-6.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-6.jpg" alt="Push-up Jeans 6"><img role="presentation" alt="" src="img/product/detail-6.jpg" class="zoomImg" style="position: absolute; top: -315.712px; left: -211.349px; opacity: 0; width: 1024px; height: 1024px; border: none; max-width: none; max-height: none;"></div></a>
+			<div class="col-lg-6 col-xl-7 pt-4 order-2 order-lg-1 photoswipe-gallery">
+                <a class="d-block mb-4" href="img/product/detail-3-gray.jpg" data-caption="Push-up Jeans 1 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
+					@foreach($product->images as $image)
+                    
+                    <div data-toggle="zoom" data-image="img/product/detail-3-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="/{{ $image->image_url}}" alt="{{$product->name}}"><img role="presentation" alt="{{$product->name}}" src="/{{ $image->image_url}}" class="zoomImg" style="position: absolute; top: -94.9611px; left: -187.658px; opacity: 0; width: 1313px; height: 1313px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="#" data-caption="Push-up Jeans 2 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
+                    @endforeach
+                </a>
 			</div>
 			<div class="col-lg-6 col-xl-4 pt-4 order-1 order-lg-2 ms-lg-auto">
 				<div class="sticky-top" style="top: 100px;">
@@ -109,7 +109,7 @@
 									<li>at the floundering legs, and only stopped</li>
 								</ul>
 							</div>
-							<div class="col-md-5"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-3.jpg" alt=""></div>
+							<div class="col-md-5"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-3.jpg" alt="{{$product->name}}"></div>
 						</div>
 					</div>
 					<div class="fade tab-pane" id="additional-information" role="tabpanel">
