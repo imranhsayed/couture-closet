@@ -18,6 +18,15 @@ class Product extends Model
 	}
 
     /**
+     * Get the primary image for product
+     * @return mixed
+     */
+    public function primaryImage()
+    {
+        return $this->hasOne(ProductImage::class)->where('is_primary', true);
+    }
+
+    /**
      * Get the order items for the product.
      */
     public function orderItems()

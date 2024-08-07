@@ -3,7 +3,7 @@
 	&__selection-controls {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: var(--spacing-2);
+		gap: 4px;
 		align-items: center;
 		position: relative;
 		max-width: 120px;
@@ -11,8 +11,9 @@
 		input {
 			flex: 1;
 			text-align: center;
-			padding: 0 0 0 var(--spacing-3);
+			padding: 0 0 0 12px;
 			font-size: 16px;
+			max-width: 70px;
 
 			&:hover,
 			&:focus {
@@ -23,9 +24,8 @@
 
 	&__selection-control-buttons {
 		display: inline-flex;
-		border-radius: var(--border-radius-small);
-		border: var(--border-width-thick) solid var(--color-gray-50);
-		padding: var(--spacing-1);
+		border-radius: 4px;
+		padding: 4px;
 		height: 50px;
 	}
 
@@ -34,5 +34,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		background-color: transparent;
+		border: none;
+		padding: 0 10px;
 	}
 }

@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="hero py-6">
+<section class="hero">
     <div class="container">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0 ">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item active">Shopping cart </li>
         </ol>
         <!-- Hero Content-->
