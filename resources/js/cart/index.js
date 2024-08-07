@@ -19,19 +19,20 @@ const { subscribe } = zustand.stores.globalStore;
 class Cart extends HTMLElement {
 	constructor() {
 		super();
-		
+
 		// Subscribe.
 		subscribe( this.update.bind( this ) );
 	}
-	
+
 	update( state ) {
 		this.updateCartMarkup( state.cart );
 	}
-	
+
 	updateCartMarkup( cartData ) {
 		fetch( '/cart-details', {
 			method: 'POST',
 			headers: {
+                'Content-Type': 'application/json',
 				'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
 			},
 			body: JSON.stringify( {
