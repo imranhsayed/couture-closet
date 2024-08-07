@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="hero py-6">
+<section class="hero">
     <div class="container">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb ps-0 ">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item active">Shopping cart </li>
         </ol>
         <!-- Hero Content-->
@@ -29,7 +29,7 @@
 				        </cc-cart-items>
 			        </div>
 			        <div class="d-flex justify-content-between flex-column flex-lg-row mb-5 mb-lg-0">
-				        <a class="btn btn-link" href="#">
+				        <a class="btn btn-link" href="/shop">
 					        <img src="pictures/black-left.svg" alt="Right Icon" style="width: 16px; height: 16px;">
 					        Continue Shopping
 				        </a>
@@ -43,14 +43,7 @@
 				        <div class="card-body py-4">
 					        <table class="table card-text">
 						        <tbody class="cart-summary-items">
-							        <tr>
-								        <td class="py-4">Back T-Shirtx2</td>
-								        <td class="py-4 text-end text-muted">$250.00</td>
-							        </tr>
-							        <tr>
-								        <th class="pt-4 border-0">Total</th>
-								        <td class="pt-4 text-end h3 fw-normal border-0">$390.00</td>
-							        </tr>
+									{{--Items will be added by JavaScript here--}}
 						        </tbody>
 					        </table>
 					        <p class="text-muted text-sm">Proceed to checkout to calculate <span class="fw-bold">Shipping</span> and <span class="fw-bold">taxes</span></p>
