@@ -4,11 +4,12 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\UserAddressController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
 
- 
+
 Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welcome' );
 
 // Public Routes
@@ -21,6 +22,7 @@ Route::get('/categories', [ProductController::class, 'fetchCategories']);
  * Product Route.
  */
 Route::get( '/product', [ ProductController::class, 'index' ] )->name( 'product.index' );
+Route::get('/product/{product}', [ ProductController::class, 'show' ])->name( 'product.show' );
 Route::get( '/product/review/', [ ProductReviewController::class, 'create' ] )->name( 'product.leave.review' );
 Route::post( '/product/review', [ ProductReviewController::class, 'store' ] )->name( 'product.review.store' );
 
@@ -31,9 +33,29 @@ Route::get('/cart', function () {
 
 // Cart Details.
 Route::post( '/cart-details', function () {
-	$view = view( 'cart-details' )->render();
+    $requestPayload = request()->all();
+    $products = [];
+    $amount = 0;
+    foreach ($requestPayload['products'] as $product)
+    {
+        $srcProduct = Product::find($product['productId']);
+        $totalPrice = $srcProduct->price * $product['quantity'];
+        $amount += $totalPrice;
+        $products[] = [
+            'id' => $srcProduct->id,
+            'unit_price' => $srcProduct->price,
+            'quantity' => $product['quantity'],
+            'stock_quantity' => $srcProduct->stock_quantity,
+            'amount' => round($totalPrice, 2)
+        ];
+    }
 
-	return response()->json( [ 'html' => $view, 'success' => true, ] );
+    $data = [
+        'products' => $products,
+        'amount' => round($amount, 2)
+    ];
+
+	return response()->json( [ 'data'=> $data, 'success' => true ] );
 } )->name( 'cart-details' );
 
 // Route for the checkout page
@@ -66,11 +88,11 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 	Route::get('/checkout', function () {
 		return view('checkout');
 	})->name('checkout');
-	
+
 	Route::get('/order', function () {
 		return view('order');
 	})->name('order');
-	
+
 	// Route::get( '/projects', [ ProjectController::class, 'index' ] )->name( 'projects.index' );
 	// Route::get( '/projects/{project}', [ ProjectController::class, 'show' ] )->name( 'projects.show' );
 } );

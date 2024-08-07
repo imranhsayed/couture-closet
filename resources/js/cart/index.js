@@ -19,21 +19,20 @@ const { subscribe } = zustand.stores.globalStore;
 class Cart extends HTMLElement {
 	constructor() {
 		super();
-		
+
 		// Subscribe.
 		subscribe( this.update.bind( this ) );
-		console.log( 'sdsd', document.querySelector('meta[name="csrf-token"]').content );
-		
 	}
-	
+
 	update( state ) {
 		this.updateCartMarkup( state.cart );
 	}
-	
+
 	updateCartMarkup( cartData ) {
 		fetch( '/cart-details', {
 			method: 'POST',
 			headers: {
+                'Content-Type': 'application/json',
 				'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
 			},
 			body: JSON.stringify( {
@@ -53,10 +52,10 @@ class Cart extends HTMLElement {
 				return response.json();
 			} )
 			.then( data => {
-				console.log( 'data', data.html );
+				console.log( 'data', data );
 				if ( data.success ) {
 					// Update data.
-					this.innerHTML = data.html;
+					// this.innerHTML = data.html;
 				}
 			} )
 			.catch( error => {
