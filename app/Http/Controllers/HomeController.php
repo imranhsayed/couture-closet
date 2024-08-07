@@ -6,7 +6,7 @@ use App\Models\Product;
 use App\Models\Order;
 use App\Models\ProductReview;
 use App\Models\UserAddress;
-
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
@@ -40,6 +40,6 @@ class HomeController extends Controller
         // product reviews
         $productReviews = ProductReview::where('user_id', $userId)->latest()->paginate(10);
 
-	    return view( 'profile', compact( 'user', 'products' , 'orders', 'userAddresses', 'productReviews' ) );
+	    return view( 'home', compact( 'user', 'products' , 'orders', 'userAddresses', 'productReviews' ) );
     }
 }
