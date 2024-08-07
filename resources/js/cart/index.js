@@ -24,35 +24,35 @@ class Cart extends HTMLElement {
 	}
 
 	update( state ) {
-		this.fetchAndupdateCartMarkup( state.cart );
+		this.fetchAndUpdateCartMarkup( state.cart );
 	}
 	
-	fetchAndupdateCartMarkup( cartData ) {
+	fetchAndUpdateCartMarkup( cartData ) {
 		fetch( '/cart-details', {
 			method: 'POST',
 			headers: {
-                'Content-Type': 'application/json',
-				'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+				'Content-Type': 'application/json',
+				'X-CSRF-TOKEN': document.querySelector( 'meta[name="csrf-token"]' ).content,
 			},
-			body: JSON.stringify( {
-				...cartData
-			} ),
+			body: JSON.stringify( { ...cartData } ),
 		} )
 			.then( response => {
 				if ( ! response.ok ) {
-					if ( response.status === 422 ) {
-						return response.json().then( data => {
+					return response.json().then( data => {
+						if ( response.status === 422 ) {
 							const errors = data.errors;
 							// Handle validation errors here
-						} );
-					}
-					throw new Error( 'Network response was not ok' );
+							console.error( 'Validation errors:', errors );
+						} else {
+							console.error( 'Response status:', response.status, data );
+						}
+						throw new Error( 'Network response was not ok' );
+					} );
 				}
 				return response.json();
 			} )
 			.then( response => {
 				if ( response.success ) {
-					console.log( 'response', response.data );
 					// Update markup.
 					this.updateCartMarkup( response?.data ?? [] );
 					this.updateCartSummaryMarkup( response?.data ?? [] );
@@ -61,6 +61,7 @@ class Cart extends HTMLElement {
 			.catch( error => {
 				console.error( 'There was a problem with the fetch operation:', error );
 			} );
+		
 	}
 	
 	/**
@@ -78,14 +79,16 @@ class Cart extends HTMLElement {
 			<div class="cart-item">
 				<div class="row d-flex align-items-center text-start text-md-center">
 					<div class="col-12 col-md-5">
-					<a class="cart-remove close mt-3 d-md-none" href="#">
+					<a class="cart-remove close mt-3 d-md-none" href="javascript:void(0);">
 						 <i class="fa fa-times"> </i>
 						<div class="d-flex align-items-center">
-						<a href="#"><img class="cart-item-img" src="/pictures/Mask.jpg" alt=""></a>
-						<div class="cart-title text-start">
-							<a class="text-dark link-animated" href="#"><strong>Skull Tee</strong></a><br>
-							<span class="text-muted text-sm">Size: Large</span><br>
-				       </div>
+							<a href="/product?id=${product?.id ?? ''}">
+								<img style="object-fit: cover;" class="cart-item-img" src="${product?.image_url ?? ''}" alt="" width="80" height="90">
+							</a>
+							<div class="cart-title text-start">
+								<a class="text-dark link-animated" href="#"><strong>${product?.name ?? ''}</strong></a><br>
+								<span class="text-muted text-sm">Size: ${product?.size ?? ''}</span><br>
+					       </div>
 				        </div>
 			       </div>
 					<div class="col-12 col-md-7 mt-4 mt-md-0">
@@ -102,7 +105,7 @@ class Cart extends HTMLElement {
 									class="search-filters__selection-controls"
 									product-id="${product?.id ?? ''}"
 									min-value="1"
-									max-value="100"
+									max-value="${product?.stock_quantity ?? 100}"
 									selected-value="${ product?.quantity ?? 1 }"
 								>
 									<label for="inc-dec-${product?.id ?? ''}" style="display: none;">
@@ -139,11 +142,11 @@ class Cart extends HTMLElement {
 							  <div class="col-6 col-md-12 text-end text-md-center">$${product?.amount ?? ''}</div>
 						   </div>
 						 </div>
-						 <div class="col-2 d-none d-md-block text-center">
-							  <a class="cart-remove" href="#">
+						 <cc-remove-cart-item class="col-2 d-none d-md-block text-center" product-id="${product?.id ?? ''}">
+							<a class="cart-remove" href="javascript:void(0);">
 							   <img src="pictures/close.svg" alt="Close Icon" style="width: 12px !important; height: 12px !important;">
-						 </a>
-						</div>
+						    </a>
+						</cc-remove-cart-item>
 
 						</div>
 					</div>
@@ -167,10 +170,10 @@ class Cart extends HTMLElement {
 		
 		// Loop through products.
 		cartData?.products.forEach( ( product ) => [
-			cartItemsSummaryMarkup = `
+			cartItemsSummaryMarkup += `
 				<tr>
-			        <td class="py-4">Back T-Shirtx2</td>
-			        <td class="py-4 text-end text-muted">$${product.amount}</td>
+			        <td class="py-4">${product.name ?? ''} x ${product.quantity ?? ''}</td>
+			        <td class="py-4 text-end text-muted">$${product.amount ?? ''}</td>
 				</tr>
 			`
 		] );

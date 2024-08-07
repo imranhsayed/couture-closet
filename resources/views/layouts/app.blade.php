@@ -22,7 +22,7 @@
 <body>
     <div id="app">
 	    <nav class="navbar navbar-expand-lg bg-transparent border-0 shadow-0 navbar-light px-lg-5 ">
-		    <a class="navbar-brand d-flex align-items-center" href="#">
+		    <a class="navbar-brand d-flex align-items-center" href="/">
 			    <img src="/images/site-logo.svg" alt="Site logo" width="200" height="50" class="mr-1">
 		    </a>
 

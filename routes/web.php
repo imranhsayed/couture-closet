@@ -33,32 +33,31 @@ Route::get('/cart', function () {
 
 // Cart Details.
 Route::post( '/cart-details', function () {
-    $requestPayload = request()->all();
-    $products = [];
-    $amount = 0;
-    foreach ($requestPayload['products'] as $product)
-    {
-        $srcProduct = Product::with('primaryImage')->find($product['productId']);
-        $totalPrice = $srcProduct->price * $product['quantity'];
-        $amount += $totalPrice;
-        $products[] = [
-            'id' => $srcProduct->id,
-            'name' => $srcProduct->name,
-            'size' => $product['size'],
-            'image_url' => $srcProduct['primaryImage']['image_url'],
-            'unit_price' => $srcProduct->price,
-            'quantity' => $product['quantity'],
-            'stock_quantity' => $srcProduct->stock_quantity,
-            'amount' => round($totalPrice, 2)
-        ];
-    }
+	$requestPayload = request()->all();
+	$products       = [];
+	$amount         = 0;
+	foreach ( $requestPayload['products'] as $product ) {
+		$srcProduct = Product::with( 'primaryImage' )->find( $product['productId'] );
+		$totalPrice = $srcProduct->price * $product['quantity'];
+		$amount     += $totalPrice;
+		$products[] = [
+			'id'             => $srcProduct->id,
+			'name'           => $srcProduct->name,
+			'size'           => $product['size'] ?? '',
+			'image_url'      => $srcProduct['primaryImage']['image_url'],
+			'unit_price'     => $srcProduct->price,
+			'quantity'       => $product['quantity'],
+			'stock_quantity' => $srcProduct->stock_quantity,
+			'amount'         => round( $totalPrice, 2 ),
+		];
+	}
 
-    $data = [
-        'products' => $products,
-        'amount' => round($amount, 2)
-    ];
+	$data = [
+		'products' => $products,
+		'amount'   => round( $amount, 2 ),
+	];
 
-	return response()->json( [ 'data'=> $data, 'success' => true ] );
+	return response()->json( [ 'data' => $data, 'success' => true ] );
 } )->name( 'cart-details' );
 
 // Route for the checkout page
