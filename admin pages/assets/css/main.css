@@ -5948,7 +5948,7 @@ input::file-selector-button {
 .input-style-8 input,
 .input-style-8 textarea {
   width: 100%;
-  background: #fff;
+  background: #f9f9f9;
   border: 1px solid #9B8338;
   border-radius: 4px;
   width: 300px;
