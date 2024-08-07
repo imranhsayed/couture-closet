@@ -1,10 +1,11 @@
 @props( [
-	'name'      => '',
-	'value'     => 1,
-	'min_value' => 0,
-	'max_value' => 0,
-	'id'        => '',
-	'label'     => '',
+	'name'       => '',
+	'value'      => 1,
+	'min_value'  => 0,
+	'max_value'  => 0,
+	'id'         => '',
+	'label'      => '',
+	'product_id' => 0,
 ] )
 
 @php
