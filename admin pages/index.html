@@ -307,6 +307,115 @@
                 <!-- end row -->
             </div>
             <!-- title-wrapper end -->
+             
+            <!-- dash Stats section -->
+            <div class="row">
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                <div class="icon-card mb-30">
+                    <div class="icon purple">
+                    <i class="lni lni-cart-full"></i>
+                    </div>
+                    <div class="content">
+                    <h6 class="mb-10">Orders</h6>
+                    <h3 class="text-bold mb-10">37</h3>
+                    <!-- // Query to count new orders in the last 7 days
+                        const query = `
+                        SELECT COUNT(*) AS newOrders
+                        FROM orders
+                        WHERE order_date >= NOW() - INTERVAL 7 DAY
+                        `; -->
+                    <p class="text-sm text-success"> <i class="lni lni-arrow-up"></i> +2.00% <span class="text-gray">(Last 7
+                        Days)</span></p>
+                    <!-- query to count new orders in the last 7 days and the previous 7 days
+                        const query = `
+                            SELECT 
+                            (SELECT COUNT(*) FROM orders WHERE order_date >= NOW() - INTERVAL 7 DAY) AS currentPeriod,
+                            (SELECT COUNT(*) FROM orders WHERE order_date >= NOW() - INTERVAL 7 DAY AND order_date < NOW() - INTERVAL 7 DAY) AS previousPeriod
+                        `; 
+                            const rateOfChange = ((currentPeriod - previousPeriod) / previousPeriod) * 100;
+                            const rateOfChangeFormatted = rateOfChange.toFixed(2) + '%';
+                        -->
+                    <!-- <p class="text-sm text-danger"> <i class="lni lni-arrow-down"></i> -2.00% <span class="text-gray">(1 Week)</span></p> -->
+                    </div>
+                </div>
+                <!-- End Icon Cart -->
+                </div>
+                <!-- End Col -->
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                <div class="icon-card mb-30">
+                    <div class="icon success">
+                    <i class="lni lni-dollar"></i>
+                    </div>
+                    <div class="content">
+                    <h6 class="mb-10">Total Revenue</h6>
+                    <h3 class="text-bold mb-10">$1,479</h3>
+                    <p class="text-sm text-success">
+                        <i class="lni lni-arrow-up"></i> +5.45%
+                        <span class="text-gray">This Week</span>
+                    </p>
+                    </div>
+                </div>
+                <!-- End Icon Cart -->
+                </div>
+                <!-- End Col -->
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                <div class="icon-card mb-30">
+                    <div class="icon primary">
+                    <i class="lni lni-t-shirt"></i>
+                    </div>
+                    <div class="content">
+                    <h6 class="mb-10">Total Products</h6>
+                    <h3 class="text-bold mb-10">567</h3>
+                    <p class="text-sm text-success">
+                        <i class="lni lni-layers"></i> 35
+                        <span class="text-gray">Categories</span>
+                    </p>
+                    </div>
+                </div>
+                <!-- End Icon Cart -->
+                </div>
+                <!-- End Col -->
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                <div class="icon-card mb-30">
+                    <div class="icon orange">
+                    <i class="lni lni-user"></i>
+                    </div>
+                    <div class="content">
+                    <h6 class="mb-10">Users</h6>
+                    <h3 class="text-bold mb-10">67</h3>
+                    <p class="text-sm text-danger">
+                        <i class="lni lni-arrow-down"></i> -5.00%
+                        <span class="text-gray"> Decrease</span>
+                    </p>
+                    </div>
+                </div>
+                <!-- End Icon Cart -->
+                </div>
+                <!-- End Col -->
+            </div>
+            <!-- End Row -->
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="card-style mb-30">
+                    <div class="title d-flex flex-wrap justify-content-between">
+                    <div class="left">
+                        <h6 class="text-medium mb-10">Weekly Sales</h6>
+                        <h3 class="text-bold">$1,479</h3>
+                        <!-- Total sales for the last 7 days -->
+                    </div>
+                    </div>
+                    <!-- End Title -->
+                    <div class="chart">
+                    <canvas id="Chart1" style="width: 100%; height: 400px; margin-left: -35px;"></canvas>
+                    </div>
+                    <!-- End Chart -->
+                </div>
+                </div>
+                <!-- End Col -->
+                <!-- End Col -->
+            </div>
+            <!-- End Row -->
+            <!-- dash stats ends -->
 
         </div>
         <!-- End container -->
