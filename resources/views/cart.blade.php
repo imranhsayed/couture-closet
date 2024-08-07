@@ -217,7 +217,7 @@
                         </table>
                     </div>
                     <div class="card-footer overflow-hidden p-0">
-                        <div class="d-grid"> <a class="btn btn-primary py-3 text-white" href="/chekout">
+                        <div class="d-grid"> <a class="btn btn-primary py-3 text-white" href="/checkout">
                                 Proceed to Checkout
                                 <img src="pictures/white-right.svg" alt="Right Icon" class="ms-2"
                                     style="width: 16px; height: 16px;">
