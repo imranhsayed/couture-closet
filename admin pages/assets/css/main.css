@@ -5889,3 +5889,18 @@ h6,
 }
 
 
+form a {
+  --bs-link-color: #9B8338;
+  color: #9B8338;
+}
+
+input::file-selector-button {
+  font-weight: bold;
+  color: #9B8338;
+  padding-right: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 1em;
+  border: thin solid grey;
+  border-radius: 10px;
+}
