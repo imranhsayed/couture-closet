@@ -38,11 +38,14 @@ Route::post( '/cart-details', function () {
     $amount = 0;
     foreach ($requestPayload['products'] as $product)
     {
-        $srcProduct = Product::find($product['productId']);
+        $srcProduct = Product::with('primaryImage')->find($product['productId']);
         $totalPrice = $srcProduct->price * $product['quantity'];
         $amount += $totalPrice;
         $products[] = [
             'id' => $srcProduct->id,
+            'name' => $srcProduct->name,
+            'size' => $product['size'],
+            'image_url' => $srcProduct['primaryImage']['image_url'],
             'unit_price' => $srcProduct->price,
             'quantity' => $product['quantity'],
             'stock_quantity' => $srcProduct->stock_quantity,
