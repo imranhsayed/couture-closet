@@ -21,7 +21,51 @@
 <section>
     <div class="container">
         <cc-cart>
-	        Loading...
+	        <div class="row mb-5">
+		        <div class="col-lg-8 pe-xl-5">
+			        <div class="cart mb-5">
+				        <cc-cart-items class="cart-body cart-items">
+					        Loading...
+				        </cc-cart-items>
+			        </div>
+			        <div class="d-flex justify-content-between flex-column flex-lg-row mb-5 mb-lg-0">
+				        <a class="btn btn-link" href="#">
+					        <img src="pictures/black-left.svg" alt="Right Icon" style="width: 16px; height: 16px;">
+					        Continue Shopping
+				        </a>
+			        </div>
+		        </div>
+		        <div class="col-lg-4">
+			        <div class="card mb-5 bg-light shadow-none">
+				        <div class="card-header bg-dark shadow-none">
+					        <h6 class="mb-0 text-white">Order Summary</h6>
+				        </div>
+				        <div class="card-body py-4">
+					        <table class="table card-text">
+						        <tbody class="cart-summary-items">
+							        <tr>
+								        <td class="py-4">Back T-Shirtx2</td>
+								        <td class="py-4 text-end text-muted">$250.00</td>
+							        </tr>
+							        <tr>
+								        <th class="pt-4 border-0">Total</th>
+								        <td class="pt-4 text-end h3 fw-normal border-0">$390.00</td>
+							        </tr>
+						        </tbody>
+					        </table>
+					        <p class="text-muted text-sm">Proceed to checkout to calculate <span class="fw-bold">Shipping</span> and <span class="fw-bold">taxes</span></p>
+				        </div>
+				        <div class="card-footer overflow-hidden p-0">
+					        <div class="d-grid"> <a class="btn btn-primary py-3 text-white" href="/checkout">
+							        Proceed to Checkout
+							        <img src="/pictures/white-right.svg" alt="Right Icon" class="ms-2"
+							             style="width: 16px; height: 16px;">
+						        </a>
+					        </div>
+				        </div>
+			        </div>
+		        </div>
+	        </div>
         </cc-cart>
     </div>
 </section>

@@ -23,8 +23,7 @@
     <div id="app">
 	    <nav class="navbar navbar-expand-lg bg-transparent border-0 shadow-0 navbar-light px-lg-5 ">
 		    <a class="navbar-brand d-flex align-items-center" href="#">
-			    <img src="/images/site-logo.svg" alt="Site logo" width="50" height="50" class="mr-1">
-				<span class="h5 mb-0 ml-1">Couture Closet</span>
+			    <img src="/images/site-logo.svg" alt="Site logo" width="200" height="50" class="mr-1">
 		    </a>
 
 		    <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +60,7 @@
 									@foreach($brands as $brand)
 									<a class="dropdown-item ps-lg-0" href="/shop">{{ $brand->value}}</a>
 									@endforeach
-									@else 
+									@else
 									<p>No Brand found.</p>
 									@endif
 							    </div>
@@ -164,8 +163,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-5 pe-lg-5 pe-xl-6 mb-5 mb-lg-0">
-					<a href="/"><img src="/images/site-logo-white.svg" alt="Site logo" width="50" height="50" class="mb-2"></a>
-					<span class="h5 mb-0 ml-1">Couture Closet</span>
+					<a href="/"><img src="/images/site-logo-white.svg" alt="Site logo" width="200" height="50" class="mb-2"></a>
 					<p class="text-sm mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur cum dolor doloribus harum, hic incidunt maxime reiciendis repellendus temporibus velit? Commodi, earum eveniet illum laudantium maxime minus nam pariatur voluptatum.</p>
 				</div>
 				<div class="col-lg-7">
