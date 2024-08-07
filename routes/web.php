@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductReviewController;
@@ -33,32 +34,31 @@ Route::get('/cart', function () {
 
 // Cart Details.
 Route::post( '/cart-details', function () {
-    $requestPayload = request()->all();
-    $products = [];
-    $amount = 0;
-    foreach ($requestPayload['products'] as $product)
-    {
-        $srcProduct = Product::with('primaryImage')->find($product['productId']);
-        $totalPrice = $srcProduct->price * $product['quantity'];
-        $amount += $totalPrice;
-        $products[] = [
-            'id' => $srcProduct->id,
-            'name' => $srcProduct->name,
-            'size' => $product['size'],
-            'image_url' => $srcProduct['primaryImage']['image_url'],
-            'unit_price' => $srcProduct->price,
-            'quantity' => $product['quantity'],
-            'stock_quantity' => $srcProduct->stock_quantity,
-            'amount' => round($totalPrice, 2)
-        ];
-    }
+	$requestPayload = request()->all();
+	$products       = [];
+	$amount         = 0;
+	foreach ( $requestPayload['products'] as $product ) {
+		$srcProduct = Product::with( 'primaryImage' )->find( $product['productId'] );
+		$totalPrice = $srcProduct->price * $product['quantity'];
+		$amount     += $totalPrice;
+		$products[] = [
+			'id'             => $srcProduct->id,
+			'name'           => $srcProduct->name,
+			'size'           => $product['size'] ?? '',
+			'image_url'      => $srcProduct['primaryImage']['image_url'],
+			'unit_price'     => $srcProduct->price,
+			'quantity'       => $product['quantity'],
+			'stock_quantity' => $srcProduct->stock_quantity,
+			'amount'         => round( $totalPrice, 2 ),
+		];
+	}
 
-    $data = [
-        'products' => $products,
-        'amount' => round($amount, 2)
-    ];
+	$data = [
+		'products' => $products,
+		'amount'   => round( $amount, 2 ),
+	];
 
-	return response()->json( [ 'data'=> $data, 'success' => true ] );
+	return response()->json( [ 'data' => $data, 'success' => true ] );
 } )->name( 'cart-details' );
 
 // Route for the checkout page
@@ -102,10 +102,9 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 
 // Admin Routes
 Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
-	// Product Management Routes
-    Route::get( '/admin', function() {
-        return view( 'admin.index' );
-    } )->name( 'admin.index' );
+	// admin dashboard
+    Route::get( '/admin', [ AdminController::class, 'index' ] )->name( 'admin.index' );
+    Route::get( '/admin/charts', [ AdminController::class, 'charts' ] )->name( 'admin.charts' );
 	// Route::get( '/admin/inquiries', [ InquiryController::class, 'index' ] )->name( 'admin.inquiries.index' );
 	// Route::post( '/admin/inquiries', [ InquiryController::class, 'store' ] )->name( 'admin.inquiries.store' );
 	// Route::put( '/admin/inquiries/{id}', [ InquiryController::class, 'update' ] )->name( 'admin.inquiries.update' );

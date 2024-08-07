@@ -50,7 +50,7 @@ TabManager.init();
  * @type {{user_address(): void, user_address_province(): void}}
  */
 const EventManager = {
-    show_user_address_province() {
+    showUserAddressProvince() {
         // cities from each province
         $('#user_address #province').change(function () {
             const selectedProvince = $(this).val();
@@ -68,7 +68,7 @@ const EventManager = {
             }
         });
     },
-    add_user_address() {
+    addUserAddress() {
         // user's address
         $('#user_address').submit(function (e) {
             e.preventDefault();
@@ -91,7 +91,6 @@ const EventManager = {
                 data: $(this).serialize(),
                 dataType: 'json',
                 success: function (response) {
-                    console.log(response);
                     if (response.success) {
                         $('#addressModal').modal('hide');
                         //reset the form's data
@@ -117,7 +116,7 @@ const EventManager = {
             });
         }
     },
-    address_modal_listener() {
+    addressModalListener() {
         let modal = $('#addressModal');
         // on show
         modal.on('show.bs.modal', function (event) {
@@ -169,7 +168,7 @@ const EventManager = {
 }
 
 // invoke event
-EventManager.show_user_address_province();
-EventManager.add_user_address();
-EventManager.address_modal_listener();
+EventManager.showUserAddressProvince();
+EventManager.addUserAddress();
+EventManager.addressModalListener();
 
