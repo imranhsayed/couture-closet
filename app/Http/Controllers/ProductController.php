@@ -5,15 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
-<<<<<<< HEAD
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductImage;
 use Exception;
 use Illuminate\Support\Facades\DB;
-=======
-use App\Models\ProductReview;
->>>>>>> fe70b39c6ecef635622dbffa2e49332cc3be849e
 
 class ProductController extends Controller
 {
@@ -29,8 +25,22 @@ class ProductController extends Controller
             return view('admin.products.index', compact('title', 'products' ) );
         }
 
+<<<<<<< HEAD
 	    $title = "Single Product!";
 	    return view( 'product.index', compact( 'title' ) );
+=======
+        $products =Product::with('images')->get();
+
+        $categories = Category::where('name', 'Size')->get();
+
+        $brands = Category::where('name', 'Brand')->get();
+
+        $demographies = Category::where('name', 'demography')->get();
+        //$product = Product::with(['categories', 'images'])->find($product->id);
+
+	    return view( 'product.index', compact( 'title', 'products','categories','brands','demographies') );
+        
+>>>>>>> daebcfcfe9d33b209d1331a3bda079c3b8f0098c
     }
 
     public function fetchCategories()
