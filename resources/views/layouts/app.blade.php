@@ -22,37 +22,32 @@
 <body>
     <div id="app">
 	    <nav class="navbar navbar-expand-lg bg-transparent border-0 shadow-0 navbar-light px-lg-5 ">
-		    <a class="navbar-brand" href="index.html">
-			    <img src="/images/site-logo.svg" alt="Site logo" width="200" height="50">
+		    <a class="navbar-brand d-flex align-items-center" href="/">
+			    <img src="/images/site-logo.svg" alt="Site logo" width="200" height="50" class="mr-1">
 		    </a>
 
 		    <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
 			    <svg class="svg-icon navbar-icon">
-				    <use xlink:href="#menu-hamburger-1"> </use>
+				    <use xlink:href="#menu-hamburger-1"></use>
 			    </svg>
 		    </button>
 		    <div class="collapse navbar-collapse" id="navbarContent">
 				{{--Menu--}}
 			    <ul class="navbar-nav mt-3 mt-lg-0">
 				    <li class="nav-item active">
-					    <a class="nav-link" href="#" aria-haspopup="true" aria-expanded="false">Home</a>
+					    <a class="nav-link" href="/" aria-haspopup="true" aria-expanded="false">Home</a>
 				    </li>
 				    <li class="nav-item">
-					    <a class="nav-link" href="#" aria-haspopup="true" aria-expanded="false">About</a>
+					    <a class="nav-link" href="/about" aria-haspopup="true" aria-expanded="false">About</a>
 				    </li>
 				    <li class="nav-item dropdown">
 					    <a class="nav-link dropdown-toggle" id="shopDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
 					    <div class="dropdown-menu dropdown-menu-md dropdown-menu-animated py-0" aria-labelledby="shopDropdown">
 						    <div class="row">
-							    <div class="col-lg-4 col-sm-6 p-lg-5">
-								    <h6 class="dropdown-header h6 ps-lg-0">Shop pages</h6>
-								    <a class="dropdown-item ps-lg-0" href="/shop">Shop Products </a><a class="dropdown-item ps-lg-0" href="category-full-sidebar.html">Full width with category menu </a><a class="dropdown-item ps-lg-0" href="category-big-products.html">Full width with big products </a><a class="dropdown-item ps-lg-0" href="category-boxed.html">Fixed width </a><a class="dropdown-item ps-lg-0" href="category-sidebar.html">Fixed width &amp; sidebar </a><a class="dropdown-item ps-lg-0" href="category-masonry.html">Fixed width &amp; masonry layout<span class="badge badge-primary-light ms-1">New</span> </a><a class="dropdown-item ps-lg-0" href="category-categories.html">Subcategories </a>
-							    </div>
-							    <div class="col-lg-4 col-sm-6 p-lg-5">
-								    <h6 class="dropdown-header h6 ps-lg-0">Product pages</h6>
-								    <a class="dropdown-item ps-lg-0" href="detail-1.html">Product with sticky info </a><a class="dropdown-item ps-lg-0" href="detail-2.html">Product with background </a><a class="dropdown-item ps-lg-0" href="detail-3.html">Product standard  </a>
-							    </div>
-							    <div class="col-lg-4 d-none d-lg-block position-relative"><img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/kyle-loftus-596319-unsplash-cropped.jpg" alt=""></div>
+							    @include('partials.header')
+							    <div class="col-lg-4 d-none d-lg-block position-relative">
+									<img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/kyle-loftus-596319-unsplash-cropped.jpg" alt="">
+									</div>
 						    </div>
 					    </div>
 				    </li>
@@ -79,6 +74,7 @@
 					    </a>
 					    @if (\Auth::check())
 							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="user/profile">Profile</a>
 								<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
 															document.getElementById('logout-form').submit();">
 									{{ __('Logout') }}
@@ -102,7 +98,7 @@
 						@endif
 				    </li>
 				    <li class="list-inline-item position-relative ml-2">
-					    <a class="text-dark text-primary-hover" href="#" data-bs-toggle="modal" data-bs-target="#sidebarCart">
+					    <a class="text-dark text-primary-hover" href="/cart">
 						    <svg class="svg-icon navbar-icon">
 							    <use xlink:href="#retail-bag-1"> </use>
 						    </svg>
@@ -149,35 +145,24 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-5 pe-lg-5 pe-xl-6 mb-5 mb-lg-0">
-					<a href="/"><img src="/images/site-logo-white.svg" alt="Site logo" width="200" height="50"></a>
+					<a href="/"><img src="/images/site-logo-white.svg" alt="Site logo" width="200" height="50" class="mb-2"></a>
 					<p class="text-sm mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur cum dolor doloribus harum, hic incidunt maxime reiciendis repellendus temporibus velit? Commodi, earum eveniet illum laudantium maxime minus nam pariatur voluptatum.</p>
 				</div>
 				<div class="col-lg-7">
 					<div class="row">
-						<div class="col-lg-4">
-							<a class="d-lg-none block-toggler my-3" data-bs-toggle="collapse" href="#footerMenu0" aria-expanded="false" aria-controls="footerMenu0">Shop<span class="block-toggler-icon"></span></a>
-							<!-- Footer collapsible menu-->
-							<div class="expand-lg collapse" id="footerMenu0">
-								<h6 class="letter-spacing-1 mb-4 d-none d-lg-block">Shop</h6>
-								<ul class="list-unstyled text-sm pt-2 pt-lg-0">
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">For Women</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">For Men</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Stores</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Our Blog</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Shop</a></li>
-								</ul>
-							</div>
-						</div>
+					@include('partials.menu')
+						
 						<div class="col-lg-4"><a class="d-lg-none block-toggler my-3" data-bs-toggle="collapse" href="#footerMenu2" aria-expanded="false" aria-controls="footerMenu2">Your account<span class="block-toggler-icon"></span></a>
 							<!-- Footer collapsible menu-->
 							<div class="expand-lg collapse" id="footerMenu2">
 								<h6 class="letter-spacing-1 mb-4 d-none d-lg-block">Your account</h6>
 								<ul class="list-unstyled text-sm pt-2 pt-lg-0">
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Login</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Register</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Wishlist</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Our Products</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Checkouts</a></li>
+									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/login">Login</a></li>
+									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/register">Register</a></li>
+									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/cart">Cart</a></li>
+									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/checkout">Checkout</a></li>
+									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/wishlist">Wishlist</a></li>
+									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/shop">Our Products</a></li>
 								</ul>
 							</div>
 						</div>
@@ -186,11 +171,9 @@
 							<div class="expand-lg collapse" id="footerMenu1">
 								<h6 class="letter-spacing-1 mb-4 d-none d-lg-block">Company</h6>
 								<ul class="list-unstyled text-sm pt-2 pt-lg-0">
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Login</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Register</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Wishlist</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Our Products</a></li>
-									<li class="mb-2"> <a class="text-muted text-dark-hover link-animated" href="#">Checkouts</a></li>
+									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/about">About Us</a></li>
+									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/">Home</a></li>
+									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/shop">Shop</a></li>
 								</ul>
 							</div>
 						</div>

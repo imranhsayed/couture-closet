@@ -18,6 +18,17 @@ class ProductController extends Controller
 	    return view( 'product.index', compact( 'title' ) );
     }
 
+    public function fetchCategories()
+    {
+    
+        // Pass the categories to the view
+        return view('layouts.app', compact('categories'));
+    }
+
+    public function fetchBrands(){
+        return view('layouts.app', compact('brands'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -39,7 +50,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $product = Product::with('categories')->find($product->id);
+        return response()->json($product->toJson());
     }
 
     /**

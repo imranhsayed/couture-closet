@@ -9,6 +9,8 @@ class Product extends Model
 {
     use HasFactory;
 
+	protected $fillable = ['name', 'value', 'description'];
+
 	// Define the relationship
 	public function images()
 	{
@@ -16,10 +18,27 @@ class Product extends Model
 	}
 
     /**
+     * Get the primary image for product
+     * @return mixed
+     */
+    public function primaryImage()
+    {
+        return $this->hasOne(ProductImage::class)->where('is_primary', true);
+    }
+
+    /**
      * Get the order items for the product.
      */
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    /**
+     * Get the categories for the product.
+     */
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'product_categories', 'product_id', 'category_id');
     }
 }

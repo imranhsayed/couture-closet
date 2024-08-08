@@ -1,0 +1,41 @@
+.search-filters {
+
+	&__selection-controls {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 4px;
+		align-items: center;
+		position: relative;
+		max-width: 120px;
+
+		input {
+			flex: 1;
+			text-align: center;
+			padding: 0 0 0 12px;
+			font-size: 16px;
+			max-width: 70px;
+
+			&:hover,
+			&:focus {
+				border-color: transparent;
+			}
+		}
+	}
+
+	&__selection-control-buttons {
+		display: inline-flex;
+		border-radius: 4px;
+		padding: 4px;
+		height: 50px;
+	}
+
+	&__increment-btn,
+	&__decrement-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: transparent;
+		border: none;
+		padding: 0 10px;
+	}
+}

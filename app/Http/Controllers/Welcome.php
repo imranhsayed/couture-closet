@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class Welcome extends Controller
 {
@@ -14,8 +15,11 @@ class Welcome extends Controller
 	 */
 	public function index()
 	{
+		
 		$products = Product::with('images')->get();
 
+		$products = Product::paginate(12);
+		
 		return view( 'welcome', compact( 'products' ) );
 	}
 }

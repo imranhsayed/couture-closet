@@ -123,3 +123,31 @@ export const activateTab = () => {
         $('#orders-tab').trigger('click');
     }
 }
+
+/**
+ * Remove item from cart.
+ *
+ * @param productId
+ * @return {null}
+ */
+export const removeCartItem = ( productId ) => {
+	// If product id is not passed, early return.
+	if ( ! productId ) {
+		return null;
+	}
+	
+	// Initialize.
+	const { cart } = getState();
+	const updatedProducts = cart.products.filter( product => product.productId !== productId );
+	
+	/**
+	 * Set the updated cart into the state.
+	 */
+	setState( {
+		cart: {
+			products: updatedProducts,
+			totalProductsCount: getTotalProductCount( updatedProducts ),
+		},
+	} );
+}
+

@@ -19,6 +19,13 @@
                         <hr>
                         <!-- the summary of user -->
                         <ul class="nav nav-tabs" id="profile" role="tablist">
+                            <!-- Info tab -->
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link tab-button" id="info-tab" data-bs-toggle="tab"
+                                        data-bs-target="#info" type="button" role="tab" aria-controls="info"
+                                        aria-selected="true" data-tab-name="info">Info
+                                </button>
+                            </li>
                             <!-- Orders tab -->
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link tab-button" id="orders-tab" data-bs-toggle="tab"
@@ -47,7 +54,51 @@
                         </ul>
 
                         <!-- the tab content -->
+                         
                         <div class="tab-content" id="order_content">
+                            <!-- Info tab content -->
+                             <div class="tab-pane fade" id="info" role="tabpanel">
+                             <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">First Name</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary"> {{$user->first_name}}</div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Last Name</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary"> {{$user->last_name}}</div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Email</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary"> {{ $user->email}}</div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Phone</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary"> {{ $user->telephone}}</div>
+                                </div>
+                                <hr>
+                                
+                            
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Address</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary"> Bay Area, San Francisco, CA</div>
+                            </div>
+                            <hr>
+                            
+                            <div class="row"><div class="col-sm-12"> <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a></div></div></div>
+                             </div>
                             <!-- Orders tab content -->
                             <div class="tab-pane fade" id="orders" role="tabpanel"
                                  aria-labelledby="orders-tab">
@@ -251,8 +302,7 @@
                             </div>
 
                             <!-- Reviews tab content -->
-                            <div class="tab-pane fade"
-                                 id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                            <div class="tab-pane fade"id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                                 <p></p>
                                 <h3>Your Reviews</h3>
                                 <table class="table table-striped">
