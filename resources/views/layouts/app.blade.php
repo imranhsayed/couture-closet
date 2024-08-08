@@ -74,8 +74,10 @@
 					    </a>
 					    @if (\Auth::check())
 							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="user/profile">Profile</a>
-								<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                <a class="dropdown-item" href="{{ route('user.profile') }}">
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
 															document.getElementById('logout-form').submit();">
 									{{ __('Logout') }}
 								</a>
@@ -84,7 +86,7 @@
 									@csrf
 								</form>
 								@if (\Auth::user()->is_admin)
-									<a class="dropdown-item" href="">
+									<a class="dropdown-item" href="{{ route('admin.index') }}">
 										Admin Panel
 									</a>
 								@endif
@@ -151,7 +153,7 @@
 				<div class="col-lg-7">
 					<div class="row">
 					@include('partials.menu')
-						
+
 						<div class="col-lg-4"><a class="d-lg-none block-toggler my-3" data-bs-toggle="collapse" href="#footerMenu2" aria-expanded="false" aria-controls="footerMenu2">Your account<span class="block-toggler-icon"></span></a>
 							<!-- Footer collapsible menu-->
 							<div class="expand-lg collapse" id="footerMenu2">

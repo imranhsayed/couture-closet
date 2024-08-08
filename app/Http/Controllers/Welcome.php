@@ -15,11 +15,8 @@ class Welcome extends Controller
 	 */
 	public function index()
 	{
-		
-		$products = Product::with('images')->get();
-
 		$products = Product::paginate(12);
-		
+
 		return view( 'welcome', compact( 'products' ) );
 	}
 }

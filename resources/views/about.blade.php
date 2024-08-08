@@ -5,7 +5,7 @@
     <div class="container">
         <h2 class="text-center">Company Background</h2>
         <p class="text-center text-secondary">
-        
+
         <h3>About Couture Closet</h3>
         <p>Welcome to Couture Closet, where fashion meets passion. At Couture Closet, we believe that clothing is not just about what you wear; it’s about expressing who you are. Our mission is to provide you with the latest trends and timeless pieces that make you feel confident and stylish.</p>
 
@@ -18,17 +18,17 @@
 
         <h3>Our Values</h3>
 
-        
+
         <p>We are committed to offering high-quality clothing that is both stylish and durable.
-Customer Satisfaction: Your satisfaction is our top priority. We strive to provide excellent customer service and a seamless shopping experience.
-Sustainability: We believe in sustainable fashion and are dedicated to making environmentally responsible choices in our products and practices.
-Join the Couture Closet Family
+        Customer Satisfaction: Your satisfaction is our top priority. We strive to provide excellent customer service and a seamless shopping experience.
+        Sustainability: We believe in sustainable fashion and are dedicated to making environmentally responsible choices in our products and practices.
+        Join the Couture Closet Family
 
-We invite you to explore our collection and discover the perfect pieces to enhance your wardrobe. Join our community of fashion-forward individuals and stay updated with the latest trends by following us on social media. Thank you for choosing Couture Closet – where your style is our passion.
-</p>
+        We invite you to explore our collection and discover the perfect pieces to enhance your wardrobe. Join our community of fashion-forward individuals and stay updated with the latest trends by following us on social media. Thank you for choosing Couture Closet – where your style is our passion.
+        </p>
 
 
-        
+
         <p class="text-center text-secondary">
             Our mission is to provide world-class software development services that meet the unique needs of our clients. We believe in building long-term partnerships based on trust, quality, and mutual respect. At TechVista Innovations Ltd., we are committed to continuous learning and improvement, ensuring that our solutions are not only innovative but also secure and reliable.
         </p>

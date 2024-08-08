@@ -30,82 +30,82 @@ class CategorySeeder extends Seeder
                 'description' => '',
             ],
             [
-                'name' => 'Size',
+                'name' => 'size',
                 'value' => 'XS',
                 'description' => 'Extra Small'
             ],
             [
-                'name' => 'Size',
+                'name' => 'size',
                 'value' => 'S',
                 'description' => 'Small',
             ],
             [
-                'name' => 'Size',
+                'name' => 'size',
                 'value' => 'M',
                 'description' => 'Medium',
             ],
             [
-                'name' => 'Size',
+                'name' => 'size',
                 'value' => 'L',
                 'description' => 'Large',
             ],
             [
-                'name' => 'Size',
+                'name' => 'size',
                 'value' => 'XL',
                 'description' => 'Extra Large'
             ],
             [
-                'name' => 'Size',
+                'name' => 'size',
                 'value' => 'XXL',
                 'description' => 'Double Extra Large'
             ],
             [
-                'name' => 'Brand',
+                'name' => 'brand',
                 'value' => 'Nike',
                 'description' => ''
             ],
             [
-                'name' => 'Brand',
+                'name' => 'brand',
                 'value' => 'Adidas',
                 'description' => ''
             ],
             [
-                'name' => 'Brand',
+                'name' => 'brand',
                 'value' => 'Gucci',
                 'description' => ''
             ],
             [
-                'name' => 'Brand',
+                'name' => 'brand',
                 'value' => 'Zara',
                 'description' => ''
             ],
             [
-                'name' => 'Brand',
+                'name' => 'brand',
                 'value' => 'H&M',
                 'description' => ''
             ],
             [
-                'name' => 'Brand',
+                'name' => 'brand',
                 'value' => 'Levi\'s',
                 'description' => ''
             ],
             [
-                'name' => 'Brand',
+                'name' => 'brand',
                 'value' => 'Ralph Lauren',
                 'description' => ''
             ],
             [
-                'name' => 'Brand',
+                'name' => 'brand',
                 'value' => 'Uniqlo',
                 'description' => ''
             ],
             [
-                'name' => 'Brand',
+                'name' => 'brand',
                 'value' => 'Gap',
                 'description' => ''
             ],
             [
-                'name' => 'Brand',
+                'name' => 'brand',
                 'value' => 'Calvin Klein',
                 'description' => ''
             ]

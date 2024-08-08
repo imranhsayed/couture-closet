@@ -88,18 +88,18 @@ export const removeFromCart = ( productId = 0 ) => {
 	if ( ! productId ) {
 		return null;
 	}
-	
+
 	// Initialize.
 	const { cart } = getState();
 	const updatedProducts = [...cart.products]; // Create a copy of the products array.
-	
+
 	// Loop through the cart array to find the product to remove.
 	for( let i = 0; i < updatedProducts.length; i++ ) {
 		// If the product exists.
 		if ( updatedProducts[ i ].productId === productId ) {
 			// Decrease the quantity by 1.
 			updatedProducts[ i ].quantity -= 1;
-			
+
 			// If the quantity becomes 0 or less, remove the product from the cart.
 			if ( updatedProducts[ i ].quantity <= 0 ) {
 				updatedProducts.splice( i, 1 );
@@ -107,7 +107,7 @@ export const removeFromCart = ( productId = 0 ) => {
 			break;
 		}
 	}
-	
+
 	/**
 	 * Set the updated cart into the state.
 	 */
@@ -165,7 +165,7 @@ export const activateTab = () => {
         tabTrigger.trigger('click');
     } else {
         // default active tab
-        $('#orders-tab').trigger('click');
+        $('#user-info').trigger('click');
     }
 }
 
@@ -180,11 +180,11 @@ export const removeEntireCartItem = ( productId ) => {
 	if ( ! productId ) {
 		return null;
 	}
-	
+
 	// Initialize.
 	const { cart } = getState();
 	const updatedProducts = cart.products.filter( product => product.productId !== productId );
-	
+
 	/**
 	 * Set the updated cart into the state.
 	 */

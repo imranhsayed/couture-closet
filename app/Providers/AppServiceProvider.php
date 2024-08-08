@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Providers;
-use App\Models\Product;
 use App\Models\Category;
 
 use Illuminate\Support\ServiceProvider;
