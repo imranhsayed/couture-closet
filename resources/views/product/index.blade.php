@@ -145,36 +145,14 @@
 					<div class="expand-lg collapse show" id="brandFilterMenu">
 						<h5 class="sidebar-heading d-none d-lg-block">Brands </h5>
 						<form class="mt-4 mt-lg-0" action="#">
+							@foreach($brands as $brand)
 							<div class="mb-3 mb-1">
 								<div class="form-check">
 									<input class="form-check-input" id="brand0" type="checkbox" name="clothes-brand" checked="">
-									<label class="form-check-label" for="brand0">Calvin Klein <small>(18)</small></label>
+									<label class="form-check-label" for="brand0">{{ $brand->value}} <small>(18)</small></label>
 								</div>
 							</div>
-							<div class="mb-3 mb-1">
-								<div class="form-check">
-									<input class="form-check-input" id="brand1" type="checkbox" name="clothes-brand" checked="">
-									<label class="form-check-label" for="brand1">Levi Strauss <small>(30)</small></label>
-								</div>
-							</div>
-							<div class="mb-3 mb-1">
-								<div class="form-check">
-									<input class="form-check-input" id="brand2" type="checkbox" name="clothes-brand">
-									<label class="form-check-label" for="brand2">Hugo Boss <small>(120)</small></label>
-								</div>
-							</div>
-							<div class="mb-3 mb-1">
-								<div class="form-check">
-									<input class="form-check-input" id="brand3" type="checkbox" name="clothes-brand">
-									<label class="form-check-label" for="brand3">Tomi Hilfiger <small>(70)</small></label>
-								</div>
-							</div>
-							<div class="mb-3 mb-1">
-								<div class="form-check">
-									<input class="form-check-input" id="brand4" type="checkbox" name="clothes-brand">
-									<label class="form-check-label" for="brand4">Tom Ford  <small>(110)</small></label>
-								</div>
-							</div>
+							@endforeach
 						</form>
 					</div>
 				</div>
