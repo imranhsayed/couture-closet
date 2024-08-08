@@ -183,30 +183,14 @@
 					<div class="expand-lg collapse" id="sizeFilterMenu">
 						<h5 class="sidebar-heading d-none d-lg-block">Size </h5>
 						<form class="mt-4 mt-lg-0" action="#">
+							@foreach($categories as $category)
 							<div class="mb-3 mb-1">
 								<div class="form-check">
 									<input class="form-check-input" id="size0" type="radio" name="size" checked="">
-									<label class="form-check-label" for="size0">Small</label>
+									<label class="form-check-label" for="size0">{{$category->description}}</label>
 								</div>
 							</div>
-							<div class="mb-3 mb-1">
-								<div class="form-check">
-									<input class="form-check-input" id="size1" type="radio" name="size">
-									<label class="form-check-label" for="size1">Medium</label>
-								</div>
-							</div>
-							<div class="mb-3 mb-1">
-								<div class="form-check">
-									<input class="form-check-input" id="size2" type="radio" name="size">
-									<label class="form-check-label" for="size2">Large</label>
-								</div>
-							</div>
-							<div class="mb-3 mb-1">
-								<div class="form-check">
-									<input class="form-check-input" id="size3" type="radio" name="size">
-									<label class="form-check-label" for="size3">X-Large</label>
-								</div>
-							</div>
+							@endforeach
 						</form>
 					</div>
 				</div>

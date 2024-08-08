@@ -15,8 +15,16 @@ class ProductController extends Controller
     public function index()
     {
 	    $title = "Single Product!";
+
         $products =Product::all();
-	    return view( 'product.index', compact( 'title', 'products') );
+
+        $categories = Category::where('name', 'Size')->get();
+
+        $brands = Category::where('name', 'Brand')->get();
+        //$product = Product::with(['categories', 'images'])->find($product->id);
+
+	    return view( 'product.index', compact( 'title', 'products', 'categories','brands') );
+        
     }
 
     public function fetchCategories()
