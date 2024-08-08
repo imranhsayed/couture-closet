@@ -75,7 +75,7 @@
 						<li class="page-item"><a class="page-arrow" href="#" aria-label="Next"><span aria-hidden="true">
                     <svg class="svg-icon page-icon">
                       <use xlink:href="#angle-right-1"> </use>
-                    </svg></span><span class="sr-only">Next     </span></a></li>
+                    </svg></span><span class="sr-only">Next</span></a></li>
 					</ul>
 				</nav>
 			</div>

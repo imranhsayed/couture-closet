@@ -16,14 +16,13 @@ class ProductController extends Controller
     {
 	    $title = "Single Product!";
 
-        $products =Product::with('images')->get();
+        $products =Product::with('images')->paginate(16);
         
         $categories = Category::where('name', 'Size')->get();
 
         $brands = Category::where('name', 'Brand')->get();
 
         $demographies = Category::where('name', 'demography')->get();
-        //$product = Product::with(['categories', 'images'])->find($product->id);
 
 	    return view( 'product.index', compact( 'title', 'products','categories','brands','demographies') );
         
