@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class ProductReview extends Model
 {
@@ -25,5 +26,10 @@ class ProductReview extends Model
             $rawOriginals[$key] = $value;
         }
         return $rawOriginals;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class); 
     }
 }

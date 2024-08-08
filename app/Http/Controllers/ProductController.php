@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\ProductReview;
 
 class ProductController extends Controller
 {
@@ -57,8 +58,12 @@ class ProductController extends Controller
         $all_products = Product::with('images')->paginate(4);
 
         $categories = Category::where('name', 'Size')->get();
+
+        $reviews = ProductReview::where('product_id', $product->id)
+                            ->with('user') 
+                            ->get();
         
-        return view('product.show', compact('product','all_products','categories'));
+        return view('product.show', compact('product','all_products','categories', 'reviews'));
     }
 
     /**
