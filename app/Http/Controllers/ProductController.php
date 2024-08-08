@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
+<<<<<<< HEAD
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductImage;
 use Exception;
 use Illuminate\Support\Facades\DB;
+=======
+use App\Models\ProductReview;
+>>>>>>> fe70b39c6ecef635622dbffa2e49332cc3be849e
 
 class ProductController extends Controller
 {
@@ -136,7 +140,15 @@ class ProductController extends Controller
 
         $categories = Category::where('name', 'Size')->get();
 
+<<<<<<< HEAD
         return view('product.show', compact('product','all_products','categories'));
+=======
+        $reviews = ProductReview::where('product_id', $product->id)
+                            ->with('user') 
+                            ->get();
+        
+        return view('product.show', compact('product','all_products','categories', 'reviews'));
+>>>>>>> fe70b39c6ecef635622dbffa2e49332cc3be849e
     }
 
     /**
