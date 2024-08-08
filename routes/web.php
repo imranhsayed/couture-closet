@@ -16,6 +16,9 @@ Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welc
 Route::get( '/shop', fn() => view( 'shop' ) )->name( 'shop' );
 Route::get( '/about', fn() => view( 'about' ) )->name( 'about' );
 Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
+Route::get('/termsandconditions', fn() => view('termsandconditions'))->name('termsandconditions');
+Route::get('/refund-policy', fn() => view('refund-policy'))->name('refund-policy');
+
 Route::get('/categories', [ProductController::class, 'fetchCategories']);
 
 /**
@@ -86,6 +89,13 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 
     // Order
 	Route::get( '/order/{order}', [ OrderController::class, 'show' ] ) ->name( 'order.show' );
+
+	Route::get('/order-confirmation', function () {
+		return view('order-confirmation');
+	})->name('order-confirmation');
+	Route::get('/order-details', function () {
+		return view('order-details');
+	})->name('order-details');
 
 	Route::get('/checkout', function () {
 		return view('checkout');
