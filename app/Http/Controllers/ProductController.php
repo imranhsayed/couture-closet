@@ -21,9 +21,11 @@ class ProductController extends Controller
         $categories = Category::where('name', 'Size')->get();
 
         $brands = Category::where('name', 'Brand')->get();
+
+        $demographies = Category::where('name', 'demography')->get();
         //$product = Product::with(['categories', 'images'])->find($product->id);
 
-	    return view( 'product.index', compact( 'title', 'products', 'categories','brands') );
+	    return view( 'product.index', compact( 'title', 'products', 'categories','brands','demographies') );
         
     }
 

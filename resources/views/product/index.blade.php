@@ -80,26 +80,13 @@
 					<div class="expand-lg collapse" id="categoriesMenu" role="menu">
 						<h5 class="sidebar-heading d-none d-lg-block">Category  </h5>
 						<div class="sidebar-icon-menu mt-4 mt-lg-0">
-							<div class="sidebar-icon-menu-item active" data-bs-toggle="collapse" data-bs-target="#subcategories_0" aria-expanded="" aria-controls="subcategories_0" role="menuitem">
-								<div class="d-flex align-items-center">
-									<svg class="svg-icon sidebar-icon">
-										<use xlink:href="#man"> </use>
-									</svg><a class="sidebar-icon-menu-link fw-bold me-2" href="#">Men's</a><span class="sidebar-icon-menu-count"> 120</span>
-								</div>
-								<div class="collapse show" id="subcategories_0">
-									<ul class="sidebar-icon-menu sidebar-icon-submenu">
-										<li class="sidebar-icon-submenu-item"><a class="sidebar-icon-submenu-link link-animated link-animated-light" href="#">Lorem ipsum   </a></li>
-										<li class="sidebar-icon-submenu-item"><a class="sidebar-icon-submenu-link link-animated link-animated-light" href="#">Dolor   </a></li>
-										<li class="sidebar-icon-submenu-item"><a class="sidebar-icon-submenu-link link-animated link-animated-light" href="#">Sit amet   </a></li>
-										<li class="sidebar-icon-submenu-item"><a class="sidebar-icon-submenu-link link-animated link-animated-light" href="#">Donec vitae   </a></li>
-									</ul>
-								</div>
-							</div>
+							
+							@foreach($demographies as $demogrphy)
 							<div class="sidebar-icon-menu-item" data-bs-toggle="collapse" data-bs-target="#subcategories_1" aria-controls="subcategories_1" role="menuitem">
 								<div class="d-flex align-items-center">
 									<svg class="svg-icon sidebar-icon">
 										<use xlink:href="#woman"> </use>
-									</svg><a class="sidebar-icon-menu-link fw-bold me-2" href="#">Woman's</a><span class="sidebar-icon-menu-count"> 55</span>
+									</svg><a class="sidebar-icon-menu-link fw-bold me-2" href="#">{{ $demogrphy->value}}</a><span class="sidebar-icon-menu-count"> 55</span>
 								</div>
 								<div class="collapse" id="subcategories_1">
 									<ul class="sidebar-icon-menu sidebar-icon-submenu">
@@ -110,21 +97,7 @@
 									</ul>
 								</div>
 							</div>
-							<div class="sidebar-icon-menu-item" data-bs-toggle="collapse" data-bs-target="#subcategories_2" aria-controls="subcategories_2" role="menuitem">
-								<div class="d-flex align-items-center">
-									<svg class="svg-icon sidebar-icon">
-										<use xlink:href="#shirt5-1"> </use>
-									</svg><a class="sidebar-icon-menu-link fw-bold me-2" href="#">T-Shirts</a><span class="sidebar-icon-menu-count"> 33</span>
-								</div>
-								<div class="collapse" id="subcategories_2">
-									<ul class="sidebar-icon-menu sidebar-icon-submenu">
-										<li class="sidebar-icon-submenu-item"><a class="sidebar-icon-submenu-link link-animated link-animated-light" href="#">Sit amet   </a></li>
-										<li class="sidebar-icon-submenu-item"><a class="sidebar-icon-submenu-link link-animated link-animated-light" href="#">Donec vitae   </a></li>
-										<li class="sidebar-icon-submenu-item"><a class="sidebar-icon-submenu-link link-animated link-animated-light" href="#">Lorem ipsum   </a></li>
-										<li class="sidebar-icon-submenu-item"><a class="sidebar-icon-submenu-link link-animated link-animated-light" href="#">Dolor   </a></li>
-									</ul>
-								</div>
-							</div>
+							@endforeach
 						</div>
 					</div>
 				</div>
