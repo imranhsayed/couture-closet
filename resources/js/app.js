@@ -10,7 +10,7 @@ import './store/zustand.js';
 import './store/data.js';
 
 /**
- * Main.
+ * Global.
  */
 import './main.js';
 
@@ -29,11 +29,3 @@ import './cart/notification.js';
  * User.
  */
 import './user/address.js';
-
-/**
- * Admin CRM
- */
-import './admin/main.js';
-import './admin/polyfill.js';
-import './admin/dashboard.js';
-import './admin/product.js';

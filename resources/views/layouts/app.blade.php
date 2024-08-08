@@ -44,26 +44,7 @@
 					    <a class="nav-link dropdown-toggle" id="shopDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
 					    <div class="dropdown-menu dropdown-menu-md dropdown-menu-animated py-0" aria-labelledby="shopDropdown">
 						    <div class="row">
-							    <div class="col-lg-4 col-sm-6 p-lg-5">
-								    <h6 class="dropdown-header h6 ps-lg-0">Category</h6>
-									@if(isset($categories))
-                					@foreach ($categories as $category)
-                    				<a class="dropdown-item ps-lg-0" href="/shop{category={{ $category->value }}}">{{ $category->value }}</a>
-                					@endforeach
-            						@else
-                					<p>No categories found.</p>
-            						@endif
-							    </div>
-							    <div class="col-lg-4 col-sm-6 p-lg-5">
-								    <h6 class="dropdown-header h6 ps-lg-0">Brand</h6>
-									@if(isset($brands))
-									@foreach($brands as $brand)
-									<a class="dropdown-item ps-lg-0" href="/shop">{{ $brand->value}}</a>
-									@endforeach
-									@else
-									<p>No Brand found.</p>
-									@endif
-							    </div>
+							    @include('partials.header')
 							    <div class="col-lg-4 d-none d-lg-block position-relative">
 									<img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/kyle-loftus-596319-unsplash-cropped.jpg" alt="">
 									</div>
@@ -171,22 +152,8 @@
 				</div>
 				<div class="col-lg-7">
 					<div class="row">
-						<div class="col-lg-4">
-							<a class="d-lg-none block-toggler my-3" data-bs-toggle="collapse" href="#footerMenu0" aria-expanded="false" aria-controls="footerMenu0">Shop<span class="block-toggler-icon"></span></a>
-							<!-- Footer collapsible menu-->
-							<div class="expand-lg collapse" id="footerMenu0">
-								<h6 class="letter-spacing-1 mb-4 d-none d-lg-block">Shop</h6>
-								<ul class="list-unstyled text-sm pt-2 pt-lg-0">
-									@if(isset($categories))
-									@foreach ($categories as $category)
-									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/shop{category={{ $category->value }}}">{{ $category->value }}</a></li>
-									@endforeach
-									@else
-									<p>Default</p>
-									@endif
-								</ul>
-							</div>
-						</div>
+					@include('partials.menu')
+
 						<div class="col-lg-4"><a class="d-lg-none block-toggler my-3" data-bs-toggle="collapse" href="#footerMenu2" aria-expanded="false" aria-controls="footerMenu2">Your account<span class="block-toggler-icon"></span></a>
 							<!-- Footer collapsible menu-->
 							<div class="expand-lg collapse" id="footerMenu2">
@@ -235,7 +202,8 @@
 		</div>
 	</div>
 </footer>
-
+		{{--This will show notifications via JavaScript--}}
+	    <cc-notification class="notification hide"></cc-notification>
     </div>
 
     <!-- Custom js -->

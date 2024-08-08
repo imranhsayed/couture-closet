@@ -19,13 +19,13 @@
                         <hr>
                         <!-- the summary of user -->
                         <ul class="nav nav-tabs" id="profile" role="tablist">
-                            <!-- User tab -->
+                            <!-- user info tab -->
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link tab-button" id="user-tab" data-bs-toggle="tab"
-                                        data-bs-target="#user" type="button" role="tab" aria-controls="user"
-                                        aria-selected="true" data-tab-name="user">Info
+                                <button class="nav-link tab-button" id="user-info-tab" data-bs-toggle="tab"
+                                        data-bs-target="#user-info" type="button" role="tab" aria-controls="user-info"
+                                        aria-selected="true" data-tab-name="user-info">Info
                                 </button>
-                            </li>    
+                            </li>
 
                             <!-- Orders tab -->
                             <li class="nav-item" role="presentation">
@@ -57,8 +57,8 @@
                         <!-- the tab content -->
                         <div class="tab-content" id="order_content">
                             <!-- User info tab content -->
-                            <div class="tab-pane fade" id="user" role="tabpanel"
-                                 aria-labelledby="user-tab">
+                            <div class="tab-pane fade" id="user-info" role="tabpanel"
+                                 aria-labelledby="user-info-tab">
                                 <p></p>
                                 <h3>Your Information</h3>
                                 <div class="mb-4">
@@ -101,7 +101,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Orders tab content -->
                             <div class="tab-pane fade" id="orders" role="tabpanel"
                                  aria-labelledby="orders-tab">
@@ -305,8 +305,7 @@
                             </div>
 
                             <!-- Reviews tab content -->
-                            <div class="tab-pane fade"
-                                 id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                            <div class="tab-pane fade"id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                                 <p></p>
                                 <h3>Your Reviews</h3>
                                 <table class="table table-striped">

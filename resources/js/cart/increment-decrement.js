@@ -1,3 +1,5 @@
+import { addToCart, removeFromCart } from '../store/actions.js';
+
 /**
  * Global variables.
  */
@@ -18,6 +20,7 @@ export default class IncrementDecrementControls extends HTMLElement {
 		// Settings.
 		this.minValue = Number( this.getAttribute( 'min-value' ) ?? '' );
 		this.maxValue = Number( this.getAttribute( 'max-value' ) ?? '' );
+		this.productId = Number( this.getAttribute( 'product-id' ) ?? 0 );
 		
 		// Elements.
 		this.incrementBtn = this.querySelector( '.search-filters__increment-btn' );
@@ -88,6 +91,9 @@ export default class IncrementDecrementControls extends HTMLElement {
 		if ( currentInputValue < this.maxValue ) {
 			// Set the selected value by incrementing the current value by 1.
 			this.setAttribute( 'selected-value', String( currentInputValue + 1 ) );
+			
+			// Increment one item in the cart.
+			addToCart( this.productId, 1 );
 		}
 		
 		// Toggle disabled state.
@@ -118,6 +124,9 @@ export default class IncrementDecrementControls extends HTMLElement {
 		if ( currentInputValue > this.minValue ) {
 			// Set the selected value by decrementing the current value by 1.
 			this.setAttribute( 'selected-value', String( currentInputValue - 1 ) );
+			
+			// Remove 1 item from cart.
+			removeFromCart( this.productId );
 		}
 		
 		// Toggle disabled state.
@@ -151,4 +160,4 @@ export default class IncrementDecrementControls extends HTMLElement {
 /**
  * Initialize.
  */
-customElements.define( 'lb-increment-decrement-controls', IncrementDecrementControls );
+customElements.define( 'cc-increment-decrement-controls', IncrementDecrementControls );

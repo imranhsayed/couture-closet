@@ -6,7 +6,7 @@ const { customElements, HTMLElement } = window;
 /**
  * Internal Dependencies.
  */
-import { removeCartItem } from '../store/actions.js';
+import { removeEntireCartItem } from '../store/actions.js';
 
 /**
  * Class RemoveCartItem
@@ -24,10 +24,9 @@ class RemoveCartItem extends HTMLElement {
 	handleRemoveCartItem() {
 		// Get product id.
 		const productId = Number( this.getAttribute( 'product-id' ) );
-		console.log( 'productId', productId );
 		
 		// Remove cart item.
-		removeCartItem( productId );
+		removeEntireCartItem( productId );
 	}
 }
 

@@ -336,7 +336,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <!-- load custom js -->
-@vite(['resources/js/app.js'])
+@vite(['resources/js/app.js', 'resources/js/admin/admin.js'])
 </body>
 
 </html>

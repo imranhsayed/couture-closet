@@ -30,6 +30,8 @@ class HomeController extends Controller
 
         // prepare user's data
         $userId = \Auth::user()->id;
+        $user = \Auth::user();
+
         // orders
         $orders = Order::where('user_id', $userId)->latest()->paginate(10);
         // addresses
@@ -37,6 +39,6 @@ class HomeController extends Controller
         // product reviews
         $productReviews = ProductReview::where('user_id', $userId)->latest()->paginate(10);
 
-	    return view( 'home', compact( 'products' , 'orders', 'userAddresses', 'productReviews' ) );
+	    return view( 'home', compact( 'user', 'products' , 'orders', 'userAddresses', 'productReviews' ) );
     }
 }

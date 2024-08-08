@@ -73,8 +73,53 @@ export const addToCart = ( productId = 0, quantity = 1 ) => {
 			products: updatedProducts,
 			totalProductsCount: getTotalProductCount( updatedProducts ),
 		},
+		notification: `${quantity} item(s) added.`,
 	} );
 }
+
+/**
+ * Remove from cart.
+ *
+ * @param productId
+ * @return {null}
+ */
+export const removeFromCart = ( productId = 0 ) => {
+	// If product id is not passed, early return.
+	if ( ! productId ) {
+		return null;
+	}
+
+	// Initialize.
+	const { cart } = getState();
+	const updatedProducts = [...cart.products]; // Create a copy of the products array.
+
+	// Loop through the cart array to find the product to remove.
+	for( let i = 0; i < updatedProducts.length; i++ ) {
+		// If the product exists.
+		if ( updatedProducts[ i ].productId === productId ) {
+			// Decrease the quantity by 1.
+			updatedProducts[ i ].quantity -= 1;
+
+			// If the quantity becomes 0 or less, remove the product from the cart.
+			if ( updatedProducts[ i ].quantity <= 0 ) {
+				updatedProducts.splice( i, 1 );
+			}
+			break;
+		}
+	}
+
+	/**
+	 * Set the updated cart into the state.
+	 */
+	setState( {
+		cart: {
+			products: updatedProducts,
+			totalProductsCount: getTotalProductCount( updatedProducts ),
+		},
+		notification: `1 item removed.`,
+	} );
+}
+
 
 /**
  * Get Total Products Count.
@@ -120,26 +165,26 @@ export const activateTab = () => {
         tabTrigger.trigger('click');
     } else {
         // default active tab
-        $('#user-tab').trigger('click');
+        $('#user-info').trigger('click');
     }
 }
 
 /**
- * Remove item from cart.
+ * Remove entire item from cart.
  *
  * @param productId
  * @return {null}
  */
-export const removeCartItem = ( productId ) => {
+export const removeEntireCartItem = ( productId ) => {
 	// If product id is not passed, early return.
 	if ( ! productId ) {
 		return null;
 	}
-	
+
 	// Initialize.
 	const { cart } = getState();
 	const updatedProducts = cart.products.filter( product => product.productId !== productId );
-	
+
 	/**
 	 * Set the updated cart into the state.
 	 */
@@ -148,6 +193,13 @@ export const removeCartItem = ( productId ) => {
 			products: updatedProducts,
 			totalProductsCount: getTotalProductCount( updatedProducts ),
 		},
+		notification: `Product removed.`,
+	} );
+}
+
+export const resetNotification = () => {
+	setState( {
+		notification: '',
 	} );
 }
 

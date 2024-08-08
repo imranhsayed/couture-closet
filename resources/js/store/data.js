@@ -21,6 +21,7 @@ export const DEFAULT_STATE = {
     },
 	loading: false,
 	initialized: false,
+	notification: '',
 };
 
 /**
