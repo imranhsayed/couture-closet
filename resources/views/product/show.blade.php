@@ -11,13 +11,13 @@
 		</ul>
 		{{--Product Details--}}
 		<div class="row">
-			<div class="col-lg-6 col-xl-7 pt-4 order-2 order-lg-1 photoswipe-gallery"><a class="d-block mb-4" href="img/product/detail-3-gray.jpg" data-caption="Push-up Jeans 1 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
-					<div data-toggle="zoom" data-image="img/product/detail-3-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-3-gray.jpg" alt="Push-up Jeans 1"><img role="presentation" alt="" src="img/product/detail-3-gray.jpg" class="zoomImg" style="position: absolute; top: -94.9611px; left: -187.658px; opacity: 0; width: 1313px; height: 1313px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="img/product/detail-1-gray.jpg" data-caption="Push-up Jeans 2 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
-					<div data-toggle="zoom" data-image="img/product/detail-1-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-1-gray.jpg" alt="Push-up Jeans 2"><img role="presentation" alt="" src="img/product/detail-1-gray.jpg" class="zoomImg" style="position: absolute; top: -409.275px; left: -607.565px; opacity: 0; width: 1313px; height: 1313px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="img/product/detail-2-gray.jpg" data-caption="Push-up Jeans 3 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
-					<div data-toggle="zoom" data-image="img/product/detail-2-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-2-gray.jpg" alt="Push-up Jeans 3"><img role="presentation" alt="" src="img/product/detail-2-gray.jpg" class="zoomImg" style="position: absolute; top: -517.351px; left: -389.25px; opacity: 0; width: 1313px; height: 1313px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="img/product/detail-4-gray.jpg" data-caption="Push-up Jeans 4 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
-					<div data-toggle="zoom" data-image="img/product/detail-4-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-4-gray.jpg" alt="Push-up Jeans 4"><img role="presentation" alt="" src="img/product/detail-4-gray.jpg" class="zoomImg" style="position: absolute; top: 0px; left: 0px; opacity: 0; width: 1313px; height: 1313px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="img/product/detail-5-gray.jpg" data-caption="Push-up Jeans 5 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
-					<div data-toggle="zoom" data-image="img/product/detail-5-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-5-gray.jpg" alt="Push-up Jeans 5"><img role="presentation" alt="" src="img/product/detail-5-gray.jpg" class="zoomImg" style="position: absolute; top: -279.173px; left: -390.482px; opacity: 0; width: 1315px; height: 1315px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="img/product/detail-6.jpg" data-caption="Push-up Jeans 6 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
-					<div data-toggle="zoom" data-image="img/product/detail-6.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-6.jpg" alt="Push-up Jeans 6"><img role="presentation" alt="" src="img/product/detail-6.jpg" class="zoomImg" style="position: absolute; top: -315.712px; left: -211.349px; opacity: 0; width: 1024px; height: 1024px; border: none; max-width: none; max-height: none;"></div></a>
+			<div class="col-lg-6 col-xl-7 pt-4 order-2 order-lg-1 photoswipe-gallery">
+                <a class="d-block mb-4" href="img/product/detail-3-gray.jpg" data-caption="Push-up Jeans 1 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
+					@foreach($product->images as $image)
+
+                    <div data-toggle="zoom" data-image="img/product/detail-3-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="/{{ $image->image_url}}" alt="{{$product->name}}"><img role="presentation" alt="{{$product->name}}" src="/{{ $image->image_url}}" class="zoomImg" style="position: absolute; top: -94.9611px; left: -187.658px; opacity: 0; width: 1313px; height: 1313px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="#" data-caption="Push-up Jeans 2 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
+                    @endforeach
+                </a>
 			</div>
 			<div class="col-lg-6 col-xl-4 pt-4 order-1 order-lg-2 ms-lg-auto">
 				<div class="sticky-top" style="top: 100px;">
@@ -39,8 +39,8 @@
 							</ul><span class="text-muted text-uppercase">25 reviews</span>
 						</div>
 					</div>
-					<p class="mb-4 text-muted">{{ $product->description}}Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
-					<form id="buyForm" action="#">
+					<p class="mb-4 text-muted">{{ $product->description }}Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+					<div id="buyForm">
 						<div class="row">
 							<div class="col-sm-6 col-lg-12 detail-option mb-4">
 								<h6 class="detail-option-heading d-inline">Size: </h6>
@@ -48,20 +48,24 @@
 							</div>
 						</div>
 						{{--Add to cart--}}
-						<x-counter-add-to-cart product_id="2" />
-						<ul class="list-unstyled">
-                            <div class="border-top">
-                                <li><strong >Category:</strong> <a class="text-muted" href="#">Jeans</a></li>
-                            </div>
-                            <div class="border-top">
-                                <li><strong >Stock:</strong> <a class="text-muted" href="#">Jeans</a></li>
-                            </div>
-							<div class="border-top">
-                                <li><strong >Brand:</strong> <a class="text-muted" href="#">Jeans</a></li>
-                            </div>
-							<li><strong>Tags:</strong> <a class="text-muted" href="#">Leisure</a>, <a class="text-muted" href="#">Elegant</a></li>
-						</ul>
-					</form>
+						<x-counter-add-to-cart product_id="{{ $product->id }}" />
+
+						<ul class="list-unstyled border-top">
+							{{--@TODO To make category and brand dyanamic--}}
+                            <li class="border-top pt-2">
+                                <strong class="text d-block" class="border-top pt-2">Category:</strong>
+                                <strong><a class="text-muted d-block" href="#" class="border-top pt-2">Jeans</a></strong>
+                            </li>
+                            <li class="border-top pt-2">
+                                <strong class="text d-block" class="border-top pt-2">Stock:</strong>
+                                <strong><a class="text-muted d-block" class="border-top pt-2" href="#">{{$product->stock_quantity}}</a></strong>
+                            </li>
+                            <li class="border-top pt-2">
+                                <strong class="d-block">Brand:</strong>
+                                <strong><a class="text-muted d-block" href="#">Jeans</a></strong>
+                            </li>
+                        </ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -79,7 +83,7 @@
 						<div class="row">
 							<div class="col-md-7">
 								<h5>About</h5>
-								<p class="text-muted">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+								<p class="text-muted">{{$product->description}}Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
 								<p class="text-muted">He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before.</p>
 								<h5>You will love</h5>
 								<ul class="text-muted">
@@ -88,7 +92,7 @@
 									<li>at the floundering legs, and only stopped</li>
 								</ul>
 							</div>
-							<div class="col-md-5"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-3.jpg" alt=""></div>
+							<!-- <div class="col-md-5"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-3.jpg" alt="{{$product->name}}"></div> -->
 						</div>
 					</div>
 					<div class="fade tab-pane" id="additional-information" role="tabpanel">
@@ -97,20 +101,20 @@
 								<table class="table text-sm">
 									<tbody>
 									<tr>
-										<th class="font-weight-normal border-0">Product #</th>
-										<td class="text-muted border-0">Lorem ipsum dolor sit amet</td>
+										<th class="font-weight-normal border-0">Product No</th>
+										<td class="text-muted border-0">{{$product->id}}</td>
 									</tr>
 									<tr>
-										<th class="font-weight-normal ">Available packaging</th>
-										<td class="text-muted ">LOLDuis aute irure dolor in reprehenderit</td>
+										<th class="font-weight-normal ">Product Name</th>
+										<td class="text-muted ">{{$product->name}}</td>
 									</tr>
 									<tr>
-										<th class="font-weight-normal ">Weight</th>
-										<td class="text-muted ">dolor sit amet</td>
+										<th class="font-weight-normal ">Description</th>
+										<td class="text-muted ">{{ $product->description}}</td>
 									</tr>
 									<tr>
-										<th class="font-weight-normal ">Sunt in culpa qui</th>
-										<td class="text-muted ">Lorem ipsum dolor sit amet</td>
+										<th class="font-weight-normal ">Quantity</th>
+										<td class="text-muted ">{{$product->stock_quantity}}</td>
 									</tr>
 									</tbody>
 								</table>
@@ -119,20 +123,20 @@
 								<table class="table text-sm">
 									<tbody>
 									<tr>
-										<th class="font-weight-normal border-0">Weight</th>
-										<td class="text-muted border-0">dolor sit amet                           </td>
+										<th class="font-weight-normal border-0">Added Date</th>
+										<td class="text-muted border-0">{{$product->created_at}}</td>
 									</tr>
 									<tr>
 										<th class="font-weight-normal ">Sunt in culpa qui</th>
-										<td class="text-muted ">Lorem ipsum dolor sit amet                           </td>
+										<td class="text-muted ">Lorem ipsum dolor sit amet</td>
 									</tr>
 									<tr>
 										<th class="font-weight-normal ">Product #</th>
-										<td class="text-muted ">Lorem ipsum dolor sit amet                           </td>
+										<td class="text-muted ">Lorem ipsum dolor sit amet</td>
 									</tr>
 									<tr>
 										<th class="font-weight-normal ">Available packaging</th>
-										<td class="text-muted ">LOLDuis aute irure dolor in reprehenderit                           </td>
+										<td class="text-muted ">LOLDuis aute irure dolor in reprehenderit</td>
 									</tr>
 									</tbody>
 								</table>
@@ -166,7 +170,7 @@
 										<h5 class="mt-2 mb-1">Princess Leia</h5>
 										<div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-gray-200"></i><i class="fa fa-xs fa-star text-gray-200"></i>
 										</div>
-										<p class="text-muted">His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table.     </p>
+										<p class="text-muted">His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table.</p>
 									</div>
 								</div>
 								<div class="media review">
@@ -175,7 +179,7 @@
 										<h5 class="mt-2 mb-1">Jabba Hut</h5>
 										<div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i>
 										</div>
-										<p class="text-muted">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.     </p>
+										<p class="text-muted">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
 									</div>
 								</div>
 								<div class="py-5 px-3">
@@ -220,32 +224,58 @@
 		</section>
 
 		{{--Related Products--}}
+
+
 		<section class="py-5">
 			<div class="container">
 				<h5 class="mb-4">You might also like these</h5>
-				<div class="row row-cols-3 g-3">
-					<div class="col">
-						<div class="card">
-							<img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
-							<h3>Grey Sweater</h3>
-							<p>$20</p>
+				<!-- product-->
+				<div class="row">
+				@foreach($all_products as $single_product)
+					@foreach($single_product->images as $image)
+					<div class="col-lg-3 col-md-4">
+						<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
+							<div class="product-image mb-md-3">
+								<div class="product-badge badge bg-secondary">Fresh</div>
+								<a href="{{ route('product.show', ['product'=> $image->product->id])}}">
+									<div class="product-swap-image">
+										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $image->image_url ?? '' }}" alt="product">
+										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $image->image_url ?? '' }}" alt="product">
+									</div>
+								</a>
+								<div class="product-hover-overlay"><div class="text-dark text-sm">
+										<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
+											<use xlink:href="#retail-bag-1"> </use>
+										</svg>
+										<x-add-to-cart-button product_id="{{$image->product_id}}" quantity="1" />
+									</div>
+									<div><a class="text-dark text-primary-hover me-2" href="#!">
+											<svg class="svg-icon svg-icon-heavy">
+												<use xlink:href="#heart-1"> </use>
+											</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
+											<svg class="svg-icon svg-icon-heavy">
+												<use xlink:href="#expand-1"> </use>
+											</svg></a>
+									</div>
+								</div>
+							</div>
+							<div class="position-relative">
+								<h3 class="text-base mb-1">
+									<a class="text-dark" href="#">
+										{{ $single_product->name }}
+									</a>
+								</h3>
+								<p class="text-gray-600 text-sm">
+									<span>${{ $single_product->price }}</span>
+								</p>
+								<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
+							</div>
 						</div>
 					</div>
-					<div class="col">
-						<div class="card">
-							<img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
-							<h3>Grey Sweater</h3>
-							<p>$20</p>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card">
-							<img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
-							<h3>Grey Sweater</h3>
-							<p>$20</p>
-						</div>
-					</div>
-				</div>
+					@endforeach
+				@endforeach
+			</div>
+			<!-- /product   -->
 			</div>
 		</section>
 	</div>
