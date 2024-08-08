@@ -260,17 +260,17 @@
 			<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 				<div class="product-image mb-md-3">
 					<div class="product-badge badge bg-secondary">Fresh</div>
-					<a href="#">
+					<a href="{{ route('product.show', ['product'=> $image->product->id])}}">
 						<div class="product-swap-image">
-							<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $image->image_url}}" alt="product">
-							<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $image->image_url}}	" alt="product">
+							<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $image->image_url ?? '' }}" alt="product">
+							<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $image->image_url ?? '' }}" alt="product">
 						</div>
 					</a>
 					<div class="product-hover-overlay"><div class="text-dark text-sm">
 							<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 								<use xlink:href="#retail-bag-1"> </use>
 							</svg>
-							<x-add-to-cart-button product_id="#" quantity="1" />
+							<x-add-to-cart-button product_id="{{$image->product_id}}" quantity="1" />
 						</div>
 						<div><a class="text-dark text-primary-hover me-2" href="#!">
 								<svg class="svg-icon svg-icon-heavy">
