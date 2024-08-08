@@ -26,9 +26,23 @@ class Cart extends HTMLElement {
 
 	update( state ) {
 		this.fetchAndUpdateCartMarkup( state.cart );
+		
+		// If no items in the cart, clear the entire cart markup.
+		if ( ! state.cart.products.length ) {
+			this.clearEntireCartMarkup();
+		}
 	}
 	
-	fetchAndUpdateCartMarkup( cartData ) {
+	clearEntireCartMarkup() {
+		this.innerHTML = '';
+	}
+	
+	/**
+	 * Fetch and update cart markup.
+	 *
+	 * @param cartData
+	 */
+	fetchAndUpdateCartMarkup( cartData = [] ) {
 		fetch( '/cart-details', {
 			method: 'POST',
 			headers: {
@@ -55,7 +69,7 @@ class Cart extends HTMLElement {
 			.then( response => {
 				if ( response.success ) {
 					// Update markup.
-					this.updateCartItemsCountMarkup( response?.data?.products?.length ?? 0 )
+					this.updateCartItemsCountMarkup( response?.data?.products?.length ?? 0 );
 					this.updateCartMarkup( response?.data ?? [] );
 					this.updateCartSummaryMarkup( response?.data ?? [] );
 				}
@@ -103,10 +117,10 @@ class Cart extends HTMLElement {
 							  </div>
 							 <div class="col-md-4">
 							 <div class="row align-items-center">
-								<lb-increment-decrement-controls
+								<cc-increment-decrement-controls
 									class="search-filters__selection-controls"
 									product-id="${product?.id ?? ''}"
-									min-value="1"
+									min-value="0"
 									max-value="${product?.stock_quantity ?? 100}"
 									selected-value="${ product?.quantity ?? 1 }"
 								>
@@ -135,7 +149,7 @@ class Cart extends HTMLElement {
 											+
 										</button>
 									</div>
-								</lb-increment-decrement-controls>
+								</cc-increment-decrement-controls>
 							 </div>
 							</div>
 							<div class="col-md-3">
@@ -198,7 +212,7 @@ class Cart extends HTMLElement {
 		if ( count ) {
 			theMarkup = `You have <span class="fw-bold">${count}</span> items in your cart.`;
 		} else {
-			theMarkup = `You have <span class="fw-bold">0</span> items in your cart. <a href="/shop">Shop</a>`;
+			theMarkup = `You have <span class="fw-bold">0</span> items in your cart. <br><a href="/shop">Shop</a> for our latest products.`;
 		}
 		
 		this.cartItemsCountElement.innerHTML = theMarkup;

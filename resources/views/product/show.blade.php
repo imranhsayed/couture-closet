@@ -53,14 +53,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="input-group w-100 mb-4">
-							<input class="form-control form-control-lg detail-quantity" name="items" type="number" value="1">
-							<div class="flex-grow-1">
-								<div class="d-grid h-100">
-									<button class="btn btn-dark" type="submit"> <i class="fa fa-shopping-cart me-2"></i>Add to Cart</button>
-								</div>
-							</div>
-						</div>
+						{{--Add to cart--}}
+						<x-counter-add-to-cart product_id="2" />
 						<div class="row mb-4">
 							<div class="col-6"><a href="#"> <i class="far fa-heart me-2"></i>Add to wishlist </a></div>
 							<div class="col-6 text-end">
@@ -72,13 +66,13 @@
 						</div>
 						<ul class="list-unstyled">
                             <div class="border-top">
-                                <li><strong >Category:</strong> <a class="text-muted" href="#">Jeans</a></li>    
+                                <li><strong >Category:</strong> <a class="text-muted" href="#">Jeans</a></li>
                             </div>
                             <div class="border-top">
-                                <li><strong >Stock:</strong> <a class="text-muted" href="#">Jeans</a></li>    
+                                <li><strong >Stock:</strong> <a class="text-muted" href="#">Jeans</a></li>
                             </div>
 							<div class="border-top">
-                                <li><strong >Brand:</strong> <a class="text-muted" href="#">Jeans</a></li>    
+                                <li><strong >Brand:</strong> <a class="text-muted" href="#">Jeans</a></li>
                             </div>
 							<li><strong>Tags:</strong> <a class="text-muted" href="#">Leisure</a>, <a class="text-muted" href="#">Elegant</a></li>
 						</ul>
