@@ -81,7 +81,7 @@
                             </li>
                             <li class="border-top pt-2">
                                 <strong class="text d-block" class="border-top pt-2">Stock:</strong>
-                                <strong><a class="text-muted d-block" class="border-top pt-2" href="#">Jeans</a></strong>
+                                <strong><a class="text-muted d-block" class="border-top pt-2" href="#">{{$product->stock_quantity}}</a></strong>
                             </li>
                             <li class="border-top pt-2">
                                 <strong class="d-block">Brand:</strong>
@@ -107,7 +107,7 @@
 						<div class="row">
 							<div class="col-md-7">
 								<h5>About</h5>
-								<p class="text-muted">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+								<p class="text-muted">{{$product->description}}Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
 								<p class="text-muted">He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before.</p>
 								<h5>You will love</h5>
 								<ul class="text-muted">
@@ -125,20 +125,20 @@
 								<table class="table text-sm">
 									<tbody>
 									<tr>
-										<th class="font-weight-normal border-0">Product #</th>
-										<td class="text-muted border-0">Lorem ipsum dolor sit amet</td>
+										<th class="font-weight-normal border-0">Product No</th>
+										<td class="text-muted border-0">{{$product->id}}</td>
 									</tr>
 									<tr>
-										<th class="font-weight-normal ">Available packaging</th>
-										<td class="text-muted ">LOLDuis aute irure dolor in reprehenderit</td>
+										<th class="font-weight-normal ">Product Name</th>
+										<td class="text-muted ">{{$product->name}}</td>
 									</tr>
 									<tr>
-										<th class="font-weight-normal ">Weight</th>
-										<td class="text-muted ">dolor sit amet</td>
+										<th class="font-weight-normal ">Description</th>
+										<td class="text-muted ">{{ $product->description}}</td>
 									</tr>
 									<tr>
-										<th class="font-weight-normal ">Sunt in culpa qui</th>
-										<td class="text-muted ">Lorem ipsum dolor sit amet</td>
+										<th class="font-weight-normal ">Quantity</th>
+										<td class="text-muted ">{{$product->stock_quantity}}</td>
 									</tr>
 									</tbody>
 								</table>
@@ -147,8 +147,8 @@
 								<table class="table text-sm">
 									<tbody>
 									<tr>
-										<th class="font-weight-normal border-0">Weight</th>
-										<td class="text-muted border-0">dolor sit amet</td>
+										<th class="font-weight-normal border-0">Added Date</th>
+										<td class="text-muted border-0">{{$product->created_at}}</td>
 									</tr>
 									<tr>
 										<th class="font-weight-normal ">Sunt in culpa qui</th>
