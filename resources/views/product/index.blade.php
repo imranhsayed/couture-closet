@@ -29,11 +29,11 @@
 						<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 							<div class="product-image mb-md-3">
 								<div class="product-badge badge bg-secondary">Fresh</div>
-								<a href="#">
+								<a href="{{ route('product.show', ['product'=> $product->id])}}">
 									<div class="product-swap-image">
 										@foreach($product->images as $image)
-										<img class="img-fluid product-swap-image-front" src="/{{ $image->image_url}}" alt="product">
-										<img class="img-fluid" src="/{{ $image->image_url}}" alt="product">
+										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $image->image_url}}" alt="product">
+										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $image->image_url}}" alt="product">
 										@endforeach
 									</div>
 								</a>
