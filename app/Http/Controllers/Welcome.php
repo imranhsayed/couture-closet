@@ -15,13 +15,11 @@ class Welcome extends Controller
 	 */
 	public function index()
 	{
-		// Fetch all categories from the Category model
-        $categories = Category::where('name','demography')->get();
+		
+		$products = Product::with('images')->get();
 
 		$products = Product::paginate(12);
-
-		$brands = Category::where('name','Brand')->get();
-
-		return view( 'welcome', compact( 'products' , 'categories', 'brands') );
+		
+		return view( 'welcome', compact( 'products' ) );
 	}
 }

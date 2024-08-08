@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Providers;
+use App\Models\Product;
+use App\Models\Category;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -19,6 +21,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        \View::composer('partials.header',function($view){
+            $categories = Category::where('name','demography')->get();
+
+		    $brands = Category::where('name','Brand')->get();
+
+            $view->with(compact('categories','brands'));
+        });
+
+        \View::composer('partials.menu',function($view){
+            $categories = Category::where('name','demography')->get();
+
+		    $brands = Category::where('name','Brand')->get();
+
+            $view->with(compact('categories','brands'));
+        });
     }
 }
