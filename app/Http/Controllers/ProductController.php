@@ -17,7 +17,7 @@ class ProductController extends Controller
 	    $title = "Single Product!";
 
         $products =Product::with('images')->get();
-
+        dd($products);
         $categories = Category::where('name', 'Size')->get();
 
         $brands = Category::where('name', 'Brand')->get();
