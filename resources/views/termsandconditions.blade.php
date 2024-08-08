@@ -26,4 +26,28 @@
     <ul>
         <li>Government agencies</li>
         <li>Search engines</li>
-        <li>
+        <li>News organizations</li>
+        <li>Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses</li>
+        <li>System-wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.</li>
+    </ul>
+
+    <h2>iFrames</h2>
+    <p>Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual presentation or appearance of our Website.</p>
+
+    <h2>Content Liability</h2>
+    <p>We shall not be held responsible for any content that appears on your Website. You agree to protect and defend us against all claims that are rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene, or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</p>
+
+    <h2>Your Privacy</h2>
+    <p>Please read Privacy Policy.</p>
+
+    <h2>Reservation of Rights</h2>
+    <p>We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amen these terms and conditions and it's linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.</p>
+
+    <h2>Removal of links from our website</h2>
+    <p>If you find any link on our Website that is offensive for any reason, you are free to contact and inform us any moment. We will consider requests to remove links but we are not obligated to or so or to respond to you directly.</p>
+
+    <h2>Disclaimer</h2>
+    <p>To the maximum extent permitted by applicable law, we exclude all representations, warranties, and conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>
+    <ul>
+        <li>Limit or exclude our or your liability for death or personal injury;</li>
+
