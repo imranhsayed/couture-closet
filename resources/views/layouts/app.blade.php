@@ -132,9 +132,10 @@
 							<div class="expand-lg collapse" id="footerMenu1">
 								<h6 class="letter-spacing-1 mb-4 d-none d-lg-block">Company</h6>
 								<ul class="list-unstyled text-sm pt-2 pt-lg-0">
-									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/about">About Us</a></li>
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/">Home</a></li>
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/shop">Shop</a></li>
+									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/about">About Us</a></li>
+									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/contact-us">Contact Us</a></li>
 								</ul>
 							</div>
 						</div>
