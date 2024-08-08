@@ -81,9 +81,9 @@ class AdminController extends Controller
     {
         // prepare data
         $salesData = Order::where('order_date', '>=', DB::raw('NOW() - INTERVAL 7 DAY'))
-                          ->select(DB::raw('DATE(order_date) as date'), DB::raw('SUM(total_amount) as sales'))
-                          ->groupBy(DB::raw('DATE(order_date)'))
-                          ->orderBy(DB::raw('DATE(order_date)'))
+                          ->select(DB::raw("DATE_FORMAT(order_date, '%d/%m') as date"), DB::raw('SUM(total_amount) as sales'))
+                          ->groupBy(DB::raw("DATE_FORMAT(order_date, '%d/%m')"))
+                          ->orderBy(DB::raw("DATE_FORMAT(order_date, '%d/%m')"))
                           ->pluck('sales', 'date');
         $dates = [];
         $sales = [];
