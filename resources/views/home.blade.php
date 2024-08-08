@@ -19,13 +19,14 @@
                         <hr>
                         <!-- the summary of user -->
                         <ul class="nav nav-tabs" id="profile" role="tablist">
-                            <!-- Info tab -->
+                            <!-- user info tab -->
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link tab-button" id="info-tab" data-bs-toggle="tab"
-                                        data-bs-target="#info" type="button" role="tab" aria-controls="info"
-                                        aria-selected="true" data-tab-name="info">Info
+                                <button class="nav-link tab-button" id="user-info-tab" data-bs-toggle="tab"
+                                        data-bs-target="#user-info" type="button" role="tab" aria-controls="user-info"
+                                        aria-selected="true" data-tab-name="user-info">Info
                                 </button>
                             </li>
+
                             <!-- Orders tab -->
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link tab-button" id="orders-tab" data-bs-toggle="tab"
@@ -54,51 +55,53 @@
                         </ul>
 
                         <!-- the tab content -->
-                         
                         <div class="tab-content" id="order_content">
-                            <!-- Info tab content -->
-                             <div class="tab-pane fade" id="info" role="tabpanel">
-                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">First Name</h6>
+                            <!-- User info tab content -->
+                            <div class="tab-pane fade" id="user-info" role="tabpanel"
+                                 aria-labelledby="user-info-tab">
+                                <p></p>
+                                <h3>Your Information</h3>
+                                <div class="mb-4">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">First Name</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p class="text-muted mb-0">{{ \Auth::user()->first_name ?? '' }}</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Last Name</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p class="text-muted mb-0">{{ \Auth::user()->last_name ?? '' }}</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Email</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p class="text-muted mb-0">{{ \Auth::user()->email ?? '' }}</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <p class="mb-0">Phone</p>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <p class="text-muted mb-0">{{ \Auth::user()->telephone ?? '' }}</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-9 text-secondary"> {{$user->first_name}}</div>
                                 </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Last Name</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary"> {{$user->last_name}}</div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Email</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary"> {{ $user->email}}</div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Phone</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary"> {{ $user->telephone}}</div>
-                                </div>
-                                <hr>
-                                
-                            
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Address</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary"> Bay Area, San Francisco, CA</div>
                             </div>
-                            <hr>
-                            
-                            <div class="row"><div class="col-sm-12"> <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a></div></div></div>
-                             </div>
+
                             <!-- Orders tab content -->
                             <div class="tab-pane fade" id="orders" role="tabpanel"
                                  aria-labelledby="orders-tab">

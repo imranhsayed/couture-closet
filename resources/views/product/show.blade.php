@@ -146,42 +146,21 @@
 					<div class="tab-pane fade" id="reviews" role="tabpanel">
 						<div class="row mb-5">
 							<div class="col-lg-10 col-xl-9">
+								@foreach($reviews as $review)
 								<div class="media review">
-									<div class="flex-shrink-0 text-center me-4 me-xl-5"><img class="review-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/avatar/person-1.jpg" alt="Han Solo"><span class="text-uppercase text-muted">Dec 2018</span></div>
+									<div class="flex-shrink-0 text-center me-4 me-xl-5">
+										<img class="review-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/avatar/person-1.jpg" alt="{{ $review->user->name }}">
+										<span class="text-uppercase text-muted">{{ $review->created_at->format('M Y') }}</span>
+									</div>
 									<div>
-										<h5 class="mt-2 mb-1">Han Solo</h5>
-										<div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i>
+										<h5 class="mt-2 mb-1">{{ $review->user->name }}</h5>
+										<div class="mb-2">
+											
 										</div>
-										<p class="text-muted">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections     </p>
+										<p class="text-muted">{{ $review->review_text }}->One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections</p>
 									</div>
 								</div>
-								<div class="media review">
-									<div class="flex-shrink-0 text-center me-4 me-xl-5"><img class="review-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/avatar/person-2.jpg" alt="Luke Skywalker"><span class="text-uppercase text-muted">Dec 2018</span></div>
-									<div>
-										<h5 class="mt-2 mb-1">Luke Skywalker</h5>
-										<div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-gray-200"></i>
-										</div>
-										<p class="text-muted">The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought. It wasn't a dream.     </p>
-									</div>
-								</div>
-								<div class="media review">
-									<div class="flex-shrink-0 text-center me-4 me-xl-5"><img class="review-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/avatar/person-3.jpg" alt="Princess Leia"><span class="text-uppercase text-muted">Dec 2018</span></div>
-									<div>
-										<h5 class="mt-2 mb-1">Princess Leia</h5>
-										<div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-gray-200"></i><i class="fa fa-xs fa-star text-gray-200"></i>
-										</div>
-										<p class="text-muted">His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table.</p>
-									</div>
-								</div>
-								<div class="media review">
-									<div class="flex-shrink-0 text-center me-4 me-xl-5"><img class="review-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/avatar/person-4.jpg" alt="Jabba Hut"><span class="text-uppercase text-muted">Dec 2018</span></div>
-									<div>
-										<h5 class="mt-2 mb-1">Jabba Hut</h5>
-										<div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i>
-										</div>
-										<p class="text-muted">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
-									</div>
-								</div>
+								@endforeach
 								<div class="py-5 px-3">
 									<h5 class="mb-4">Leave a review</h5>
 									<form class="mb-4 form" id="reviewForm" method="post" action="{{ route('product.review.store') }}">

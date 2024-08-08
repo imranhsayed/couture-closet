@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductReviewController;
@@ -15,6 +16,10 @@ Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welc
 // Public Routes
 Route::get( '/shop', fn() => view( 'shop' ) )->name( 'shop' );
 Route::get( '/about', fn() => view( 'about' ) )->name( 'about' );
+Route::get('/contact-us', function () {
+    return view('contact');
+})->name('contact.us');
+
 Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
 Route::get('/termsandconditions', fn() => view('termsandconditions'))->name('termsandconditions');
 Route::get('/refund-policy', fn() => view('refund-policy'))->name('refund-policy');
@@ -111,9 +116,14 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 
 // Admin Routes
 Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
-	// Product Management Routes
-	// Route::get( '/admin/inquiries', [ InquiryController::class, 'index' ] )->name( 'admin.inquiries.index' );
-	// Route::post( '/admin/inquiries', [ InquiryController::class, 'store' ] )->name( 'admin.inquiries.store' );
-	// Route::put( '/admin/inquiries/{id}', [ InquiryController::class, 'update' ] )->name( 'admin.inquiries.update' );
-	// Route::delete( '/admin/inquiries/{id}', [ InquiryController::class, 'destroy', ] )->name( 'admin.inquiries.destroy' );
+	// admin dashboard
+    Route::get( '/admin', [ AdminController::class, 'index' ] )->name( 'admin.index' );
+    Route::get( '/admin/charts', [ AdminController::class, 'charts' ] )->name( 'admin.charts' );
+
+    // product management
+    Route::get( '/admin/products', [ ProductController::class, 'index' ] )->name( 'admin.products.index' );
+    Route::get( '/admin/products/add', [ ProductController::class , 'create' ])->name( 'admin.products.create' );
+    Route::post( '/admin/products', [ ProductController::class, 'store' ] )->name( 'admin.products.store' );
+    Route::put( '/admin/products/{id}', [ ProductController::class, 'update' ] )->name( 'admin.products.update' );
+    Route::delete( '/admin/products/{id}', [ ProductController::class, 'destroy', ] )->name( 'admin.products.destroy' );
 } );
