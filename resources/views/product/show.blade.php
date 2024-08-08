@@ -247,22 +247,57 @@
 		</section>
 
 		{{--Related Products--}}
+		
+
 		<section class="py-5">
 			<div class="container">
 				<h5 class="mb-4">You might also like these</h5>
-				<div class="row row-cols-3 g-3">
-                    @foreach($all_products as $single_product)
-                    @foreach($single_product->images as $image)
-					<div class="col">
-						<div class="card">
-                        <img src="/{{ $image->image_url}}" class="card-img-top" alt="Hollywood Sign on The Hill">
-							<h3>{{ $single_product->name }}</h3>
-							<p>${{ $single_product->price }}</p>
+				<!-- product-->
+		<div class="row">
+		@foreach($all_products as $single_product)
+		@foreach($single_product->images as $image)
+		<div class="col-lg-3 col-md-4">
+			<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
+				<div class="product-image mb-md-3">
+					<div class="product-badge badge bg-secondary">Fresh</div>
+					<a href="#">
+						<div class="product-swap-image">
+							<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $image->image_url}}" alt="product">
+							<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $image->image_url}}	" alt="product">
 						</div>
+					</a>
+					<div class="product-hover-overlay"><div class="text-dark text-sm">
+							<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
+								<use xlink:href="#retail-bag-1"> </use>
+							</svg>
+							<x-add-to-cart-button product_id="#" quantity="1" />
+						</div>
+						<div><a class="text-dark text-primary-hover me-2" href="#!">
+								<svg class="svg-icon svg-icon-heavy">
+									<use xlink:href="#heart-1"> </use>
+								</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
+								<svg class="svg-icon svg-icon-heavy">
+									<use xlink:href="#expand-1"> </use>
+								</svg></a></div>
 					</div>
-                    @endforeach
-					@endforeach
 				</div>
+				<div class="position-relative">
+					<h3 class="text-base mb-1">
+						<a class="text-dark" href="#">
+							{{ $single_product->name }}
+						</a>
+					</h3>
+					<p class="text-gray-600 text-sm">
+						<span>${{ $single_product->price }}</span>
+					</p>
+					<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
+				</div>
+			</div>
+		</div>
+		@endforeach
+					@endforeach
+					</div>
+				<!-- /product   -->
 			</div>
 		</section>
 	</div>
