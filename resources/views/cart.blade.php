@@ -12,7 +12,7 @@
         <div class="hero-content">
             <h1 class="hero-heading">Shopping cart</h1>
 			<div>
-				<p class="lead">You have <span class="fw-bold">3</span> items in your cart.</p>
+				<p class="lead cart-items-count">You have <span class="fw-bold">3</span> items in your cart.</p>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@
 									{{--Items will be added by JavaScript here--}}
 						        </tbody>
 					        </table>
-					        <p class="text-muted text-sm">Proceed to checkout to calculate <span class="fw-bold">Shipping</span> and <span class="fw-bold">taxes</span></p>
+					        <p class="text-muted text-sm" style="border-top: 1px solid #dee2e6; padding-top: 16px;">Proceed to checkout to calculate <span class="fw-bold">Shipping</span> and <span class="fw-bold">taxes</span></p>
 				        </div>
 				        <div class="card-footer overflow-hidden p-0">
 					        <div class="d-grid"> <a class="btn btn-primary py-3 text-white" href="/checkout">

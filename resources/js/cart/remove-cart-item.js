@@ -24,7 +24,6 @@ class RemoveCartItem extends HTMLElement {
 	handleRemoveCartItem() {
 		// Get product id.
 		const productId = Number( this.getAttribute( 'product-id' ) );
-		console.log( 'productId', productId );
 		
 		// Remove cart item.
 		removeCartItem( productId );
