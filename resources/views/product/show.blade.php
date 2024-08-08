@@ -46,6 +46,8 @@
 								<h6 class="detail-option-heading">Size <span>(required)</span></h6>
 								<div class="dropdown bootstrap-select">
 									<select class="selectpicker" name="size" data-style="btn-selectpicker">
+										@foreach($)
+										<option value="value_0">Small</option>
 										<option value="value_0">Small</option>
 										<option value="value_1">Medium</option>
 										<option value="value_2">Large</option>
@@ -253,51 +255,52 @@
 			<div class="container">
 				<h5 class="mb-4">You might also like these</h5>
 				<!-- product-->
-		<div class="row">
-		@foreach($all_products as $single_product)
-		@foreach($single_product->images as $image)
-		<div class="col-lg-3 col-md-4">
-			<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
-				<div class="product-image mb-md-3">
-					<div class="product-badge badge bg-secondary">Fresh</div>
-					<a href="{{ route('product.show', ['product'=> $image->product->id])}}">
-						<div class="product-swap-image">
-							<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $image->image_url ?? '' }}" alt="product">
-							<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $image->image_url ?? '' }}" alt="product">
+				<div class="row">
+				@foreach($all_products as $single_product)
+				@foreach($single_product->images as $image)
+				<div class="col-lg-3 col-md-4">
+					<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
+						<div class="product-image mb-md-3">
+							<div class="product-badge badge bg-secondary">Fresh</div>
+							<a href="{{ route('product.show', ['product'=> $image->product->id])}}">
+								<div class="product-swap-image">
+									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $image->image_url ?? '' }}" alt="product">
+									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $image->image_url ?? '' }}" alt="product">
+								</div>
+							</a>
+							<div class="product-hover-overlay"><div class="text-dark text-sm">
+									<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
+										<use xlink:href="#retail-bag-1"> </use>
+									</svg>
+									<x-add-to-cart-button product_id="{{$image->product_id}}" quantity="1" />
+								</div>
+								<div><a class="text-dark text-primary-hover me-2" href="#!">
+										<svg class="svg-icon svg-icon-heavy">
+											<use xlink:href="#heart-1"> </use>
+										</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
+										<svg class="svg-icon svg-icon-heavy">
+											<use xlink:href="#expand-1"> </use>
+										</svg></a>
+								</div>
+							</div>
 						</div>
-					</a>
-					<div class="product-hover-overlay"><div class="text-dark text-sm">
-							<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
-								<use xlink:href="#retail-bag-1"> </use>
-							</svg>
-							<x-add-to-cart-button product_id="{{$image->product_id}}" quantity="1" />
+						<div class="position-relative">
+							<h3 class="text-base mb-1">
+								<a class="text-dark" href="#">
+									{{ $single_product->name }}
+								</a>
+							</h3>
+							<p class="text-gray-600 text-sm">
+								<span>${{ $single_product->price }}</span>
+							</p>
+							<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
 						</div>
-						<div><a class="text-dark text-primary-hover me-2" href="#!">
-								<svg class="svg-icon svg-icon-heavy">
-									<use xlink:href="#heart-1"> </use>
-								</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-								<svg class="svg-icon svg-icon-heavy">
-									<use xlink:href="#expand-1"> </use>
-								</svg></a></div>
 					</div>
 				</div>
-				<div class="position-relative">
-					<h3 class="text-base mb-1">
-						<a class="text-dark" href="#">
-							{{ $single_product->name }}
-						</a>
-					</h3>
-					<p class="text-gray-600 text-sm">
-						<span>${{ $single_product->price }}</span>
-					</p>
-					<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
-				</div>
+				@endforeach
+				@endforeach
 			</div>
-		</div>
-		@endforeach
-					@endforeach
-					</div>
-				<!-- /product   -->
+			<!-- /product   -->
 			</div>
 		</section>
 	</div>
