@@ -25,10 +25,6 @@ class ProductController extends Controller
             return view('admin.products.index', compact('title', 'products' ) );
         }
 
-<<<<<<< HEAD
-	    $title = "Single Product!";
-	    return view( 'product.index', compact( 'title' ) );
-=======
         $products =Product::with('images')->get();
         dd($products);
         $categories = Category::where('name', 'Size')->get();
@@ -40,7 +36,6 @@ class ProductController extends Controller
 
 	    return view( 'product.index', compact( 'title', 'products','categories','brands','demographies') );
         
->>>>>>> daebcfcfe9d33b209d1331a3bda079c3b8f0098c
     }
 
     public function fetchCategories()
@@ -150,15 +145,7 @@ class ProductController extends Controller
 
         $categories = Category::where('name', 'Size')->get();
 
-<<<<<<< HEAD
         return view('product.show', compact('product','all_products','categories'));
-=======
-        $reviews = ProductReview::where('product_id', $product->id)
-                            ->with('user') 
-                            ->get();
-        
-        return view('product.show', compact('product','all_products','categories', 'reviews'));
->>>>>>> fe70b39c6ecef635622dbffa2e49332cc3be849e
     }
 
     /**
