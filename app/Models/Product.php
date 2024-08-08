@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-	protected $fillable = ['name', 'value', 'description'];
+	protected $fillable = ['sku', 'name', 'price', 'description', 'stock_quantity'];
 
 	// Define the relationship
 	public function images()

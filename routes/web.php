@@ -17,6 +17,9 @@ Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welc
 Route::get( '/shop', fn() => view( 'shop' ) )->name( 'shop' );
 Route::get( '/about', fn() => view( 'about' ) )->name( 'about' );
 Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
+Route::get('/termsandconditions', fn() => view('termsandconditions'))->name('termsandconditions');
+Route::get('/refund-policy', fn() => view('refund-policy'))->name('refund-policy');
+
 Route::get('/categories', [ProductController::class, 'fetchCategories']);
 
 /**
@@ -105,8 +108,11 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
 	// admin dashboard
     Route::get( '/admin', [ AdminController::class, 'index' ] )->name( 'admin.index' );
     Route::get( '/admin/charts', [ AdminController::class, 'charts' ] )->name( 'admin.charts' );
-	// Route::get( '/admin/inquiries', [ InquiryController::class, 'index' ] )->name( 'admin.inquiries.index' );
-	// Route::post( '/admin/inquiries', [ InquiryController::class, 'store' ] )->name( 'admin.inquiries.store' );
-	// Route::put( '/admin/inquiries/{id}', [ InquiryController::class, 'update' ] )->name( 'admin.inquiries.update' );
-	// Route::delete( '/admin/inquiries/{id}', [ InquiryController::class, 'destroy', ] )->name( 'admin.inquiries.destroy' );
+
+    // product management
+    Route::get( '/admin/products', [ ProductController::class, 'index' ] )->name( 'admin.products.index' );
+    Route::get( '/admin/products/add', [ ProductController::class , 'create' ])->name( 'admin.products.create' );
+    Route::post( '/admin/products', [ ProductController::class, 'store' ] )->name( 'admin.products.store' );
+    Route::put( '/admin/products/{id}', [ ProductController::class, 'update' ] )->name( 'admin.products.update' );
+    Route::delete( '/admin/products/{id}', [ ProductController::class, 'destroy', ] )->name( 'admin.products.destroy' );
 } );

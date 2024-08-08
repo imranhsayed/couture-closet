@@ -4,12 +4,40 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/images/favicon.svg" type="image/x-icon"/>
     <title>Couture Closet | Admin</title>
 
     <!-- CSS files -->
     <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.2/css/bootstrap-multiselect.min.css"/>
     @vite(['resources/sass/app.scss', 'resources/css/app.css'])
+
+    <!-- custom style for categories when loading page -->
+    <style>
+        /*.btn-group {*/
+        /*    width: 100%;*/
+        /*}*/
+
+        .multiselect-native-select {
+            width: 100%;
+            background: #efefef80;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            padding: 16px;
+            color: #5d657b;
+            resize: none;
+            transition: all .3s
+        }
+
+        .multiselect-selected-text {
+            width: 100%;
+            text-align: left;
+        }
+
+        .custom-select {
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,7 +45,7 @@
 <aside class="sidebar-nav-wrapper">
     <div class="navbar-logo">
         <a href="{{ route('home') }}">
-            <img src="images/site-logo.svg" style="width: 130px; height: 40px;" alt="logo"/>
+            <img src="/images/site-logo.svg" style="width: 130px; height: 40px;" alt="logo"/>
         </a>
     </div>
     <nav class="sidebar-nav">
@@ -78,7 +106,7 @@
                 </a>
                 <ul id="ddmenu_2" class="collapse dropdown-nav">
                     <li>
-                        <a href="#"> View Products </a>
+                        <a href="{{ route('admin.products.index') }}"> View Products </a>
                     </li>
                     <li>
                         <a href="#"> Create Product </a>
@@ -248,7 +276,7 @@
                                 <div class="profile-info">
                                     <div class="info">
                                         <div class="image">
-                                            <img src="images/favicon.svg"
+                                            <img src="/images/favicon.svg"
                                                  style="width: 45px; height: 45px;"
                                                  alt="image"/>
                                         </div>
@@ -263,7 +291,7 @@
                                 <li>
                                     <div class="author-info flex items-center !p-1">
                                         <div class="image">
-                                            <img src="images/favicon.svg" alt="image">
+                                            <img src="/images/favicon.svg" alt="image">
                                         </div>
                                         <div class="content">
                                             <h4 class="text-sm">{{ \Auth::user()->first_name . ' ' . \Auth::user()->last_name }}</h4>
@@ -292,18 +320,23 @@
     </header>
     <!-- header end -->
 
+    <!-- flash message -->
+    @include('admin.partials.flash')
+
     <!-- main-wrapper start -->
     @yield('content')
     <!-- main-wrapper end -->
 </main>
-<!-- Javascript files -->
-@vite(['resources/js/app.js'])
 
 <!-- Bootstrap JS and dependencies -->
 <script src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/vendor/jquery/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.2/js/bootstrap-multiselect.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- load custom js -->
+@vite(['resources/js/app.js'])
 </body>
 
 </html>

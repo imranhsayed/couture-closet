@@ -27,8 +27,7 @@ const Dashboard = {
     charts(data) {
         // Weekly sales chart
         const ctx1 = document.getElementById("Chart1").getContext("2d");
-        console.log(data);
-        const chart1 = new Chart(ctx1, {
+        const chart = new Chart(ctx1, {
             type: "line",
             data: {
                 // Last 7 dates formated to day/month
@@ -133,8 +132,7 @@ const Dashboard = {
         try {
             const chartData = await this.getCharts();
             this.charts(chartData);
-        } catch (error) {
-            console.error('Failed to initialize charts:', error);
+        } catch (ignored) {
         }
     }
 }
