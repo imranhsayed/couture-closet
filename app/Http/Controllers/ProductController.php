@@ -30,7 +30,7 @@ class ProductController extends Controller
 	    return view( 'product.index', compact( 'title' ) );
 =======
         $products =Product::with('images')->get();
-
+        dd($products);
         $categories = Category::where('name', 'Size')->get();
 
         $brands = Category::where('name', 'Brand')->get();
