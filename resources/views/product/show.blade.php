@@ -149,19 +149,19 @@
 									<tbody>
 									<tr>
 										<th class="font-weight-normal border-0">Weight</th>
-										<td class="text-muted border-0">dolor sit amet                           </td>
+										<td class="text-muted border-0">dolor sit amet</td>
 									</tr>
 									<tr>
 										<th class="font-weight-normal ">Sunt in culpa qui</th>
-										<td class="text-muted ">Lorem ipsum dolor sit amet                           </td>
+										<td class="text-muted ">Lorem ipsum dolor sit amet</td>
 									</tr>
 									<tr>
 										<th class="font-weight-normal ">Product #</th>
-										<td class="text-muted ">Lorem ipsum dolor sit amet                           </td>
+										<td class="text-muted ">Lorem ipsum dolor sit amet</td>
 									</tr>
 									<tr>
 										<th class="font-weight-normal ">Available packaging</th>
-										<td class="text-muted ">LOLDuis aute irure dolor in reprehenderit                           </td>
+										<td class="text-muted ">LOLDuis aute irure dolor in reprehenderit</td>
 									</tr>
 									</tbody>
 								</table>
@@ -195,7 +195,7 @@
 										<h5 class="mt-2 mb-1">Princess Leia</h5>
 										<div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-gray-200"></i><i class="fa fa-xs fa-star text-gray-200"></i>
 										</div>
-										<p class="text-muted">His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table.     </p>
+										<p class="text-muted">His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table.</p>
 									</div>
 								</div>
 								<div class="media review">
@@ -204,7 +204,7 @@
 										<h5 class="mt-2 mb-1">Jabba Hut</h5>
 										<div class="mb-2"><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i><i class="fa fa-xs fa-star text-warning"></i>
 										</div>
-										<p class="text-muted">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.     </p>
+										<p class="text-muted">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
 									</div>
 								</div>
 								<div class="py-5 px-3">
