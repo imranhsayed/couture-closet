@@ -200,7 +200,8 @@
 		</div>
 	</div>
 </footer>
-
+		{{--This will show notifications via JavaScript--}}
+	    <cc-notification class="notification hide"></cc-notification>
     </div>
 
     <!-- Custom js -->
