@@ -17,7 +17,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss'])
+    @vite(['resources/css/admin/main.css', 'resources/sass/app.scss'])
 </head>
 <body>
     <div id="app">
