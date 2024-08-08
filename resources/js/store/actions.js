@@ -73,6 +73,7 @@ export const addToCart = ( productId = 0, quantity = 1 ) => {
 			products: updatedProducts,
 			totalProductsCount: getTotalProductCount( updatedProducts ),
 		},
+		notification: `${quantity} item(s) added.`,
 	} );
 }
 
@@ -115,6 +116,7 @@ export const removeFromCart = ( productId = 0 ) => {
 			products: updatedProducts,
 			totalProductsCount: getTotalProductCount( updatedProducts ),
 		},
+		notification: `1 item removed.`,
 	} );
 }
 
@@ -191,6 +193,13 @@ export const removeEntireCartItem = ( productId ) => {
 			products: updatedProducts,
 			totalProductsCount: getTotalProductCount( updatedProducts ),
 		},
+		notification: `Product removed.`,
+	} );
+}
+
+export const resetNotification = () => {
+	setState( {
+		notification: '',
 	} );
 }
 

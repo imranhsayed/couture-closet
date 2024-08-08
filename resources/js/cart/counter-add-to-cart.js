@@ -1,17 +1,12 @@
 /**
  * Global variables.
  */
-const { customElements, HTMLElement, zustand } = window;
+const { customElements, HTMLElement } = window;
 
 /**
  * Internal Dependencies.
  */
 import { addToCart } from '../store/actions.js';
-
-/**
- * Get Store.
- */
-const { subscribe } = zustand.stores.globalStore;
 
 /**
  * Class CounterAddToCartButton
@@ -20,20 +15,26 @@ class CounterAddToCartButton extends HTMLElement {
 	constructor() {
 		super();
 		
-		// Subscribe.
-		subscribe( this.update.bind( this ) );
-		
 		this.productId = Number( this.getAttribute( 'product-id' ) ?? '' );
-		this.quantity = Number( this.getAttribute( 'quantity' ) ?? 1 );
+		this.inputElement = this.querySelector( '#product-detail-quantity-input' );
 		this.button = this.querySelector( 'button' );
 		this.button?.addEventListener( 'click', () => this.handleAddToCart() );
-	}
-	
-	update() {
-		// console.log( 'state', state );
+		console.log( 'this.inputElement', this.inputElement );
+		
+		// Events.
+		this.inputElement?.addEventListener( 'input', ( event ) => {
+			const input = event.target;
+			// Don't allow user to select less than one product ( avoid negative values ).
+			if ( input.value < 1 ) {
+				input.value = 1;
+			}
+		} );
 	}
 	
 	handleAddToCart() {
+		// Get quantity.
+		this.quantity = Number( this.inputElement.value ?? 1 );
+		
 		// Early return, if product id or quantity is not available.
 		if ( ! this.productId || ! this.quantity ) {
 			return;

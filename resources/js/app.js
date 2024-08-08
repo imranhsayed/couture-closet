@@ -10,7 +10,7 @@ import './store/zustand.js';
 import './store/data.js';
 
 /**
- * Main.
+ * Global.
  */
 import './main.js';
 
@@ -22,6 +22,8 @@ import './cart/index.js';
 import './cart/increment-decrement.js';
 import './cart/product-count.js';
 import './cart/remove-cart-item.js';
+import './cart/counter-add-to-cart.js';
+import './cart/notification.js';
 
 /**
  * User.

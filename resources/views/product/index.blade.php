@@ -40,41 +40,20 @@
 						</div>
 					</div>
 					<p class="mb-4 text-muted">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
-					<form id="buyForm" action="#">
+					<div class="product-inputs">
 						<div class="row">
 							<div class="col-sm-6 col-lg-12 detail-option mb-4">
-								<h6 class="detail-option-heading">Size <span>(required)</span></h6>
-								<div class="dropdown bootstrap-select">
-									<select class="selectpicker" name="size" data-style="btn-selectpicker">
-										<option value="value_0">Small</option>
-										<option value="value_1">Medium</option>
-										<option value="value_2">Large</option>
-									</select>
-								</div>
+								<h6 class="detail-option-heading d-inline">Size: </h6>
+								<span>Medium</span>
 							</div>
 						</div>
-						<div class="input-group w-100 mb-4">
-							<input class="form-control form-control-lg detail-quantity" name="items" type="number" value="1">
-							<div class="flex-grow-1">
-								<div class="d-grid h-100">
-									<button class="btn btn-dark" type="submit"> <i class="fa fa-shopping-cart me-2"></i>Add to Cart</button>
-								</div>
-							</div>
-						</div>
-						<div class="row mb-4">
-							<div class="col-6"><a href="#"> <i class="far fa-heart me-2"></i>Add to wishlist </a></div>
-							<div class="col-6 text-end">
-								<ul class="list-inline mb-0">
-									<li class="list-inline-item me-2"><a class="text-dark text-primary-hover" href="#"><i class="fab fa-facebook-f"> </i></a></li>
-									<li class="list-inline-item"><a class="text-dark text-primary-hover" href="#"><i class="fab fa-twitter"> </i></a></li>
-								</ul>
-							</div>
-						</div>
+						{{--Add to cart--}}
+						<x-counter-add-to-cart product_id="2" />
 						<ul class="list-unstyled">
 							<li><strong>Category:</strong> <a class="text-muted" href="#">Jeans</a></li>
 							<li><strong>Tags:</strong> <a class="text-muted" href="#">Leisure</a>, <a class="text-muted" href="#">Elegant</a></li>
 						</ul>
-					</form>
+					</div>
 				</div>
 			</div>
 		</div>
