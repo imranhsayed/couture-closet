@@ -21,95 +21,54 @@
 </head>
 <body>
     <div id="app">
-	    <nav class="navbar navbar-expand-lg bg-transparent border-0 shadow-0 navbar-light px-lg-5 ">
-		    <a class="navbar-brand d-flex align-items-center" href="/">
-			    <img src="/images/site-logo.svg" alt="Site logo" width="200" height="50" class="mr-1">
-		    </a>
+	<nav class="navbar navbar-expand-lg bg-transparent border-0 shadow-0 navbar-light px-lg-5">
+    <a class="navbar-brand d-flex align-items-center" href="/">
+        <img src="/images/site-logo.svg" alt="Site logo" width="200" height="50" class="mr-1">
+    </a>
 
-		    <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-			    <svg class="svg-icon navbar-icon">
-				    <use xlink:href="#menu-hamburger-1"></use>
-			    </svg>
-		    </button>
-		    <div class="collapse navbar-collapse" id="navbarContent">
-				{{--Menu--}}
-			    <ul class="navbar-nav mt-3 mt-lg-0">
-				    <li class="nav-item active">
-					    <a class="nav-link" href="/" aria-haspopup="true" aria-expanded="false">Home</a>
-				    </li>
-				    <li class="nav-item">
-					    <a class="nav-link" href="/about" aria-haspopup="true" aria-expanded="false">About</a>
-				    </li>
-				    <li class="nav-item dropdown">
-					    <a class="nav-link dropdown-toggle" id="shopDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
-					    <div class="dropdown-menu dropdown-menu-md dropdown-menu-animated py-0" aria-labelledby="shopDropdown">
-						    <div class="row">
-							    @include('partials.header')
-							    <div class="col-lg-4 d-none d-lg-block position-relative">
-									<img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/kyle-loftus-596319-unsplash-cropped.jpg" alt="">
-									</div>
-						    </div>
-					    </div>
-				    </li>
-			    </ul>
-				{{--Search--}}
-			    <form class="" action="#">
-				    <div class="input-group input-group-underlined">
-					    <input class="form-control form-control-underlined ps-3" type="text" placeholder="Search" aria-label="Search" aria-describedby="button-search">
-					    <button class="btn btn-underlined" id="button-search" type="button" style="margin-top: -3px">
-						    <svg class="svg-icon navbar-icon">
-							    <use xlink:href="#search-1"> </use>
-						    </svg>
-					    </button>
-				    </div>
-			    </form>
-			    <ul class="list-inline mb-0 d-none d-lg-flex align-items-center">
-				    <li class="nav-item dropdown">
-					    <a class="nav-link dropdown-toggle show" id="userLoginDropdown" href="#"
-				                                     data-bs-toggle="dropdown" aria-haspopup="true"
-				                                     aria-expanded="false">
-						    <svg class="svg-icon navbar-icon">
-							    <use xlink:href="#avatar-1"> </use>
-						    </svg></a>
-					    </a>
-					    @if (\Auth::check())
-							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('user.profile') }}">
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-															document.getElementById('logout-form').submit();">
-									{{ __('Logout') }}
-								</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <svg class="svg-icon navbar-icon">
+            <use xlink:href="#menu-hamburger-1"></use>
+        </svg>
+    </button>
 
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-									@csrf
-								</form>
-								@if (\Auth::user()->is_admin)
-									<a class="dropdown-item" href="{{ route('admin.index') }}">
-										Admin Panel
-									</a>
-								@endif
-							</div>
-						@else
-							<div class="dropdown-menu dropdown-menu-animated" aria-labelledby="userLoginDropdown"
-								data-bs-popper="none">
-								<a class="dropdown-item" href="/login">Login</a>
-								<a class="dropdown-item" href="/register">Register</a>
-							</div>
-						@endif
-				    </li>
-				    <li class="list-inline-item position-relative ml-2">
-					    <a class="text-dark text-primary-hover" href="/cart">
-						    <svg class="svg-icon navbar-icon">
-							    <use xlink:href="#retail-bag-1"> </use>
-						    </svg>
-						    <cc-product-count class="navbar-icon-badge">5</cc-product-count>
-					    </a>
-				    </li>
-			    </ul>
-		    </div>
-	    </nav>
+    <div class="collapse navbar-collapse" id="navbarContent">
+        {{-- Menu --}}
+        <ul class="navbar-nav mt-3 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="/" aria-haspopup="true" aria-expanded="false">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about" aria-haspopup="true" aria-expanded="false">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact-us" aria-haspopup="true" aria-expanded="false">Contact Us</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="shopDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+                <div class="dropdown-menu dropdown-menu-md dropdown-menu-animated py-0" aria-labelledby="shopDropdown">
+                    <div class="row">
+                        @include('partials.header')
+                        <div class="col-lg-4 d-none d-lg-block position-relative">
+                            <img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/kyle-loftus-596319-unsplash-cropped.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        {{-- Search --}}
+        <form class="" action="#">
+            <div class="input-group input-group-underlined">
+                <input class="form-control form-control-underlined ps-3" type="text" placeholder="Search" aria-label="Search" aria-describedby="button-search">
+                <button class="btn btn-underlined" id="button-search" type="button" style="margin-top: -3px">
+                    <svg class="svg-icon navbar-icon">
+                        <use xlink:href="#search-1"></use>
+                    </svg>
+                </button>
+            </div>
+        </form>
+    </div>
+</nav>
 
         <main>
             @if(session('error'))
@@ -173,9 +132,10 @@
 							<div class="expand-lg collapse" id="footerMenu1">
 								<h6 class="letter-spacing-1 mb-4 d-none d-lg-block">Company</h6>
 								<ul class="list-unstyled text-sm pt-2 pt-lg-0">
-									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/about">About Us</a></li>
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/">Home</a></li>
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/shop">Shop</a></li>
+									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/about">About Us</a></li>
+									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/contact-us">Contact Us</a></li>
 								</ul>
 							</div>
 						</div>
