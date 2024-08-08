@@ -62,7 +62,10 @@
 							</div>
 						</div>
 						<div class="row mb-4">
-							<div class="col-6"><a href="#"> <i class="far fa-heart me-2"></i>Add to wishlist </a></div>
+							<div class="col-6">
+                                <a href="#"> 
+                                    <i class="far fa-heart me-2"></i>Add to wishlist </a>
+                            </div>
 							<div class="col-6 text-end">
 								<ul class="list-inline mb-0">
 									<li class="list-inline-item me-2"><a class="text-dark text-primary-hover" href="#"><i class="fab fa-facebook-f"> </i></a></li>
@@ -70,18 +73,21 @@
 								</ul>
 							</div>
 						</div>
-						<ul class="list-unstyled">
-                            <div class="border-top">
-                                <li><strong >Category:</strong> <a class="text-muted" href="#">Jeans</a></li>    
-                            </div>
-                            <div class="border-top">
-                                <li><strong >Stock:</strong> <a class="text-muted" href="#">Jeans</a></li>    
-                            </div>
-							<div class="border-top">
-                                <li><strong >Brand:</strong> <a class="text-muted" href="#">Jeans</a></li>    
-                            </div>
-							<li><strong>Tags:</strong> <a class="text-muted" href="#">Leisure</a>, <a class="text-muted" href="#">Elegant</a></li>
-						</ul>
+						<ul class="list-unstyled border-top">
+                            <li class="border-top pt-2">
+                                <strong class="text d-block" class="border-top pt-2">Category:</strong>
+                                <strong><a class="text-muted d-block" href="#" class="border-top pt-2">Jeans</a></strong>
+                            </li>
+                            <li class="border-top pt-2">
+                                <strong class="text d-block" class="border-top pt-2">Stock:</strong>
+                                <strong><a class="text-muted d-block" class="border-top pt-2" href="#">Jeans</a></strong>
+                            </li>
+                            <li class="border-top pt-2">
+                                <strong class="d-block">Brand:</strong>
+                                <strong><a class="text-muted d-block" href="#">Jeans</a></strong>
+                            </li>
+                        </ul>
+
 					</form>
 				</div>
 			</div>
@@ -245,27 +251,17 @@
 			<div class="container">
 				<h5 class="mb-4">You might also like these</h5>
 				<div class="row row-cols-3 g-3">
+                    @foreach($all_products as $single_product)
+                    @foreach($single_product->images as $image)
 					<div class="col">
 						<div class="card">
-							<img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
-							<h3>Grey Sweater</h3>
-							<p>$20</p>
+                        <img src="/{{ $image->image_url}}" class="card-img-top" alt="Hollywood Sign on The Hill">
+							<h3>{{ $single_product->name }}</h3>
+							<p>${{ $single_product->price }}</p>
 						</div>
 					</div>
-					<div class="col">
-						<div class="card">
-							<img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
-							<h3>Grey Sweater</h3>
-							<p>$20</p>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card">
-							<img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill">
-							<h3>Grey Sweater</h3>
-							<p>$20</p>
-						</div>
-					</div>
+                    @endforeach
+					@endforeach
 				</div>
 			</div>
 		</section>

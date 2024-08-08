@@ -53,7 +53,9 @@ class ProductController extends Controller
         $product = Product::with(['categories', 'images'])
                           ->find($product->id);
         //dd($product->toJson());
-        return view('product.show', compact('product'));
+        $all_products = Product::with('images')->paginate(6);
+        
+        return view('product.show', compact('product','all_products'));
         //return response()->json($product->toJson());
     }
 
