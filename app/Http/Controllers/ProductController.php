@@ -16,7 +16,7 @@ class ProductController extends Controller
     {
 	    $title = "Single Product!";
 
-        $products =Product::all();
+        $products =Product::with('images')->get();
 
         $categories = Category::where('name', 'Size')->get();
 
@@ -25,7 +25,7 @@ class ProductController extends Controller
         $demographies = Category::where('name', 'demography')->get();
         //$product = Product::with(['categories', 'images'])->find($product->id);
 
-	    return view( 'product.index', compact( 'title', 'products', 'categories','brands','demographies') );
+	    return view( 'product.index', compact( 'title', 'products','categories','brands','demographies') );
         
     }
 

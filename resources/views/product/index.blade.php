@@ -24,12 +24,19 @@
 				</header>
 				<div class="row">
 					<!-- product-->
-					 @foreach($products as $product)
+					@foreach($products as $product)
 					<div class="col-xl-3 col-sm-4 col-6">
 						<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 							<div class="product-image mb-md-3">
-								<div class="product-badge badge bg-secondary">Fresh</div><a href="detail-1.html">
-									<div class="product-swap-image"><img class="img-fluid product-swap-image-front" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0987188250_1_1_1.jpg" alt="product"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/0987188250_2_1_1.jpg" alt="product"></div></a>
+								<div class="product-badge badge bg-secondary">Fresh</div>
+								<a href="#">
+									<div class="product-swap-image">
+										@foreach($product->images as $image)
+										<img class="img-fluid product-swap-image-front" src="/{{ $image->image_url}}" alt="product">
+										<img class="img-fluid" src="/{{ $image->image_url}}" alt="product">
+										@endforeach
+									</div>
+								</a>
 								<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
 										<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
 											<use xlink:href="#retail-bag-1"> </use>
@@ -62,10 +69,10 @@
                     <svg class="svg-icon page-icon">
                       <use xlink:href="#angle-left-1"> </use>
                     </svg></span><span class="sr-only">Previous</span></a></li>
-						<li class="page-item active"><a class="page-link" href="#">1       </a></li>
-						<li class="page-item"><a class="page-link" href="#">2       </a></li>
-						<li class="page-item"><a class="page-link" href="#">3       </a></li>
-						<li class="page-item"><a class="page-link" href="#">4       </a></li>
+						<li class="page-item active"><a class="page-link" href="#">1</a></li>
+						<li class="page-item"><a class="page-link" href="#">2</a></li>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item"><a class="page-link" href="#">4</a></li>
 						<li class="page-item"><a class="page-link" href="#">5 </a></li>
 						<li class="page-item"><a class="page-arrow" href="#" aria-label="Next"><span aria-hidden="true">
                     <svg class="svg-icon page-icon">

@@ -11,6 +11,8 @@ class Product extends Model
 
 	protected $fillable = ['name', 'value', 'description'];
 
+    protected $table = 'products';
+
 	// Define the relationship
 	public function images()
 	{
