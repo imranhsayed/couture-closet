@@ -14,7 +14,7 @@
 			<div class="col-lg-6 col-xl-7 pt-4 order-2 order-lg-1 photoswipe-gallery">
                 <a class="d-block mb-4" href="img/product/detail-3-gray.jpg" data-caption="Push-up Jeans 1 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
 					@foreach($product->images as $image)
-                    
+
                     <div data-toggle="zoom" data-image="img/product/detail-3-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="/{{ $image->image_url}}" alt="{{$product->name}}"><img role="presentation" alt="{{$product->name}}" src="/{{ $image->image_url}}" class="zoomImg" style="position: absolute; top: -94.9611px; left: -187.658px; opacity: 0; width: 1313px; height: 1313px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="#" data-caption="Push-up Jeans 2 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
                     @endforeach
                 </a>
@@ -39,42 +39,19 @@
 							</ul><span class="text-muted text-uppercase">25 reviews</span>
 						</div>
 					</div>
-					<p class="mb-4 text-muted">{{ $product->description}}Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
-					<form id="buyForm" action="#">
+					<p class="mb-4 text-muted">{{ $product->description }}Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+					<div id="buyForm">
 						<div class="row">
 							<div class="col-sm-6 col-lg-12 detail-option mb-4">
-								<h6 class="detail-option-heading">Size <span>(required)</span></h6>
-								<div class="dropdown bootstrap-select">
-									<select class="selectpicker" name="size" data-style="btn-selectpicker">
-										@foreach($categories as $category) 
-										<option value="{{ $category->id }}">{{ $category->description }}</option> 
-										@endforeach
-										
-									</select>
-								</div>
+								<h6 class="detail-option-heading d-inline">Size: </h6>
+								<span>Medium</span>
 							</div>
 						</div>
-						<div class="input-group w-100 mb-4">
-							<input class="form-control form-control-lg detail-quantity" name="items" type="number" value="1">
-							<div class="flex-grow-1">
-								<div class="d-grid h-100">
-									<button class="btn btn-dark" type="submit"> <i class="fa fa-shopping-cart me-2"></i>Add to Cart</button>
-								</div>
-							</div>
-						</div>
-						<div class="row mb-4">
-							<div class="col-6">
-                                <a href="#"> 
-                                    <i class="far fa-heart me-2"></i>Add to wishlist </a>
-                            </div>
-							<div class="col-6 text-end">
-								<ul class="list-inline mb-0">
-									<li class="list-inline-item me-2"><a class="text-dark text-primary-hover" href="#"><i class="fab fa-facebook-f"> </i></a></li>
-									<li class="list-inline-item"><a class="text-dark text-primary-hover" href="#"><i class="fab fa-twitter"> </i></a></li>
-								</ul>
-							</div>
-						</div>
+						{{--Add to cart--}}
+						<x-counter-add-to-cart product_id="{{ $product->id }}" />
+
 						<ul class="list-unstyled border-top">
+							{{--@TODO To make category and brand dyanamic--}}
                             <li class="border-top pt-2">
                                 <strong class="text d-block" class="border-top pt-2">Category:</strong>
                                 <strong><a class="text-muted d-block" href="#" class="border-top pt-2">Jeans</a></strong>
@@ -88,8 +65,7 @@
                                 <strong><a class="text-muted d-block" href="#">Jeans</a></strong>
                             </li>
                         </ul>
-
-					</form>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -248,7 +224,7 @@
 		</section>
 
 		{{--Related Products--}}
-		
+
 
 		<section class="py-5">
 			<div class="container">

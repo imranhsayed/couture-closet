@@ -14,7 +14,7 @@
 	}
 @endphp
 
-<lb-increment-decrement-controls
+<cc-increment-decrement-controls
 	class="search-filters__selection-controls"
 	min-value="{{ $min_value }}"
 	max-value="{{ $max_value }}"
@@ -44,4 +44,4 @@
 			+
 		</button>
 	</div>
-</lb-increment-decrement-controls>
+</cc-increment-decrement-controls>

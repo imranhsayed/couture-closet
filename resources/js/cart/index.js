@@ -19,15 +19,30 @@ class Cart extends HTMLElement {
 		subscribe( this.update.bind( this ) );
 		
 		// Elements.
+		this.cartItemsCountElement = document.querySelector( '.cart-items-count' );
 		this.cartItemsContainerElement = this.querySelector( '.cart-items' );
 		this.cartSummaryItemsContainerElement = this.querySelector( '.cart-summary-items' );
 	}
 
 	update( state ) {
 		this.fetchAndUpdateCartMarkup( state.cart );
+		
+		// If no items in the cart, clear the entire cart markup.
+		if ( ! state.cart.products.length ) {
+			this.clearEntireCartMarkup();
+		}
 	}
 	
-	fetchAndUpdateCartMarkup( cartData ) {
+	clearEntireCartMarkup() {
+		this.innerHTML = '';
+	}
+	
+	/**
+	 * Fetch and update cart markup.
+	 *
+	 * @param cartData
+	 */
+	fetchAndUpdateCartMarkup( cartData = [] ) {
 		fetch( '/cart-details', {
 			method: 'POST',
 			headers: {
@@ -54,6 +69,7 @@ class Cart extends HTMLElement {
 			.then( response => {
 				if ( response.success ) {
 					// Update markup.
+					this.updateCartItemsCountMarkup( response?.data?.products?.length ?? 0 );
 					this.updateCartMarkup( response?.data ?? [] );
 					this.updateCartSummaryMarkup( response?.data ?? [] );
 				}
@@ -101,10 +117,10 @@ class Cart extends HTMLElement {
 							  </div>
 							 <div class="col-md-4">
 							 <div class="row align-items-center">
-								<lb-increment-decrement-controls
+								<cc-increment-decrement-controls
 									class="search-filters__selection-controls"
 									product-id="${product?.id ?? ''}"
-									min-value="1"
+									min-value="0"
 									max-value="${product?.stock_quantity ?? 100}"
 									selected-value="${ product?.quantity ?? 1 }"
 								>
@@ -133,7 +149,7 @@ class Cart extends HTMLElement {
 											+
 										</button>
 									</div>
-								</lb-increment-decrement-controls>
+								</cc-increment-decrement-controls>
 							 </div>
 							</div>
 							<div class="col-md-3">
@@ -168,7 +184,7 @@ class Cart extends HTMLElement {
 		// Initialize cart summary markup
 		let cartItemsSummaryMarkup = ``;
 		
-		// Loop through products.
+		// Loop through products and build markup.
 		cartData?.products.forEach( ( product ) => [
 			cartItemsSummaryMarkup += `
 				<tr>
@@ -178,8 +194,28 @@ class Cart extends HTMLElement {
 			`
 		] );
 		
+		// Add total.
+		cartItemsSummaryMarkup += `
+			<tr>
+                <th class="pt-4 border-0 text-lg">Total</th>
+                <td class="pt-4 text-end h3 fw-normal border-0">$${ cartData?.amount ?? '' }</td>
+            </tr>
+		`
+		
 		// Add the items markup to container.
 		this.cartSummaryItemsContainerElement.innerHTML = cartItemsSummaryMarkup;
+	}
+	
+	updateCartItemsCountMarkup( count ) {
+		let theMarkup = '';
+		
+		if ( count ) {
+			theMarkup = `You have <span class="fw-bold">${count}</span> items in your cart.`;
+		} else {
+			theMarkup = `You have <span class="fw-bold">0</span> items in your cart. <br><a href="/shop">Shop</a> for our latest products.`;
+		}
+		
+		this.cartItemsCountElement.innerHTML = theMarkup;
 	}
 }
 
