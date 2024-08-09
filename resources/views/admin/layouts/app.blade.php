@@ -45,7 +45,7 @@
 <aside class="sidebar-nav-wrapper">
     <div class="navbar-logo">
         <a href="{{ route('home') }}">
-            <img src="/images/site-logo.svg" style="width: 130px; height: 40px;" alt="logo"/>
+            <img src="/images/logo.svg" style="width: 130px; height: 40px;" alt="logo"/>
         </a>
     </div>
     <nav class="sidebar-nav">
@@ -109,7 +109,7 @@
                         <a href="{{ route('admin.products.index') }}"> View Products </a>
                     </li>
                     <li>
-                        <a href="#"> Create Product </a>
+                        <a href="{{ route('admin.products.create') }}"> Create Product </a>
                     </li>
                 </ul>
             </li>

@@ -224,10 +224,30 @@
                                                     <ul class="dropdown-menu dropdown-menu-end"
                                                         aria-labelledby="moreAction1">
                                                         <li class="dropdown-item">
-                                                            <a href="{{ $item->product_id ?? '' }}" class="text-gray">Delete</a>
+                                                            <a class="edit text-danger"
+                                                                href="{{ route('admin.products.destroy', [ 'product' => $item->product_id ?? '' ]) }}"
+                                                                onclick="event.preventDefault(); function deleteConfirm() {
+                                                                let confirmed = confirm('Are you sure you want to delete this product?')
+                                                                if (confirmed)
+                                                                {
+                                                                    document.getElementById('delete-product-form').submit();
+                                                                } else {
+                                                                    return false;
+                                                                }
+                                                            }
+                                                            deleteConfirm()">
+                                                                Delete
+                                                            </a>
+
+                                                            <form id="delete-product-form"
+                                                                  action="{{ route('admin.products.destroy', [ 'product' => $item->product_id ?? '' ]) }}"
+                                                                  method="POST" class="d-none">
+                                                                @csrf
+                                                                @method('delete')
+                                                            </form>
                                                         </li>
                                                         <li class="dropdown-item">
-                                                            <a href="{{ $item->product_id ?? '' }}" class="text-gray">Edit</a>
+                                                            <a href="{{ route('admin.products.edit', ['product' => $item->product_id ?? '']) }}" class="text-gray">Edit</a>
                                                         </li>
                                                     </ul>
                                                 </div>
