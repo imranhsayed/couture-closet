@@ -68,6 +68,16 @@ class OrderController extends Controller
     {
         //
     }
-
+    /**
+     * Show the order details page.
+     */
+    public function orderDetails(Order $order)
+    {
+        // Load the order along with its items and the related products
+        $order = Order::with('orderItems.product')->findOrFail($order->id);
+    
+        // Return the order details view with the order data
+        return view('order-details', ['order' => $order]);
+    }
     
 }

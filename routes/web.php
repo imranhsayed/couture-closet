@@ -28,13 +28,8 @@ Route::get('/categories', [ProductController::class, 'fetchCategories']);
 /**
  * Product Route.
  */
-<<<<<<< HEAD
-// Route::get( '/product', [ ProductController::class, 'index' ] )->name( 'product.index' );
-Route::get('/product/{product}', [ ProductController::class, 'show' ])->name( 'product.show' );
-=======
 Route::get( '/shop', [ \App\Http\Controllers\Shop::class, 'index' ] )->name( 'shop.index' );
 Route::get('/shop/{product}', [ \App\Http\Controllers\Shop::class, 'show' ])->name( 'shop.show' );
->>>>>>> a2865bf2c94efcc6fe0db7c76ff60803d2832aae
 
 // Route for the cart page
 Route::get('/cart', function () {
@@ -98,15 +93,16 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
     Route::get( '/product/review', [ ProductReviewController::class, 'create' ] )->name( 'product.leave.review' );
     Route::post( '/product/review', [ ProductReviewController::class, 'store' ] )->name( 'product.review.store' );
 
-    // Order
-	Route::get( '/order/{order}', [ OrderController::class, 'show' ] ) ->name( 'order.show' );
+    // Route for viewing order details
+	Route::get('/order-details/{order}', [OrderController::class, 'orderDetails'])->name('order-details.show');
+
 
 	Route::get('/order-confirmation', function () {
 		return view('order-confirmation');
 	})->name('order-confirmation');
-	Route::get('/order-details', function () {
-		return view('order-details');
-	})->name('order-details');
+	// Route::get('/order-details', function () {
+	// 	return view('order-details');
+	// })->name('order-details');
 
 	Route::get('/checkout', function () {
 		return view('checkout');
