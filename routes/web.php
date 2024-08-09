@@ -29,7 +29,7 @@ Route::get('/categories', [ProductController::class, 'fetchCategories']);
 /**
  * Product Route.
  */
-Route::get( '/product', [ ProductController::class, 'index' ] )->name( 'product.index' );
+// Route::get( '/product', [ ProductController::class, 'index' ] )->name( 'product.index' );
 Route::get('/product/{product}', [ ProductController::class, 'show' ])->name( 'product.show' );
 
 // Route for the cart page
