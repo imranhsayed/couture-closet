@@ -113,7 +113,7 @@
 							<a href="/product?id={{ $product->id }}">
 								<div class="product-swap-image">
 									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="{{ $product->images[0]['image_url'] ?? '' }}" alt="product">
-									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="{{ $product->images[1]['image_url'] ?? '' }}" alt="product">
+									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="{{ $product->images[1]['image_url'] ?? $product->images[0]['image_url'] }}" alt="product">
 								</div>
 							</a>
 							<div class="product-hover-overlay"><div class="text-dark text-sm">
@@ -122,13 +122,14 @@
 									</svg>
 									<x-add-to-cart-button product_id="{{ $product->id }}" quantity="1" />
 								</div>
-								<div><a class="text-dark text-primary-hover me-2" href="#!">
+								<!-- <div><a class="text-dark text-primary-hover me-2" href="#!">
 										<svg class="svg-icon svg-icon-heavy">
 											<use xlink:href="#heart-1"> </use>
 										</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
 										<svg class="svg-icon svg-icon-heavy">
 											<use xlink:href="#expand-1"> </use>
-										</svg></a></div>
+										</svg></a>
+								</div> -->
 							</div>
 						</div>
 						<div class="position-relative">
