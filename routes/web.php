@@ -103,15 +103,14 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
     Route::get( '/product/review', [ ProductReviewController::class, 'create' ] )->name( 'product.leave.review' );
     Route::post( '/product/review', [ ProductReviewController::class, 'store' ] )->name( 'product.review.store' );
 
-    // Order
-	Route::get( '/order/{order}', [ OrderController::class, 'show' ] ) ->name( 'order.show' );
+    // Route for viewing order details
+	Route::get('/order-details/{order}', [OrderController::class, 'orderDetails'])->name('order-details.show');
+
 
 	Route::get('/order-confirmation', function () {
 		return view('order-confirmation');
 	})->name('order-confirmation');
-	Route::get('/order-details', function () {
-		return view('order-details');
-	})->name('order-details');
+	
 
 	Route::get('/checkout', function () {
 		return view('checkout');

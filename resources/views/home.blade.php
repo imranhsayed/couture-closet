@@ -100,13 +100,13 @@
                                     <td>{{ $order->order_date ?? '' }}</td>
                                     <td>${{ $order->total_amount ?? '' }}</td>
                                     <td>
-                                        <div class="button-group d-flex justify-content-center flex-wrap">
-                                            <button
-                                                class="main-btn primary-btn btn-hover btn btn-primary w-100 text-center"
-                                                onclick="window.location.href='/order/{{ $order->id }}'">
-                                                View Order
-                                            </button>
-                                        </div>
+                                    <div class="button-group d-flex justify-content-center flex-wrap">
+                                        <button
+                                            class="main-btn primary-btn btn-hover btn btn-primary w-100 text-center"
+                                            onclick="window.location.href='{{ route('order-details.show', $order->id) }}'">
+                                            View Order
+                                        </button>
+                                    </div>
                                     </td>
                                 </tr>
                                 @endforeach
