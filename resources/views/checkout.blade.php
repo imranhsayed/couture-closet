@@ -18,7 +18,7 @@
     </div>
 </section>
 
-<div class="container pb-6">
+<cc-checkout class="container pb-6">
     <div class="row">
         <div class="col-lg-7 pe-xl-6">
             <form action="checkout-confirmed.html">
@@ -156,5 +156,5 @@
             </div>
         </div>
     </div>
-</div>
+</cc-checkout>
 @endsection
