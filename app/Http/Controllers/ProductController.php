@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductImage;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
@@ -185,6 +186,25 @@ class ProductController extends Controller
         $categories = Category::where('name', 'Size')->get();
 
         return view('product.show', compact('product', 'all_products', 'categories'));
+    }
+
+    /**
+     * Search product's content:
+     * @param Request $request
+     * @return void
+     */
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $title = 'Products';
+        $products = Product::where('sku', 'LIKE', '%' . $search . '%')
+               ->orWhere('name', 'LIKE', '%' . $search . '%')
+               ->orWhere('description', 'LIKE', '%' . $search . '%')
+               ->orWhereHas('categories', function ($query) use ($search) {
+                   $query->where('value', 'LIKE', '%' . $search . '%');
+               })
+               ->paginate(10);
+        return view('admin.products.index', compact('title', 'products'));
     }
 
     /**

@@ -19,8 +19,8 @@
                     <!-- Search Bar  -->
                     <div class="col-md-6">
                         <div class="search-wrapper title d-flex input-style-8">
-                            <form action="#" class="form-inline my-2 my-lg-0">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search..."
+                            <form action="{{ route('admin.products.search') }}" class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search..."
                                        aria-label="Search">
                                 <span class="icon"><i class="lni lni-search-alt"></i></span>
                             </form>
