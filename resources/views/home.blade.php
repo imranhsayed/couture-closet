@@ -17,9 +17,11 @@
         </ol>
         <!-- Hero Content-->
         <div class="hero-content pb-30">
-            <h1 class="hero-heading">{{ __('Welcome ' . \Auth::user()->first_name . ' ' . \Auth::user()->last_name . '!') }}</h1>
+            <h1 class="hero-heading">
+                {{ __('Welcome ' . \Auth::user()->first_name . ' ' . \Auth::user()->last_name . '!') }}</h1>
             <div>
-                <p class="lead cart-items-count">See Your Account Details in the <span class="fw-bold">tabs</span> below.</p>
+                <p class="lead cart-items-count">See Your Account Details in the <span class="fw-bold">tabs</span>
+                    below.</p>
             </div>
         </div>
     </div>
@@ -99,10 +101,11 @@
                                     <td>${{ $order->total_amount ?? '' }}</td>
                                     <td>
                                         <div class="button-group d-flex justify-content-center flex-wrap">
-                                        <button class="main-btn primary-btn btn-hover btn btn-primary w-100 text-center"
+                                            <button
+                                                class="main-btn primary-btn btn-hover btn btn-primary w-100 text-center"
                                                 onclick="window.location.href='/order/{{ $order->id }}'">
-                                            View Order
-                                        </button>
+                                                View Order
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>
@@ -169,14 +172,16 @@
                                             data-province="{{ $userAddress->province }}"
                                             data-city="{{ $userAddress->city }}"
                                             data-country="{{ $userAddress->country }}">
-                                            <img src="{{ asset('images/pencil.svg') }}" style="width:20px; height:auto;" alt="Delete" class="icon">
+                                            <img src="{{ asset('images/pencil.svg') }}" style="width:20px; height:auto;"
+                                                alt="Delete" class="icon">
                                         </button>
                                         <form action="{{ route('user.address.delete', ['id' => $userAddress->id]) }}"
                                             method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn">
-                                                    <img src="{{ asset('images/trash.svg') }}" style="width:20px; height:auto;" alt="Delete" class="icon">
+                                                <img src="{{ asset('images/trash.svg') }}"
+                                                    style="width:20px; height:auto;" alt="Delete" class="icon">
                                             </button>
                                         </form>
                                     </td>
@@ -196,49 +201,58 @@
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
-                                <div class="modal-header bg-dark text-white">
+                                <div class="modal-header bg-primary text-white">
                                     <h5 class="modal-title" id="modal_title">Add Address</h5>
                                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form id="user_address" class="form">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <label for="street" class="form-label">Street</label>
-                                            <input type="text" class="form-control" id="street" name="street" required>
-                                            <span id="street_error" class="text-danger"></span>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="postal_code" class="form-label">Postal Code</label>
-                                            <input type="text" class="form-control" id="postal_code" name="postal_code"
-                                                required>
-                                            <span id="postal_code_error" class="text-danger"></span>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="province" class="form-label">Province</label>
-                                            <select id="province" class="form-select" name="province" required>
-                                                <option value="">Select a province</option>
-                                                <option value="AB">Alberta</option>
-                                                <option value="BC">British Columbia</option>
-                                                <!-- Add other provinces here -->
-                                            </select>
-                                            <span id="province_error" class="text-danger"></span>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="city" class="form-label">City</label>
-                                            <input type="text" class="form-control" id="city" name="city" required>
-                                            <span id="city_error" class="text-danger"></span>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="country" class="form-label">Country</label>
-                                            <input type="text" class="form-control" id="country" name="country"
-                                                required>
-                                            <span id="country_error" class="text-danger"></span>
-                                        </div>
-                                        <input type="hidden" id="address_id" name="address_id" value="">
-                                        <button type="submit" class="btn btn-primary w-100">Save Address</button>
-                                    </form>
+                                <form id="user_address" class="form" action="/user/address">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="mb-3">
+                                        <label for="street" class="form-label">Street</label>
+                                        <input type="text" class="form-control" id="street" name="street" required>
+                                        <span id="street_error" class="text-danger"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="postal_code" class="form-label">Postal Code</label>
+                                        <input type="text" class="form-control" id="postal_code" name="postal_code" required>
+                                        <span id="postal_code_error" class="text-danger"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="province" class="form-label">Province</label>
+                                        <select id="province" class="form-select" name="province" required>
+                                            <option value="">Select a province</option>
+                                            <option value="AB">Alberta</option>
+                                            <option value="BC">British Columbia</option>
+                                            <option value="MB">Manitoba</option>
+                                            <option value="NB">New Brunswick</option>
+                                            <option value="NL">Newfoundland and Labrador</option>
+                                            <option value="NS">Nova Scotia</option>
+                                            <option value="ON">Ontario</option>
+                                            <option value="PE">Prince Edward Island</option>
+                                            <option value="QC">Quebec</option>
+                                            <option value="SK">Saskatchewan</option>
+                                        </select>
+                                        <span id="province_error" class="text-danger user_address_error"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="city" class="form-label">City</label>
+                                        <select id="city" class="form-select" name="city" disabled required>
+                                            <option value="">Select a city</option>
+                                        </select>
+                                        <span id="city_error" class="text text-danger user_address_error"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="country" class="form-label">Country</label>
+                                        <select id="country" class="form-select" name="country" required>
+                                            <option value="CA">Canada</option>
+                                        </select>
+                                    </div>
+                                    <!-- <input type="hidden" id="address_id" name="address_id" value=""> -->
+                                    <button type="submit" class="btn btn-primary w-100">Save Address</button>
+                                </form>
                                 </div>
                             </div>
                         </div>
