@@ -148,15 +148,15 @@ class ProductController extends Controller
 
         $categories = Category::where('name', 'Size')->get();
 
-<<<<<<< HEAD
+
         return view('product.show', compact('product','all_products','categories'));
-=======
+
         $reviews = ProductReview::where('product_id', $product->id)
                             ->with('user') 
                             ->get();
         
         return view('product.show', compact('product','all_products','categories', 'reviews'));
->>>>>>> fe70b39c6ecef635622dbffa2e49332cc3be849e
+
     }
 
     /**
