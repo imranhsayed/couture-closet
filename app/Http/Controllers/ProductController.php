@@ -10,6 +10,7 @@ use App\Models\ProductCategory;
 use App\Models\ProductImage;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use App\Models\ProductReview;
 
 class ProductController extends Controller
 {
