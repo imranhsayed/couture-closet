@@ -31,10 +31,8 @@
 								<div class="product-badge badge bg-secondary">Fresh</div>
 								<a href="{{ route('product.show', ['product'=> $product->id])}}">
 									<div class="product-swap-image">
-										@foreach($product->images as $image)
-										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $image->image_url}}" alt="product">
-										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $image->image_url}}" alt="product">
-										@endforeach
+										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $product->images[0]['image_url'] ?? '' }}" alt="product">
+										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $product->images[1]['image_url'] ?? '' }}" alt="product">
 									</div>
 								</a>
 								<div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
@@ -77,7 +75,7 @@
 						<li class="page-item"><a class="page-arrow" href="#" aria-label="Next"><span aria-hidden="true">
                     <svg class="svg-icon page-icon">
                       <use xlink:href="#angle-right-1"> </use>
-                    </svg></span><span class="sr-only">Next     </span></a></li>
+                    </svg></span><span class="sr-only">Next</span></a></li>
 					</ul>
 				</nav>
 			</div>

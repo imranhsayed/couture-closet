@@ -23,11 +23,18 @@ class ProductController extends Controller
             $products = Product::whereNull('deleted_at')->paginate(10);
             return view('admin.products.index', compact('title', 'products'));
         }
-        $products =Product::with('images')->get();
+
+
+	    $title = "Single Product!";
+
+        $products =Product::with('images')->paginate(16);
+        
+        
         $categories = Category::where('name', 'Size')->get();
         $brands = Category::where('name', 'Brand')->get();
         $demographies = Category::where('name', 'demography')->get();
         //$product = Product::with(['categories', 'images'])->find($product->id);
+
 	    return view( 'product.index', compact( 'title', 'products','categories','brands','demographies') );
     }
 
@@ -184,7 +191,15 @@ class ProductController extends Controller
 
         $categories = Category::where('name', 'Size')->get();
 
-        return view('product.show', compact('product', 'all_products', 'categories'));
+
+        return view('product.show', compact('product','all_products','categories'));
+
+        $reviews = ProductReview::where('product_id', $product->id)
+                            ->with('user') 
+                            ->get();
+        
+        return view('product.show', compact('product','all_products','categories', 'reviews'));
+
     }
 
     /**
