@@ -97,7 +97,7 @@
 					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Accessories</a></li>
 				</ul>
 			</div>
-			<div class="col-12 col-sm-auto text-center"><a class="btn btn-link px-0" href="#">All products</a></div>
+			<div class="col-12 col-sm-auto text-center"><a class="btn btn-link px-0" href="/shop">All products</a></div>
 		</div>
 
 		@if( $products->isEmpty() )
