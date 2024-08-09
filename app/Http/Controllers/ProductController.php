@@ -38,7 +38,6 @@ class ProductController extends Controller
 
 	    return view( 'product.index', compact( 'title', 'products','categories','brands','demographies') );
         
-
     }
 
     public function fetchCategories()
