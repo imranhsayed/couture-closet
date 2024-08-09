@@ -29,7 +29,7 @@
 						<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 							<div class="product-image mb-md-3">
 								<div class="product-badge badge bg-secondary">Fresh</div>
-								<a href="{{ route('product.show', ['product'=> $product->id])}}">
+								<a href="{{ route('shop.show', ['product'=> $product->id])}}">
 									<div class="product-swap-image">
 										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $product->images[0]['image_url'] ?? '' }}" alt="product">
 										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $product->images[1]['image_url'] ?? '' }}" alt="product">
@@ -59,7 +59,7 @@
 					</div>
 					@endforeach
 					<!-- /product -->
-					
+
 				</div>
 				<nav class="d-flex justify-content-center mb-5 mt-3" aria-label="page navigation">
 					<ul class="pagination">
@@ -85,39 +85,22 @@
 					<div class="expand-lg collapse" id="categoriesMenu" role="menu">
 						<h5 class="sidebar-heading d-none d-lg-block">Category  </h5>
 						<div class="sidebar-icon-menu mt-4 mt-lg-0">
-							
-							@foreach($demographies as $demogrphy)
-							<div class="sidebar-icon-menu-item" data-bs-toggle="collapse" data-bs-target="#subcategories_1" aria-controls="subcategories_1" role="menuitem">
+
+							@foreach( $demographies as $demogrphy )
+							<div class="sidebar-icon-menu-item">
 								<div class="d-flex align-items-center">
-									<svg class="svg-icon sidebar-icon">
-										<use xlink:href="#woman"> </use>
-									</svg><a class="sidebar-icon-menu-link fw-bold me-2" href="#">{{ $demogrphy->value}}</a><span class="sidebar-icon-menu-count"> 55</span>
-								</div>
-								<div class="collapse" id="subcategories_1">
-									<ul class="sidebar-icon-menu sidebar-icon-submenu">
-										<li class="sidebar-icon-submenu-item"><a class="sidebar-icon-submenu-link link-animated link-animated-light" href="#">Lorem ipsum   </a></li>
-										<li class="sidebar-icon-submenu-item"><a class="sidebar-icon-submenu-link link-animated link-animated-light" href="#">Dolor   </a></li>
-										<li class="sidebar-icon-submenu-item"><a class="sidebar-icon-submenu-link link-animated link-animated-light" href="#">Sit amet   </a></li>
-										<li class="sidebar-icon-submenu-item"><a class="sidebar-icon-submenu-link link-animated link-animated-light" href="#">Donec vitae   </a></li>
-									</ul>
+									@php
+										$path_asset = 'images/' . strtolower( $demogrphy->value ) . '.svg';
+									@endphp
+									<img src="{{ $path_asset }}" alt="Men's" style="width: 28.85px; height: 32.36px;">
+									<a style="margin-left: 10px !important;" class="sidebar-icon-menu-link fw-bold me-2" href="/shop?category={{ $demogrphy->id }}">{{ $demogrphy->value }}</a>
 								</div>
 							</div>
 							@endforeach
 						</div>
 					</div>
 				</div>
-				<div class="sidebar-block px-3 px-lg-0"><a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#priceFilterMenu" aria-expanded="false" aria-controls="priceFilterMenu">Filter by price<span class="block-toggler-icon"></span></a>
-					<div class="expand-lg collapse" id="priceFilterMenu">
-						<h5 class="sidebar-heading d-none d-lg-block">Price  </h5>
-						<div class="mt-4 mt-lg-0 noUi-target noUi-ltr noUi-horizontal noUi-txt-dir-ltr" id="slider-snap"> <div class="noUi-base"><div class="noUi-connects"><div class="noUi-connect" style="transform: translate(16%, 0px) scale(0.28, 1);"></div></div><div class="noUi-origin" style="transform: translate(-84%, 0px); z-index: 5;"><div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="110.0" aria-valuenow="40.0" aria-valuetext="40.00"><div class="noUi-touch-area"></div></div></div><div class="noUi-origin" style="transform: translate(-56%, 0px); z-index: 6;"><div class="noUi-handle noUi-handle-upper" data-handle="1" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="40.0" aria-valuemax="250.0" aria-valuenow="110.0" aria-valuetext="110.00"><div class="noUi-touch-area"></div></div></div></div></div>
-						<div class="nouislider-values">
-							<div class="min">From $<span id="slider-snap-value-lower">40.00</span></div>
-							<div class="max">To $<span id="slider-snap-value-upper">110.00</span></div>
-							<input class="slider-snap-input" type="hidden" name="pricefrom" id="slider-snap-input-lower" value="40">
-							<input class="slider-snap-input" type="hidden" name="priceto" id="slider-snap-input-upper" value="110">
-						</div>
-					</div>
-				</div>
+
 				<div class="sidebar-block px-3 px-lg-0"><a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#brandFilterMenu" aria-expanded="true" aria-controls="brandFilterMenu">Filter by brand<span class="block-toggler-icon"></span></a>
 					<!-- Brand filter menu - this menu has .show class, so is expanded by default-->
 					<div class="expand-lg collapse show" id="brandFilterMenu">
@@ -148,32 +131,6 @@
 							</div>
 							@endforeach
 						</form>
-					</div>
-				</div>
-				<div class="sidebar-block px-3 px-lg-0"><a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#colourFilterMenu" aria-expanded="false" aria-controls="colourFilterMenu">Filter by colour<span class="block-toggler-icon"></span></a>
-					<!-- Size filter menu-->
-					<div class="expand-lg collapse" id="colourFilterMenu">
-						<h5 class="sidebar-heading d-none d-lg-block">Colour </h5>
-						<div class="mt-4 mt-lg-0">
-							<ul class="list-inline mb-0 colours-wrapper">
-								<li class="list-inline-item">
-									<label class="btn-colour" for="colour_sidebar_Blue" style="background-color: #668cb9" data-allow-multiple=""> </label>
-									<input class="input-invisible" type="checkbox" name="colour" value="value_sidebar_Blue" id="colour_sidebar_Blue">
-								</li>
-								<li class="list-inline-item">
-									<label class="btn-colour" for="colour_sidebar_White" style="background-color: #fff" data-allow-multiple=""> </label>
-									<input class="input-invisible" type="checkbox" name="colour" value="value_sidebar_White" id="colour_sidebar_White">
-								</li>
-								<li class="list-inline-item">
-									<label class="btn-colour" for="colour_sidebar_Violet" style="background-color: #8b6ea4" data-allow-multiple=""> </label>
-									<input class="input-invisible" type="checkbox" name="colour" value="value_sidebar_Violet" id="colour_sidebar_Violet">
-								</li>
-								<li class="list-inline-item">
-									<label class="btn-colour" for="colour_sidebar_Red" style="background-color: #dd6265" data-allow-multiple=""> </label>
-									<input class="input-invisible" type="checkbox" name="colour" value="value_sidebar_Red" id="colour_sidebar_Red">
-								</li>
-							</ul>
-						</div>
 					</div>
 				</div>
 			</div>

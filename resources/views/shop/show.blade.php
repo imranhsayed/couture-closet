@@ -155,7 +155,7 @@
 									<div>
 										<h5 class="mt-2 mb-1">{{ $review->user->name }}</h5>
 										<div class="mb-2">
-											
+
 										</div>
 										<p class="text-muted">{{ $review->review_text }}->One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections</p>
 									</div>
@@ -216,7 +216,7 @@
 						<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 							<div class="product-image mb-md-3">
 								<div class="product-badge badge bg-secondary">Fresh</div>
-								<a href="{{ route('product.show', ['product'=> $image->product->id])}}">
+								<a href="{{ route('shop.show', ['product'=> $image->product->id])}}">
 									<div class="product-swap-image">
 										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $image->image_url ?? '' }}" alt="product">
 										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $image->image_url ?? '' }}" alt="product">
