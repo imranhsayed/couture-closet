@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\UserAddressController;
 use App\Models\Product;
+use App\Models\ProvincialTaxRate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
@@ -57,10 +58,19 @@ Route::post( '/cart-details', function () {
 		];
 	}
 
-	$data = [
-		'products' => $products,
-		'amount'   => round( $amount, 2 ),
-	];
+    // get all provincial tax rate
+    $taxes = ProvincialTaxRate::select('province_code', 'gst_rate', 'hst_rate')->get();
+    $transformedTaxes = $taxes->mapWithKeys(function ($item) {
+        return [$item->province_code => [
+            'gst_rate' => $item->gst_rate,
+            'hst_rate' => $item->hst_rate,
+        ]];
+    });
+    $data = [
+        'products' => $products,
+        'amount'   => round( $amount, 2 ),
+        'taxes'    => $transformedTaxes ?? [],
+    ];
 
 	return response()->json( [ 'data' => $data, 'success' => true ] );
 } )->name( 'cart-details' );
