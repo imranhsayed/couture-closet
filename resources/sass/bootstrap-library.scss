@@ -29,7 +29,7 @@
 	--bs-warning: #ffc107;
 	--bs-danger: #dc3545;
 	--bs-light: #f8f9fa;
-	--bs-dark: #212529;
+	--bs-dark: #9b8338;
 	--bs-muted: #868e96;
 	--bs-primary-rgb: 188,172,118;
 	--bs-secondary-rgb: 135,127,100;
@@ -38,7 +38,7 @@
 	--bs-warning-rgb: 255,193,7;
 	--bs-danger-rgb: 220,53,69;
 	--bs-light-rgb: 248,249,250;
-	--bs-dark-rgb: 33,37,41;
+	--bs-dark-rgb: #9b8338;
 	--bs-muted-rgb: 134,142,150;
 	--bs-white-rgb: 255,255,255;
 	--bs-black-rgb: 0,0,0;
@@ -3056,7 +3056,7 @@ textarea.form-control-lg {
 	user-select: none;
 	background-color: transparent;
 	border: 1px solid transparent;
-	padding: .525rem .75rem;
+	padding: .625rem .85rem;
 	font-size: .8rem;
 	border-radius: 0;
 	transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out
@@ -3084,13 +3084,13 @@ textarea.form-control-lg {
 }
 
 .btn-primary {
-	color: #000;
-	background-color: #bcac76;
-	border-color: #bcac76
+	color: #ffffff;
+	background-color: #ad9853;
+	border-color: #ad9853
 }
 
 .btn-primary:hover {
-	color: #000;
+	color: #ffffff;
 	background-color: #c6b88b;
 	border-color: #c3b484
 }
@@ -3330,14 +3330,14 @@ textarea.form-control-lg {
 
 .btn-dark {
 	color: #fff;
-	background-color: #212529;
-	border-color: #212529
+	background-color: #9b8338;
+	border-color: #9b8338;
 }
 
 .btn-dark:hover {
 	color: #fff;
-	background-color: #1c1f23;
-	border-color: #1a1e21
+	background-color: #786322;
+	border-color: #786322;
 }
 
 .btn-check:focus+.btn-dark,.btn-dark:focus {
@@ -4228,9 +4228,14 @@ textarea.form-control-lg {
 
 .nav-tabs .nav-link.active,.nav-tabs .nav-item.show .nav-link {
 	color: #bcac76;
-	background-color: #fff;
+	background-color: #9b8338;
 	border-color: #dee2e6 #dee2e6 #fff
 }
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: #bcac76;
+    background-color: #9b8338;
+	}
 
 .nav-tabs .dropdown-menu {
 	margin-top: -1px;
@@ -16201,9 +16206,10 @@ p.lead strong {
 }
 
 .btn {
-	letter-spacing: .3em;
+	letter-spacing: .2em;
 	text-transform: uppercase;
-	font-weight: bold
+	font-weight: bold;
+	padding:15px;
 }
 
 .input-group .btn {
