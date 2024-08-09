@@ -113,20 +113,33 @@
                                                     <!-- Edit Dropdown -->
                                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction1">
                                                         <li class="dropdown-item">
-                                                            <a href="#" class="text-gray">Edit</a>
+                                                            <a href="{{ route('admin.products.edit', ['product' => $product->id ?? '']) }}" class="text-gray">Edit</a>
                                                         </li>
                                                         <li class="dropdown-item">
-                                                            <a href="#" class="text-gray">View</a>
+                                                            <a href="{{ route('product.show', ['product' => $product->id ?? '']) }}" target="_blank" class="text-gray">View</a>
                                                         </li>
                                                     </ul>
 
                                                     <!-- Delete Link -->
                                                     <a href="#">
-                                                        <button class="edit text-danger ml-5">
+                                                        <a class="edit text-danger ml-5" href="{{ route('admin.products.destroy', [ 'product' => $product->id ?? '' ]) }}" onclick="event.preventDefault(); function deleteConfirm() {
+                                                            let confirmed = confirm('Are you sure you want to delete this product?')
+                                                            if (confirmed)
+                                                            {
+                                                                document.getElementById('delete-product-form').submit();
+                                                            } else {
+                                                                return false;
+                                                            }
+                                                        }
+                                                        deleteConfirm()">
                                                             <i class="lni lni-trash-can"></i>
-                                                        </button>
+                                                        </a>
                                                     </a>
 
+                                                    <form id="delete-product-form" action="{{ route('admin.products.destroy', [ 'product' => $product->id ?? '' ]) }}" method="POST" class="d-none">
+                                                        @csrf
+                                                        @method('delete')
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>

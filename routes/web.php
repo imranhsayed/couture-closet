@@ -31,8 +31,6 @@ Route::get('/categories', [ProductController::class, 'fetchCategories']);
  */
 Route::get( '/product', [ ProductController::class, 'index' ] )->name( 'product.index' );
 Route::get('/product/{product}', [ ProductController::class, 'show' ])->name( 'product.show' );
-Route::get( '/product/review/', [ ProductReviewController::class, 'create' ] )->name( 'product.leave.review' );
-Route::post( '/product/review', [ ProductReviewController::class, 'store' ] )->name( 'product.review.store' );
 
 // Route for the cart page
 Route::get('/cart', function () {
@@ -92,6 +90,10 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 	Route::get( '/user/address/default/{id}', [ UserAddressController::class, 'setDefault' ])->name( 'user.address.default' );
 	Route::delete( '/user/address/delete/{id}', [ UserAddressController::class, 'destroy' ])->name( 'user.address.delete' );
 
+    // product review
+    Route::get( '/product/review', [ ProductReviewController::class, 'create' ] )->name( 'product.leave.review' );
+    Route::post( '/product/review', [ ProductReviewController::class, 'store' ] )->name( 'product.review.store' );
+
     // Order
 	Route::get( '/order/{order}', [ OrderController::class, 'show' ] ) ->name( 'order.show' );
 
@@ -109,9 +111,6 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 	Route::get('/order', function () {
 		return view('order');
 	})->name('order');
-
-	// Route::get( '/projects', [ ProjectController::class, 'index' ] )->name( 'projects.index' );
-	// Route::get( '/projects/{project}', [ ProjectController::class, 'show' ] )->name( 'projects.show' );
 } );
 
 // Admin Routes
@@ -123,7 +122,10 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
     // product management
     Route::get( '/admin/products', [ ProductController::class, 'index' ] )->name( 'admin.products.index' );
     Route::get( '/admin/products/add', [ ProductController::class , 'create' ])->name( 'admin.products.create' );
+    Route::get( '/admin/products/{productId}/image/{imageId}', [ ProductController::class, 'setPrimaryImage' ] )->name( 'admin.products.set.primary.image' );
+    Route::get( '/admin/products/image/{productId}/{imageId}', [ ProductController::class, 'deleteImage' ] )->name( 'admin.products.delete.image' );
+    Route::get( '/admin/products/edit/{product}', [ ProductController::class , 'edit' ])->name( 'admin.products.edit' );
     Route::post( '/admin/products', [ ProductController::class, 'store' ] )->name( 'admin.products.store' );
-    Route::put( '/admin/products/{id}', [ ProductController::class, 'update' ] )->name( 'admin.products.update' );
-    Route::delete( '/admin/products/{id}', [ ProductController::class, 'destroy', ] )->name( 'admin.products.destroy' );
+    Route::put( '/admin/products/update/{product}', [ ProductController::class, 'update' ] )->name( 'admin.products.update' );
+    Route::delete( '/admin/products/{product}', [ ProductController::class, 'destroy', ] )->name( 'admin.products.destroy' );
 } );
