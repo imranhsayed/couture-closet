@@ -109,8 +109,8 @@
 				<div class="col-lg-3 col-md-4">
 					<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 						<div class="product-image mb-md-3">
-							<div class="product-badge badge bg-secondary">Fresh</div>
-							<a href="/product?id={{ $product->id }}">
+							<!-- <a href="/product?id={{ $product->id }}"> -->
+							<a href="/product/{{ $product->id }}">
 								<div class="product-swap-image">
 									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="{{ $product->images[0]['image_url'] ?? '' }}" alt="product">
 									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="{{ $product->images[1]['image_url'] ?? $product->images[0]['image_url'] }}" alt="product">
@@ -122,14 +122,6 @@
 									</svg>
 									<x-add-to-cart-button product_id="{{ $product->id }}" quantity="1" />
 								</div>
-								<!-- <div><a class="text-dark text-primary-hover me-2" href="#!">
-										<svg class="svg-icon svg-icon-heavy">
-											<use xlink:href="#heart-1"> </use>
-										</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-										<svg class="svg-icon svg-icon-heavy">
-											<use xlink:href="#expand-1"> </use>
-										</svg></a>
-								</div> -->
 							</div>
 						</div>
 						<div class="position-relative">
@@ -141,7 +133,6 @@
 							<p class="text-gray-600 text-sm">
 								<span>${{ $product->price }}</span>
 							</p>
-							<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
 						</div>
 					</div>
 				</div>
