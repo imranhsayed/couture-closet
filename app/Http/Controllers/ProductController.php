@@ -18,15 +18,14 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $title = 'Products';
         if (\Auth::check() && \Auth::user()->is_admin)
         {
-            $title = 'Products';
             $products = Product::whereNull('deleted_at')->paginate(10);
             return view('admin.products.index', compact('title', 'products' ) );
         }
 
         $products =Product::with('images')->get();
-        dd($products);
         $categories = Category::where('name', 'Size')->get();
 
         $brands = Category::where('name', 'Brand')->get();
@@ -35,7 +34,7 @@ class ProductController extends Controller
         //$product = Product::with(['categories', 'images'])->find($product->id);
 
 	    return view( 'product.index', compact( 'title', 'products','categories','brands','demographies') );
-        
+
     }
 
     public function fetchCategories()
