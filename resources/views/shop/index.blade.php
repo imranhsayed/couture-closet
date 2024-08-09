@@ -29,7 +29,7 @@
 						<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 							<div class="product-image mb-md-3">
 								<div class="product-badge badge bg-secondary">Fresh</div>
-								<a href="{{ route('product.show', ['product'=> $product->id])}}">
+								<a href="{{ route('shop.show', ['product'=> $product->id])}}">
 									<div class="product-swap-image">
 										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $product->images[0]['image_url'] ?? '' }}" alt="product">
 										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $product->images[1]['image_url'] ?? '' }}" alt="product">
@@ -59,7 +59,7 @@
 					</div>
 					@endforeach
 					<!-- /product -->
-					
+
 				</div>
 				<nav class="d-flex justify-content-center mb-5 mt-3" aria-label="page navigation">
 					<ul class="pagination">
@@ -85,21 +85,15 @@
 					<div class="expand-lg collapse" id="categoriesMenu" role="menu">
 						<h5 class="sidebar-heading d-none d-lg-block">Category  </h5>
 						<div class="sidebar-icon-menu mt-4 mt-lg-0">
-							
-							@foreach($demographies as $demogrphy)
-							<div class="sidebar-icon-menu-item" data-bs-toggle="collapse" data-bs-target="#subcategories_1" aria-controls="subcategories_1" role="menuitem">
+
+							@foreach( $demographies as $demogrphy )
+							<div class="sidebar-icon-menu-item">
 								<div class="d-flex align-items-center">
-									<svg class="svg-icon sidebar-icon">
-										<use xlink:href="#woman"> </use>
-									</svg><a class="sidebar-icon-menu-link fw-bold me-2" href="#">{{ $demogrphy->value}}</a><span class="sidebar-icon-menu-count"> 55</span>
-								</div>
-								<div class="collapse" id="subcategories_1">
-									<ul class="sidebar-icon-menu sidebar-icon-submenu">
-										<li class="sidebar-icon-submenu-item"><a class="sidebar-icon-submenu-link link-animated link-animated-light" href="#">Lorem ipsum   </a></li>
-										<li class="sidebar-icon-submenu-item"><a class="sidebar-icon-submenu-link link-animated link-animated-light" href="#">Dolor   </a></li>
-										<li class="sidebar-icon-submenu-item"><a class="sidebar-icon-submenu-link link-animated link-animated-light" href="#">Sit amet   </a></li>
-										<li class="sidebar-icon-submenu-item"><a class="sidebar-icon-submenu-link link-animated link-animated-light" href="#">Donec vitae   </a></li>
-									</ul>
+									@php
+										$path_asset = 'images/' . strtolower( $demogrphy->value ) . '.svg';
+									@endphp
+									<img src="{{ $path_asset }}" alt="Men's" style="width: 28.85px; height: 32.36px;">
+									<a style="margin-left: 10px !important;" class="sidebar-icon-menu-link fw-bold me-2" href="/shop?category={{ $demogrphy->id }}">{{ $demogrphy->value }}</a><span class="sidebar-icon-menu-count"> 55</span>
 								</div>
 							</div>
 							@endforeach
