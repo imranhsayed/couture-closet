@@ -93,7 +93,7 @@
 										$path_asset = 'images/' . strtolower( $demogrphy->value ) . '.svg';
 									@endphp
 									<img src="{{ $path_asset }}" alt="Men's" style="width: 28.85px; height: 32.36px;">
-									<a style="margin-left: 10px !important;" class="sidebar-icon-menu-link fw-bold me-2" href="/shop?category={{ $demogrphy->id }}">{{ $demogrphy->value }}</a><span class="sidebar-icon-menu-count"> 55</span>
+									<a style="margin-left: 10px !important;" class="sidebar-icon-menu-link fw-bold me-2" href="/shop?category={{ $demogrphy->id }}">{{ $demogrphy->value }}</a>
 								</div>
 							</div>
 							@endforeach
