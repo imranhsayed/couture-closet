@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductImage;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\ProductReview;
 
@@ -24,19 +25,6 @@ class ProductController extends Controller
             $products = Product::whereNull('deleted_at')->paginate(10);
             return view('admin.products.index', compact('title', 'products'));
         }
-
-
-	    $title = "Single Product!";
-
-        $products =Product::with('images')->paginate(16);
-        
-        
-        $categories = Category::where('name', 'Size')->get();
-        $brands = Category::where('name', 'Brand')->get();
-        $demographies = Category::where('name', 'demography')->get();
-        //$product = Product::with(['categories', 'images'])->find($product->id);
-
-	    return view( 'product.index', compact( 'title', 'products','categories','brands','demographies') );
     }
 
     public function fetchCategories()
@@ -192,16 +180,35 @@ class ProductController extends Controller
 
         $categories = Category::where('name', 'Size')->get();
 
-        
+
 
         //return view('product.show', compact('product','all_products','categories'));
 
         $reviews = ProductReview::where('product_id', $product->id)
-                            ->with('user') 
+                            ->with('user')
                             ->get();
-        
+
         return view('product.show', compact('product','all_products','categories', 'reviews'));
 
+    }
+
+    /**
+     * Search product's content:
+     * @param Request $request
+     * @return void
+     */
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $title = 'Products';
+        $products = Product::where('sku', 'LIKE', '%' . $search . '%')
+               ->orWhere('name', 'LIKE', '%' . $search . '%')
+               ->orWhere('description', 'LIKE', '%' . $search . '%')
+               ->orWhereHas('categories', function ($query) use ($search) {
+                   $query->where('value', 'LIKE', '%' . $search . '%');
+               })
+               ->paginate(10);
+        return view('admin.products.index', compact('title', 'products'));
     }
 
     /**

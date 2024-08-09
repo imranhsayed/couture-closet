@@ -51,30 +51,29 @@
 
 	<div class="container">
 
-		<div class="bg-gray-100 position-relative">
+		
 			<div class="container py-6">
 				<div class="row">
 					<div class="col-sm-6 mb-5 mb-sm-0">
-						<div class="card card-scale shadow-0 border-0 text-white text-hover-gray-900 overlay-hover-light text-center"><img class="card-img img-scale" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/category-women.jpg" alt="Card image">
+						<div class="card card-scale shadow-0 border-0 text-white text-hover-gray-900 overlay-hover-light text-center"><img class="card-img img-scale" src="{{ asset('images/mens.jpg') }}" alt="Card image">
 							<div class="card-img-overlay d-flex align-items-center">
 								<div class="w-100 py-3">
-									<h2 class="display-3 fw-bold mb-0">Women</h2><a class="stretched-link" href="category-full.html"><span class="sr-only">See </span></a>
+									<h2 class="display-3 fw-bold mb-0" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Men</h2><a class="stretched-link" href="category-full.html"><span class="sr-only">See </span></a>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-sm-6 mb-5 mb-sm-0">
-						<div class="card card-scale shadow-0 border-0 text-white text-hover-gray-900 overlay-hover-light text-center"><img class="card-img img-scale" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/category-men.jpg" alt="Card image">
+						<div class="card card-scale shadow-0 border-0 text-white text-hover-gray-900 overlay-hover-light text-center"><img class="card-img img-scale" src="{{ asset('images/women.jpg') }}" alt="Card image">
 							<div class="card-img-overlay d-flex align-items-center">
 								<div class="w-100 py-3">
-									<h2 class="display-3 fw-bold mb-0">Men</h2><a class="stretched-link" href="category-full.html"><span class="sr-only">See </span></a>
+									<h2 class="display-3 fw-bold mb-0" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Women</h2><a class="stretched-link" href="category-full.html"><span class="sr-only">See </span></a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
 		{{--Categories--}}
 		<div class="row">
@@ -106,11 +105,11 @@
 				<div class="col-lg-3 col-md-4">
 					<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 						<div class="product-image mb-md-3">
-							<div class="product-badge badge bg-secondary">Fresh</div>
-							<a href="/product?id={{ $product->id }}">
+							<!-- <a href="/product?id={{ $product->id }}"> -->
+							<a href="/product/{{ $product->id }}">
 								<div class="product-swap-image">
 									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="{{ $product->images[0]['image_url'] ?? '' }}" alt="product">
-									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="{{ $product->images[1]['image_url'] ?? '' }}" alt="product">
+									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="{{ $product->images[1]['image_url'] ?? $product->images[0]['image_url'] }}" alt="product">
 								</div>
 							</a>
 							<div class="product-hover-overlay"><div class="text-dark text-sm">
@@ -119,13 +118,6 @@
 									</svg>
 									<x-add-to-cart-button product_id="{{ $product->id }}" quantity="1" />
 								</div>
-								<div><a class="text-dark text-primary-hover me-2" href="#!">
-										<svg class="svg-icon svg-icon-heavy">
-											<use xlink:href="#heart-1"> </use>
-										</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-										<svg class="svg-icon svg-icon-heavy">
-											<use xlink:href="#expand-1"> </use>
-										</svg></a></div>
 							</div>
 						</div>
 						<div class="position-relative">
@@ -137,7 +129,6 @@
 							<p class="text-gray-600 text-sm">
 								<span>${{ $product->price }}</span>
 							</p>
-							<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
 						</div>
 					</div>
 				</div>

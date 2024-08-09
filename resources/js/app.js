@@ -26,6 +26,11 @@ import './cart/counter-add-to-cart.js';
 import './cart/notification.js';
 
 /**
+ * Checkout.
+ */
+import './checkout/index.js';
+
+/**
  * User.
  */
 import './user/address.js';
