@@ -3056,7 +3056,7 @@ textarea.form-control-lg {
 	user-select: none;
 	background-color: transparent;
 	border: 1px solid transparent;
-	padding: .525rem .75rem;
+	padding: .625rem .85rem;
 	font-size: .8rem;
 	border-radius: 0;
 	transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out
@@ -3330,14 +3330,14 @@ textarea.form-control-lg {
 
 .btn-dark {
 	color: #fff;
-	background-color: #212529;
-	border-color: #212529
+	background-color: #9b8338;
+	border-color: #9b8338;
 }
 
 .btn-dark:hover {
 	color: #fff;
-	background-color: #1c1f23;
-	border-color: #1a1e21
+	background-color: #786322;
+	border-color: #786322;
 }
 
 .btn-check:focus+.btn-dark,.btn-dark:focus {
@@ -16201,9 +16201,10 @@ p.lead strong {
 }
 
 .btn {
-	letter-spacing: .3em;
+	letter-spacing: .2em;
 	text-transform: uppercase;
-	font-weight: bold
+	font-weight: bold;
+	padding:15px;
 }
 
 .input-group .btn {
