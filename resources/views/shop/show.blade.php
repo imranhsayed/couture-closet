@@ -72,7 +72,7 @@
 
 		{{--Description Tabs--}}
 		<section class="mt-5">
-			<div class="container">
+			<cc-tabs class="container">
 				<ul class="nav nav-tabs flex-column flex-sm-row" role="tablist">
 					<li class="nav-item"><a class="nav-link detail-nav-link active" data-bs-toggle="tab" href="#description" role="tab">Description</a></li>
 					<li class="nav-item"><a class="nav-link detail-nav-link" data-bs-toggle="tab" href="#additional-information" role="tab">Additional Information</a></li>
@@ -199,7 +199,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</cc-tabs>
 		</section>
 
 		{{--Related Products--}}
