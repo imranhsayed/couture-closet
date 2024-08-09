@@ -99,18 +99,19 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 	Route::get( '/user/address/default/{id}', [ UserAddressController::class, 'setDefault' ])->name( 'user.address.default' );
 	Route::delete( '/user/address/delete/{id}', [ UserAddressController::class, 'destroy' ])->name( 'user.address.delete' );
 
-    // product review
+    // Product review
     Route::get( '/product/review', [ ProductReviewController::class, 'create' ] )->name( 'product.leave.review' );
     Route::post( '/product/review', [ ProductReviewController::class, 'store' ] )->name( 'product.review.store' );
 
-    // Route for viewing order details
+    // Orders
+    Route::post('/order/create-order' , [ OrderController::class, 'store' ])->name( 'order.store' );
 	Route::get('/order-details/{order}', [OrderController::class, 'orderDetails'])->name('order-details.show');
 
 
 	Route::get('/order-confirmation', function () {
 		return view('order-confirmation');
 	})->name('order-confirmation');
-	
+
 
 	Route::get('/checkout', function () {
 		return view('checkout');
