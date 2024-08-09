@@ -5980,3 +5980,7 @@ input::file-selector-button {
   bottom: 0;
   padding: 17px;
 }
+
+.bg-dark{
+  background: rgba(155,131,56, 1);
+}

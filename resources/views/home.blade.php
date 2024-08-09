@@ -1,22 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
+<section class="hero mt-50 mb-50">
+    <div class="container">
+        @include('partials.flash')
+        @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+        @endif
+
+        <!-- Breadcrumbs -->
+        <ol class="breadcrumb ps-0 ">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">User Dashboard</li>
+        </ol>
+        <!-- Hero Content-->
+        <div class="hero-content pb-30">
+            <h1 class="hero-heading">{{ __('Welcome ' . \Auth::user()->first_name . ' ' . \Auth::user()->last_name . '!') }}</h1>
+            <div>
+                <p class="lead cart-items-count">See Your Account Details in the <span class="fw-bold">tabs</span> below.</p>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="container px-4">
     <div class="row">
         <div class="col-12">
-            @include('partials.flash')
-
-            <h1 class="display-4 text-center my-5">{{ __('Dashboard') }}</h1>
-
-            @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-            @endif
-
-            <p class="lead text-center mb-5">
-                {{ __('Welcome ' . \Auth::user()->first_name . ' ' . \Auth::user()->last_name . '!') }}</p>
-
             <!-- Tabs navigation -->
             <ul class="nav nav-tabs nav-fill bg-dark mb-4" id="profileTabs" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -47,21 +57,21 @@
             <div class="tab-content" id="profileTabsContent">
                 <!-- User info tab -->
                 <div class="tab-pane fade show activebg" id="user-info" role="tabpanel" aria-labelledby="user-info-tab">
-                    <h2 class="mb-4">Your Information</h2>
+                    <h3 class="mb-40 mt-40">Your Account Information</h3>
                     <div class="row">
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-6 mb-3 border-bottom border-top pt-4">
                             <h5>First Name</h5>
                             <p class="text-muted">{{ \Auth::user()->first_name ?? '' }}</p>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-6 mb-3 border-bottom border-top pt-4">
                             <h5>Last Name</h5>
                             <p class="text-muted">{{ \Auth::user()->last_name ?? '' }}</p>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-6 mb-3 border-bottom">
                             <h5>Email</h5>
                             <p class="text-muted">{{ \Auth::user()->email ?? '' }}</p>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-6 mb-3 border-bottom">
                             <h5>Phone</h5>
                             <p class="text-muted">{{ \Auth::user()->telephone ?? '' }}</p>
                         </div>
@@ -106,8 +116,8 @@
 
                 <!-- Addresses tab -->
                 <div class="tab-pane fade" id="addresses" role="tabpanel" aria-labelledby="addresses-tab">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h2>Your Addresses</h2>
+                    <div class="d-flex justify-content-between align-items-center mb-40 mt-40">
+                        <h3>Your Current Addresses</h3>
                         <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addressModal"
                             data-operation="add">
                             <i class="fas fa-plus me-2"></i>Add New Address
@@ -139,7 +149,7 @@
                                     <td>{{ $userAddress->country ?? '' }}</td>
                                     <td>
                                         @if ($userAddress->is_primary === 1)
-                                        <span class="badge bg-success">Default</span>
+                                        <span class="badge rounded-pill bg-success">Default</span>
                                         @else
                                         <a href="{{ route('user.address.default', ['id' => $userAddress->id]) }}"
                                             class="btn btn-outline-dark">Set as Default</a>
@@ -249,24 +259,26 @@
                                     <td>{{ $productReview->title ?? '' }}</td>
                                     <td>{{ $productReview->created_at ?? '' }}</td>
                                     @if ($productReview->rating == 0 || empty($productReview->rating))
-                                        <td>
-                                            {!! str_repeat('&#9734;', 5) !!}
-                                        </td>
+                                    <td>
+                                        {!! str_repeat('&#9734;', 5) !!}
+                                    </td>
                                     @else
-                                        <td>
-                                            {!! str_repeat('&#9733;', $productReview->getRawOriginal('rating')) . str_repeat('&#9734;', (5 - $productReview->getRawOriginal('rating'))) !!}
-                                        </td>
+                                    <td>
+                                        {!! str_repeat('&#9733;', $productReview->getRawOriginal('rating')) .
+                                        str_repeat('&#9734;', (5 - $productReview->getRawOriginal('rating'))) !!}
+                                    </td>
                                     @endif
 
                                     @if (empty($productReview->review_text))
-                                        <td>
-                                            <a class="btn btn-primary btn-sm user_profile_btn" href="{{ route('product.leave.review', ['productId' => $productReview->product_id, 'orderId' => $productReview->order_id]) }}"
-                                               role="button">Leave a review</a>
-                                        </td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm user_profile_btn"
+                                            href="{{ route('product.leave.review', ['productId' => $productReview->product_id, 'orderId' => $productReview->order_id]) }}"
+                                            role="button">Leave a review</a>
+                                    </td>
                                     @else
-                                        <td>
-                                            {{ Str::limit($productReview->review_text ?? '', 20, '...') }}
-                                        </td>
+                                    <td>
+                                        {{ Str::limit($productReview->review_text ?? '', 20, '...') }}
+                                    </td>
                                     @endif
                                     <td>
                                         @if (empty($productReview->review_text))
