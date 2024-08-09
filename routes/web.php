@@ -110,9 +110,7 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 	Route::get('/order-confirmation', function () {
 		return view('order-confirmation');
 	})->name('order-confirmation');
-	// Route::get('/order-details', function () {
-	// 	return view('order-details');
-	// })->name('order-details');
+	
 
 	Route::get('/checkout', function () {
 		return view('checkout');
