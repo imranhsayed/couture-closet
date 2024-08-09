@@ -116,7 +116,7 @@
                                                             <a href="{{ route('admin.products.edit', ['product' => $product->id ?? '']) }}" class="text-gray">Edit</a>
                                                         </li>
                                                         <li class="dropdown-item">
-                                                            <a href="{{ route('product.show', ['product' => $product->id ?? '']) }}" target="_blank" class="text-gray">View</a>
+                                                            <a href="{{ route('shop.show', ['product' => $product->id ?? '']) }}" target="_blank" class="text-gray">View</a>
                                                         </li>
                                                     </ul>
 
