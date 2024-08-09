@@ -22,11 +22,13 @@
             <div class="col-lg-12">
                 <div class="card-style mb-30">
                     <div class="title mb-30">
-                        <h6>New Product Form</h6>
+                        <h6>Edit Product Form</h6>
                     </div>
-                    <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.products.update', $product) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="row">
+                            <input type="hidden" id="product_id" name="product_id" value="{{ $product->id ?? ''}}">
                             <div class="col-12">
                                 <div class="input-style-1">
                                     <label>SKU</label>
@@ -61,7 +63,7 @@
                                     <label>Stock Quantity</label>
                                     <input type="number" id="stock_quantity" name="stock_quantity" placeholder="100"
                                            value="{{ old( 'stock_quantity', $product->stock_quantity ?? '' ) }}"
-                                           step="1" required/>
+                                           step="1" required>
                                     <x-val-error field="stock_quantity"/>
                                 </div>
                             </div>
@@ -69,7 +71,24 @@
                             <div class="col-12">
                                 <div class="input-style-1">
                                     <label>Images</label>
-                                    <input type="file" id="images" name="images[]" multiple required>
+                                    <div class="row">
+                                        @foreach (array_slice($product->images->toArray(), 0, 2) as $image)
+                                            <div class="col-md-2 mb-4">
+                                                <div class="card border-primary">
+                                                    <img src="/{{ $image['image_url'] }}" class="card-img-top" alt="">
+                                                    <div class="card-body">
+                                                        @if ($image['is_primary'] == 1)
+                                                            <span class="badge rounded-pill bg-primary text-dark">Primary</span>
+                                                        @else
+                                                            <a href="{{ route('admin.products.set.primary.image', [ 'productId' => $product->id, 'imageId' => $image['id'] ]) }}" class="badge rounded-pill bg-warning text-dark">Set as Primary</a>
+                                                            <a id="delete_image" class="badge rounded-pill bg-warning text-dark" href="{{ route('admin.products.delete.image', ['productId' => $product->id, 'imageId' => $image['id']]) }}" onclick="return confirm('Are you sure you want to delete this image?')">Delete</a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <input type="file" id="images" name="images[]" multiple>
                                     <x-val-error field="images.*"/>
                                 </div>
                             </div>
@@ -81,7 +100,11 @@
                                         @foreach($categories as $key => $category_array)
                                             <optgroup label="{{ $key ?? '' }}">
                                                 @foreach($category_array as $category)
+                                                    @if (in_array($category->id, $productCategoryIds ?? []))
+                                                        <option selected value="{{ $category->id ?? '' }}">{{ $category->value ?? '' }}</option>
+                                                    @else
                                                         <option value="{{ $category->id ?? '' }}">{{ $category->value ?? '' }}</option>
+                                                    @endif
                                                 @endforeach
                                             </optgroup>
                                         @endforeach
