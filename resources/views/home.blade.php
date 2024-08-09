@@ -54,7 +54,7 @@
             </ul>
 
             <!-- Tabs content -->
-            <div class="tab-content" id="profileTabsContent">
+            <div class="tab-content mb-100" id="profileTabsContent">
                 <!-- User info tab -->
                 <div class="tab-pane fade show activebg" id="user-info" role="tabpanel" aria-labelledby="user-info-tab">
                     <h3 class="mb-40 mt-40">Your Account Information</h3>
@@ -79,10 +79,10 @@
                 </div>
                 <!-- Orders tab -->
                 <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-                    <h2 class="mb-4">Your Orders</h2>
+                    <h3 class="mb-40 mt-40">Your Orders</h3>
                     <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead class="table-dark">
+                        <table class="table">
+                            <thead class="table-primary">
                                 <tr>
                                     <th>No</th>
                                     <th>Date</th>
@@ -98,7 +98,7 @@
                                     <td>{{ $order->order_date ?? '' }}</td>
                                     <td>${{ $order->total_amount ?? '' }}</td>
                                     <td>
-                                        <a class="btn btn-outline-dark" href="/order/{{ $order->id }}"
+                                        <a class="btn btn-primary" href="/order/{{ $order->id }}"
                                             role="button">View Order</a>
                                     </td>
                                 </tr>
@@ -125,15 +125,16 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table">
                             <thead class="table-dark">
                                 <tr>
                                     <th>No</th>
                                     <th>Street</th>
-                                    <th>Postal Code</th>
+                                    <th>Zip</th>
                                     <th>City</th>
                                     <th>Province</th>
                                     <th>Country</th>
+                                    <th>Primary</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -154,21 +155,23 @@
                                         <a href="{{ route('user.address.default', ['id' => $userAddress->id]) }}"
                                             class="btn btn-outline-dark">Set as Default</a>
                                         @endif
-                                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn" data-bs-toggle="modal"
                                             data-bs-target="#addressModal" data-operation="edit"
                                             data-id="{{ $userAddress->id }}" data-street="{{ $userAddress->street }}"
                                             data-postal-code="{{ $userAddress->postal_code }}"
                                             data-province="{{ $userAddress->province }}"
                                             data-city="{{ $userAddress->city }}"
                                             data-country="{{ $userAddress->country }}">
-                                            <i class="fas fa-edit"></i>
+                                            <img src="{{ asset('images/pencil.svg') }}" style="width:20px; height:auto;" alt="Delete" class="icon">
                                         </button>
                                         <form action="{{ route('user.address.delete', ['id' => $userAddress->id]) }}"
                                             method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-outline-danger">
-                                                <i class="fas fa-trash"></i>
+                                            <button type="submit" class="btn">
+                                                    <img src="{{ asset('images/trash.svg') }}" style="width:20px; height:auto;" alt="Delete" class="icon">
                                             </button>
                                         </form>
                                     </td>
@@ -229,7 +232,7 @@
                                             <span id="country_error" class="text-danger"></span>
                                         </div>
                                         <input type="hidden" id="address_id" name="address_id" value="">
-                                        <button type="submit" class="btn btn-dark w-100">Save Address</button>
+                                        <button type="submit" class="btn btn-primary w-100">Save Address</button>
                                     </form>
                                 </div>
                             </div>
@@ -239,9 +242,9 @@
 
                 <!-- Reviews tab -->
                 <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                    <h2 class="mb-4">Your Reviews</h2>
+                    <h3 class="mb-40 mt-40">Your Reviews</h3>
                     <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table">
                             <thead class="table-dark">
                                 <tr>
                                     <th>No</th>
