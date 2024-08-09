@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
         \View::composer('partials.header',function($view){
             $categories = Category::where('name','demography')->get();
 
-		    $brands = Category::where('name','Brand')->get();
+		    $brands = Category::where('name','Brand')->take(5)->get();
 
             $view->with(compact('categories','brands'));
         });
