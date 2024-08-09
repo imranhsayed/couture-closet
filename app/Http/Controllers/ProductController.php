@@ -25,8 +25,17 @@ class ProductController extends Controller
             return view('admin.products.index', compact('title', 'products' ) );
         }
 
-	    $title = "Single Product!";
-	    return view( 'product.index', compact( 'title' ) );
+        $products =Product::with('images')->get();
+        dd($products);
+        $categories = Category::where('name', 'Size')->get();
+
+        $brands = Category::where('name', 'Brand')->get();
+
+        $demographies = Category::where('name', 'demography')->get();
+        //$product = Product::with(['categories', 'images'])->find($product->id);
+
+	    return view( 'product.index', compact( 'title', 'products','categories','brands','demographies') );
+        
     }
 
     public function fetchCategories()

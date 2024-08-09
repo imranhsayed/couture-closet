@@ -67,8 +67,54 @@
                 </button>
             </div>
         </form>
-    </div>
-</nav>
+		<ul class="list-inline mb-0 d-none d-lg-flex align-items-center">
+				    <li class="nav-item dropdown">
+					    <a class="nav-link dropdown-toggle show" id="userLoginDropdown" href="#"
+				                                     data-bs-toggle="dropdown" aria-haspopup="true"
+				                                     aria-expanded="false">
+						    <svg class="svg-icon navbar-icon">
+							    <use xlink:href="#avatar-1"> </use>
+						    </svg></a>
+					    </a>
+					    @if (\Auth::check())
+							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('user.profile') }}">
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+															document.getElementById('logout-form').submit();">
+									{{ __('Logout') }}
+								</a>
+
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+									@csrf
+								</form>
+								@if (\Auth::user()->is_admin)
+									<a class="dropdown-item" href="{{ route('admin.index') }}">
+										Admin Panel
+									</a>
+								@endif
+							</div>
+						@else
+							<div class="dropdown-menu dropdown-menu-animated" aria-labelledby="userLoginDropdown"
+								data-bs-popper="none">
+								<a class="dropdown-item" href="/login">Login</a>
+								<a class="dropdown-item" href="/register">Register</a>
+							</div>
+						@endif
+				    </li>
+				    <li class="list-inline-item position-relative ml-2">
+					    <a class="text-dark text-primary-hover" href="/cart">
+						    <svg class="svg-icon navbar-icon">
+							    <use xlink:href="#retail-bag-1"> </use>
+						    </svg>
+						    <cc-product-count class="navbar-icon-badge">5</cc-product-count>
+					    </a>
+				    </li>
+			    </ul>
+		    </div>
+	    </nav>
+
 
         <main>
             @if(session('error'))
