@@ -37,7 +37,7 @@
 		        </div>
 		        <div class="col-lg-4">
 			        <div class="card mb-5 bg-light shadow-none">
-				        <div class="card-header bg-dark shadow-none">
+				        <div class="card-header bg-primary shadow-none">
 					        <h6 class="mb-0 text-white">Order Summary</h6>
 				        </div>
 				        <div class="card-body py-4">

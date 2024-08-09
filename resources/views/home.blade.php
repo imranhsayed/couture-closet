@@ -28,9 +28,9 @@
     <div class="row">
         <div class="col-12">
             <!-- Tabs navigation -->
-            <ul class="nav nav-tabs nav-fill bg-dark mb-4" id="profileTabs" role="tablist">
+            <ul class="nav nav-tabs nav-fill bg-primary mb-4" id="profileTabs" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link activebg text-white" id="user-info-tab" data-bs-toggle="tab"
+                    <button class="nav-link active text-white" id="user-info-tab" data-bs-toggle="tab"
                         data-bs-target="#user-info" type="button" role="tab" aria-controls="user-info"
                         aria-selected="true">Info
                     </button>
@@ -56,7 +56,7 @@
             <!-- Tabs content -->
             <div class="tab-content mb-100" id="profileTabsContent">
                 <!-- User info tab -->
-                <div class="tab-pane fade show activebg" id="user-info" role="tabpanel" aria-labelledby="user-info-tab">
+                <div class="tab-pane fade show active" id="user-info" role="tabpanel" aria-labelledby="user-info-tab">
                     <h3 class="mb-40 mt-40">Your Account Information</h3>
                     <div class="row">
                         <div class="col-md-6 mb-3 border-bottom border-top pt-4">
@@ -98,8 +98,12 @@
                                     <td>{{ $order->order_date ?? '' }}</td>
                                     <td>${{ $order->total_amount ?? '' }}</td>
                                     <td>
-                                        <a class="btn btn-primary" href="/order/{{ $order->id }}"
-                                            role="button">View Order</a>
+                                        <div class="button-group d-flex justify-content-center flex-wrap">
+                                        <button class="main-btn primary-btn btn-hover btn btn-primary w-100 text-center"
+                                                onclick="window.location.href='/order/{{ $order->id }}'">
+                                            View Order
+                                        </button>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -117,16 +121,17 @@
                 <!-- Addresses tab -->
                 <div class="tab-pane fade" id="addresses" role="tabpanel" aria-labelledby="addresses-tab">
                     <div class="d-flex justify-content-between align-items-center mb-40 mt-40">
-                        <h3>Your Current Addresses</h3>
+                        <h3>Current Address(es)</h3>
                         <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addressModal"
                             data-operation="add">
-                            <i class="fas fa-plus me-2"></i>Add New Address
+                            <!-- <i class="fas fa-plus me-2"></i> -->
+                            New Address
                         </button>
                     </div>
 
                     <div class="table-responsive">
                         <table class="table">
-                            <thead class="table-dark">
+                            <thead class="table-primary">
                                 <tr>
                                     <th>No</th>
                                     <th>Street</th>
@@ -245,7 +250,7 @@
                     <h3 class="mb-40 mt-40">Your Reviews</h3>
                     <div class="table-responsive">
                         <table class="table">
-                            <thead class="table-dark">
+                            <thead class="table-primary">
                                 <tr>
                                     <th>No</th>
                                     <th>Title</th>
@@ -283,15 +288,6 @@
                                         {{ Str::limit($productReview->review_text ?? '', 20, '...') }}
                                     </td>
                                     @endif
-                                    <td>
-                                        @if (empty($productReview->review_text))
-                                        <a class="btn btn-outline-primary"
-                                            href="{{ route('product.leave.review', ['productId' => $productReview->product_id, 'orderId' => $productReview->order_id]) }}"
-                                            role="button">Leave a review</a>
-                                        @else
-                                        {{ Str::limit($productReview->review_text ?? '', 20, '...') }}
-                                        @endif
-                                    </td>
                                 </tr>
                                 @endforeach
                                 @else
