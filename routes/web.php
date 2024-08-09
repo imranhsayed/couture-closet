@@ -121,6 +121,7 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
 
     // product management
     Route::get( '/admin/products', [ ProductController::class, 'index' ] )->name( 'admin.products.index' );
+    Route::get( '/admin/products/search', [ ProductController::class, 'search' ])->name( 'admin.products.search' );
     Route::get( '/admin/products/add', [ ProductController::class , 'create' ])->name( 'admin.products.create' );
     Route::get( '/admin/products/{productId}/image/{imageId}', [ ProductController::class, 'setPrimaryImage' ] )->name( 'admin.products.set.primary.image' );
     Route::get( '/admin/products/image/{productId}/{imageId}', [ ProductController::class, 'deleteImage' ] )->name( 'admin.products.delete.image' );
