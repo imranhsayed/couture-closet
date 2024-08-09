@@ -14,7 +14,6 @@ use App\Http\Middleware\EnsureUserIsAuthenticated;
 Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welcome' );
 
 // Public Routes
-Route::get( '/shop', fn() => view( 'shop' ) )->name( 'shop' );
 Route::get( '/about', fn() => view( 'about' ) )->name( 'about' );
 Route::get('/contact-us', function () {
     return view('contact');
@@ -29,8 +28,13 @@ Route::get('/categories', [ProductController::class, 'fetchCategories']);
 /**
  * Product Route.
  */
+<<<<<<< HEAD
 // Route::get( '/product', [ ProductController::class, 'index' ] )->name( 'product.index' );
 Route::get('/product/{product}', [ ProductController::class, 'show' ])->name( 'product.show' );
+=======
+Route::get( '/shop', [ \App\Http\Controllers\Shop::class, 'index' ] )->name( 'shop.index' );
+Route::get('/shop/{product}', [ \App\Http\Controllers\Shop::class, 'show' ])->name( 'shop.show' );
+>>>>>>> a2865bf2c94efcc6fe0db7c76ff60803d2832aae
 
 // Route for the cart page
 Route::get('/cart', function () {
