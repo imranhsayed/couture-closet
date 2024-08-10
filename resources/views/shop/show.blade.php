@@ -146,7 +146,7 @@
 								@foreach($reviews as $review)
 								<div class="media review">
 									<div class="flex-shrink-0 text-center me-4 me-xl-5">
-										<img class="review-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/avatar/person-1.jpg" alt="{{ $review->user->name }}">
+										<img class="review-image" src="/images/review_logo.svg" alt="{{ $review->user->name }}">
 										<span class="text-uppercase text-muted">{{ $review->created_at->format('M Y') }}</span>
 									</div>
 									<div>
