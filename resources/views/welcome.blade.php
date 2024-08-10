@@ -105,8 +105,7 @@
 				<div class="col-lg-3 col-md-4">
 					<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 						<div class="product-image mb-md-3">
-							<!-- <a href="/product?id={{ $product->id }}"> -->
-							<a href="/product/{{ $product->id }}">
+							<a href="/shop/{{ $product->id }}">
 								<div class="product-swap-image">
 									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="{{ $product->images[0]['image_url'] ?? '' }}" alt="product">
 									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="{{ $product->images[1]['image_url'] ?? $product->images[0]['image_url'] }}" alt="product">
