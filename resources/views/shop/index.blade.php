@@ -15,7 +15,7 @@
 				<!-- Breadcrumbs -->
 				<ol class="breadcrumb undefined">
 					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-					<li class="breadcrumb-item active">Shop                                   </li>
+					<li class="breadcrumb-item active">Shop</li>
 				</ol>
 				<header class="product-grid-header">
 					<div class="me-3 mb-3">
@@ -138,7 +138,7 @@
 										$path_asset = 'images/' . strtolower( $demogrphy->value ) . '.svg';
 									@endphp
 									<img src="{{ $path_asset }}" alt="Men's" style="width: 28.85px; height: 32.36px;">
-									<a style="margin-left: 10px !important;" class="sidebar-icon-menu-link fw-bold me-2" href="/shop?category={{ $demogrphy->id }}">{{ $demogrphy->value }}</a>
+									<a style="margin-left: 10px !important;" class="sidebar-icon-menu-link fw-bold me-2" href="/shop?category={{ $demogrphy->value }}">{{ $demogrphy->value }}</a>
 								</div>
 							</div>
 							@endforeach
