@@ -138,4 +138,14 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
     Route::post( '/admin/products', [ ProductController::class, 'store' ] )->name( 'admin.products.store' );
     Route::put( '/admin/products/update/{product}', [ ProductController::class, 'update' ] )->name( 'admin.products.update' );
     Route::delete( '/admin/products/{product}', [ ProductController::class, 'destroy', ] )->name( 'admin.products.destroy' );
+
+
+	//order management
+	Route::get('/admin/orders', [OrderController::class, 'index'])->name('admin.orders.index');
+	Route::get('/admin/orders/{order}', [OrderController::class, 'show'])->name('admin.orders.show');
+	Route::get('/admin/orders/search', [OrderController::class, 'search'])->name('admin.orders.search');
+	Route::get('/admin/orders/{order}/edit', [OrderController::class, 'edit'])->name('admin.orders.edit');
+	Route::put('/admin/orders/{order}', [OrderController::class, 'update'])->name('admin.orders.update');
+	Route::delete('/admin/orders/{order}', [OrderController::class, 'destroy'])->name('admin.orders.destroy');
+
 } );
