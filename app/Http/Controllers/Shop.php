@@ -37,16 +37,23 @@ class Shop extends Controller {
 
 		$categories = Category::where('name', 'Size')->get();
 
-
 		//return view('product.show', compact('product','all_products','categories'));
 
 		$reviews = ProductReview::where('product_id', $product->id)
 		                        ->with('user')
 		                        ->get();
 		
-		$totalReviews = ProductReview::where('product_id', $product->id)->count();			
+		$totalReviews = ProductReview::where('product_id', $product->id)->count();	
+		
+		$categoryIds = $product->categories->pluck('id');
+		
+		$cat_id_val = Category::whereIn('id', $categoryIds)->get();
+
+		$demography = $cat_id_val->firstWhere('name', 'demography');
+    	$size = $cat_id_val->firstWhere('name', 'size');
+    	$brand = $cat_id_val->firstWhere('name', 'brand');
 			
-		return view('shop.show', compact('product','all_products','categories', 'reviews','totalReviews'));
+		return view('shop.show', compact('product','all_products','categories', 'reviews','totalReviews', 'demography','size','brand'));
 
 	}
 }

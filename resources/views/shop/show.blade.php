@@ -46,8 +46,10 @@
 					<div id="buyForm">
 						<div class="row">
 							<div class="col-sm-6 col-lg-12 detail-option mb-4">
-								<h6 class="detail-option-heading d-inline">Size: </h6>
-								<span>Medium</span>
+								@if($size)
+									<h6 class="detail-option-heading d-inline">Size: </h6>
+									<span>{{$size->description}}</span>
+								@endif
 							</div>
 						</div>
 						{{--Add to cart--}}
@@ -57,20 +59,24 @@
 							{{--@TODO To make category and brand dyanamic--}}
                             <li class="border-top pt-2">
                                 <strong class="text d-block" class="border-top pt-2">Stock:</strong>
-								@if($product->stock_quantity < 1)
-                                <strong><a class="text-muted d-block" class="border-top pt-2" href="#">Not Available</a></strong>
-								@else
-								<strong><a class="text-muted d-block" class="border-top pt-2" href="#">Available</a></strong>
-								@endif
+									@if($product->stock_quantity < 1)
+                                		<strong><a class="text-muted d-block" class="border-top pt-2" href="#">Not Available</a></strong>
+									@else
+										<strong><a class="text-muted d-block" class="border-top pt-2" href="#">Available</a></strong>
+									@endif
 							</li>
+							@if($demography)
 							<li class="border-top pt-2">
-                                <strong class="text d-block" class="border-top pt-2">Category:</strong>
-                                <strong><a class="text-muted d-block" href="#" class="border-top pt-2">Jeans</a></strong>
+                                <strong class="text d-block" class="border-top pt-2">Demography</strong>
+                                <strong><a class="text-muted d-block" href="#" class="border-top pt-2">{{$demography->value}}</a></strong>
                             </li>
+							@endif							
+							@if($brand)
                             <li class="border-top pt-2">
                                 <strong class="d-block">Brand:</strong>
-                                <strong><a class="text-muted d-block" href="#">Jeans</a></strong>
+                                <strong><a class="text-muted d-block" href="#">{{$brand->value}}</a></strong>
                             </li>
+							@endif
                         </ul>
 					</div>
 				</div>
