@@ -154,7 +154,7 @@
 							@foreach($brands as $brand)
 							<div class="mb-3 mb-1">
 								<div class="form-check">
-									<input class="form-check-input" id="brand0" type="checkbox" name="clothes-brand" checked="">
+									<input class="form-check-input" id="brand0" type="checkbox" name="clothes-brand" value="{{$brand->value}}">
 									<label class="form-check-label" for="brand0">{{ $brand->value}} <small>(18)</small></label>
 								</div>
 							</div>
