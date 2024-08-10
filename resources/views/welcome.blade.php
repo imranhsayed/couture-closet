@@ -86,7 +86,7 @@
 		<div class="row justify-content-between align-items-center mb-4">
 			<div class="col-12 col-sm">
 				<ul class="list-inline text-center text-sm-start mb-3 mb-sm-0">
-					<li class="list-inline-item"><a class="text-dark" href="#">All Products </a></li>
+					<li class="list-inline-item"><a class="text-dark" href="/shop">All Products </a></li>
 					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Clothing </a></li>
 					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Bags</a></li>
 					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Shoes</a></li>
