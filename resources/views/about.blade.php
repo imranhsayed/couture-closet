@@ -5,7 +5,7 @@
     <div class="container">
         <p class="text-center text-secondary">
 
-        <h2>About Couture Closet</h2>
+        <h1>About Couture Closet</h1>
         <p>Welcome to Couture Closet, where fashion meets passion. At Couture Closet, we believe that clothing is not just about what you wear; it’s about expressing who you are. Our mission is to provide you with the latest trends and timeless pieces that make you feel confident and stylish.</p>
 
         <h3>Our Story</h3>

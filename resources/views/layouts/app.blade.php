@@ -50,7 +50,7 @@
                     <div class="row">
                         @include('partials.header')
                         <div class="col-lg-4 d-none d-lg-block position-relative">
-                            <img class="bg-image" src="/images/menu_slider_image.jpg" alt="">
+                            <img class="bg-image" src="/images/menu_slider_image.jpg" alt="menu_slider_image">
                         </div>
                     </div>
                 </div>
@@ -179,7 +179,6 @@
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/shop">Shop</a></li>
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/about">About Us</a></li>
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/contact-us">Contact Us</a></li>
-									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="#">Refund Policy</a></li>
 								</ul>
 							</div>
 						</div>

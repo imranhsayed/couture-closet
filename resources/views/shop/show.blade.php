@@ -26,7 +26,6 @@
 						<ul class="list-inline mb-2 mb-sm-0">
 							<li class="list-inline-item h4 fw-light mb-0">$ {{ $product->price}}</li>
 							<li class="list-inline-item text-muted fw-light">
-								<!-- <del>{{ $product->price}}</del> -->
 							</li>
 						</ul>
 						<div class="d-flex align-items-center text-sm">
@@ -38,7 +37,7 @@
 								<li class="list-inline-item me-0"><i class="fa fa-star text-gray-300"></i></li>
 							</ul>
 							@foreach($reviews as $review)
-							<span class="text-muted text-uppercase">{{ $totalReviews }}reviews</span>
+								<span class="text-muted text-uppercase">{{ $totalReviews }}reviews</span>
 							@endforeach
 						</div>
 					</div>
@@ -63,9 +62,9 @@
                             <li class="border-top pt-2">
                                 <strong class="text d-block" class="border-top pt-2">Stock:</strong>
 									@if($product->stock_quantity < 1)
-                                		<strong><a class="text-muted d-block" class="border-top pt-2" href="#">Not Available</a></strong>
+                                		<strong><a class="text-muted d-block" class="border-top pt-2">Not Available</a></strong>
 									@else
-										<strong><a class="text-muted d-block" class="border-top pt-2" href="#">Available</a></strong>
+										<strong><a class="text-muted d-block" class="border-top pt-2">Available</a></strong>
 									@endif
 							</li>
 							@if($demography)
