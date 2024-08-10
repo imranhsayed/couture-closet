@@ -56,12 +56,16 @@
 						<ul class="list-unstyled border-top">
 							{{--@TODO To make category and brand dyanamic--}}
                             <li class="border-top pt-2">
+                                <strong class="text d-block" class="border-top pt-2">Stock:</strong>
+								@if($product->stock_quantity < 1)
+                                <strong><a class="text-muted d-block" class="border-top pt-2" href="#">Not Available</a></strong>
+								@else
+								<strong><a class="text-muted d-block" class="border-top pt-2" href="#">Available</a></strong>
+								@endif
+							</li>
+							<li class="border-top pt-2">
                                 <strong class="text d-block" class="border-top pt-2">Category:</strong>
                                 <strong><a class="text-muted d-block" href="#" class="border-top pt-2">Jeans</a></strong>
-                            </li>
-                            <li class="border-top pt-2">
-                                <strong class="text d-block" class="border-top pt-2">Stock:</strong>
-                                <strong><a class="text-muted d-block" class="border-top pt-2" href="#">{{$product->stock_quantity}}</a></strong>
                             </li>
                             <li class="border-top pt-2">
                                 <strong class="d-block">Brand:</strong>
