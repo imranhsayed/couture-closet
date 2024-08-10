@@ -24,9 +24,9 @@
 					<h1 class="mb-4">{{ $product->name}}</h1>
 					<div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between mb-4">
 						<ul class="list-inline mb-2 mb-sm-0">
-							<li class="list-inline-item h4 fw-light mb-0">{{ $product->price}}</li>
+							<li class="list-inline-item h4 fw-light mb-0">$ {{ $product->price}}</li>
 							<li class="list-inline-item text-muted fw-light">
-								<del>{{ $product->price}}</del>
+								<!-- <del>{{ $product->price}}</del> -->
 							</li>
 						</ul>
 						<div class="d-flex align-items-center text-sm">
@@ -36,10 +36,13 @@
 								<li class="list-inline-item me-0"><i class="fa fa-star text-primary"></i></li>
 								<li class="list-inline-item me-0"><i class="fa fa-star text-primary"></i></li>
 								<li class="list-inline-item me-0"><i class="fa fa-star text-gray-300"></i></li>
-							</ul><span class="text-muted text-uppercase">25 reviews</span>
+							</ul>
+							@foreach($reviews as $review)
+							<span class="text-muted text-uppercase">{{ $totalReviews }}reviews</span>
+							@endforeach
 						</div>
 					</div>
-					<p class="mb-4 text-muted">{{ $product->description }}Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+					<h6 class="detail-option-heading d-inline">Description</h6><p class="mb-4 text-muted">{{ $product->description }}</p>
 					<div id="buyForm">
 						<div class="row">
 							<div class="col-sm-6 col-lg-12 detail-option mb-4">
@@ -83,14 +86,8 @@
 						<div class="row">
 							<div class="col-md-7">
 								<h5>About</h5>
-								<p class="text-muted">{{$product->description}}Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+								<p class="text-muted">{{$product->description}}</p>
 								<p class="text-muted">He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before.</p>
-								<h5>You will love</h5>
-								<ul class="text-muted">
-									<li>He must have tried it a hundred times</li>
-									<li>shut his eyes so that he wouldn't have to look</li>
-									<li>at the floundering legs, and only stopped</li>
-								</ul>
 							</div>
 							<!-- <div class="col-md-5"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-3.jpg" alt="{{$product->name}}"></div> -->
 						</div>
@@ -126,18 +123,18 @@
 										<th class="font-weight-normal border-0">Added Date</th>
 										<td class="text-muted border-0">{{$product->created_at}}</td>
 									</tr>
+									@foreach($reviews as $review)
 									<tr>
-										<th class="font-weight-normal ">Sunt in culpa qui</th>
-										<td class="text-muted ">Lorem ipsum dolor sit amet</td>
+										<th class="font-weight-normal ">Total Reviews</th>
+										<td class="text-muted ">{{$totalReviews}} reviews</td>
 									</tr>
+									@endforeach
+									@foreach($reviews as $review)
 									<tr>
-										<th class="font-weight-normal ">Product #</th>
-										<td class="text-muted ">Lorem ipsum dolor sit amet</td>
+										<th class="font-weight-normal ">Rating</th>
+										<td class="text-muted ">{{ $review->rating}}</td>
 									</tr>
-									<tr>
-										<th class="font-weight-normal ">Available packaging</th>
-										<td class="text-muted ">LOLDuis aute irure dolor in reprehenderit</td>
-									</tr>
+									@endforeach
 									</tbody>
 								</table>
 							</div>

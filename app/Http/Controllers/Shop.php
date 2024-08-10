@@ -38,14 +38,15 @@ class Shop extends Controller {
 		$categories = Category::where('name', 'Size')->get();
 
 
-
 		//return view('product.show', compact('product','all_products','categories'));
 
 		$reviews = ProductReview::where('product_id', $product->id)
 		                        ->with('user')
 		                        ->get();
-
-		return view('shop.show', compact('product','all_products','categories', 'reviews'));
+		
+		$totalReviews = ProductReview::where('product_id', $product->id)->count();			
+			
+		return view('shop.show', compact('product','all_products','categories', 'reviews','totalReviews'));
 
 	}
 }
