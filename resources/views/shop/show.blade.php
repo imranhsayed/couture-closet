@@ -49,6 +49,9 @@
 								@if($size)
 									<h6 class="detail-option-heading d-inline">Size: </h6>
 									<span>{{$size->description}}</span>
+								@else
+									<h6 class="detail-option-heading d-inline">Size: </h6>
+									<span>No Size Available</span>
 								@endif
 							</div>
 						</div>
@@ -129,10 +132,6 @@
 							<div class="col-lg-6">
 								<table class="table text-sm">
 									<tbody>
-									<tr>
-										<th class="font-weight-normal border-0">Added Date</th>
-										<td class="text-muted border-0">{{$product->created_at->format('M Y')}}</td>
-									</tr>
 									@foreach($reviews as $review)
 									<tr>
 										<th class="font-weight-normal ">Total Reviews</th>
