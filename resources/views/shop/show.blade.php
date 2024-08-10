@@ -121,7 +121,7 @@
 									<tbody>
 									<tr>
 										<th class="font-weight-normal border-0">Added Date</th>
-										<td class="text-muted border-0">{{$product->created_at}}</td>
+										<td class="text-muted border-0">{{$product->created_at->format('M Y')}}</td>
 									</tr>
 									@foreach($reviews as $review)
 									<tr>
@@ -154,7 +154,7 @@
 										<div class="mb-2">
 
 										</div>
-										<p class="text-muted">{{ $review->review_text }}->One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections</p>
+										<p class="text-muted">{{ $review->review_text }}</p>
 									</div>
 								</div>
 								@endforeach
