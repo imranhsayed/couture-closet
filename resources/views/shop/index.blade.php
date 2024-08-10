@@ -19,7 +19,7 @@
 				</ol>
 				<header class="product-grid-header">
 					<div class="me-3 mb-3">
-						Showing <strong>1-12 </strong>of <strong>158 </strong>products
+						Showing <strong>{{ $products->firstItem() }}-{{ $products->lastItem() }} </strong>of <strong>{{ $products->total() }} </strong>products
 					</div>
 				</header>
 				<div class="row">
@@ -63,19 +63,64 @@
 				</div>
 				<nav class="d-flex justify-content-center mb-5 mt-3" aria-label="page navigation">
 					<ul class="pagination">
-						<li class="page-item"><a class="page-arrow" href="#" aria-label="Previous"><span aria-hidden="true">
-                    <svg class="svg-icon page-icon">
-                      <use xlink:href="#angle-left-1"> </use>
-                    </svg></span><span class="sr-only">Previous</span></a></li>
-						<li class="page-item active"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">4</a></li>
-						<li class="page-item"><a class="page-link" href="#">5 </a></li>
-						<li class="page-item"><a class="page-arrow" href="#" aria-label="Next"><span aria-hidden="true">
-                    <svg class="svg-icon page-icon">
-                      <use xlink:href="#angle-right-1"> </use>
-                    </svg></span><span class="sr-only">Next</span></a></li>
+						<!-- Previous Page Link -->
+						@if ($products->onFirstPage())
+							<li class="page-item disabled">
+								<a class="page-arrow" aria-label="Previous">
+									<span aria-hidden="true">
+										<svg class="svg-icon page-icon">
+											<use xlink:href="#angle-left-1"></use>
+										</svg>
+									</span>
+									<span class="sr-only">Previous</span>
+								</a>
+							</li>
+						@else
+							<li class="page-item">
+								<a class="page-arrow" href="{{ $products->previousPageUrl() }}" aria-label="Previous">
+									<span aria-hidden="true">
+										<svg class="svg-icon page-icon">
+											<use xlink:href="#angle-left-1"></use>
+										</svg>
+									</span>
+									<span class="sr-only">Previous</span>
+								</a>
+							</li>
+						@endif
+
+						<!-- Pagination Elements -->
+						@foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+							@if ($page == $products->currentPage())
+								<li class="page-item active"><a class="page-link" href="#">{{ $page }}</a></li>
+							@else
+								<li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+							@endif
+						@endforeach
+
+						<!-- Next Page Link -->
+						@if ($products->hasMorePages())
+							<li class="page-item">
+								<a class="page-arrow" href="{{ $products->nextPageUrl() }}" aria-label="Next">
+									<span aria-hidden="true">
+										<svg class="svg-icon page-icon">
+											<use xlink:href="#angle-right-1"></use>
+										</svg>
+									</span>
+									<span class="sr-only">Next</span>
+								</a>
+							</li>
+						@else
+							<li class="page-item disabled">
+								<a class="page-arrow" aria-label="Next">
+									<span aria-hidden="true">
+										<svg class="svg-icon page-icon">
+											<use xlink:href="#angle-right-1"></use>
+										</svg>
+									</span>
+									<span class="sr-only">Next</span>
+								</a>
+							</li>
+						@endif
 					</ul>
 				</nav>
 			</div>
