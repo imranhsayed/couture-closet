@@ -4,7 +4,7 @@
 	<h6 class="dropdown-header h6 ps-lg-0">Demography</h6>
 	@if(isset($categories))
 		@foreach ($categories as $category)
-			<a class="dropdown-item ps-lg-0" href="/shop{category={{ $category->value }}}">{{ $category->value }}</a>
+			<a class="dropdown-item ps-lg-0" href="/shop?category={{ $category->value }}">{{ $category->value }}</a>
 		@endforeach
 	@else
 		<p>No categories found.</p>
