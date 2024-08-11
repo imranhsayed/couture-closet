@@ -24,9 +24,8 @@
 					<h1 class="mb-4">{{ $product->name}}</h1>
 					<div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between mb-4">
 						<ul class="list-inline mb-2 mb-sm-0">
-							<li class="list-inline-item h4 fw-light mb-0">{{ $product->price}}</li>
+							<li class="list-inline-item h4 fw-light mb-0">$ {{ $product->price}}</li>
 							<li class="list-inline-item text-muted fw-light">
-								<del>{{ $product->price}}</del>
 							</li>
 						</ul>
 						<div class="d-flex align-items-center text-sm">
@@ -36,15 +35,23 @@
 								<li class="list-inline-item me-0"><i class="fa fa-star text-primary"></i></li>
 								<li class="list-inline-item me-0"><i class="fa fa-star text-primary"></i></li>
 								<li class="list-inline-item me-0"><i class="fa fa-star text-gray-300"></i></li>
-							</ul><span class="text-muted text-uppercase">25 reviews</span>
+							</ul>
+							@foreach($reviews as $review)
+								<span class="text-muted text-uppercase">{{ $totalReviews }}reviews</span>
+							@endforeach
 						</div>
 					</div>
-					<p class="mb-4 text-muted">{{ $product->description }}Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+					<h6 class="detail-option-heading d-inline">Description</h6><p class="mb-4 text-muted">{{ $product->description }}</p>
 					<div id="buyForm">
 						<div class="row">
 							<div class="col-sm-6 col-lg-12 detail-option mb-4">
-								<h6 class="detail-option-heading d-inline">Size: </h6>
-								<span>Medium</span>
+								@if($size)
+									<h6 class="detail-option-heading d-inline">Size: </h6>
+									<span>{{$size->description}}</span>
+								@else
+									<h6 class="detail-option-heading d-inline">Size: </h6>
+									<span>No Size Available</span>
+								@endif
 							</div>
 						</div>
 						{{--Add to cart--}}
@@ -53,17 +60,25 @@
 						<ul class="list-unstyled border-top">
 							{{--@TODO To make category and brand dyanamic--}}
                             <li class="border-top pt-2">
-                                <strong class="text d-block" class="border-top pt-2">Category:</strong>
-                                <strong><a class="text-muted d-block" href="#" class="border-top pt-2">Jeans</a></strong>
-                            </li>
-                            <li class="border-top pt-2">
                                 <strong class="text d-block" class="border-top pt-2">Stock:</strong>
-                                <strong><a class="text-muted d-block" class="border-top pt-2" href="#">{{$product->stock_quantity}}</a></strong>
+									@if($product->stock_quantity < 1)
+                                		<strong><a class="text-muted d-block" class="border-top pt-2">Not Available</a></strong>
+									@else
+										<strong><a class="text-muted d-block" class="border-top pt-2">Available</a></strong>
+									@endif
+							</li>
+							@if($demography)
+							<li class="border-top pt-2">
+                                <strong class="text d-block" class="border-top pt-2">Demography</strong>
+                                <strong><a class="text-muted d-block" href="#" class="border-top pt-2">{{$demography->value}}</a></strong>
                             </li>
+							@endif							
+							@if($brand)
                             <li class="border-top pt-2">
                                 <strong class="d-block">Brand:</strong>
-                                <strong><a class="text-muted d-block" href="#">Jeans</a></strong>
+                                <strong><a class="text-muted d-block" href="#">{{$brand->value}}</a></strong>
                             </li>
+							@endif
                         </ul>
 					</div>
 				</div>
@@ -83,14 +98,8 @@
 						<div class="row">
 							<div class="col-md-7">
 								<h5>About</h5>
-								<p class="text-muted">{{$product->description}}Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+								<p class="text-muted">{{$product->description}}</p>
 								<p class="text-muted">He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before.</p>
-								<h5>You will love</h5>
-								<ul class="text-muted">
-									<li>He must have tried it a hundred times</li>
-									<li>shut his eyes so that he wouldn't have to look</li>
-									<li>at the floundering legs, and only stopped</li>
-								</ul>
 							</div>
 							<!-- <div class="col-md-5"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-3.jpg" alt="{{$product->name}}"></div> -->
 						</div>
@@ -122,22 +131,18 @@
 							<div class="col-lg-6">
 								<table class="table text-sm">
 									<tbody>
+									@foreach($reviews as $review)
 									<tr>
-										<th class="font-weight-normal border-0">Added Date</th>
-										<td class="text-muted border-0">{{$product->created_at}}</td>
+										<th class="font-weight-normal ">Total Reviews</th>
+										<td class="text-muted ">{{$totalReviews}} reviews</td>
 									</tr>
+									@endforeach
+									@foreach($reviews as $review)
 									<tr>
-										<th class="font-weight-normal ">Sunt in culpa qui</th>
-										<td class="text-muted ">Lorem ipsum dolor sit amet</td>
+										<th class="font-weight-normal ">Rating</th>
+										<td class="text-muted ">{{ $review->rating}}</td>
 									</tr>
-									<tr>
-										<th class="font-weight-normal ">Product #</th>
-										<td class="text-muted ">Lorem ipsum dolor sit amet</td>
-									</tr>
-									<tr>
-										<th class="font-weight-normal ">Available packaging</th>
-										<td class="text-muted ">LOLDuis aute irure dolor in reprehenderit</td>
-									</tr>
+									@endforeach
 									</tbody>
 								</table>
 							</div>
@@ -149,7 +154,7 @@
 								@foreach($reviews as $review)
 								<div class="media review">
 									<div class="flex-shrink-0 text-center me-4 me-xl-5">
-										<img class="review-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/avatar/person-1.jpg" alt="{{ $review->user->name }}">
+										<img class="review-image" src="/images/review_logo.svg" alt="{{ $review->user->name }}">
 										<span class="text-uppercase text-muted">{{ $review->created_at->format('M Y') }}</span>
 									</div>
 									<div>
@@ -157,7 +162,7 @@
 										<div class="mb-2">
 
 										</div>
-										<p class="text-muted">{{ $review->review_text }}->One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections</p>
+										<p class="text-muted">{{ $review->review_text }}</p>
 									</div>
 								</div>
 								@endforeach

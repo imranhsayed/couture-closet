@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductReviewController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserAddressController;
 use App\Models\Product;
+use App\Models\ProvincialTaxRate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
@@ -57,10 +60,20 @@ Route::post( '/cart-details', function () {
 		];
 	}
 
-	$data = [
-		'products' => $products,
-		'amount'   => round( $amount, 2 ),
-	];
+    // get all provincial tax rate
+    $taxes = ProvincialTaxRate::select('id', 'province_code', 'gst_rate', 'hst_rate')->get();
+    $transformedTaxes = $taxes->mapWithKeys(function ($item) {
+        return [$item->province_code => [
+            'id'       => $item->id,
+            'gst_rate' => $item->gst_rate,
+            'hst_rate' => $item->hst_rate,
+        ]];
+    });
+    $data = [
+        'products' => $products,
+        'amount'   => round( $amount, 2 ),
+        'taxes'    => $transformedTaxes ?? [],
+    ];
 
 	return response()->json( [ 'data' => $data, 'success' => true ] );
 } )->name( 'cart-details' );
@@ -89,19 +102,24 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 	Route::get( '/user/address/default/{id}', [ UserAddressController::class, 'setDefault' ])->name( 'user.address.default' );
 	Route::delete( '/user/address/delete/{id}', [ UserAddressController::class, 'destroy' ])->name( 'user.address.delete' );
 
-    // product review
+    // Product review
     Route::get( '/product/review', [ ProductReviewController::class, 'create' ] )->name( 'product.leave.review' );
     Route::post( '/product/review', [ ProductReviewController::class, 'store' ] )->name( 'product.review.store' );
 
-    // Order
-	Route::get( '/order/{order}', [ OrderController::class, 'show' ] ) ->name( 'order.show' );
+    // Orders
+    Route::post('/order/create-order' , [ OrderController::class, 'store' ])->name( 'order.store' );
+	Route::get('/order-details/{order}', [OrderController::class, 'orderDetails'])->name('order-details.show');
+
+    // Payment
+    Route::get( '/payment/{orderId}', [ PaymentController::class, 'show' ])->name('payment.order');
+
+    // Transaction
+    Route::post( '/transaction' , [ TransactionController::class, 'create' ])->name('transaction.order.payment');
 
 	Route::get('/order-confirmation', function () {
 		return view('order-confirmation');
 	})->name('order-confirmation');
-	Route::get('/order-details', function () {
-		return view('order-details');
-	})->name('order-details');
+
 
 	Route::get('/checkout', function () {
 		return view('checkout');

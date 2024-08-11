@@ -50,7 +50,7 @@
                     <div class="row">
                         @include('partials.header')
                         <div class="col-lg-4 d-none d-lg-block position-relative">
-                            <img class="bg-image" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/kyle-loftus-596319-unsplash-cropped.jpg" alt="">
+                            <img class="bg-image" src="/images/menu_slider_image.jpg" alt="menu_slider_image">
                         </div>
                     </div>
                 </div>
@@ -168,8 +168,6 @@
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/register">Register</a></li>
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/cart">Cart</a></li>
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/checkout">Checkout</a></li>
-									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/wishlist">Wishlist</a></li>
-									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/shop">Our Products</a></li>
 								</ul>
 							</div>
 						</div>
@@ -178,7 +176,6 @@
 							<div class="expand-lg collapse" id="footerMenu1">
 								<h6 class="letter-spacing-1 mb-4 d-none d-lg-block">Company</h6>
 								<ul class="list-unstyled text-sm pt-2 pt-lg-0">
-									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/">Home</a></li>
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/shop">Shop</a></li>
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/about">About Us</a></li>
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/contact-us">Contact Us</a></li>

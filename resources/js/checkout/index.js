@@ -17,20 +17,20 @@ class Checkout extends HTMLElement {
 	 */
 	constructor() {
 		super();
-		
+
 		// Subscribe.
 		subscribe( this.update.bind( this ) );
-		
+
 		// Elements
 		this.checkoutCartContainerElement = this.querySelector( '#checkout-cart-items' );
 		this.placeOrderButton = this.querySelector( '#place-order-btn' );
 		this.formElement = this.querySelector( 'form' );
-		
+
 		// Event.
 		this.placeOrderButton?.addEventListener( 'click', () => this.handleFormSubmit() )
-		
+
 	}
-	
+
 	/**
 	 * Update
 	 *
@@ -39,11 +39,11 @@ class Checkout extends HTMLElement {
 	update( state ) {
 		// Fetch and update checkout cart markup.
 		this.fetchAndUpdateCheckoutCartMarkup( state.cart );
-		
+
 		// Set the cart data
 		this.setAttribute( 'cart', JSON.stringify( state.cart ) );
 	}
-	
+
 	/**
 	 * Fetch and update cart markup.
 	 *
@@ -85,10 +85,10 @@ class Checkout extends HTMLElement {
 			.catch( error => {
 				console.error( 'There was a problem with the fetch operation:', error );
 			} );
-		
+
 	}
-	
-	
+
+
 	/**
 	 * Add checkout items markup.
 	 *
@@ -96,7 +96,7 @@ class Checkout extends HTMLElement {
 	 */
 	addCheckoutItemsMarkup( data ) {
 		let checkoutItemsMarkup = '<tbody>';
-		
+
 		// Loop through products.
 		data?.products.forEach( ( product ) => {
 			checkoutItemsMarkup += `
@@ -107,7 +107,7 @@ class Checkout extends HTMLElement {
 	            </tr>
 			`;
 		} );
-		
+
 		// Add the taxes.
 		checkoutItemsMarkup += `
             <tr>
@@ -121,7 +121,7 @@ class Checkout extends HTMLElement {
                 </th>
             </tr>
 		`;
-		
+
 		// Add total.
 		checkoutItemsMarkup += `
             <tr>
@@ -129,13 +129,13 @@ class Checkout extends HTMLElement {
                 <td class="py-4 text-end h3 fw-bold border-dark">$${ data?.amount ?? 0 }</td>
             </tr>
 		`;
-		
+
 		// End
 		checkoutItemsMarkup += '</tbody>';
-		
+
 		this.checkoutCartContainerElement.innerHTML = checkoutItemsMarkup;
 	}
-	
+
 	/**
 	 * Check handle form submit to create an order.
 	 */
@@ -150,18 +150,22 @@ class Checkout extends HTMLElement {
 				formData[ element.name ] = element.value;
 			}
 		}
-		
+
 		// Get cart data.
 		const cartData = JSON.parse( this.getAttribute( 'cart' ) );
-		
+
+        // TODO Please pass tax's id dynamically
+        const taxRateId = 1;
+
 		// Send a create order request
-		fetch( '/create-order', {
+		fetch( '/order/create-order', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				'X-CSRF-TOKEN': document.querySelector( 'meta[name="csrf-token"]' ).content,
 			},
 			body: JSON.stringify( {
+                taxRateId,
 				cartData,
 				formData,
 			} ),

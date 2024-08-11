@@ -100,13 +100,13 @@
                                     <td>{{ $order->order_date ?? '' }}</td>
                                     <td>${{ $order->total_amount ?? '' }}</td>
                                     <td>
-                                        <div class="button-group d-flex justify-content-center flex-wrap">
-                                            <button
-                                                class="main-btn primary-btn btn-hover btn btn-primary w-100 text-center"
-                                                onclick="window.location.href='/order/{{ $order->id }}'">
-                                                View Order
-                                            </button>
-                                        </div>
+                                    <div class="button-group d-flex justify-content-center flex-wrap">
+                                        <button
+                                            class="main-btn primary-btn btn-hover btn btn-primary w-100 text-center"
+                                            onclick="window.location.href='{{ route('order-details.show', $order->id) }}'">
+                                            View Order
+                                        </button>
+                                    </div>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -179,7 +179,7 @@
                                             method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn">
+                                            <button type="submit" class="btn" onclick="return confirm('Are you sure you want to delete this address?')">
                                                 <img src="{{ asset('images/trash.svg') }}"
                                                     style="width:20px; height:auto;" alt="Delete" class="icon">
                                             </button>
@@ -207,9 +207,8 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                <form id="user_address" class="form" action="/user/address">
+                                <form id="user_address" class="form" action="{{ route('user.address.store') }}" method="POST">
                                     @csrf
-                                    @method('PUT')
                                     <div class="mb-3">
                                         <label for="street" class="form-label">Street</label>
                                         <input type="text" class="form-control" id="street" name="street" required>

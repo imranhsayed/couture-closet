@@ -21,17 +21,17 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         \View::composer('partials.header',function($view){
-            $categories = Category::where('name','demography')->get();
+            $categories = Category::where('name','demography')->distinct()->get();
 
-		    $brands = Category::where('name','Brand')->get();
+		    $brands = Category::where('name','Brand')->take(5)->distinct()->get();
 
             $view->with(compact('categories','brands'));
         });
 
         \View::composer('partials.menu',function($view){
-            $categories = Category::where('name','demography')->get();
+            $categories = Category::where('name','demography')->distinct()->get();
 
-		    $brands = Category::where('name','Brand')->get();
+		    $brands = Category::where('name','Brand')->distinct()->get();
 
             $view->with(compact('categories','brands'));
         });

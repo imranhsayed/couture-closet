@@ -9,35 +9,32 @@
 		</div>
 		<div class="carousel-inner">
 			<div class="carousel-item">
-				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-
+				<img src="/images/beige_cardigan_1.jpg" alt="First slide" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
 				<div class="container">
 					<div class="carousel-caption text-start">
 						<h1>Example headline.</h1>
 						<p>Some representative placeholder content for the first slide of the carousel.</p>
-						<p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+						<p><a class="btn btn-lg btn-primary" href="/login">Sign up today</a></p>
 					</div>
 				</div>
 			</div>
 			<div class="carousel-item">
-				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-
+			<img src="/images/beige_cardigan_1.jpg" alt="First slide" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
 				<div class="container">
 					<div class="carousel-caption">
 						<h1>Another example headline.</h1>
 						<p>Some representative placeholder content for the second slide of the carousel.</p>
-						<p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+						<p><a class="btn btn-lg btn-primary" href="/about">Learn more</a></p>
 					</div>
 				</div>
 			</div>
 			<div class="carousel-item active">
-				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-
+			<img src="/images/beige_cardigan_1.jpg" alt="First slide" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
 				<div class="container">
 					<div class="carousel-caption text-end">
 						<h1>One more for good measure.</h1>
 						<p>Some representative placeholder content for the third slide of this carousel.</p>
-						<p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+						<p><a class="btn btn-lg btn-primary" href="/shop">Browse gallery</a></p>
 					</div>
 				</div>
 			</div>
@@ -54,30 +51,29 @@
 
 	<div class="container">
 
-		<div class="bg-gray-100 position-relative">
+
 			<div class="container py-6">
 				<div class="row">
 					<div class="col-sm-6 mb-5 mb-sm-0">
-						<div class="card card-scale shadow-0 border-0 text-white text-hover-gray-900 overlay-hover-light text-center"><img class="card-img img-scale" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/category-women.jpg" alt="Card image">
+						<div class="card card-scale shadow-0 border-0 text-white text-hover-gray-900 overlay-hover-light text-center"><img class="card-img img-scale" src="{{ asset('images/mens.jpg') }}" alt="Card image">
 							<div class="card-img-overlay d-flex align-items-center">
 								<div class="w-100 py-3">
-									<h2 class="display-3 fw-bold mb-0">Women</h2><a class="stretched-link" href="category-full.html"><span class="sr-only">See </span></a>
+									<h2 class="display-3 fw-bold mb-0" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Men</h2><a class="stretched-link" href="category-full.html"><span class="sr-only">See </span></a>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-sm-6 mb-5 mb-sm-0">
-						<div class="card card-scale shadow-0 border-0 text-white text-hover-gray-900 overlay-hover-light text-center"><img class="card-img img-scale" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/category-men.jpg" alt="Card image">
+						<div class="card card-scale shadow-0 border-0 text-white text-hover-gray-900 overlay-hover-light text-center"><img class="card-img img-scale" src="{{ asset('images/women.jpg') }}" alt="Card image">
 							<div class="card-img-overlay d-flex align-items-center">
 								<div class="w-100 py-3">
-									<h2 class="display-3 fw-bold mb-0">Men</h2><a class="stretched-link" href="category-full.html"><span class="sr-only">See </span></a>
+									<h2 class="display-3 fw-bold mb-0" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Women</h2><a class="stretched-link" href="category-full.html"><span class="sr-only">See </span></a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
 		{{--Categories--}}
 		<div class="row">
@@ -90,14 +86,14 @@
 		<div class="row justify-content-between align-items-center mb-4">
 			<div class="col-12 col-sm">
 				<ul class="list-inline text-center text-sm-start mb-3 mb-sm-0">
-					<li class="list-inline-item"><a class="text-dark" href="#">All Products </a></li>
+					<li class="list-inline-item"><a class="text-dark" href="/shop">All Products </a></li>
 					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Clothing </a></li>
 					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Bags</a></li>
 					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Shoes</a></li>
 					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Accessories</a></li>
 				</ul>
 			</div>
-			<div class="col-12 col-sm-auto text-center"><a class="btn btn-link px-0" href="#">All products</a></div>
+			<div class="col-12 col-sm-auto text-center"><a class="btn btn-link px-0" href="/shop">All products</a></div>
 		</div>
 
 		@if( $products->isEmpty() )
