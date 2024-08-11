@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductReviewController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserAddressController;
 use App\Models\Product;
 use App\Models\ProvincialTaxRate;
@@ -59,9 +61,10 @@ Route::post( '/cart-details', function () {
 	}
 
     // get all provincial tax rate
-    $taxes = ProvincialTaxRate::select('province_code', 'gst_rate', 'hst_rate')->get();
+    $taxes = ProvincialTaxRate::select('id', 'province_code', 'gst_rate', 'hst_rate')->get();
     $transformedTaxes = $taxes->mapWithKeys(function ($item) {
         return [$item->province_code => [
+            'id'       => $item->id,
             'gst_rate' => $item->gst_rate,
             'hst_rate' => $item->hst_rate,
         ]];
@@ -107,6 +110,11 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
     Route::post('/order/create-order' , [ OrderController::class, 'store' ])->name( 'order.store' );
 	Route::get('/order-details/{order}', [OrderController::class, 'orderDetails'])->name('order-details.show');
 
+    // Payment
+    Route::get( '/payment/{orderId}', [ PaymentController::class, 'show' ])->name('payment.order');
+
+    // Transaction
+    Route::post( '/transaction' , [ TransactionController::class, 'create' ])->name('transaction.order.payment');
 
 	Route::get('/order-confirmation', function () {
 		return view('order-confirmation');

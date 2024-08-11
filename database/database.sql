@@ -128,6 +128,7 @@ CREATE TABLE `order_items` (
   `order_id` bigint unsigned NOT NULL,
   `product_id` bigint unsigned NOT NULL,
   `quantity` bigint unsigned NOT NULL,
+  `size` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `unit_price` decimal(10,2) NOT NULL,
   `line_price` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id`),
@@ -144,7 +145,7 @@ CREATE TABLE `order_items` (
 
 LOCK TABLES `order_items` WRITE;
 /*!40000 ALTER TABLE `order_items` DISABLE KEYS */;
-INSERT INTO `order_items` VALUES (1,1,1,2,50.00,100.00),(2,1,2,1,5.00,5.00),(3,2,1,4,50.00,200.00),(4,4,3,3,100.00,300.00);
+INSERT INTO `order_items` VALUES (1,1,1,2,'S',50.00,100.00),(2,1,2,1,'L',5.00,5.00),(3,2,1,4,'M',50.00,200.00),(4,4,3,3,'XLL',100.00,300.00);
 /*!40000 ALTER TABLE `order_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,14 +161,18 @@ CREATE TABLE `orders` (
   `user_id` bigint unsigned NOT NULL,
   `provincial_tax_rate_id` bigint unsigned NOT NULL,
   `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `full_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pst` decimal(10,2) NOT NULL,
   `gst` decimal(10,2) NOT NULL,
   `hst` decimal(10,2) NOT NULL,
   `sub_amount` decimal(10,2) NOT NULL,
   `total_amount` decimal(10,2) NOT NULL,
+  `shipping_phone_number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `shipping_address` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `billing_address` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `billing_phone_number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `billing_address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `status` tinyint DEFAULT '1' COMMENT '1: Pending, 2: Processing, 3:Shipped, 4:Delivered',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -175,7 +180,7 @@ CREATE TABLE `orders` (
   KEY `orders_provincial_tax_rate_id_foreign` (`provincial_tax_rate_id`),
   CONSTRAINT `orders_provincial_tax_rate_id_foreign` FOREIGN KEY (`provincial_tax_rate_id`) REFERENCES `provincial_tax_rates` (`id`) ON DELETE RESTRICT,
   CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,7 +189,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,1,1,'2024-08-03 15:34:55','test1@example.com',0.00,5.00,0.00,100.00,805.00,'77 Ulster St, Calgary, AB','77 Ulster St, Calgary, AB','2024-08-02 15:34:55','2024-08-07 20:52:28'),(2,2,2,'2024-08-04 15:34:55','test2@example.com',7.00,5.00,0.00,200.00,212.00,'130 Main St, Vancouver, BC','130 Main St, Vancouver, BC','2024-08-02 15:34:55','2024-08-07 20:26:39'),(3,3,3,'2024-08-02 15:34:55','test3@example.com',7.00,5.00,0.00,300.00,312.00,'321 Oaken St, Winnipeg, MB','321 Oaken St, Winnipeg, MB','2024-08-02 15:34:55','2024-08-02 15:34:55'),(4,4,1,'2024-08-01 15:34:55','test1@example.com',0.00,5.00,0.00,100.00,105.00,'77 Ulster St, Calgary, AB','77 Ulster St, Calgary, AB','2024-08-02 15:34:55','2024-08-07 20:26:39'),(5,4,1,'2024-08-09 19:37:23','Xiaorui@123.com',0.00,0.05,0.00,6.00,125.98,'600 Guerrero Street, San Francisco, CA, r2y1z2','600 Guerrero Street, San Francisco, CA, r2y1z2','2024-08-10 00:37:23','2024-08-10 00:37:23');
+INSERT INTO `orders` VALUES (1,1,1,'2024-08-03 15:34:55','test1','test1@example.com',0.00,5.00,0.00,100.00,805.00,'431-331-1234','77 Ulster St, Calgary, AB','431-331-1234','77 Ulster St, Calgary, AB',1,'2024-08-02 15:34:55','2024-08-11 02:18:31'),(2,2,2,'2024-08-04 15:34:55','test2','test2@example.com',7.00,5.00,0.00,200.00,212.00,'431-332-1234','130 Main St, Vancouver, BC','431-332-1234','130 Main St, Vancouver, BC',1,'2024-08-02 15:34:55','2024-08-11 02:18:31'),(3,3,3,'2024-08-02 15:34:55','test3','test3@example.com',7.00,5.00,0.00,300.00,312.00,'431-333-1234','321 Oaken St, Winnipeg, MB','431-333-1234','321 Oaken St, Winnipeg, MB',1,'2024-08-02 15:34:55','2024-08-11 02:18:31'),(4,4,1,'2024-08-01 15:34:55','test4','test1@example.com',0.00,5.00,0.00,100.00,105.00,'431-334-1234','77 Ulster St, Calgary, AB','431-334-1234','77 Ulster St, Calgary, AB',1,'2024-08-02 15:34:55','2024-08-11 02:18:31'),(5,4,1,'2024-08-09 19:37:23','test5','Xiaorui@123.com',0.00,0.05,0.00,6.00,125.98,'431-335-1234','600 Guerrero Street, San Francisco, CA, r2y1z2','431-335-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-10 00:37:23','2024-08-11 02:18:31'),(6,4,1,'2024-08-11 02:30:02','Rui Shaw','xx@123.com',0.00,0.05,0.00,6.00,125.98,'431-331-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',NULL,'600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-11 07:30:02','2024-08-11 07:30:02'),(7,4,1,'2024-08-11 02:33:36','Rui Shaw','xx@123.com',0.00,0.05,0.00,6.00,125.98,'431-331-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',NULL,'600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-11 07:33:36','2024-08-11 07:33:36'),(8,4,1,'2024-08-11 02:34:10','Rui Shaw','xx@123.com',0.00,0.05,0.00,6.00,125.98,'431-331-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',NULL,'600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-11 07:34:10','2024-08-11 07:34:10'),(9,4,1,'2024-08-11 03:08:08','Rui Shaw','xx@123.com',0.00,0.05,0.00,6.00,125.98,'431-331-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',NULL,'600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-11 08:08:08','2024-08-11 08:08:08');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -404,7 +409,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('EEqPuENBmluFEcDEmymkmWiGs5f1Qxn5UNvkPxpU',4,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36','YTo3OntzOjY6Il90b2tlbiI7czo0MDoidWpBMHJNU0pJVkZFa3ZXSGlKcjdpS2pFWWNNUzFhTUF1REMxODRaSSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo0O3M6NDoiYXV0aCI7YToxOntzOjIxOiJwYXNzd29yZF9jb25maXJtZWRfYXQiO2k6MTcyMzIyNzk0Nzt9czo0OiJ1c2VyIjthOjA6e319',1723233174);
+INSERT INTO `sessions` VALUES ('GHnVPgSb8FS9v7PzSiP3VDLq4AtGrCwPvnNsXU8D',4,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36','YTo3OntzOjY6Il90b2tlbiI7czo0MDoicmxySjVycFdhc2hTbVVaeHJ4VXRCV2kzWUhmWnJ6TkJobkUwaE5XQiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jaGVja291dCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjE6e2k6MDtzOjEyOiJ1c2VyLnN1Y2Nlc3MiO31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo0O3M6NDoiYXV0aCI7YToxOntzOjIxOiJwYXNzd29yZF9jb25maXJtZWRfYXQiO2k6MTcyMzM0MDQ2NTt9czo0OiJ1c2VyIjthOjE6e3M6Nzoic3VjY2VzcyI7czozMDoiQ3JlYXRlZCBhbiBvcmRlciBzdWNjZXNzZnVsbHkhIjt9fQ==',1723345688);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -547,4 +552,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-09 14:59:00
+-- Dump completed on 2024-08-10 22:23:46
