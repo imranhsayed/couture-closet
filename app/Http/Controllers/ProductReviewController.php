@@ -14,7 +14,15 @@ class ProductReviewController extends Controller
      */
     public function index()
     {
-        //
+	    $userId = \Auth::user()->id;
+	    if ( ! $userId ) {
+		    return redirect( '/login' )->with( 'user.error', 'Please login before leave a review!' );
+	    }
+
+		$title   = 'Product Reviews';
+		$reviews = ProductReview::all();
+
+	    return view( 'admin.reviews.index', compact( 'title', 'reviews' ) );
     }
 
     /**
@@ -27,7 +35,7 @@ class ProductReviewController extends Controller
         // only use these params once
         session()->flash('productId', $requestParams['productId']);
         session()->flash('orderId', $requestParams['orderId']);
-        return redirect('/product?id=' . $requestParams['productId'] . '#reviews');
+        return redirect('/shop/' . $requestParams['productId'] . '#reviews');
     }
 
     /**
@@ -35,33 +43,37 @@ class ProductReviewController extends Controller
      */
     public function store(Request $request)
     {
-        // check user is login
-        $params = $request->all();
-        $userId = \Auth::user()->id;
-        if (!$userId) {
-            return redirect('/login')->with('user.error', 'Please login before leave a review!');
-        }
+	    // check user is login
+	    $params = $request->all();
+	    echo '<pre/>';
+	    print_r($params);
+	    $userId = \Auth::user()->id;
+	    if ( ! $userId ) {
+		    return redirect( '/login' )->with( 'user.error', 'Please login before leave a review!' );
+	    }
 
-        // does user buy this product?
-        $productId = $params['product_id'];
-        $hasPurchased = OrderItem::whereHas('order', function ($query) use ($userId) {
-            $query->where('user_id', $userId);
-        })->where('product_id', $productId)->exists();
-        if (!$hasPurchased) {
-            // user didn't buy this product
-            return redirect('/product')->with('user.error', 'Sorry, You cannot leave a review!');
-        }
+	    // does user buy this product?
+	    $productId    = $params['product_id'];
+	    $hasPurchased = OrderItem::whereHas( 'order', function ( $query ) use ( $userId ) {
+		    $query->where( 'user_id', $userId );
+	    } )->where( 'product_id', $productId )->exists();
+	    if ( ! $hasPurchased ) {
+			dd('hell' . $productId);
+		    // user didn't buy this product
+		    return redirect( '/shop/' . $productId . '#reviews' )->with( 'user.error', 'Sorry, You cannot leave a review!' );
+	    }
 
-        // user buy this product and store the review
-        $params['user_id'] = $userId;
-        try {
-            if (ProductReview::create($params)) {
-                session()->flash('user.success', 'Leave a review successfully!');
-            }
-        } catch (QueryException $e) {
-            session()->flash('user.warning', 'You already leave a review for this product!');
-        }
-        return back();
+	    // user buy this product and store the review
+	    $params['user_id'] = $userId;
+	    try {
+		    if ( ProductReview::create( $params ) ) {
+			    session()->flash( 'user.success', 'Leave a review successfully!' );
+		    }
+	    } catch ( QueryException $e ) {
+		    session()->flash( 'user.warning', 'You already leave a review for this product!' );
+	    }
+
+	    return back();
     }
 
     /**

@@ -155,7 +155,7 @@
                 </a>
                 <ul id="ddmenu_55" class="collapse dropdown-nav">
                     <li>
-                        <a href="#"> See Reviews </a>
+                        <a href="/admin/reviews"> See Reviews </a>
                     </li>
                 </ul>
             </li>

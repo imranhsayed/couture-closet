@@ -72,7 +72,7 @@
                                 <strong class="text d-block" class="border-top pt-2">Demography</strong>
                                 <strong><a class="text-muted d-block" href="#" class="border-top pt-2">{{$demography->value}}</a></strong>
                             </li>
-							@endif							
+							@endif
 							@if($brand)
                             <li class="border-top pt-2">
                                 <strong class="d-block">Brand:</strong>
@@ -170,7 +170,7 @@
 									<h5 class="mb-4">Leave a review</h5>
 									<form class="mb-4 form" id="reviewForm" method="post" action="{{ route('product.review.store') }}">
                                         @csrf
-                                        <input type="hidden" id="product_id" name="product_id" value="{{ session('productId') ?? '' }}">
+                                        <input type="hidden" id="product_id" name="product_id" value="{{ $product->id }}">
                                         <input type="hidden" id="order_id" name="order_id" value="{{ session('orderId') ?? '' }}">
                                         <div class="row">
 											<div class="col-sm-6">
