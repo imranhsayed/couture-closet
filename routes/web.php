@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserAddressController;
@@ -146,4 +147,7 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
     Route::post( '/admin/products', [ ProductController::class, 'store' ] )->name( 'admin.products.store' );
     Route::put( '/admin/products/update/{product}', [ ProductController::class, 'update' ] )->name( 'admin.products.update' );
     Route::delete( '/admin/products/{product}', [ ProductController::class, 'destroy', ] )->name( 'admin.products.destroy' );
+
+    // category management
+    Route::get( '/admin/category', [ CategoryController::class, 'index' ] )->name( 'admin.category.index' );
 } );
