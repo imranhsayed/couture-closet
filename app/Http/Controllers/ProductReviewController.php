@@ -80,15 +80,33 @@ class ProductReviewController extends Controller {
 	/**
 	 * Show the form for editing the specified resource.
 	 */
-	public function edit( string $id ) {
-		//
+	public function edit( ProductReview $review ) {
+		$title = 'Edit Review';
+
+		return view( 'admin.reviews.edit', compact( 'title', 'review' ) );
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 */
-	public function update( Request $request, string $id ) {
-		//
+	public function update( Request $request, ProductReview $review ) {
+		// Validate the request data
+		$validatedData = $request->validate( [
+			'title'       => 'required|string|max:255',
+			'review_text' => 'required|string',
+			'rating'      => 'required|integer|min:1|max:5',
+		] );
+
+		try {
+			// Update the review with the validated data
+			$review->update( $validatedData );
+
+			// Redirect with success message
+			return redirect()->route( 'admin.reviews.index' )->with( 'admin.success', 'Review updated successfully!' );
+		} catch ( \Exception $e ) {
+			// Redirect with error message if update fails
+			return redirect()->route( 'admin.reviews.edit', $review )->with( 'admin.error', 'Failed to update review.' );
+		}
 	}
 
 	/**
@@ -102,9 +120,9 @@ class ProductReviewController extends Controller {
 
 			// Redirect on success
 			return redirect()->route( 'admin.reviews.index' )->with( "admin.success", "Deleted review successfully!" );
-		} catch (\Exception $e) {
+		} catch ( \Exception $e ) {
 			// Redirect on failure
-			return redirect()->route('admin.reviews.index')->with('admin.error', 'Delete Review failed!');
+			return redirect()->route( 'admin.reviews.index' )->with( 'admin.error', 'Delete Review failed!' );
 		}
 	}
 }

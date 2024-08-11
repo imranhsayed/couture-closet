@@ -150,7 +150,8 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
 	// Review management.
 	Route::get( '/admin/reviews', [ ProductReviewController::class, 'index' ] )->name( 'admin.reviews.index' );
 	Route::post( '/admin/reviews', [ ProductReviewController::class, 'create' ] )->name( 'admin.reviews.create' );
-	Route::get( '/admin/reviews/edit/{review}', [ ProductController::class , 'edit' ])->name( 'admin.reviews.edit' );
+	Route::get( '/admin/reviews/edit/{review}', [ ProductReviewController::class , 'edit' ])->name( 'admin.reviews.edit' );
+	Route::put( '/admin/reviews/update/{review}', [ ProductReviewController::class, 'update' ] )->name( 'admin.reviews.update' );
 	Route::delete( '/admin/reviews/{review}', [ ProductReviewController::class, 'destroy', ] )->name( 'admin.reviews.destroy' );
 	Route::get( '/admin/reviews/search', [ ProductReviewController::class, 'search' ])->name( 'admin.reviews.search' );
 } );
