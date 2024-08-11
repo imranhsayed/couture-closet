@@ -9,7 +9,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <div class="title d-flex align-items-center flex-wrap">
-                            <h2 class="mr-40">Category</h2>
+                            <h2 class="mr-40">{{ $title }}</h2>
                             <a href="#" class="main-btn primary-btn btn-hover btn-sm">
                                 <i class="lni lni-plus mr-5"></i>New Category</a>
                         </div>
@@ -71,20 +71,26 @@
                                 </thead>
                                 <tbody>
                                     <!--  Row Start  -->
-                                    
+                                    @foreach($categories as $category)
                                         <tr>
                                             <td>
-                                                <p class="text-sm">1</p>
+                                                <p class="text-sm">{{ $category->id ?? '' }}</p>
                                             </td>
                                             <td>
-                                                <p class="text-sm">Demography</p>
+                                                <p class="text-sm">{{ $category->name ?? '' }}</p>
                                             </td>
                                             <td>
-                                                <p class="text-sm">Women</p>
+                                                <p class="text-sm">{{ $category->value ?? '' }}</p>
                                             </td>
+                                            @if($category->description)
                                             <td>
-                                                <p class="text-sm">Women category description</p>
+                                                <p class="text-sm">{{ Str::limit($category->description ?? '', 20, '...') }}</p>
                                             </td>
+                                            @else
+                                            <td>
+                                                <p class="text-sm">No Description Available</p>
+                                            </td>
+                                            @endif
 
                                             <td>
                                                 <div class="action justify-content-end">
@@ -127,7 +133,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    
+                                    @endforeach
                                     <!--  Row End  -->
                                 </tbody>
                             </table>
@@ -135,7 +141,7 @@
 
                             <!-- product pagination -->
                             <nav>
-                                
+                                {{ $categories->links('pagination::bootstrap-5') }}
                             </nav>
                         </div>
                     </div>

@@ -17,8 +17,8 @@ class CategoryController extends Controller
     {
         $title = 'Category';
         if (\Auth::check() && \Auth::user()->is_admin) {
-            //$products = Product::whereNull('deleted_at')->paginate(10);
-            return view('admin.category.index', compact('title'));
+            $categories = Category::paginate(10);
+            return view('admin.category.index', compact('title','categories'));
         }
     }
 
