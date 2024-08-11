@@ -7,6 +7,8 @@ use App\Http\Requests\StoreOrdersRequest;
 use App\Http\Requests\UpdateOrdersRequest;
 use App\Models\Product;
 use App\Models\ProvincialTaxRate;
+use Exception;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -36,63 +38,77 @@ class OrderController extends Controller
      */
     public function store(StoreOrdersRequest $request)
     {
-        //request is validated and save order info
-        $requestParams = $request->all();
-        $taxRateId = $requestParams['taxRateId'];
-        $provincialTaxRate = ProvincialTaxRate::find($taxRateId);
-        // calculate amount
-        $amount = 0;
-        $subAmount = 0;
-        foreach ( $requestParams['cartData']['products'] ?? [] as $product ) {
-            $srcProduct = Product::with( 'primaryImage' )->find( $product['productId'] );
-            $totalPrice = $srcProduct->price * $product['quantity'];
-            $amount += $totalPrice;
-            $pst = $provincialTaxRate->pst_rate * $totalPrice;
-            $gst = $provincialTaxRate->gst_rate * $totalPrice;
-            $hst = $provincialTaxRate->hst_rate * $totalPrice;
+        try {
+            DB::beginTransaction();
+            //request is validated and save order info
+            $requestParams = $request->all();
+            // get it default tax rate id if its null
+            $taxRateId = $requestParams['taxRateId'] ?? 1;
+            $provincialTaxRate = ProvincialTaxRate::find($taxRateId);
+            // calculate amount
+            $amount = 0;
+            $subAmount = 0;
+            foreach ( $requestParams['cartData']['products'] ?? [] as $product ) {
+                $srcProduct = Product::with( 'primaryImage' )->find( $product['productId'] );
+                $totalPrice = $srcProduct->price * $product['quantity'];
+                $amount += $totalPrice;
+                $pst = $provincialTaxRate->pst_rate * $totalPrice;
+                $gst = $provincialTaxRate->gst_rate * $totalPrice;
+                $hst = $provincialTaxRate->hst_rate * $totalPrice;
 
-            $subAmount += $pst + $gst + $hst;
-        }
+                $subAmount += $pst + $gst + $hst;
+            }
 
-        $shippingAddress = $this->getFullAddress(
-            $requestParams['formData']['street_shipping'] ?? '',
-            $requestParams['formData']['city_shipping'] ?? '',
-            $requestParams['formData']['zip_shipping'] ?? '',
-            $requestParams['formData']['state_shipping'] ?? ''
-        );
-
-        if (!$requestParams['formData']['show-shipping-address'] ?? '' == "on") {
-            // shipping and billing are same address
-            $billingAddress = $this->getFullAddress(
-                $requestParams['formData']['street_billing'] ?? '',
-                $requestParams['formData']['city_billing'] ?? '',
-                $requestParams['formData']['zip_billing'] ?? '',
-                $requestParams['formData']['state_billing'] ?? ''
+            $shippingAddress = $this->getFullAddress(
+                $requestParams['formData']['street_shipping'] ?? '',
+                $requestParams['formData']['city_shipping'] ?? '',
+                $requestParams['formData']['zip_shipping'] ?? '',
+                $requestParams['formData']['state_shipping'] ?? ''
             );
-        } else {
-            $billingAddress = $shippingAddress;
+
+            if (!$requestParams['formData']['show-shipping-address'] ?? '' == "on") {
+                // shipping and billing are same address
+                $billingAddress = $this->getFullAddress(
+                    $requestParams['formData']['street_billing'] ?? '',
+                    $requestParams['formData']['city_billing'] ?? '',
+                    $requestParams['formData']['zip_billing'] ?? '',
+                    $requestParams['formData']['state_billing'] ?? ''
+                );
+            } else {
+                $billingAddress = $shippingAddress;
+            }
+
+            $order = [
+                'user_id' => \Auth::user()->id,
+                'provincial_tax_rate_id' => $taxRateId,
+                'full_name' => $requestParams['formData']['fullname'],
+                'email' => $requestParams['formData']['emailaddress'],
+                'pst' => $provincialTaxRate->pst_rate ?? 0,
+                'gst' => $provincialTaxRate->gst_rate ?? 0,
+                'hst' => $provincialTaxRate->hst_rate ?? 0,
+                'sub_amount' => number_format($subAmount, 2),
+                'total_amount' => number_format($amount * (1 + $provincialTaxRate->total_tax_rate), 2),
+                'shipping_phone_number' => $requestParams['formData']['phonenumber_shipping'],
+                'shipping_address' => $shippingAddress,
+                'billing_phone_number' => $requestParams['formData']['phonenumber_billing'],
+                'billing_address' => $billingAddress
+            ];
+            $order = Order::create($order);
+            if ($order) {
+                DB::commit();
+                session()->flash('user.success', "Created an order successfully!");
+                $paymentUrl = route('payment.order', [ 'orderId' => $order->id ]);
+                return response()->json(['success' => true, 'order_id' => $order->id, 'payment_url' => $paymentUrl]);
+            } else {
+                DB::rollBack();
+                session()->flash('user.error', "Created an order failed!");
+                return response()->json(['success' => false, 'message' => 'Save Order Error, Please contact Administrator!' ]);
+            }
+        } catch (Exception $e)
+        {
+            DB::rollBack();
+            return response()->json(['success' => false, 'message' => $e->getMessage() ]);
         }
-
-        $order = [
-            'user_id' => \Auth::user()->id,
-            'provincial_tax_rate_id' => $taxRateId,
-            'email' => $requestParams['formData']['emailaddress'],
-            'pst' => $provincialTaxRate->pst_rate ?? 0,
-            'gst' => $provincialTaxRate->gst_rate ?? 0,
-            'hst' => $provincialTaxRate->hst_rate ?? 0,
-            'sub_amount' => number_format($subAmount, 2),
-            'total_amount' => number_format($amount * (1 + $provincialTaxRate->total_tax_rate), 2),
-            'shipping_address' => $shippingAddress,
-            'billing_address' => $billingAddress
-        ];
-
-        if (Order::create($order)) {
-            session()->flash('user.success', "Created an order successfully!");
-        } else {
-            session()->flash('user.error', "Created an order failed!");
-        }
-
-        return response()->json(['success' => true]);
     }
 
     /**
