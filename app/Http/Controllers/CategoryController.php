@@ -36,9 +36,27 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'value' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+    
+        try {
+            // Create a new category
+            $category = new Category();
+            $category->name = $request->input('name');
+            $category->value = $request->input('value');
+            $category->description = $request->input('description');
+            $category->save();
+    
+            // Redirect with success message
+            return redirect()->route('admin.category.index')->with('admin.success', 'Category created successfully.');
+        } catch (Exception $e) {
+            // Handle exceptions and errors
+            return redirect()->route('admin.category.index')->with('admin.error', 'Failed to create category: ' . $e->getMessage());
+        }
     }
-
     /**
      * Display the specified resource.
      */

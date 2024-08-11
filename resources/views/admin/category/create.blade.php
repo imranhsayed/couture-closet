@@ -24,7 +24,7 @@
                     <div class="title mb-30">
                         <h6>New Category Form</h6>
                     </div>
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-12">
