@@ -198,7 +198,6 @@
 										</div>
 										<button class="btn btn-outline-dark" type="submit">Post review</button>
 									</form>
-									<p class="text-muted text-sm"><span class="badge badge-info-light">Note</span> This form shows usage of the classic Bootstrap form controls, not their underlined variants. You can choose whichever variant you want.</p>
 								</div>
 							</div>
 						</div>

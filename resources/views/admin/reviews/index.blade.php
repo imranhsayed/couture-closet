@@ -135,17 +135,17 @@
 												<!-- Edit Dropdown -->
 												<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction1">
 													<li class="dropdown-item">
-														<a href="{{ route('admin.reviews.edit', ['product' => $review->product_id ?? '']) }}" class="text-gray">Edit</a>
+														<a href="{{ route('admin.reviews.edit', ['review' => $review->id ?? '']) }}" class="text-gray">Edit</a>
 													</li>
 													<li class="dropdown-item">
-														<a href="{{ route('shop.show', ['product' => $review->product_id ?? '']) }}" target="_blank" class="text-gray">View</a>
+														<a href="{{ '/shop/' . $review->product_id . '#reviews' }}" target="_blank" class="text-gray">View</a>
 													</li>
 												</ul>
 
 												<!-- Delete Link -->
 												<a href="#">
-													<a class="edit text-danger ml-5" href="{{ route('admin.reviews.destroy', [ 'product' => $review->product_id ?? '' ]) }}" onclick="event.preventDefault(); function deleteConfirm() {
-                                                            let confirmed = confirm('Are you sure you want to delete this product?')
+													<a class="edit text-danger ml-5" href="{{ route('admin.reviews.destroy', [ 'review' => $review->id ?? '' ]) }}" onclick="event.preventDefault(); function deleteConfirm() {
+                                                            let confirmed = confirm('Are you sure you want to delete this review?')
                                                             if (confirmed)
                                                             {
                                                                 document.getElementById('delete-review-form').submit();
@@ -158,7 +158,7 @@
 													</a>
 												</a>
 
-												<form id="delete-review-form" action="{{ route('admin.reviews.destroy', [ 'product' => $review->product_id ?? '' ]) }}" method="POST" class="d-none">
+												<form id="delete-review-form" action="{{ route('admin.reviews.destroy', [ 'review' => $review->id ?? '' ]) }}" method="POST" class="d-none">
 													@csrf
 													@method('delete')
 												</form>
@@ -172,9 +172,9 @@
 							<!-- End Table -->
 
 							<!-- product pagination -->
-{{--							<nav>--}}
-{{--								{{ $reviews->links('pagination::bootstrap-5') }}--}}
-{{--							</nav>--}}
+							<nav>
+								{{ $reviews->links('pagination::bootstrap-5') }}
+							</nav>
 						</div>
 					</div>
 				</div>

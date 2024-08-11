@@ -22,9 +22,10 @@ class Tabs extends HTMLElement {
 	
 	initialize() {
 		const hash = window.location.hash;
-		console.log( 'hash', hash );
 		
 		const targetHashLinkElement = document.querySelector(`[href="${hash}"]`);
+		const targetContentElement = document.querySelector( `${ hash }` );
+		const allTabContentElements = document.querySelectorAll( '.tab-pane' );
 		
 		// First remove the active class from all links.
 		this.navLinks?.forEach( ( navLink ) => {
@@ -32,10 +33,21 @@ class Tabs extends HTMLElement {
 		} );
 		
 		// Then add 'active' class to the element with hash.
-		targetHashLinkElement.classList.add( 'active' );
+		targetHashLinkElement?.classList.add( 'active' );
 		
 		// Scroll to that element.
-		targetHashLinkElement.scrollIntoView({ behavior: 'smooth' });
+		targetHashLinkElement?.scrollIntoView({ behavior: 'smooth' });
+		
+		// Remove active class from all tab contents first.
+		allTabContentElements?.forEach( tabContentElement => {
+			tabContentElement.classList.remove( 'active' );
+		} );
+		
+		targetHashLinkElement.click();
+		
+		// Add on the targetContentElement.
+		targetContentElement.classList.add( 'active' );
+		targetContentElement.classList.add( 'show' );
 	}
 	
 	/**
