@@ -132,11 +132,11 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 
 // Admin Routes
 Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
-	// admin dashboard
+	// Admin dashboard.
     Route::get( '/admin', [ AdminController::class, 'index' ] )->name( 'admin.index' );
     Route::get( '/admin/charts', [ AdminController::class, 'charts' ] )->name( 'admin.charts' );
 
-    // product management
+    // Product management.
     Route::get( '/admin/products', [ ProductController::class, 'index' ] )->name( 'admin.products.index' );
     Route::get( '/admin/products/search', [ ProductController::class, 'search' ])->name( 'admin.products.search' );
     Route::get( '/admin/products/add', [ ProductController::class , 'create' ])->name( 'admin.products.create' );
@@ -146,4 +146,13 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
     Route::post( '/admin/products', [ ProductController::class, 'store' ] )->name( 'admin.products.store' );
     Route::put( '/admin/products/update/{product}', [ ProductController::class, 'update' ] )->name( 'admin.products.update' );
     Route::delete( '/admin/products/{product}', [ ProductController::class, 'destroy', ] )->name( 'admin.products.destroy' );
+
+	// Review management.
+	Route::get( '/admin/reviews', [ ProductReviewController::class, 'index' ] )->name( 'admin.reviews.index' );
+	Route::post( '/admin/reviews', [ ProductReviewController::class, 'create' ] )->name( 'admin.reviews.create' );
+	Route::get( '/admin/reviews/edit/{review}', [ ProductReviewController::class , 'edit' ])->name( 'admin.reviews.edit' );
+	Route::put( '/admin/reviews/update/{review}', [ ProductReviewController::class, 'update' ] )->name( 'admin.reviews.update' );
+	Route::delete( '/admin/reviews/{review}', [ ProductReviewController::class, 'destroy', ] )->name( 'admin.reviews.destroy' );
+	Route::get( '/admin/reviews/search', [ ProductReviewController::class, 'search' ])->name( 'admin.reviews.search' );
+	Route::get( '/admin/leave-review', [ ProductReviewController::class, 'leaveReview' ] )->name( 'admin.reviews.leave-review' );
 } );

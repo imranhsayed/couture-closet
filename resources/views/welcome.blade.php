@@ -121,7 +121,7 @@
 						</div>
 						<div class="position-relative">
 							<h3 class="text-base mb-1">
-								<a class="text-dark" href="/product?id={{ $product->id }}">
+								<a class="text-dark" href="/shop?id={{ $product->id }}">
 									{{ $product->name }}
 								</a>
 							</h3>
