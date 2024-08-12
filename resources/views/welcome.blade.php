@@ -12,29 +12,29 @@
 				<img src="/images/menu_slider_image1.png" alt="First slide" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
 				<div class="container">
 					<div class="carousel-caption text-start">
-						<h1>Example headline.</h1>
-						<p>Some representative placeholder content for the first slide of the carousel.</p>
-						<p><a class="btn btn-lg btn-primary" href="/login">Sign up today</a></p>
+						<h1>Elevate Your Style with Timeless Fashion</h1>
+						<p>Crafting Couture for Every Occasion</p>
+						<p><a class="btn btn-lg btn-primary" href="/shop">Get Started</a></p>
 					</div>
 				</div>
 			</div>
 			<div class="carousel-item">
-			<img src="/images/beige_cardigan_1.jpg" alt="First slide" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
+			<img src="/images/menu_slider_image2.jpg" alt="Second slide" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>Another example headline.</h1>
-						<p>Some representative placeholder content for the second slide of the carousel.</p>
-						<p><a class="btn btn-lg btn-primary" href="/about">Learn more</a></p>
+						<h1>Discover the Latest Trends</h1>
+						<p>Explore our wide collection of new arrivals.</p>
+						<p><a class="btn btn-lg btn-primary" href="/shop">Browse Gallery</a></p>
 					</div>
 				</div>
 			</div>
 			<div class="carousel-item active">
-			<img src="/images/beige_cardigan_1.jpg" alt="First slide" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
+			<img src="/images/beige_cardigan_1.jpg" alt="Third slide" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
 				<div class="container">
 					<div class="carousel-caption text-end">
-						<h1>One more for good measure.</h1>
-						<p>Some representative placeholder content for the third slide of this carousel.</p>
-						<p><a class="btn btn-lg btn-primary" href="/shop">Browse gallery</a></p>
+						<h1>Exclusive Deals This Season</h1>
+						<p>Unwrap the gift of fashion with our exclusive seasonal offers.</p>
+						<p><a class="btn btn-lg btn-primary" href="/about">Learn More About Us!</a></p>
 					</div>
 				</div>
 			</div>

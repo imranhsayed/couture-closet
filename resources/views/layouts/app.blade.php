@@ -14,14 +14,14 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Bootstrap CSS and JS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	
     <!-- Scripts -->
     @vite(['resources/css/admin/main.css', 'resources/sass/app.scss'])
 </head>
 <body>
     <div id="app">
-	<nav class="navbar navbar-expand-lg bg-transparent border-0 shadow-0 navbar-light px-lg-5">
+	<nav class="navbar navbar-expand-lg border-0 shadow-0 navbar-light px-lg-5" style="background-color: #EFEBDF;">
     <a class="navbar-brand d-flex align-items-center" href="/">
         <img src="/images/site-logo.svg" alt="Site logo" width="200" height="50" class="mr-1">
     </a>
