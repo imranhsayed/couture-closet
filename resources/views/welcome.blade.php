@@ -3,23 +3,23 @@
 @section('content')
 	<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
 		<div class="carousel-indicators">
-			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" aria-label="Slide 1" class="active" aria-current="true"></button>
 			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
-			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class="active" aria-current="true"></button>
+			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
 		</div>
 		<div class="carousel-inner">
-			<div class="carousel-item">
-				<img src="/images/menu_slider_image1.png" alt="First slide" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
+			<div class="carousel-item active" style="background-color: #EFEBDF;">
+				<img src="/images/menu_slider_image1.png" alt="Slide 1" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
 				<div class="container">
-					<div class="carousel-caption text-start">
-						<h1>Elevate Your Style with Timeless Fashion</h1>
-						<p>Crafting Couture for Every Occasion</p>
-						<p><a class="btn btn-lg btn-primary" href="/shop">Get Started</a></p>
+					<div class="carousel-caption text-start" style="color: black; max-width: 600px; left: 15%; bottom: initial; top: 50%; transform: translateY(-50%); right: initial;">
+						<h1 style="font-size: 48px; font-weight: bold;">Elevate Your Style with Timeless Fashion</h1>
+						<p style="font-size: 24px;">Crafting Couture for Every Occasion</p>
+						<p><a class="btn btn-lg btn-primary" href="/shop" style="background-color: black; border-color: black;">Get Started</a></p>
 					</div>
 				</div>
 			</div>
 			<div class="carousel-item">
-			<img src="/images/menu_slider_image2.jpg" alt="Second slide" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
+			<img src="/images/menu_slider_image2.jpg" alt="Slide 2" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
 				<div class="container">
 					<div class="carousel-caption">
 						<h1>Discover the Latest Trends</h1>
@@ -28,8 +28,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="carousel-item active">
-			<img src="/images/beige_cardigan_1.jpg" alt="Third slide" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
+			<div class="carousel-item" >
+			<img src="/images/beige_cardigan_1.jpg" alt="Slide 3" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
 				<div class="container">
 					<div class="carousel-caption text-end">
 						<h1>Exclusive Deals This Season</h1>
