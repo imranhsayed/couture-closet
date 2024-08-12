@@ -82,6 +82,10 @@ class ProductReviewController extends Controller {
 	 * Show the form for editing the specified resource.
 	 */
 	public function edit( ProductReview $review ) {
+		if ( ! \Auth::check() || ! \Auth::user()->is_admin ) {
+			return redirect( '/login' )->with( 'user.error', 'Please login to see the review!' );
+		}
+
 		$title = 'Edit Review';
 
 		return view( 'admin.reviews.edit', compact( 'title', 'review' ) );
@@ -91,11 +95,16 @@ class ProductReviewController extends Controller {
 	 * Update the specified resource in storage.
 	 */
 	public function update( Request $request, ProductReview $review ) {
+		if ( ! \Auth::check() || ! \Auth::user()->is_admin ) {
+			return redirect( '/login' )->with( 'user.error', 'Please login to see the review!' );
+		}
+		
 		// Validate the request data
 		$validatedData = $request->validate( [
 			'title'       => 'required|string|max:255',
 			'review_text' => 'required|string',
 			'rating'      => 'required|integer|min:1|max:5',
+			'is_approved' => 'required|boolean',
 		] );
 
 		try {
