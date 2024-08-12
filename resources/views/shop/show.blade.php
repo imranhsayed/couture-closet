@@ -36,9 +36,7 @@
 								<li class="list-inline-item me-0"><i class="fa fa-star text-primary"></i></li>
 								<li class="list-inline-item me-0"><i class="fa fa-star text-gray-300"></i></li>
 							</ul>
-							@foreach($reviews as $review)
-								<span class="text-muted text-uppercase">{{ $totalReviews }}reviews</span>
-							@endforeach
+                            <span class="text-muted text-uppercase">{{ $totalReviews }} reviews</span>
 						</div>
 					</div>
 					<h6 class="detail-option-heading d-inline">Description</h6><p class="mb-4 text-muted">{{ $product->description }}</p>
