@@ -78,8 +78,8 @@
 		{{--Categories--}}
 		<div class="row">
 			<div class="col-lg-10 col-xl-8 text-center mx-auto">
-				<h2 class="display-3 mb-5">New Arrivals</h2>
-				<p class="lead text-muted mb-6">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections</p>
+				<h2 class="display-3 mb-5">Featured Collection</h2>
+				<p class="lead text-muted mb-6">Each piece is curated to provide you with the best of seasonal fashion trends and timeless elegance. Refresh your wardrobe with our newest selections.</p>
 			</div>
 		</div>
 
