@@ -229,14 +229,6 @@
 										</svg>
 										<x-add-to-cart-button product_id="{{$image->product_id}}" quantity="1" />
 									</div>
-									<!-- <div><a class="text-dark text-primary-hover me-2" href="#!">
-											<svg class="svg-icon svg-icon-heavy">
-												<use xlink:href="#heart-1"> </use>
-											</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-											<svg class="svg-icon svg-icon-heavy">
-												<use xlink:href="#expand-1"> </use>
-											</svg></a>
-									</div> -->
 								</div>
 							</div>
 							<div class="position-relative">

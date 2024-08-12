@@ -95,17 +95,19 @@ class Shop extends Controller {
 
 	public function search(Request $request)
     {
-
-		$search = $request->get('search');
+		$search = $request->get('query');
         $title = 'Products';
+		
         $products = Product::where('name', 'LIKE', '%' . $search . '%')
-               //->orWhere('description', 'LIKE', '%' . $search . '%')
                ->orWhereHas('categories', function ($query) use ($search) {
                    $query->where('value', 'LIKE', '%' . $search . '%');
                })
                ->paginate(10);
+			   
+		$demographies = Category::where( 'name', 'demography' )->get();
+		$categories   = Category::where( 'name', 'Size' )->get();
+		$brands = Category::where('name', 'Brand')->whereHas('products')->get();
 
-		dd($products);
-        return view('shop.index', compact('products'));
+        return view('shop.index', compact('title','search','products','demographies','brands','categories'));
 	}
 }
