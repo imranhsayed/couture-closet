@@ -3506,6 +3506,9 @@ h6,
 .invoice-table .amount {
   min-width: 100px;
 }
+.invoice-table .action {
+    min-width: 100px;
+}
 
 /* ============== Icons Css ===========*/
 .icons-wrapper .icons,

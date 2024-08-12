@@ -82,6 +82,9 @@
                                         <th class="amount">
                                             <h6 class="text-sm text-medium">Line Price</h6>
                                         </th>
+                                        <th class="action">
+                                            <h6 class="text-sm text-medium">Action</h6>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -104,9 +107,15 @@
                                         <td>
                                             <p class="text-sm">${{ number_format($item->line_price, 2) }}</p>
                                         </td>
+                                        <td>
+                                            <a class="btn btn-primary btn-sm user_profile_btn"
+                                               href="{{ route('product.leave.review', ['productId' => $item->product_id, 'orderId' => $item->order_id]) }}"
+                                               role="button">Leave a review</a>
+                                        </td>
                                     </tr>
                                     @endforeach
                                     <tr>
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -121,6 +130,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
+                                        <td></td>
                                         <td>
                                             <h6 class="text-sm text-medium">Total Tax</h6>
                                         </td>
@@ -130,6 +140,7 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
