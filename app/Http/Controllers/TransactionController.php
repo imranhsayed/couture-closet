@@ -18,7 +18,7 @@ class TransactionController extends Controller
      * @param Request $request
      * @return RedirectResponse
      */
-    public function show(Request $request): RedirectResponse
+    public function create(Request $request): RedirectResponse
     {
         try {
             // TODO payment id
@@ -40,6 +40,7 @@ class TransactionController extends Controller
             $transaction->card_type($cardType); // card type
             $response = $transaction->authorize_and_capture(); // returns object
 
+            dd($response);
             if ($response->transaction_response->response_code == '1') {
                 // Your transaction was authorized...
                 session()->flash('success', 'Success! Authorization Code: ' . $response->transaction_response->auth_code);

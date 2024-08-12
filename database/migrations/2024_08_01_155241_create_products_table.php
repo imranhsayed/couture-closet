@@ -56,7 +56,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable(false);
             $table->string('value')->nullable(false);
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
