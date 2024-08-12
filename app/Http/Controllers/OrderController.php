@@ -10,6 +10,11 @@ use App\Models\ProvincialTaxRate;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\User; 
+use App\Models\OrderItem;
+use App\Models\Category;
+
+
 class OrderController extends Controller
 {
     public function showConfirmation(Orders $order)
@@ -174,13 +179,21 @@ class OrderController extends Controller
     /**
      * Show the order details page.
      */
-    public function orderDetails(Order $order)
+    public function orderDetails($id)
     {
-        // Load the order along with its items and the related products
-        $order = Order::with('orderItems.product')->findOrFail($order->id);
+        $order = auth()->user()->orders()->with(['orderItems.product'])->findOrFail($id);
 
-        // Return the order details view with the order data
-        return view('order-details', ['order' => $order]);
+        $orderItems = $order->orderItems;
+
+        // Calculate tax details
+        $province = ProvincialTaxRate::find($order->provincial_tax_rate_id);
+        $pst = $order->pst;
+        $gst = $order->gst;
+        $hst = $order->hst;
+        $subTotal = $orderItems->sum('line_price');
+        $totalAmount = $order->total_amount;
+
+        return view('order-details', compact('order', 'orderItems', 'province', 'pst', 'gst', 'hst', 'subTotal', 'totalAmount'));
     }
 
 }
