@@ -47,7 +47,7 @@ class ProductController extends Controller
 
 
         // Return a different view for regular users
-		return view('shop.show', compact('product','all_products','categories', 'reviews','totalReviews', 'demography','size','brand'));
+		return view('shop.show', compact('product','all_products','categories', 'reviews','totalReviews', 'demographies','size','brand'));
     }
     
     public function fetchCategories()

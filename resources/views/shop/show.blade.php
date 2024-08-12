@@ -67,7 +67,7 @@
 										<strong><a class="text-muted d-block" class="border-top pt-2">Available</a></strong>
 									@endif
 							</li>
-							@if($demography)
+							@if($demographies)
 							<li class="border-top pt-2">
                                 <strong class="text d-block" class="border-top pt-2">Demography</strong>
                                 <strong><a class="text-muted d-block" href="#" class="border-top pt-2">{{$demography->value}}</a></strong>

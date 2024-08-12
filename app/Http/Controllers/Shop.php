@@ -14,23 +14,25 @@ class Shop extends Controller {
 	public function index($category = null) {
 		$title = "Shop";
 		$productQuery = Product::with('images');
-	
 		if ($category) {
 			$productQuery->whereHas('categories', function ($query) use ($category) {
 				$query->where('id', $category);
 			});
 		}
-	
+
 		$selectedCategory = request()->query('category');
 		if ($selectedCategory) {
 			$productQuery->whereHas('categories', function ($query) use ($selectedCategory) {
 				$query->where('value', $selectedCategory);
 			});
 		}
-	
+
 		$products = $productQuery->paginate(16);
 		$categories = Category::where('name', 'Size')->get();
-	
+		$demographies = Category::where('name', 'Demography')->get();
+		$sizes = Category::where('name', 'Size')->get();
+		$brands = Category::where('name', 'Brand')->get();
+		
 		return view('shop.index', compact('title', 'products', 'categories'));
 	}
 	
