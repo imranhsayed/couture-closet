@@ -106,6 +106,63 @@
                 </div>
                 <!-- /Billing Address -->
             </form>
+
+            <!-- Payment Method -->
+            <div class="mb-5 mt-5" style="background: #f3f2ec99;">
+                <div class="card-header accordion-header">
+                    <a class="accordion-link">Card Information</a>
+                </div>
+                <div>
+                    <div class="card-body py-5">
+                        <form action="#">
+                            <div class="row">
+                                <!-- Name -->
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label" for="card-name">Name on Card</label>
+                                    <input class="form-control" type="text" name="card-name" placeholder="Name on card"
+                                        id="card-name">
+                                    <div data-lastpass-icon-root=""
+                                        style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;">
+                                    </div>
+                                </div>
+                                <!-- Card Number -->
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label" for="card-number">Card Number</label>
+                                    <input class="form-control" type="text" name="card-number" placeholder="Card number"
+                                        id="card-number">
+                                </div>
+                                <!-- Expiry Date -->
+                                <div class="mb-3 col-md-4">
+                                    <label class="form-label" for="expiry-date">Expiry Date</label>
+                                    <input class="form-control" type="text" name="expiry-date" placeholder="MM/YY"
+                                        id="expiry-date">
+                                </div>
+                                <!-- CVV -->
+                                <div class="mb-3 col-md-4">
+                                    <label class="form-label" for="cvv">CVC/CVV</label>
+                                    <input class="form-control" type="text" name="cvv" placeholder="123" id="cvv">
+                                </div>
+                                <!-- ZIP -->
+                                <div class="mb-3 col-md-4">
+                                    <label class="form-label" for="zip">ZIP</label>
+                                    <input class="form-control" type="text" name="zip" placeholder="123" id="zip">
+                                </div>
+                            </div>
+                            <!-- Card Images -->
+                            <div class="pt-3 pb-3">
+                                <img src="/images/mastercard.svg" class="rounded float-start mr-2" alt="mastercard"
+                                    width="30" height="30">
+                                <img src="/images/visa.svg" class="rounded float-start mr-2" alt="visa" width="30"
+                                    height="30">
+                                <img src="/images/amex.svg" class="rounded float-start" alt="amex" width="30"
+                                    height="30">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Payment Method -->
         </div>
         <div class="col-lg-5 summary">
             <h5 class="text-primary mb-5">Order Summary</h5>
@@ -152,7 +209,8 @@
                     href="#">privacy policy</a>.
             </p>
             <div class="d-grid">
-	            <button id="place-order-btn" class="btn btn-dark btn-lg mb-5 mt-4 text-uppercase fw-normal text-sm" href="/order">Place
+                <button id="place-order-btn" class="btn btn-dark btn-lg mb-5 mt-4 text-uppercase fw-normal text-sm"
+                    href="/order">Place
                     Your order</button>
             </div>
         </div>
