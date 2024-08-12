@@ -134,10 +134,10 @@
                 </a>
                 <ul id="ddmenu_5" class="collapse dropdown-nav">
                     <li>
-                        <a href="#"> View Categories </a>
+                        <a href="{{ route('admin.category.index') }}"> View Categories </a>
                     </li>
                     <li>
-                        <a href="#"> Create Category </a>
+                        <a href="{{ route('admin.category.create') }}"> Create Category </a>
                     </li>
                 </ul>
             </li>

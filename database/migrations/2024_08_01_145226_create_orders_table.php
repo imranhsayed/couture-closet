@@ -31,6 +31,7 @@ return new class extends Migration
             $table->timestamp('order_date')->useCurrent();
             $table->string('full_name')->nullable(false);
             $table->string('email')->nullable(false);
+            $table->string('phone_number')->nullable(false);
             $table->decimal('pst', 10, 2)->nullable(false);
             $table->decimal('gst', 10, 2)->nullable(false);
             $table->decimal('hst', 10, 2)->nullable(false);
