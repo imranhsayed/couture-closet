@@ -11,8 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        
-
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('sku', 50)->unique()->nullable(false)->comment('Example: For a brand, medium-sized t-shirt, the SKU might be "CC-NIKE-M-001"');
@@ -21,8 +19,8 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->integer('stock_quantity');
             $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate(); 
-            $table->softDeletes(); 
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->softDeletes();
         });
 
         Schema::create('product_images', function (Blueprint $table) {
@@ -68,7 +66,7 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id')->nullable(false);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
-            $table->softDeletes(); 
+            $table->softDeletes();
             $table->foreign('category_id')->references('id')->on('category');
             $table->foreign('product_id')->references('id')->on('products');
         });
@@ -78,6 +76,7 @@ return new class extends Migration
             $table->unsignedBigInteger('order_id')->nullable(false);
             $table->unsignedBigInteger('product_id')->nullable(false);
             $table->unsignedBigInteger('quantity')->nullable(false);
+            $table->string('size')->nullable(false);
             $table->decimal('unit_price', 10, 2)->nullable(false);
             $table->decimal('line_price', 10, 2)->nullable(false);
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');

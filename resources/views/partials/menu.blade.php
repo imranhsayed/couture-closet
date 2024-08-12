@@ -6,7 +6,7 @@
 		<ul class="list-unstyled text-sm pt-2 pt-lg-0">
 			@if(isset($categories))
 			@foreach ($categories as $category)
-			<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/shop{category={{ $category->value }}}">{{ $category->value }}</a></li>
+			<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/shop?category={{ $category->value }}">{{ $category->value }}</a></li>
 			@endforeach
 			@else
 			<p>Default</p>

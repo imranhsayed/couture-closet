@@ -16,7 +16,8 @@ class ProductReview extends Model
         'order_id',
         'rating',
         'title',
-        'review_text'
+        'review_text',
+	    'is_approved'
     ];
 
     public function getAllRawOriginals()
@@ -30,6 +31,6 @@ class ProductReview extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class); 
+        return $this->belongsTo(User::class);
     }
 }

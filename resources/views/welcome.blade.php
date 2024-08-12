@@ -9,35 +9,32 @@
 		</div>
 		<div class="carousel-inner">
 			<div class="carousel-item">
-				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-
+				<img src="/images/beige_cardigan_1.jpg" alt="First slide" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
 				<div class="container">
 					<div class="carousel-caption text-start">
 						<h1>Example headline.</h1>
 						<p>Some representative placeholder content for the first slide of the carousel.</p>
-						<p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+						<p><a class="btn btn-lg btn-primary" href="/login">Sign up today</a></p>
 					</div>
 				</div>
 			</div>
 			<div class="carousel-item">
-				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-
+			<img src="/images/beige_cardigan_1.jpg" alt="First slide" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
 				<div class="container">
 					<div class="carousel-caption">
 						<h1>Another example headline.</h1>
 						<p>Some representative placeholder content for the second slide of the carousel.</p>
-						<p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+						<p><a class="btn btn-lg btn-primary" href="/about">Learn more</a></p>
 					</div>
 				</div>
 			</div>
 			<div class="carousel-item active">
-				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-
+			<img src="/images/beige_cardigan_1.jpg" alt="First slide" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
 				<div class="container">
 					<div class="carousel-caption text-end">
 						<h1>One more for good measure.</h1>
 						<p>Some representative placeholder content for the third slide of this carousel.</p>
-						<p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+						<p><a class="btn btn-lg btn-primary" href="/shop">Browse gallery</a></p>
 					</div>
 				</div>
 			</div>
@@ -89,14 +86,14 @@
 		<div class="row justify-content-between align-items-center mb-4">
 			<div class="col-12 col-sm">
 				<ul class="list-inline text-center text-sm-start mb-3 mb-sm-0">
-					<li class="list-inline-item"><a class="text-dark" href="#">All Products </a></li>
+					<li class="list-inline-item"><a class="text-dark" href="/shop">All Products </a></li>
 					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Clothing </a></li>
 					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Bags</a></li>
 					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Shoes</a></li>
 					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Accessories</a></li>
 				</ul>
 			</div>
-			<div class="col-12 col-sm-auto text-center"><a class="btn btn-link px-0" href="#">All products</a></div>
+			<div class="col-12 col-sm-auto text-center"><a class="btn btn-link px-0" href="/shop">All products</a></div>
 		</div>
 
 		@if( $products->isEmpty() )
@@ -108,7 +105,6 @@
 				<div class="col-lg-3 col-md-4">
 					<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 						<div class="product-image mb-md-3">
-							<!-- <a href="/product?id={{ $product->id }}"> -->
 							<a href="/shop/{{ $product->id }}">
 								<div class="product-swap-image">
 									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="{{ $product->images[0]['image_url'] ?? '' }}" alt="product">
@@ -125,7 +121,7 @@
 						</div>
 						<div class="position-relative">
 							<h3 class="text-base mb-1">
-								<a class="text-dark" href="/product?id={{ $product->id }}">
+								<a class="text-dark" href="/shop?id={{ $product->id }}">
 									{{ $product->name }}
 								</a>
 							</h3>

@@ -34,3 +34,13 @@ import './checkout/index.js';
  * User.
  */
 import './user/address.js';
+
+/**
+ * Reviews
+ */
+import './reviews/index.js';
+
+/**
+ * Tabs
+ */
+import './tabs/index.js';
