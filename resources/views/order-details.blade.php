@@ -9,7 +9,7 @@
                     <div class="title d-flex align-items-center flex-wrap">
                         <h2 class="mr-40">Order Details</h2>
                         <a href="{{ route('user.profile') }}" class="main-btn primary-btn btn-hover">
-                        <img src="/images/white-left.svg" alt="left" style=" width: 10px; height: auto;">
+                        <img src="/images/white-left.svg" alt="left" style=" width: 10px; height: auto;" width="11" height="19">
                         Back To Profile
                         </a>
                     </div>
