@@ -40,6 +40,11 @@ class ProductController extends Controller
         }
         
         $categories = Category::whereIn('name', ['Men', 'Women', 'Kids', 'Accessories'])->get();
+        // Fetch demographies and other required categories
+        $demographies = Category::where('name', 'demography')->get();
+        $sizes = Category::where('name', 'size')->get();
+        $brands = Category::where('name', 'brand')->get();
+
 
         // Return a different view for regular users
 		return view('shop.show', compact('product','all_products','categories', 'reviews','totalReviews', 'demography','size','brand'));
