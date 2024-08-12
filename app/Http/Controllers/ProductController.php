@@ -186,7 +186,7 @@ class ProductController extends Controller
 
         $reviews = ProductReview::where('product_id', $product->id)
                             ->with('user')
-                            ->get();
+                            ->count();
 
         return view('product.show', compact('product','all_products','categories', 'reviews'));
 
