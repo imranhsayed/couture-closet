@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section>
+<section class="container-fluid-px py-4 pt-5">
     <div class="container-fluid">
         <div class="title-wrapper pt-30">
             <div class="row align-items-center">
@@ -63,8 +63,87 @@
                             </div>
                         </div>
 
-                        
-                        <div class="invoice-action">
+                        <div class="table-responsive">
+                            <table class="invoice-table table">
+                                <thead>
+                                    <tr>
+                                        <th class="service">
+                                            <h6 class="text-sm text-medium">Product</h6>
+                                        </th>
+                                        <th class="desc">
+                                            <h6 class="text-sm text-medium">Description</h6>
+                                        </th>
+                                        <th class="qty">
+                                            <h6 class="text-sm text-medium">Qty</h6>
+                                        </th>
+                                        <th class="qty">
+                                            <h6 class="text-sm text-medium">Unit Price</h6>
+                                        </th>
+                                        <th class="amount">
+                                            <h6 class="text-sm text-medium">Line Price</h6>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($orderItems as $item)
+                                    <tr>
+                                        <td>
+                                            <p class="text-sm">{{ $item->product->name }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm">
+                                                {{ Str::limit($item->product->description, 30) }}
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm">{{ $item->quantity }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm">${{ number_format($item->unit_price, 2) }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm">${{ number_format($item->line_price, 2) }}</p>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <h6 class="text-sm text-medium">Subtotal</h6>
+                                        </td>
+                                        <td>
+                                            <h6 class="text-sm text-bold">${{ number_format($subTotal, 2) }}</h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <h6 class="text-sm text-medium">Total Tax</h6>
+                                        </td>
+                                        <td>
+                                            <h6 class="text-sm text-bold">
+                                                ${{ number_format($pst + $gst + $hst, 2) }}</h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <h4>Total</h4>
+                                        </td>
+                                        <td>
+                                            <h4>${{ number_format($totalAmount, 2) }}</h4>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="invoice-action pt-5">
                             <ul class="d-flex flex-wrap align-items-center justify-content-center">
                                 <li class="m-2">
                                     <a href="{{ route('user.profile') }}"
