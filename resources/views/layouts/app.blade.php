@@ -57,9 +57,9 @@
             </li>
         </ul>
         {{-- Search --}}
-        <form class="" action="{{ route('shop.index') }}" method="GET">
+        <form class="" action="{{ route('search') }}" method="GET">
             <div class="input-group input-group-underlined">
-                <input class="form-control form-control-underlined ps-3" type="text" placeholder="Search" aria-label="Search" aria-describedby="button-search">
+                <input class="form-control form-control-underlined ps-3" name="query" type="text" placeholder="Search" aria-label="Search" aria-describedby="button-search">
                 <button class="btn btn-underlined" id="button-search" type="button" style="margin-top: -3px">
                     <svg class="svg-icon navbar-icon">
                         <use xlink:href="#search-1"></use>

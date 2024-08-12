@@ -96,25 +96,16 @@ class Shop extends Controller {
 	public function search(Request $request)
     {
 
-        $demography = $request->input('demography');
-        $brand = $request->input('brands');
+		$search = $request->get('search');
+        $title = 'Products';
+        $products = Product::where('name', 'LIKE', '%' . $search . '%')
+               //->orWhere('description', 'LIKE', '%' . $search . '%')
+               ->orWhereHas('categories', function ($query) use ($search) {
+                   $query->where('value', 'LIKE', '%' . $search . '%');
+               })
+               ->paginate(10);
 
-       
-        $query = Product::query();
-
-       
-        if ($demography) {
-            $query->where('demography', $demography);
-        }
-
-        if ($brand) {
-            $query->where('brand', $brand);
-        }
-
-       
-        $products = $query->get();
-
-        dd($products);
-        return view('shop.index', ['products' => $products]);
-    }
+		dd($products);
+        return view('shop.index', compact('products'));
+	}
 }

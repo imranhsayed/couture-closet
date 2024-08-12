@@ -34,8 +34,7 @@ Route::get('/categories', [ProductController::class, 'fetchCategories']);
  */
 Route::get( '/shop', [ \App\Http\Controllers\Shop::class, 'index' ] )->name( 'shop.index' );
 Route::get('/shop/{product}', [ \App\Http\Controllers\Shop::class, 'show' ])->name( 'shop.show' );
-Route::get('/shop/search', [\App\Http\Controllers\Shop::class, 'search'])->name('shop.search');
-
+Route::get('/search', [\App\Http\Controllers\Shop::class, 'search'])->name('search');
 // Route for the cart page
 Route::get('/cart', function () {
     return view('cart');
