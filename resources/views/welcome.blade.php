@@ -50,8 +50,6 @@
 	</div>
 
 	<div class="container">
-
-
 			<div class="container py-6">
 				<div class="row">
 					<div class="col-sm-6 mb-5 mb-sm-0">
@@ -82,20 +80,24 @@
 				<p class="lead text-muted mb-6">Each piece is curated to provide you with the best of seasonal fashion trends and timeless elegance. Refresh your wardrobe with our newest selections.</p>
 			</div>
 		</div>
-
-		<div class="row justify-content-between align-items-center mb-4">
-			<div class="col-12 col-sm">
-				<ul class="list-inline text-center text-sm-start mb-3 mb-sm-0">
-					<li class="list-inline-item"><a class="text-dark" href="/shop">All Products </a></li>
-					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Clothing </a></li>
-					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Bags</a></li>
-					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Shoes</a></li>
-					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="#">Accessories</a></li>
-				</ul>
+		@if(isset($categories))
+			<div class="row justify-content-between align-items-center mb-4">
+				<div class="col-12 col-sm">
+					<ul class="list-inline text-center text-sm-start mb-3 mb-sm-0">
+						@foreach($categories as $category)
+							<li class="list-inline-item">
+								<a class="text-dark" href="{{ route('products.index', ['category' => $category->id]) }}">
+									{{ $category->name }}
+								</a>
+							</li>
+						@endforeach
+					</ul>
+				</div>
+				<div class="col-12 col-sm-auto text-center"><a class="btn btn-link px-0" href="/shop">All products</a></div>
 			</div>
-			<div class="col-12 col-sm-auto text-center"><a class="btn btn-link px-0" href="/shop">All products</a></div>
-		</div>
-
+		@else
+			<p>Categories not found.</p>
+		@endif
 		@if( $products->isEmpty() )
 			<p>No products found.</p>
 		@else

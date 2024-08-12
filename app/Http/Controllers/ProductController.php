@@ -25,8 +25,23 @@ class ProductController extends Controller
             $products = Product::whereNull('deleted_at')->paginate(10);
             return view('admin.products.index', compact('title', 'products'));
         }
+        // For regular users, implement category filtering
+        $categories = Category::all(); // Fetch all categories
+        $category_id = request()->query('category_id'); // Correctly fetch category_id from the query parameters
+        if ($category_id) {
+            // If a specific category is selected, filter products by that category
+            $products = Product::whereHas('categories', function ($query) use ($category_id) {
+                $query->where('categories.id', $category_id);
+            })->whereNull('deleted_at')->paginate(10);
+        } else {
+            // If no specific category is selected, display all products
+            $products = Product::whereNull('deleted_at')->paginate(10);
+        }
+        
+        // Return a different view for regular users
+        return view('welcome', compact('categories', 'products', 'title'));
     }
-
+    
     public function fetchCategories()
     {
 

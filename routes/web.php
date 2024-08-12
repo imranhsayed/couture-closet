@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserAddressController;
+use App\Http\Controllers\Shop;
 use App\Models\Product;
 use App\Models\ProvincialTaxRate;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +32,9 @@ Route::get('/categories', [ProductController::class, 'fetchCategories']);
 /**
  * Product Route.
  */
-Route::get( '/shop', [ \App\Http\Controllers\Shop::class, 'index' ] )->name( 'shop.index' );
+//Route::get( '/shop', [ \App\Http\Controllers\Shop::class, 'index' ] )->name( 'shop.index' );
+Route::get('/shop/{category?}', [Shop::class, 'index'])->name('shop.index');
+
 Route::get('/shop/{product}', [ \App\Http\Controllers\Shop::class, 'show' ])->name( 'shop.show' );
 
 // Route for the cart page

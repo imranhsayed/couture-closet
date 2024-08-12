@@ -11,53 +11,29 @@ class Shop extends Controller {
 	/**
 	 * Display a listing of the resource.
 	 */
-	public function index() {
-
+	public function index($category = null) {
 		$title = "Shop";
-
-		// Initialize query for all products
 		$productQuery = Product::with('images');
-
-		// Check if a specific category, brand, or demography is selected via query parameters
+	
+		if ($category) {
+			$productQuery->whereHas('categories', function ($query) use ($category) {
+				$query->where('id', $category);
+			});
+		}
+	
 		$selectedCategory = request()->query('category');
-		
-		$selectedBrand = request()->query('brand');
-		$selectedDemography = request()->query('demography');
-
 		if ($selectedCategory) {
-			// Filter products by the selected category
 			$productQuery->whereHas('categories', function ($query) use ($selectedCategory) {
 				$query->where('value', $selectedCategory);
 			});
 		}
-		
-		if ($selectedBrand) {
-			// Filter products by the selected brand
-			$productQuery->whereHas('categories', function ($query) use ($selectedBrand) {
-				$query->where('value', $selectedBrand);
-			});
-		}
-		
-		if ($selectedDemography) {
-			// Filter products by the selected demography
-			$productQuery->whereHas('categories', function ($query) use ($selectedDemography) {
-				$query->where('value', $selectedDemography);
-			});
-		}
-		
-		// Paginate the filtered products
+	
 		$products = $productQuery->paginate(16);
-
-		//$products     = Product::with( 'images' )->paginate( 16 );
-		$categories   = Category::where( 'name', 'Size' )->get();
-		$brands       = Category::where( 'name', 'Brand' )->get();
-		$demographies = Category::where( 'name', 'demography' )->get();
-
-		//$product = Product::with(['categories', 'images'])->find($product->id);
-
-		return view( 'shop.index', compact( 'title', 'products', 'categories', 'brands', 'demographies' ) );
+		$categories = Category::where('name', 'Size')->get();
+	
+		return view('shop.index', compact('title', 'products', 'categories'));
 	}
-
+	
 	/**
 	 * Display the specified resource.
 	 */
