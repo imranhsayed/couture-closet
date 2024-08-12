@@ -25,9 +25,11 @@ class Checkout extends HTMLElement {
 		this.checkoutCartContainerElement = this.querySelector( '#checkout-cart-items' );
 		this.placeOrderButton = this.querySelector( '#place-order-btn' );
 		this.formElement = this.querySelector( 'form' );
+		this.provinceSelectElement = this.querySelector( 'cc-province-select select' );
 
 		// Event.
-		this.placeOrderButton?.addEventListener( 'click', () => this.handleFormSubmit() )
+		this.placeOrderButton?.addEventListener( 'click', () => this.handleFormSubmit() );
+		this.provinceSelectElement?.addEventListener( 'change', ( event ) => this.handleProvinceSelectionForTaxCalculation( event ) )
 
 	}
 
@@ -77,9 +79,10 @@ class Checkout extends HTMLElement {
 				if ( response.success ) {
 					console.log( 'response', response );
 					// Update markup.
-					// this.updateCartItemsCountMarkup( response?.data?.products?.length ?? 0 );
 					this.addCheckoutItemsMarkup( response?.data ?? [] );
-					// this.updateCartSummaryMarkup( response?.data ?? [] );
+					this.setAttribute('taxes', JSON.stringify( response?.data?.taxes ?? [] ) );
+					this.setAttribute('total', response?.data?.amount.toString() ?? '' );
+					this.setAttribute('products', JSON.stringify( response?.data?.products ?? [] ) );
 				}
 			} )
 			.catch( error => {
@@ -109,24 +112,13 @@ class Checkout extends HTMLElement {
 		} );
 
 		// Add the taxes.
-		checkoutItemsMarkup += `
-            <tr>
-                <th class="py-5 border-dark" colspan="2">
-                    <div class="mb-4">Shipping &amp; Taxes</div>
-                    <p class="fw-normal"><img src="pictures/checked.svg" alt="Right Icon" class="ms-2" style="width: 16px; height: 16px; margin-right:10px;"> GST <span class="fw-bold">
-                            $20</span></p>
-                    <p class="fw-normal"><img src="pictures/checked.svg" alt="Right Icon" class="ms-2" style="width: 16px; height: 16px; margin-right:10px;"> HST <span class="fw-bold">
-                            $17.5</span></p>
-                    <p class="fw-normal"><img src="pictures/checked.svg" alt="Right Icon" class="ms-2" style="width: 16px; height: 16px; margin-right:10px;"> Shipping and Handling <span class="fw-bold"> $20</span></p>
-                </th>
-            </tr>
-		`;
+		checkoutItemsMarkup += `<tr id="cart-taxes"></tr>`;
 
 		// Add total.
 		checkoutItemsMarkup += `
             <tr>
                 <th class="py-4 text-uppercase fw-bold border-dark align-bottom">Total</th>
-                <td class="py-4 text-end h3 fw-bold border-dark">$${ data?.amount ?? 0 }</td>
+                <td id="checkout-cart-total" class="py-4 text-end h3 fw-bold border-dark">$${ data?.amount ?? 0 }</td>
             </tr>
 		`;
 
@@ -186,6 +178,7 @@ class Checkout extends HTMLElement {
 				return response.json();
 			} )
 			.then( response => {
+				console.log( 'response', response );
 				if ( response.success ) {
 					// Update markup.
 					console.log( 'response.success', response.success );
@@ -194,6 +187,66 @@ class Checkout extends HTMLElement {
 			.catch( error => {
 				console.error( 'There was a problem with the fetch operation:', error );
 			} );
+	}
+	
+	/**
+	 * Tax calculation based on province.
+	 *
+	 * @param event
+	 */
+	handleProvinceSelectionForTaxCalculation( event ) {
+		// Get target element and tax data.
+		const targetElement = event.target;
+		const taxesData = JSON.parse( this.getAttribute( 'taxes' ) );
+		const products = JSON.parse( this.getAttribute( 'products' ) );
+		const taxDataForSelectedProvince = taxesData[ targetElement.value ];
+		
+		const totalQuantity = products.reduce((total, product) => {
+			return total + product.quantity;
+		}, 0);
+		
+		const tax = {
+			id: taxDataForSelectedProvince?.id ?? '',
+			gst_rate: parseFloat((parseFloat(taxDataForSelectedProvince.gst_rate) * totalQuantity).toFixed(2)),
+			hst_rate: parseFloat((parseFloat(taxDataForSelectedProvince.hst_rate) * totalQuantity).toFixed(2)),
+		};
+		
+		// Add taxes markup.
+		this.addTaxesMarkup( tax );
+	}
+	
+	/**
+	 * Add taxes markup.
+	 *
+	 * @param tax
+	 */
+	addTaxesMarkup( tax ) {
+		const total = parseFloat( this.getAttribute( 'total' ) ?? '' );
+		
+		const markup = `
+		<th class="py-5 border-dark" colspan="2">
+		    <div class="mb-4">Taxes</div>
+		    <p class="fw-normal">
+		        <img src="/pictures/checked.svg" alt="Right Icon" class="ms-2"
+		             style="width: 16px; height: 16px; margin-right: 10px;"> GST
+		        <span class="fw-bold">$${tax.gst_rate}</span>
+		    </p>
+		    <p class="fw-normal">
+		        <img src="/pictures/checked.svg" alt="Right Icon" class="ms-2"
+		             style="width: 16px; height: 16px; margin-right: 10px;"> HST
+		        <span class="fw-bold">$${tax.hst_rate}</span>
+		    </p>
+		</th>
+		`;
+		
+		// Add taxes markup.
+		this.querySelector( '#cart-taxes' ).innerHTML = markup;
+		
+		// Calculate total with taxes and update the total.
+		this.querySelector( '#checkout-cart-total' ).innerHTML = '$' + parseFloat( total + parseFloat( tax.gst_rate ) + parseFloat( tax.hst_rate ) ).toFixed(2);
+		
+		// Add provincial tax id.
+		this.querySelector( '#provincial_tax_rate_id' ).value = tax.id;
 	}
 }
 
