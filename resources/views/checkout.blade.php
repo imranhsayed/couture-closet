@@ -143,7 +143,14 @@
                                     <input class="form-control" type="text" name="zip" placeholder="123" id="zip">
                                 </div>
                             </div>
-
+                            <div class="pt-3 pb-3">
+                                <img src="/images/mastercard.svg" class="rounded float-start mr-2" alt="mastercard"
+                                    width="30" height="30">
+                                <img src="/images/visa.svg" class="rounded float-start mr-2" alt="visa" width="30"
+                                    height="30">
+                                <img src="/images/amex.svg" class="rounded float-start" alt="amex" width="30"
+                                    height="30">
+                            </div>
                         </form>
                     </div>
                 </div>
