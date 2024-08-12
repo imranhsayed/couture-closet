@@ -19,12 +19,12 @@
 				</div>
 			</div>
 			<div class="carousel-item">
-			<img src="/images/menu_slider_image2.jpg" alt="Slide 2" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
+			<img src="/images/beigh_dress.jpg" alt="Slide 2" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover; object-position: top center;">
 				<div class="container">
-					<div class="carousel-caption">
+					<div class="carousel-caption" style="text-align: center;">
 						<h1>Discover the Latest Trends</h1>
 						<p>Explore our wide collection of new arrivals.</p>
-						<p><a class="btn btn-lg btn-primary" href="/shop">Browse Gallery</a></p>
+						<p><a class="btn btn-lg btn-primary" href="/shop" style="background-color: #9B8338; border-color: #9B8338; color: #EFEBDF;">Browse Gallery</a></p>
 					</div>
 				</div>
 			</div>
@@ -34,7 +34,7 @@
 					<div class="carousel-caption text-end">
 						<h1>Exclusive Deals This Season</h1>
 						<p>Unwrap the gift of fashion with our exclusive seasonal offers.</p>
-						<p><a class="btn btn-lg btn-primary" href="/about">Learn More About Us!</a></p>
+						<p><a class="btn btn-lg btn-primary" href="/about" style="background-color: #9B8338; border-color: #9B8338; color: #EFEBDF;">Learn More About Us!</a></p>
 					</div>
 				</div>
 			</div>
