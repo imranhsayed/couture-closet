@@ -22,26 +22,29 @@
             <div class="col-lg-12">
                 <div class="card-style mb-30">
                     <div class="title mb-30">
-                        <h6>New Category Form</h6>
+                        <h6>Edit Category Form</h6>
                     </div>
-                    <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.category.update', $category) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="row">
+                            <input type="hidden" id="category_id" name="category_id" value="{{ $category->id ?? ''}}">
+
                             <div class="col-12">
                                 <div class="input-style-2">
                                     <label>Name</label>
-                                    <input type="text" id="name" name="name" placeholder="category name"
+                                    <input type="text" id="name" name="name" placeholder="Category name"
                                            value="{{ old( 'name', $category->name ?? '' ) }}">
                                     <x-val-error field="name"/>
                                 </div>
                             </div>
 
                             <div class="col-12">
-                                <div class="input-style-2">
-                                    <label>value</label>
-                                    <input type="text" id="value" name="value" placeholder="category value"
-                                           value="{{ old( 'name', $category->value ?? '' ) }}">
-                                    <x-val-error field="name"/>
+                                <div class="input-style-1">
+                                    <label>Value</label>
+                                    <input type="text" id="value" name="value" placeholder="Category value"
+                                           value="{{ old( 'value', $category->value ?? '' ) }}">
+                                    <x-val-error field="value"/>
                                 </div>
                             </div>
 
@@ -49,7 +52,7 @@
                                 <div class="input-style-1">
                                     <label>Description</label>
                                     <textarea id="description" name="description" placeholder="description" rows="6"
-                                              >{{ old( 'description', $category->description ?? '' ) }}</textarea>
+                                              required>{{ old( 'description', $category->description ?? '' ) }}</textarea>
                                     <x-val-error field="description"/>
                                 </div>
                             </div>

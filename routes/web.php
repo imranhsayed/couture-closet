@@ -153,4 +153,6 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
     Route::get( '/admin/category/add', [ CategoryController::class , 'create' ])->name( 'admin.category.create' );
     Route::post( '/admin/category', [ CategoryController::class, 'store' ] )->name( 'admin.category.store' );
     Route::delete( '/admin/category/{id}', [ CategoryController::class, 'destroy', ] )->name( 'admin.category.destroy' );
+    Route::get( '/admin/category/edit/{category}', [ CategoryController::class , 'edit' ])->name( 'admin.category.edit' );
+    Route::put( '/admin/category/update/{category}', [ CategoryController::class, 'update' ] )->name( 'admin.category.update' );
 } );

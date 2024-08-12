@@ -103,10 +103,7 @@
                                                     <!-- Edit Dropdown -->
                                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction1">
                                                         <li class="dropdown-item">
-                                                            <a href="#" class="text-gray">Edit</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#" target="_blank" class="text-gray">View</a>
+                                                            <a href="{{route('admin.category.edit', ['category' => $category->id ?? ''])}}" class="text-gray">Edit</a>
                                                         </li>
                                                     </ul>
 
@@ -120,7 +117,7 @@
                                                         @csrf
                                                         @method('delete')
                                                     </form>
-                                                    
+
                                                     <script>
                                                         function deleteCategory(id) 
                                                         {

@@ -70,7 +70,11 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = 'Edit Category';
+
+        $category = Category::findorFail($id);
+
+        return view('admin.category.edit', compact('title','category'));
     }
 
     /**
@@ -78,7 +82,28 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'value' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+    
+        try {
+            // Find the existing category
+            $category = Category::findOrFail($id);
+    
+            // Update category fields
+            $category->name = $request->input('name');
+            $category->value = $request->input('value');
+            $category->description = $request->input('description');
+            $category->save();
+    
+            // Redirect with success message
+            return redirect()->route('admin.category.index')->with('admin.success', 'Category updated successfully.');
+        } catch (Exception $e) {
+            // Handle exceptions and errors
+            return redirect()->route('admin.category.index')->with('admin.error', 'Failed to update category: ' . $e->getMessage());
+        }
     }
 
     /**
