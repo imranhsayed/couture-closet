@@ -26,10 +26,12 @@ class Checkout extends HTMLElement {
 		this.placeOrderButton = this.querySelector( '#place-order-btn' );
 		this.formElement = this.querySelector( 'form' );
 		this.provinceSelectElement = this.querySelector( 'cc-province-select select' );
+		this.showShippingAddressInput = this.querySelector( '#show-shipping-address' );
 
 		// Event.
 		this.placeOrderButton?.addEventListener( 'click', () => this.handleFormSubmit() );
-		this.provinceSelectElement?.addEventListener( 'change', ( event ) => this.handleProvinceSelectionForTaxCalculation( event ) )
+		this.provinceSelectElement?.addEventListener( 'change', ( event ) => this.handleProvinceSelectionForTaxCalculation( event ) );
+		this.showShippingAddressInput?.addEventListener( 'click', ( event ) => this.handleDifferentShippingAddressButton( event ) );
 
 	}
 
@@ -247,6 +249,19 @@ class Checkout extends HTMLElement {
 		
 		// Add provincial tax id.
 		this.querySelector( '#provincial_tax_rate_id' ).value = tax.id;
+	}
+	
+	/**
+	 * Handle different shipping address button click.
+	 *
+	 * @param event
+	 */
+	handleDifferentShippingAddressButton( event ) {
+		if ( event.target.checked ) {
+			event.target.value = 'on';
+		} else {
+			event.target.value = 'off';
+		}
 	}
 }
 

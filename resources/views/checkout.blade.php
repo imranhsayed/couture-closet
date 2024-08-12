@@ -79,7 +79,7 @@
 		            <div class="mb-3 col-12 mt-3">
 			            <div class="form-check">
 				            <input class="form-check-input" id="show-shipping-address" type="checkbox"
-				                   name="show-shipping-address" data-bs-toggle="collapse"
+				                   name="show-shipping-address" data-bs-toggle="collapse" value="off"
 				                   data-bs-target="#shippingAddress">
 				            <label class="form-check-label align-middle" for="show-shipping-address">Use a different
 					            shipping address</label>
