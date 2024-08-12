@@ -32,7 +32,7 @@
 			<img src="/images/beige_cardigan_1.jpg" alt="Slide 3" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
 				<div class="container">
 					<div class="carousel-caption text-end">
-						<h1>Exclusive Deals This Season</h1>
+						<h1 >Exclusive Deals This Season</h1>
 						<p>Unwrap the gift of fashion with our exclusive seasonal offers.</p>
 						<p><a class="btn btn-lg btn-primary" href="/about" style="background-color: #9B8338; border-color: #9B8338; color: #EFEBDF;">Learn More About Us!</a></p>
 					</div>
