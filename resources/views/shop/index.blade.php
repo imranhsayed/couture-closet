@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid container-fluid-px py-4">
+<div class="container-fluid container-fluid-px py-4 pt-5">
     <div class="row">
         <!-- Grid -->
         <div class="products-grid col-xl-9 col-lg-8 order-lg-2">
@@ -32,40 +32,34 @@
                 <div class="col-xl-3 col-sm-4 col-6">
                     <div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
                         <div class="product-image mb-md-3">
-                            <div class="product-badge badge bg-secondary">Fresh</div>
                             <a href="{{ route('shop.show', ['product'=> $product->id])}}">
                                 <div class="product-swap-image">
                                     <img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450"
                                         class="img-fluid product-swap-image-front"
                                         src="/{{ $product->images[0]['image_url'] ?? '' }}" alt="product">
+
                                     <img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450"
-                                        class="img-fluid" src="/{{ $product->images[1]['image_url'] ?? '' }}"
+                                        class="img-fluid"
+                                        src="/{{ isset($product->images[1]) ? $product->images[1]['image_url'] : ($product->images[0]['image_url'] ?? '') }}"
                                         alt="product">
                                 </div>
+
                             </a>
-                            <div class="product-hover-overlay"><a class="text-dark text-sm" href="#!">
-                                    <svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
-                                        <use xlink:href="#retail-bag-1"> </use>
-                                    </svg><span class="d-none d-sm-inline">Add to cart</span></a>
-                                <div><a class="text-dark text-primary-hover me-2" href="#!">
-                                        <svg class="svg-icon svg-icon-heavy">
-                                            <use xlink:href="#heart-1"> </use>
-                                        </svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!"
-                                        data-bs-toggle="modal" data-bs-target="#quickView">
-                                        <svg class="svg-icon svg-icon-heavy">
-                                            <use xlink:href="#expand-1"> </use>
-                                        </svg></a></div>
-                            </div>
+							<div class="product-hover-overlay"><div class="text-dark text-sm">
+									<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
+										<use xlink:href="#retail-bag-1"> </use>
+									</svg>
+									<x-add-to-cart-button product_id="{{ $product->id }}" quantity="1" />
+								</div>
+							</div>
                         </div>
                         <div class="position-relative">
                             <h3 class="text-base mb-1"><a class="text-dark" href="detail-1.html">{{$product->name}}</a>
                             </h3>
                             <p class="text-gray-600 text-sm">
-                                <s class="me-2 text-gray-500">${{$product->price}}</s><span>${{$product->price}}</span>
+                                <span>${{$product->price}}</span>
                             </p>
-                            <div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i
-                                    class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i
-                                    class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
+
                         </div>
                     </div>
                 </div>
@@ -162,7 +156,7 @@
             </div>
 
             <div class="sidebar-block px-3 px-lg-0"><a class="d-lg-none block-toggler" data-bs-toggle="collapse"
-                    href="#brandFilterMenu" aria-expanded="true" aria-controls="brandFilterMenu">Filter by brand<span
+                    href="#brandFilterMenu" aria-expanded="true" aria-controls="brandFilterMenu">Brands On Sale<span
                         class="block-toggler-icon"></span></a>
                 <!-- Brand filter menu - this menu has .show class, so is expanded by default-->
                 <div class="expand-lg collapse show" id="brandFilterMenu">
@@ -181,7 +175,7 @@
                 </div>
             </div>
             <div class="sidebar-block px-3 px-lg-0"> <a class="d-lg-none block-toggler" data-bs-toggle="collapse"
-                    href="#sizeFilterMenu" aria-expanded="false" aria-controls="sizeFilterMenu">Filter by size<span
+                    href="#sizeFilterMenu" aria-expanded="false" aria-controls="sizeFilterMenu">Avaliable sizes<span
                         class="block-toggler-icon"></span></a>
                 <!-- Size filter menu-->
                 <div class="expand-lg collapse" id="sizeFilterMenu">
