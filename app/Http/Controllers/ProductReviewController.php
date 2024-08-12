@@ -98,7 +98,7 @@ class ProductReviewController extends Controller {
 		if ( ! \Auth::check() || ! \Auth::user()->is_admin ) {
 			return redirect( '/login' )->with( 'user.error', 'Please login to see the review!' );
 		}
-		
+
 		// Validate the request data
 		$validatedData = $request->validate( [
 			'title'       => 'required|string|max:255',
