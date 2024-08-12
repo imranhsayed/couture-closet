@@ -6,6 +6,10 @@
         <!-- Grid -->
         <div class="products-grid col-xl-9 col-lg-8 order-lg-2">
             <!-- Hero Content-->
+            <div class="alert alert-info mb-4">
+                <h4 class="alert-heading">Search Results</h4>
+                <p class="mb-0">You searched for: <strong>{{ $search }}</strong></p>
+            </div>
             <div class="hero-content pb-5">
                 <h1>Shop</h1>
                 <div class="row">
