@@ -21,7 +21,7 @@
 						<div class="search-wrapper title d-flex input-style-8">
 							<form action="{{ route('admin.reviews.search') }}" class="form-inline my-2 my-lg-0">
 								<input class="form-control mr-sm-2" name="search" type="text" placeholder="Search..."
-								       aria-label="Search">
+								       aria-label="Search" value="{{ old('search', request('search')) }}">
 								<span class="icon"><i class="lni lni-search-alt"></i></span>
 							</form>
 						</div>
