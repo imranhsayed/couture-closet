@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrderItem;
+use App\Models\Product;
 use App\Models\ProductReview;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -124,5 +125,37 @@ class ProductReviewController extends Controller {
 			// Redirect on failure
 			return redirect()->route( 'admin.reviews.index' )->with( 'admin.error', 'Delete Review failed!' );
 		}
+	}
+
+	/**
+	 * Leave a review.
+	 */
+	public function leaveReview() {
+		if ( ! \Auth::check() || ! \Auth::user()->is_admin ) {
+			return redirect( '/login' )->with( 'user.error', 'Please login to see the review!' );
+		}
+
+		$title = 'Leave Review';
+		$products = Product::paginate( 10 );
+
+		return view( 'admin.reviews.leave-review', compact( 'title', 'products' ) );
+	}
+
+	/**
+	 * Search review content:
+	 *
+	 * @param Request $request
+	 */
+	public function search(Request $request) {
+		if ( ! \Auth::check() || ! \Auth::user()->is_admin ) {
+			return redirect( '/login' )->with( 'user.error', 'Please login to see the review!' );
+		}
+		$search = $request->get('search');
+		$title   = 'Product Reviews';
+		$reviews = ProductReview::where('title', 'LIKE', '%' . $search . '%')
+		                   ->orWhere('review_text', 'LIKE', '%' . $search . '%')
+		                   ->paginate(10);
+
+		return view( 'admin.reviews.index', compact( 'title', 'reviews' ) );
 	}
 }

@@ -157,6 +157,9 @@
                     <li>
                         <a href="/admin/reviews"> See Reviews </a>
                     </li>
+	                <li>
+		                <a href="{{ route('admin.reviews.leave-review') }}">Create Review</a>
+	                </li>
                 </ul>
             </li>
             <!-- End -->

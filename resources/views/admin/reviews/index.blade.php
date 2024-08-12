@@ -10,7 +10,7 @@
 					<div class="col-md-6">
 						<div class="title d-flex align-items-center flex-wrap">
 							<h2 class="mr-40">{{ $title }}</h2>
-							<a href="{{ route('admin.reviews.create') }}" class="main-btn primary-btn btn-hover btn-sm">
+							<a href="{{ route('admin.reviews.leave-review') }}" class="main-btn primary-btn btn-hover btn-sm">
 								<i class="lni lni-plus mr-5"></i>New Review</a>
 						</div>
 					</div>

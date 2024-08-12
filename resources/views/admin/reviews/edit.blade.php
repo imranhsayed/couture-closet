@@ -24,7 +24,7 @@
                     <div class="title mb-30">
                         <h6>Edit Product Form</h6>
                     </div>
-                    <form action="{{ route('admin.reviews.update', $review) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.reviews.update', $review) }}" method="POST" enctype="multipart/form-data" novalidate>
                         @csrf
                         @method('PUT')
                         <div class="row">

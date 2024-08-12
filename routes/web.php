@@ -154,4 +154,5 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
 	Route::put( '/admin/reviews/update/{review}', [ ProductReviewController::class, 'update' ] )->name( 'admin.reviews.update' );
 	Route::delete( '/admin/reviews/{review}', [ ProductReviewController::class, 'destroy', ] )->name( 'admin.reviews.destroy' );
 	Route::get( '/admin/reviews/search', [ ProductReviewController::class, 'search' ])->name( 'admin.reviews.search' );
+	Route::get( '/admin/leave-review', [ ProductReviewController::class, 'leaveReview' ] )->name( 'admin.reviews.leave-review' );
 } );
