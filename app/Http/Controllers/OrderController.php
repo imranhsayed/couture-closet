@@ -10,7 +10,7 @@ use App\Models\ProvincialTaxRate;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\User; 
+use App\Models\User;
 use App\Models\OrderItem;
 use App\Models\Category;
 
@@ -100,6 +100,10 @@ class OrderController extends Controller
             ];
             $order = Order::create($order);
             if ($order) {
+
+                //TODO create transaction
+
+
                 DB::commit();
                 session()->flash('user.success', "Created an order successfully!");
                 $paymentUrl = route('payment.order', [ 'orderId' => $order->id ]);

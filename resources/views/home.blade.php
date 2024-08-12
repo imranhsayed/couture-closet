@@ -266,6 +266,7 @@
                             <thead class="table-primary">
                                 <tr>
                                     <th>No</th>
+                                    <th>Order Id</th>
                                     <th>Title</th>
                                     <th>Date</th>
                                     <th>Rating</th>
@@ -277,6 +278,10 @@
                                 @foreach ($productReviews as $key => $productReview)
                                 <tr>
                                     <td>{{ ++$key }}</td>
+                                    <td>
+                                        <a href="{{ route('order-details.show', ['id' => $productReview->order_id] ) }}"
+                                           role="button">{{ '#' . $productReview->order_id ?? '' }}</a>
+                                    </td>
                                     <td>{{ $productReview->title ?? '' }}</td>
                                     <td>{{ $productReview->created_at ?? '' }}</td>
                                     @if ($productReview->rating == 0 || empty($productReview->rating))
@@ -290,17 +295,9 @@
                                     </td>
                                     @endif
 
-                                    @if (empty($productReview->review_text))
-                                    <td>
-                                        <a class="btn btn-primary btn-sm user_profile_btn"
-                                            href="{{ route('product.leave.review', ['productId' => $productReview->product_id, 'orderId' => $productReview->order_id]) }}"
-                                            role="button">Leave a review</a>
-                                    </td>
-                                    @else
                                     <td>
                                         {{ Str::limit($productReview->review_text ?? '', 20, '...') }}
                                     </td>
-                                    @endif
                                 </tr>
                                 @endforeach
                                 @else
