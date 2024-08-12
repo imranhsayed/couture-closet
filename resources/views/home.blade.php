@@ -32,24 +32,24 @@
             <!-- Tabs navigation -->
             <ul class="nav nav-tabs nav-fill bg-primary mb-4" id="profileTabs" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active text-white tab-button" id="user-info-tab" data-bs-toggle="tab"
+                    <button class="nav-link active text-white tab-button btn-dark" id="user-info-tab" data-bs-toggle="tab"
                         data-bs-target="#user-info" type="button" role="tab" aria-controls="user-info"
                         aria-selected="true" data-tab-name="info">Info
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link text-white tab-button" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders"
+                    <button class="nav-link text-white tab-button btn-dark" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders"
                         type="button" role="tab" aria-controls="orders" aria-selected="false" data-tab-name="orders">Orders
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link text-white tab-button" id="addresses-tab" data-bs-toggle="tab"
+                    <button class="nav-link text-white tab-button btn-dark" id="addresses-tab" data-bs-toggle="tab"
                         data-bs-target="#addresses" type="button" role="tab" aria-controls="addresses"
                         aria-selected="false" data-tab-name="addresses">Addresses
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link text-white tab-button" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
+                    <button class="nav-link text-white tab-button btn-dark" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
                         type="button" role="tab" aria-controls="reviews" aria-selected="false" data-tab-name="reviews">Reviews
                     </button>
                 </li>
