@@ -9,11 +9,11 @@
 		</div>
 		<div class="carousel-inner">
 			<div class="carousel-item active" style="background-color: #EFEBDF;">
-				<img src="/images/menu_slider_image1.png" alt="Slide 1" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
+				<img src="/images/menu_slider_image1.png" alt="Slide 1" class="d-block w-100" style="height: auto; max-height: 512px; width: auto; max-width: 100%; object-fit: contain;transform: translateX(20%);">
 				<div class="container">
 					<div class="carousel-caption text-start" style="color: black; max-width: 600px; left: 15%; bottom: initial; top: 50%; transform: translateY(-50%); right: initial;">
 						<h1 style="font-size: 48px; font-weight: bold;">Elevate Your Style with Timeless Fashion</h1>
-						<p style="font-size: 24px;">Crafting Couture for Every Occasion</p>
+						<p style="font-size: 20px;">Crafting Couture for Every Occasion</p>
 						<p><a class="btn btn-lg btn-primary" href="/shop" style="background-color: black; border-color: black;">Get Started</a></p>
 					</div>
 				</div>
