@@ -108,8 +108,7 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 
     // Orders
     Route::post('/order/create-order' , [ OrderController::class, 'store' ])->name( 'order.store' );
-	Route::get('/order-details/{order}', [OrderController::class, 'orderDetails'])->name('order-details.show');
-
+	Route::get('/order-details/{id}', [OrderController::class, 'orderDetails'])->name('order-details.show');
     // Payment
     Route::get( '/payment/{orderId}', [ PaymentController::class, 'show' ])->name('payment.order');
 

@@ -51,7 +51,9 @@ class Shop extends Controller {
 
 		//$products     = Product::with( 'images' )->paginate( 16 );
 		$categories   = Category::where( 'name', 'Size' )->get();
-		$brands       = Category::where( 'name', 'Brand' )->get();
+		$brands = Category::where('name', 'Brand')->whereHas('products')->get();
+		$sizeFilters   = Category::where( 'name', 'Size' )->whereHas('products')->get();
+
 		$demographies = Category::where( 'name', 'demography' )->get();
 
 		//$product = Product::with(['categories', 'images'])->find($product->id);
