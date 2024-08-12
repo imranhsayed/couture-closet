@@ -152,4 +152,5 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
     Route::get( '/admin/category', [ CategoryController::class, 'index' ] )->name( 'admin.category.index' );
     Route::get( '/admin/category/add', [ CategoryController::class , 'create' ])->name( 'admin.category.create' );
     Route::post( '/admin/category', [ CategoryController::class, 'store' ] )->name( 'admin.category.store' );
+    Route::delete( '/admin/category/{id}', [ CategoryController::class, 'destroy', ] )->name( 'admin.category.destroy' );
 } );

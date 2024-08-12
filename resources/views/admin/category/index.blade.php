@@ -111,25 +111,26 @@
                                                     </ul>
 
                                                     <!-- Delete Link -->
-                                                    <a href="#">
-                                                        <a class="edit text-danger ml-5" href="#" onclick="event.preventDefault(); function deleteConfirm() {
-                                                            let confirmed = confirm('Are you sure you want to delete this product?')
-                                                            if (confirmed)
-                                                            {
-                                                                document.getElementById('delete-product-form').submit();
-                                                            } else {
-                                                                return false;
-                                                            }
-                                                        }
-                                                        deleteConfirm()">
+                                                    
+                                                        <a class="edit text-danger ml-5" onclick="event.preventDefault(); deleteCategory('{{ $category->id }}')">
                                                             <i class="lni lni-trash-can"></i>
                                                         </a>
-                                                    </a>
 
-                                                    <form id="delete-product-form" action="#" method="POST" class="d-none">
+                                                    <form id="delete-category-form-{{$category->id}}" action="{{ route('admin.category.destroy', $category->id ) }}" method="POST" class="d-none">
                                                         @csrf
                                                         @method('delete')
                                                     </form>
+                                                    
+                                                    <script>
+                                                        function deleteCategory(id) 
+                                                        {
+                                                            let confirmed = confirm('Are you sure you want to delete this category?');
+                                                            if (confirmed) {
+                                                                document.getElementById('delete-category-form-' + id).submit();
+                                                            }
+                                                        }
+
+                                                    </script>
                                                 </div>
                                             </td>
                                         </tr>

@@ -53,6 +53,7 @@ class OrdersSeeder extends Seeder
                 'provincial_tax_rate_id' => 3,
                 'full_name' => 'test3',
                 'email' => 'test3@example.com',
+                'phone_number' => '431-332-1234',
                 'pst' => 7.00,
                 'gst' => 5.00,
                 'hst' => 0.00,
