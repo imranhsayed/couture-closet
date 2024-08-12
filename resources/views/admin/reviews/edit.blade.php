@@ -57,6 +57,17 @@
                                 </div>
                             </div>
 
+	                        <div class="col-12">
+		                        <div class="input-style-1">
+			                        <label>Is Approved</label>
+			                        <select class="form-select focus-shadow-0" id="is_approved" name="is_approved" required>
+				                        <option value="0" {{ old('is_approved', $review->is_approved) == 0 ? 'selected' : '' }}>No</option>
+				                        <option value="1" {{ old('is_approved', $review->is_approved) == 1 ? 'selected' : '' }}>Yes</option>
+			                        </select>
+			                        <x-val-error field="is_approved"/>
+		                        </div>
+	                        </div>
+
                             <!-- Submit -->
                             <div class="col-12">
                                 <div class="button-group d-flex justify-content-center flex-wrap">

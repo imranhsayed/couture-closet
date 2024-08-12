@@ -96,6 +96,7 @@ class ProductReviewController extends Controller {
 			'title'       => 'required|string|max:255',
 			'review_text' => 'required|string',
 			'rating'      => 'required|integer|min:1|max:5',
+			'is_approved' => 'required|boolean',
 		] );
 
 		try {
