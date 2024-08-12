@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('partials.flash')
 <section class="hero py-6">
     <div class="container">
         <!-- Breadcrumbs -->
@@ -11,9 +12,6 @@
         <!-- Hero Content-->
         <div class="hero-content">
             <h1 class="hero-heading">Checkout</h1>
-            <div>
-                <p class="lead text-muted">Are you a returning customer? <a href="#" class="fw-bold">Login</a>.</p>
-            </div>
         </div>
     </div>
 </section>
