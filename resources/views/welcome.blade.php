@@ -9,7 +9,7 @@
 		</div>
 		<div class="carousel-inner">
 			<div class="carousel-item">
-				<img src="/images/beige_cardigan_1.jpg" alt="First slide" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
+				<img src="/images/menu_slider_image1.png" alt="First slide" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
 				<div class="container">
 					<div class="carousel-caption text-start">
 						<h1>Example headline.</h1>
