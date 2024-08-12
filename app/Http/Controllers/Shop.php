@@ -92,4 +92,29 @@ class Shop extends Controller {
 		return view('shop.show', compact('product','all_products','categories', 'reviews','totalReviews', 'demography','size','brand'));
 
 	}
+
+	public function search(Request $request)
+    {
+
+        $demography = $request->input('demography');
+        $brand = $request->input('brands');
+
+       
+        $query = Product::query();
+
+       
+        if ($demography) {
+            $query->where('demography', $demography);
+        }
+
+        if ($brand) {
+            $query->where('brand', $brand);
+        }
+
+       
+        $products = $query->get();
+
+        dd($products);
+        return view('shop.index', ['products' => $products]);
+    }
 }
