@@ -21,25 +21,28 @@ class ProductController extends Controller
     public function index()
     {
         $title = 'Products';
+        $categoryIds = $request->query('categories', []);
+
         if (\Auth::check() && \Auth::user()->is_admin) {
             $products = Product::whereNull('deleted_at')->paginate(10);
             return view('admin.products.index', compact('title', 'products'));
-        }
-        // For regular users, implement category filtering
-        $categories = Category::all(); // Fetch all categories
-        $category_id = request()->query('category_id'); // Correctly fetch category_id from the query parameters
-        if ($category_id) {
-            // If a specific category is selected, filter products by that category
-            $products = Product::whereHas('categories', function ($query) use ($category_id) {
-                $query->where('categories.id', $category_id);
-            })->whereNull('deleted_at')->paginate(10);
         } else {
-            // If no specific category is selected, display all products
-            $products = Product::whereNull('deleted_at')->paginate(10);
+            // For regular users, filter by selected categories
+            $productQuery = Product::with('images')->whereNull('deleted_at');
+    
+            if (!empty($categoryIds)) {
+                $productQuery->whereHas('categories', function ($query) use ($categoryIds) {
+                    $query->whereIn('id', $categoryIds);
+                });
+            }
+    
+            $products = $productQuery->paginate(10);
         }
         
+        $categories = Category::whereIn('name', ['Men', 'Women', 'Kids', 'Accessories'])->get();
+
         // Return a different view for regular users
-        return view('welcome', compact('categories', 'products', 'title'));
+		return view('shop.show', compact('product','all_products','categories', 'reviews','totalReviews', 'demography','size','brand'));
     }
     
     public function fetchCategories()
