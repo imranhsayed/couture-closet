@@ -116,6 +116,7 @@
                     <div class="card-body py-5">
                         <form action="#">
                             <div class="row">
+                                <!-- Name -->
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label" for="card-name">Name on Card</label>
                                     <input class="form-control" type="text" name="card-name" placeholder="Name on card"
@@ -124,25 +125,30 @@
                                         style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;">
                                     </div>
                                 </div>
+                                <!-- Card Number -->
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label" for="card-number">Card Number</label>
                                     <input class="form-control" type="text" name="card-number" placeholder="Card number"
                                         id="card-number">
                                 </div>
+                                <!-- Expiry Date -->
                                 <div class="mb-3 col-md-4">
                                     <label class="form-label" for="expiry-date">Expiry Date</label>
                                     <input class="form-control" type="text" name="expiry-date" placeholder="MM/YY"
                                         id="expiry-date">
                                 </div>
+                                <!-- CVV -->
                                 <div class="mb-3 col-md-4">
                                     <label class="form-label" for="cvv">CVC/CVV</label>
                                     <input class="form-control" type="text" name="cvv" placeholder="123" id="cvv">
                                 </div>
+                                <!-- ZIP -->
                                 <div class="mb-3 col-md-4">
                                     <label class="form-label" for="zip">ZIP</label>
                                     <input class="form-control" type="text" name="zip" placeholder="123" id="zip">
                                 </div>
                             </div>
+                            <!-- Card Images -->
                             <div class="pt-3 pb-3">
                                 <img src="/images/mastercard.svg" class="rounded float-start mr-2" alt="mastercard"
                                     width="30" height="30">
