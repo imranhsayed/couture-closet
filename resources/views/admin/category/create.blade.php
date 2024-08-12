@@ -32,7 +32,7 @@
                                     <label>Name</label>
                                     <input type="text" id="name" name="name" placeholder="category name"
                                            value="{{ old( 'name', $category->name ?? '' ) }}"
-                                           required>
+                                           >
                                     <x-val-error field="name"/>
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                                     <label>value</label>
                                     <input type="text" id="value" name="value" placeholder="category value"
                                            value="{{ old( 'name', $category->value ?? '' ) }}"
-                                           required>
+                                           >
                                     <x-val-error field="name"/>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                                 <div class="input-style-1">
                                     <label>Description</label>
                                     <textarea id="description" name="description" placeholder="description" rows="6"
-                                              required>{{ old( 'description', $category->description ?? '' ) }}</textarea>
+                                              >{{ old( 'description', $category->description ?? '' ) }}</textarea>
                                     <x-val-error field="description"/>
                                 </div>
                             </div>
