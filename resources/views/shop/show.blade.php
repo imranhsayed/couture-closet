@@ -72,7 +72,7 @@
                                 <strong class="text d-block" class="border-top pt-2">Demography</strong>
                                 <strong><a class="text-muted d-block" href="#" class="border-top pt-2">{{$demography->value}}</a></strong>
                             </li>
-							@endif							
+							@endif
 							@if($brand)
                             <li class="border-top pt-2">
                                 <strong class="d-block">Brand:</strong>
@@ -87,7 +87,7 @@
 
 		{{--Description Tabs--}}
 		<section class="mt-5">
-			<div class="container">
+			<cc-tabs class="container">
 				<ul class="nav nav-tabs flex-column flex-sm-row" role="tablist">
 					<li class="nav-item"><a class="nav-link detail-nav-link active" data-bs-toggle="tab" href="#description" role="tab">Description</a></li>
 					<li class="nav-item"><a class="nav-link detail-nav-link" data-bs-toggle="tab" href="#additional-information" role="tab">Additional Information</a></li>
@@ -170,7 +170,7 @@
 									<h5 class="mb-4">Leave a review</h5>
 									<form class="mb-4 form" id="reviewForm" method="post" action="{{ route('product.review.store') }}">
                                         @csrf
-                                        <input type="hidden" id="product_id" name="product_id" value="{{ session('productId') ?? '' }}">
+                                        <input type="hidden" id="product_id" name="product_id" value="{{ $product->id }}">
                                         <input type="hidden" id="order_id" name="order_id" value="{{ session('orderId') ?? '' }}">
                                         <div class="row">
 											<div class="col-sm-6">
@@ -198,13 +198,12 @@
 										</div>
 										<button class="btn btn-outline-dark" type="submit">Post review</button>
 									</form>
-									<p class="text-muted text-sm"><span class="badge badge-info-light">Note</span> This form shows usage of the classic Bootstrap form controls, not their underlined variants. You can choose whichever variant you want.</p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</cc-tabs>
 		</section>
 
 		{{--Related Products--}}
