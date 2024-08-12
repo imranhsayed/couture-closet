@@ -52,7 +52,7 @@
                                 <div class="input-style-1">
                                     <label>Description</label>
                                     <textarea id="description" name="description" placeholder="description" rows="6"
-                                              required>{{ old( 'description', $category->description ?? '' ) }}</textarea>
+                                              >{{ old( 'description', $category->description ?? '' ) }}</textarea>
                                     <x-val-error field="description"/>
                                 </div>
                             </div>

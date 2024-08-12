@@ -40,7 +40,7 @@
                                 <div class="input-style-2">
                                     <label>value</label>
                                     <input type="text" id="value" name="value" placeholder="category value"
-                                           value="{{ old( 'name', $category->value ?? '' ) }}">
+                                           value="{{ old( 'value', $category->value ?? '' ) }}">
                                     <x-val-error field="name"/>
                                 </div>
                             </div>
