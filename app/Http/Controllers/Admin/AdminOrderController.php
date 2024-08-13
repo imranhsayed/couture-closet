@@ -110,5 +110,28 @@ class AdminOrderController extends Controller
         return redirect()->route('admin.orders.index')->with('success', 'Order deleted successfully');
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $orders = $this->getFilteredOrders($search);
+        return view('admin.orders.index', ['orders' => $orders, 'search' => $search]);
+    }
 
+    private function getFilteredOrders($search = null)
+    {
+        $query = Order::with('user', 'provincialTaxRate');
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('id', 'LIKE', "%{$search}%")
+                  ->orWhere('email', 'LIKE', "%{$search}%")
+                  ->orWhereHas('user', function ($userQuery) use ($search) {
+                      $userQuery->where('first_name', 'LIKE', "%{$search}%")
+                                ->orWhere('last_name', 'LIKE', "%{$search}%");
+                  });
+            });
+        }
+
+        return $query->paginate(10);
+    }
 }
