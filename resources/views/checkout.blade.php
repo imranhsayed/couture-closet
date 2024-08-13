@@ -23,7 +23,7 @@
                 <h5 class="text-primary mb-5">Address </h5>
 	            <div class="row">
 		            <div class="mb-3 col-md-6 mb-4">
-			            <label class="form-label" for="fullname">Full Name</label>
+			            <label class="form-label" for="fullname">Full Name*</label>
 			            <input class="form-control form-control-underlined ps-0" type="text" name="fullname"
 			                   id="fullname">
 			            <div data-lastpass-icon-root=""
@@ -34,7 +34,7 @@
                         </cc-form-field-error>
 		            </div>
 		            <div class="mb-3 col-md-6 mb-4">
-			            <label class="form-label" for="emailaddress">Email Address</label>
+			            <label class="form-label" for="emailaddress">Email Address*</label>
 			            <input class="form-control form-control-underlined ps-0" type="text" name="emailaddress"
 			                   id="emailaddress">
 			            <cc-form-field-error name="emailaddress" class="invalid-feedback" role="alert">
@@ -42,7 +42,7 @@
 			            </cc-form-field-error>
 		            </div>
 		            <div class="mb-3 col-md-6 mb-4">
-			            <label class="form-label" for="street_billing">Street</label>
+			            <label class="form-label" for="street_billing">Street*</label>
 			            <input class="form-control form-control-underlined ps-0" type="text" name="street_billing"
 			                   id="street_billing">
 			            <cc-form-field-error name="street_billing" class="invalid-feedback" role="alert">
@@ -50,7 +50,7 @@
 			            </cc-form-field-error>
 		            </div>
 		            <div class="mb-3 col-md-6 mb-4">
-			            <label class="form-label" for="city_billing">City</label>
+			            <label class="form-label" for="city_billing">City*</label>
 			            <input class="form-control form-control-underlined ps-0" type="text" name="city_billing"
 			                   id="city_billing">
 			            <cc-form-field-error name="city_billing" class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
 			            </cc-form-field-error>
 		            </div>
 		            <div class="mb-3 col-md-6 mb-4">
-			            <label class="form-label" for="zip_billing">Post Code</label>
+			            <label class="form-label" for="zip_billing">Post Code*</label>
 			            <input class="form-control form-control-underlined ps-0" type="text" name="zip_billing"
 			                   id="zip_billing">
 			            <cc-form-field-error name="zip_billing" class="invalid-feedback" role="alert">
@@ -66,7 +66,7 @@
 			            </cc-form-field-error>
 		            </div>
 		            <cc-province-select class="mb-3 col-md-6 mb-4">
-			            <label class="form-label" for="state_billing">Province</label>
+			            <label class="form-label" for="state_billing">Province*</label>
 			            <select class="form-select" name="state_billing" id="state_billing">
 				            <option value="">Select your province</option>
 				            <option value="AB">Alberta (AB)</option>
@@ -88,7 +88,7 @@
 			            </cc-form-field-error>
 		            </cc-province-select>
 		            <div class="mb-3 col-md-6 mb-4">
-			            <label class="form-label" for="phonenumber_billing">Phone Number</label>
+			            <label class="form-label" for="phonenumber_billing">Phone Number*</label>
 			            <input class="form-control form-control-underlined ps-0" type="text"
 			                   name="phonenumber_billing" id="phonenumber_billing">
 			            <cc-form-field-error name="phonenumber_billing" class="invalid-feedback" role="alert">
@@ -178,42 +178,54 @@
 			            <div class="card-body py-5">
 				            <div class="row">
 					            <div class="mb-3 col-md-6">
-						            <label class="form-label" for="card_type">Card Type</label>
+						            <label class="form-label" for="card_type">Card Type*</label>
 						            <select class="form-select" name="card_type" id="card_type">
 							            <option value="">Select Card Type</option>
 							            <option value="visa">Visa</option>
 							            <option value="master">Master</option>
-							            <cc-form-field-error name="card_type" class="invalid-feedback" role="alert">
-								            The phone number is required.
-							            </cc-form-field-error>
 						            </select>
+						            <cc-form-field-error name="card_name" class="invalid-feedback" role="alert">
+							            The card name is required.
+						            </cc-form-field-error>
 					            </div>
 					            <!-- Name -->
 					            <div class="mb-3 col-md-6">
-						            <label class="form-label" for="card-name">Name on Card</label>
+						            <label class="form-label" for="card-name">Name on Card*</label>
 						            <input class="form-control" type="text" name="card_name" placeholder="Name on card"
 						                   id="card-name">
 						            <div data-lastpass-icon-root=""
 						                 style="position: relative !important; height: 0 !important; width: 0 !important; float: left !important;">
 						            </div>
+						            <cc-form-field-error name="card_name" class="invalid-feedback" role="alert">
+							            The card name is required.
+						            </cc-form-field-error>
 					            </div>
 					            <!-- Card Number -->
 					            <div class="mb-3 col-md-8">
-						            <label class="form-label" for="card-number">Card Number</label>
+						            <label class="form-label" for="card-number">Card Number*</label>
 						            <input class="form-control" type="text" name="card_number" placeholder="Card number"
 						                   id="card-number">
+						            <cc-form-field-error name="card_number" class="invalid-feedback" role="alert">
+							            The card number is required.
+						            </cc-form-field-error>
 					            </div>
 					            <!-- Expiry Date -->
 					            <div class="mb-3 col-md-4">
-						            <label class="form-label" for="expiry-date">Expiry Date</label>
+						            <label class="form-label" for="expiry-date">Expiry Date*</label>
 						            <input class="form-control" type="text" name="expiry_date" placeholder="MM/YY"
 						                   id="expiry-date">
+						            <cc-form-field-error name="expiry_date" class="invalid-feedback" role="alert">
+							            The expiry is required.
+						            </cc-form-field-error>
 					            </div>
 					            <!-- CVV -->
 					            <div class="mb-3 col-md-4">
-						            <label class="form-label" for="cvv">CVC/CVV</label>
+						            <label class="form-label" for="cvv">CVC/CVV*</label>
 						            <input class="form-control" type="text" name="cvv" placeholder="123" id="cvv">
 					            </div>
+					            <cc-form-field-error name="cvv" class="invalid-feedback" role="alert">
+						            The cvv is required.
+					            </cc-form-field-error>
 				            </div>
 				            <!-- Card Images -->
 				            <div class="pt-3 pb-3">
