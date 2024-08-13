@@ -14,8 +14,7 @@
 			<div class="col-lg-6 col-xl-7 pt-4 order-2 order-lg-1 photoswipe-gallery">
                 <a class="d-block mb-4" href="img/product/detail-3-gray.jpg" data-caption="Push-up Jeans 1 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
 					@foreach($product->images as $image)
-
-                    <div data-toggle="zoom" data-image="img/product/detail-3-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="/{{ $image->image_url}}" alt="{{$product->name}}"><img role="presentation" alt="{{$product->name}}" src="/{{ $image->image_url}}" class="zoomImg" style="position: absolute; top: -94.9611px; left: -187.658px; opacity: 0; width: 1313px; height: 1313px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="#" data-caption="Push-up Jeans 2 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
+                    	<div data-toggle="zoom" data-image="img/product/detail-3-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="/{{ $image->image_url}}" alt="{{$product->name}}"><img role="presentation" alt="{{$product->name}}" src="/{{ $image->image_url}}" class="zoomImg" style="position: absolute; top: -94.9611px; left: -187.658px; opacity: 0; width: 1313px; height: 1313px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="#" data-caption="Push-up Jeans 2 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
                     @endforeach
                 </a>
 			</div>
@@ -66,16 +65,16 @@
 									@endif
 							</li>
 							@if($demography)
-							<li class="border-top pt-2">
-                                <strong class="text d-block" class="border-top pt-2">Demography</strong>
-                                <strong><a class="text-muted d-block" href="#" class="border-top pt-2">{{$demography->value}}</a></strong>
-                            </li>
+								<li class="border-top pt-2">
+									<strong class="text d-block" class="border-top pt-2">Demography</strong>
+									<strong><a class="text-muted d-block" href="#" class="border-top pt-2">{{$demography->value}}</a></strong>
+								</li>
 							@endif
 							@if($brand)
-                            <li class="border-top pt-2">
-                                <strong class="d-block">Brand:</strong>
-                                <strong><a class="text-muted d-block" href="#">{{$brand->value}}</a></strong>
-                            </li>
+								<li class="border-top pt-2">
+									<strong class="d-block">Brand:</strong>
+									<strong><a class="text-muted d-block" href="#">{{$brand->value}}</a></strong>
+								</li>
 							@endif
                         </ul>
 					</div>
@@ -130,16 +129,16 @@
 								<table class="table text-sm">
 									<tbody>
 									@foreach($reviews as $review)
-									<tr>
-										<th class="font-weight-normal ">Total Reviews</th>
-										<td class="text-muted ">{{$totalReviews}} reviews</td>
-									</tr>
+										<tr>
+											<th class="font-weight-normal ">Total Reviews</th>
+											<td class="text-muted ">{{$totalReviews}} reviews</td>
+										</tr>
 									@endforeach
 									@foreach($reviews as $review)
-									<tr>
-										<th class="font-weight-normal ">Rating</th>
-										<td class="text-muted ">{{ $review->rating}}</td>
-									</tr>
+										<tr>
+											<th class="font-weight-normal ">Rating</th>
+											<td class="text-muted ">{{ $review->rating}}</td>
+										</tr>
 									@endforeach
 									</tbody>
 								</table>
@@ -150,19 +149,19 @@
 						<div class="row mb-5">
 							<div class="col-lg-10 col-xl-9">
 								@foreach($reviews as $review)
-								<div class="media review">
-									<div class="flex-shrink-0 text-center me-4 me-xl-5">
-										<img class="review-image" src="/images/review_logo.svg" alt="{{ $review->user->name }}">
-										<span class="text-uppercase text-muted">{{ $review->created_at->format('M Y') }}</span>
-									</div>
-									<div>
-										<h5 class="mt-2 mb-1">{{ $review->user->name }}</h5>
-										<div class="mb-2">
-
+									<div class="media review">
+										<div class="flex-shrink-0 text-center me-4 me-xl-5">
+											<img class="review-image" src="/images/review_logo.svg" alt="{{ $review->user->name }}">
+											<span class="text-uppercase text-muted">{{ $review->created_at->format('M Y') }}</span>
 										</div>
-										<p class="text-muted">{{ $review->review_text }}</p>
+										<div>
+											<h5 class="mt-2 mb-1">{{ $review->user->name }}</h5>
+											<div class="mb-2">
+
+											</div>
+											<p class="text-muted">{{ $review->review_text }}</p>
+										</div>
 									</div>
-								</div>
 								@endforeach
 								<div class="py-5 px-3">
 									<h5 class="mb-4">Leave a review</h5>
@@ -203,10 +202,7 @@
 				</div>
 			</cc-tabs>
 		</section>
-
 		{{--Related Products--}}
-
-
 		<section class="py-5">
 			<div class="container">
 				<h5 class="mb-4">Similar Products</h5>
