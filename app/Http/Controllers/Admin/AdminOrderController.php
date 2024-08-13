@@ -101,7 +101,7 @@ class AdminOrderController extends Controller
             'status' => $validated['status'],
         ]);
     
-        return redirect()->route('admin.orders.index')->with('success', 'Order status updated successfully');
+        return redirect()->route('admin.orders.index')->with('success', "Status for Order # $order->id was updated successfully");
     }
 
     public function destroy(Order $order)
