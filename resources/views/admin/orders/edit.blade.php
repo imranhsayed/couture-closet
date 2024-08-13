@@ -95,7 +95,50 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-
+                            <table class="table top-selling-table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <h6 class="text-sm text-medium">User ID</h6>
+                                        </th>
+                                        <th>
+                                            <h6 class="text-sm text-medium">Full Name</h6>
+                                        </th>
+                                        <th>
+                                            <h6 class="text-sm text-medium">E-mail</h6>
+                                        </th>
+                                        <th>
+                                            <h6 class="text-sm text-medium">Province</h6>
+                                        </th>
+                                        <th>
+                                            <h6 class="text-sm text-medium">Billing Address</h6>
+                                        </th>
+                                        <th>
+                                            <h6 class="text-sm text-medium">Value</h6>
+                                        </th>
+                                        <th>
+                                            <h6 class="text-sm text-medium">Taxes</h6>
+                                        </th>
+                                        <th>
+                                            <h6 class="text-sm text-medium">Grand Total</h6>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($order->orderItems as $item)
+                                    <tr>
+                                        <td>{{ $order->user_id }}</td>
+                                        <td>{{ $order->user->first_name . ' ' . $order->user->last_name }}</td>
+                                        <td>{{ $order->email }}</td>
+                                        <td>{{ $province->province_name }}</td>
+                                        <td>{{ $order->billing_address }}</td>
+                                        <td>$ {{ $order->sub_amount }}</td>
+                                        <td>$ {{ $order->total_amount - $order->sub_amount }}</td>
+                                        <td>$ {{ $order->total_amount }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
