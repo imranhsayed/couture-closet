@@ -26,6 +26,51 @@
         <img src="/images/logo.svg" alt="Site logo" width="200" height="50" class="mr-1">
     </a>
 
+	<ul class="d-flex mb-0 d-lg-none align-items-center">
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle show" id="userLoginDropdown" href="#"
+				   data-bs-toggle="dropdown" aria-haspopup="true"
+				   aria-expanded="false">
+					<svg class="svg-icon navbar-icon">
+						<use xlink:href="#avatar-1"> </use>
+					</svg></a>
+				</a>
+				@if (\Auth::check())
+					<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="{{ route('user.profile') }}">
+							Profile
+						</a>
+						<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+													document.getElementById('logout-form').submit();">
+							{{ __('Logout') }}
+						</a>
+
+						<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+							@csrf
+						</form>
+						@if (\Auth::user()->is_admin)
+							<a class="dropdown-item" href="{{ route('admin.index') }}">
+								Admin Panel
+							</a>
+						@endif
+					</div>
+				@else
+					<div class="dropdown-menu dropdown-menu-animated" aria-labelledby="userLoginDropdown"
+					     data-bs-popper="none">
+						<a class="dropdown-item" href="/login">Login</a>
+						<a class="dropdown-item" href="/register">Register</a>
+					</div>
+				@endif
+			</li>
+			<li class="list-inline-item position-relative ml-2">
+				<a class="text-dark text-primary-hover" href="/cart">
+					<svg class="svg-icon navbar-icon">
+						<use xlink:href="#retail-bag-1"> </use>
+					</svg>
+					<cc-product-count class="navbar-icon-badge">5</cc-product-count>
+				</a>
+			</li>
+		</ul>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="svg-icon navbar-icon">
             <use xlink:href="#menu-hamburger-1"></use>
@@ -67,53 +112,55 @@
                 </button>
             </div>
         </form>
-		<ul class="list-inline mb-0 d-none d-lg-flex align-items-center">
-				    <li class="nav-item dropdown">
-					    <a class="nav-link dropdown-toggle show" id="userLoginDropdown" href="#"
-				                                     data-bs-toggle="dropdown" aria-haspopup="true"
-				                                     aria-expanded="false">
-						    <svg class="svg-icon navbar-icon">
-							    <use xlink:href="#avatar-1"> </use>
-						    </svg></a>
-					    </a>
-					    @if (\Auth::check())
-							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('user.profile') }}">
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-															document.getElementById('logout-form').submit();">
-									{{ __('Logout') }}
-								</a>
 
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-									@csrf
-								</form>
-								@if (\Auth::user()->is_admin)
-									<a class="dropdown-item" href="{{ route('admin.index') }}">
-										Admin Panel
-									</a>
-								@endif
-							</div>
-						@else
-							<div class="dropdown-menu dropdown-menu-animated" aria-labelledby="userLoginDropdown"
-								data-bs-popper="none">
-								<a class="dropdown-item" href="/login">Login</a>
-								<a class="dropdown-item" href="/register">Register</a>
-							</div>
-						@endif
-				    </li>
-				    <li class="list-inline-item position-relative ml-2">
-					    <a class="text-dark text-primary-hover" href="/cart">
-						    <svg class="svg-icon navbar-icon">
-							    <use xlink:href="#retail-bag-1"> </use>
-						    </svg>
-						    <cc-product-count class="navbar-icon-badge">5</cc-product-count>
+	    <ul class="list-inline mb-0 d-none d-lg-flex align-items-center">
+		    <li class="nav-item dropdown">
+			    <a class="nav-link dropdown-toggle show" id="userLoginDropdown" href="#"
+			       data-bs-toggle="dropdown" aria-haspopup="true"
+			       aria-expanded="false">
+				    <svg class="svg-icon navbar-icon">
+					    <use xlink:href="#avatar-1"> </use>
+				    </svg></a>
+			    </a>
+			    @if (\Auth::check())
+				    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+					    <a class="dropdown-item" href="{{ route('user.profile') }}">
+						    Profile
 					    </a>
-				    </li>
-			    </ul>
-		    </div>
-	    </nav>
+					    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+													document.getElementById('logout-form').submit();">
+						    {{ __('Logout') }}
+					    </a>
+
+					    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+						    @csrf
+					    </form>
+					    @if (\Auth::user()->is_admin)
+						    <a class="dropdown-item" href="{{ route('admin.index') }}">
+							    Admin Panel
+						    </a>
+					    @endif
+				    </div>
+			    @else
+				    <div class="dropdown-menu dropdown-menu-animated" aria-labelledby="userLoginDropdown"
+				         data-bs-popper="none">
+					    <a class="dropdown-item" href="/login">Login</a>
+					    <a class="dropdown-item" href="/register">Register</a>
+				    </div>
+			    @endif
+		    </li>
+		    <li class="list-inline-item position-relative ml-2">
+			    <a class="text-dark text-primary-hover" href="/cart">
+				    <svg class="svg-icon navbar-icon">
+					    <use xlink:href="#retail-bag-1"> </use>
+				    </svg>
+				    <cc-product-count class="navbar-icon-badge">5</cc-product-count>
+			    </a>
+		    </li>
+	    </ul>
+
+    </div>
+    </nav>
 
 
         <main>
@@ -218,7 +265,7 @@
     <script src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/vendor/jquery/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
-	
+
 	<!-- Navbar Icons -->
 	<div style="background: #EDEDED;">
 		<svg width="0" height="0" class="hidden">

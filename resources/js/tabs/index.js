@@ -23,6 +23,10 @@ class Tabs extends HTMLElement {
 	initialize() {
 		const hash = window.location.hash;
 		
+		if ( ! hash ) {
+			return;
+		}
+		
 		const targetHashLinkElement = document.querySelector(`[href="${hash}"]`);
 		const targetContentElement = document.querySelector( `${ hash }` );
 		const allTabContentElements = document.querySelectorAll( '.tab-pane' );
