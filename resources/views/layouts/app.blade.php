@@ -218,42 +218,4 @@
     <script src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 
 </body>
-<svg width="0" height="0" class="hidden">
-	<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="menu-hamburger-1">
-		<title>Menu Hamburger</title>
-		<desc>A line styled icon from Orion Icon Library.</desc>
-		<path data-name="layer2" fill="none" stroke="#202020" stroke-miterlimit="10" d="M2 14h60M2 32h36" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
-		<path data-name="layer1" fill="none" stroke="#202020" stroke-miterlimit="10" d="M2 50h60" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
-	</symbol>
-	<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="heart-1">
-		<title>Heart</title>
-		<desc>A line styled icon from Orion Icon Library.</desc>
-		<path data-name="layer1" d="M47 5c-6.5 0-12.9 4.2-15 10-2.1-5.8-8.5-10-15-10A15 15 0 0 0 2 20c0 13 11 26 30 39 19-13 30-26 30-39A15 15 0 0 0 47 5z" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
-	</symbol>
-	<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="retail-bag-1">
-		<title>Retail Bag</title>
-		<desc>A line styled icon from Orion Icon Library.</desc>
-		<path data-name="layer2" fill="none" stroke="#202020" stroke-miterlimit="10" d="M4 14h56v48H4zm2 0V2h52v12" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
-		<path data-name="layer2" fill="none" stroke="#202020" stroke-miterlimit="10" d="M6.2 2.1L16 8 6 14M57.8 2.1L48 8l10 6" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
-		<path data-name="layer1" d="M42 24a10 10 0 0 1-20 0" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
-	</symbol>
-	<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="checked-circle-1">
-		<title>Checked Circle</title>
-		<desc>A line styled icon from Orion Icon Library.</desc>
-		<circle data-name="layer2" cx="32" cy="32" r="30" transform="rotate(-45 32 32)" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></circle>
-		<path data-name="layer1" fill="none" stroke="#202020" stroke-miterlimit="10" d="M20.998 32.015l8.992 8.992 16.011-16.011" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
-	</symbol>
-	<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="search-1">
-		<title>Search</title>
-		<desc>A line styled icon from Orion Icon Library.</desc>
-		<path data-name="layer2" fill="none" stroke="#202020" stroke-miterlimit="10" d="M39.049 39.049L56 56" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
-		<circle data-name="layer1" cx="27" cy="27" r="17" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></circle>
-	</symbol>
-	<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="avatar-1">
-		<title>Avatar</title>
-		<desc>A line styled icon from Orion Icon Library.</desc>
-		<path data-name="layer2" d="M24 40.8V44c0 2-1 5.2-11 7A13.4 13.4 0 0 0 2 62h60a15.5 15.5 0 0 0-12-11c-10-1.9-10-5-10-7v-3.2" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
-		<path data-name="layer1" d="M46 25.6c0 10-6.3 18.4-14 18.4s-14-8-14-18v-9.6C18 6 25.4 2 32 2s14 3.6 14 14z" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--layer1, #202020)"></path>
-	</symbol>
-</svg>
 </html>
