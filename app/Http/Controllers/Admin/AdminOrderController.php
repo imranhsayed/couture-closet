@@ -65,7 +65,21 @@ class AdminOrderController extends Controller
         return redirect()->route('admin.orders.index')->with('success', 'Order created successfully');
     }
 
+    public function show($id)
+    {
+        $order = Order::with('user')->findOrFail($id);
+        $orderItems = OrderItem::where('order_id', $id)->with('product')->get();
 
+        // Calculate tax details
+        $province = ProvincialTaxRate::find($order->provincial_tax_rate_id);
+        $pst = $order->pst;
+        $gst = $order->gst;
+        $hst = $order->hst;
+        $subTotal = $orderItems->sum('line_price');
+        $totalAmount = $order->total_amount;
+
+        return view('admin.orders.show', compact('order', 'orderItems', 'province', 'pst', 'gst', 'hst', 'subTotal', 'totalAmount'));
+    }
 
     public function edit(Order $order)
     {
