@@ -109,7 +109,7 @@
 								</div>
 							</a>
 							<div class="product-hover-overlay"><div class="text-dark text-sm">
-									<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
+									<svg class="d-none svg-icon text-primary-hover svg-icon-heavy d-lg-inline">
 										<use xlink:href="#retail-bag-1"> </use>
 									</svg>
 									<x-add-to-cart-button product_id="{{ $product->id }}" quantity="1" />

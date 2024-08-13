@@ -10,7 +10,7 @@
                 <div class="alert alert-info mb-4">
                     <h4 class="alert-heading">Search Results</h4>
                     <p class="mb-0">Your search result for: <strong>{{ $search }}</strong></p>
-                </div> 
+                </div>
             @endif
             <div class="hero-content pb-5">
                 <h1>Shop</h1>
@@ -39,17 +39,17 @@
                         <div class="product-image mb-md-3">
                             <a href="{{ route('shop.show', ['product'=> $product->id])}}">
                                 <div class="product-swap-image">
-                                    <img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450"
+                                    <img style="width: 100% !important; aspect-ratio: 2/3; object-fit: cover;" width="300" height="450"
                                         class="img-fluid product-swap-image-front"
                                         src="/{{ $product->images[0]['image_url'] ?? '' }}" alt="product">
-                                    <img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450"
+                                    <img style="width: 100%; aspect-ratio: 2/3; object-fit: cover;" width="300" height="450"
                                         class="img-fluid"
                                         src="/{{ isset($product->images[1]) ? $product->images[1]['image_url'] : ($product->images[0]['image_url'] ?? '') }}"
                                         alt="product">
                                 </div>
                             </a>
 							<div class="product-hover-overlay"><div class="text-dark text-sm">
-									<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
+									<svg class="d-none svg-icon text-primary-hover svg-icon-heavy d-lg-inline">
 										<use xlink:href="#retail-bag-1"> </use>
 									</svg>
 									<x-add-to-cart-button product_id="{{ $product->id }}" quantity="1" />
