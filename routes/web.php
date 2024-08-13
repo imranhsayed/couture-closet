@@ -2,11 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductReviewController;
-use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserAddressController;
 use App\Models\Product;
 use App\Models\ProvincialTaxRate;
@@ -111,12 +109,6 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
     // Orders
     Route::post('/order/create-order' , [ OrderController::class, 'store' ])->name( 'order.store' );
 	Route::get('/order-details/{id}', [OrderController::class, 'orderDetails'])->name('order-details.show');
-    // Payment
-    Route::get( '/payment/{orderId}', [ PaymentController::class, 'show' ])->name('payment.order');
-
-    // Transaction
-    Route::post( '/transaction' , [ TransactionController::class, 'create' ])->name('transaction.order.payment');
-
 	Route::get('/order-confirmation', function () {
 		return view('order-confirmation');
 	})->name('order-confirmation');
