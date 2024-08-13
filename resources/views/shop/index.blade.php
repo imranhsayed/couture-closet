@@ -16,8 +16,7 @@
                 <h1>Shop</h1>
                 <div class="row">
                     <div class="col-xl-8">
-                        <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                            eiusmod tempor incididunt.</p>
+                        <p class="lead text-muted">Browse through our wide selection of stylish and trendy clothing and express your unique style.</p>
                     </div>
                 </div>
             </div>
