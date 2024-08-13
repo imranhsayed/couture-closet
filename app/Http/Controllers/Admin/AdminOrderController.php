@@ -124,11 +124,12 @@ class AdminOrderController extends Controller
         if ($search) {
             $query->where(function ($q) use ($search) {
                 $q->where('id', 'LIKE', "%{$search}%")
-                  ->orWhere('email', 'LIKE', "%{$search}%")
-                  ->orWhereHas('user', function ($userQuery) use ($search) {
-                      $userQuery->where('first_name', 'LIKE', "%{$search}%")
-                                ->orWhere('last_name', 'LIKE', "%{$search}%");
-                  });
+                ->orWhere('email', 'LIKE', "%{$search}%")
+                ->orWhere('shipping_address', 'LIKE', "%{$search}%")
+                ->orWhereHas('user', function ($userQuery) use ($search) {
+                    $userQuery->where('first_name', 'LIKE', "%{$search}%")
+                        ->orWhere('last_name', 'LIKE', "%{$search}%");
+                });
             });
         }
 
