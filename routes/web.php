@@ -110,11 +110,6 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
     Route::post('/order/create-order' , [ OrderController::class, 'store' ])->name( 'order.store' );
 	Route::get('/order-details/{id}', [OrderController::class, 'orderDetails'])->name('order-details.show');
     Route::get('/order-confirmation/{order}', [OrderController::class, 'show'])->name('order.confirmation');
-	// Payment
-    Route::get( '/payment/{orderId}', [ PaymentController::class, 'show' ])->name('payment.order');
-
-    // Transaction
-    Route::post( '/transaction' , [ TransactionController::class, 'create' ])->name('transaction.order.payment');
 
 	Route::get('/order-confirmation', function () {
 		return view('order-confirmation');
