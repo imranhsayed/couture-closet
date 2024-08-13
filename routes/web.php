@@ -24,7 +24,7 @@ Route::get('/contact-us', function () {
 })->name('contact.us');
 
 Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
-Route::get('/termsandconditions', fn() => view('termsandconditions'))->name('termsandconditions');
+Route::get('/terms', fn() => view('termsandconditions'))->name('terms');
 Route::get('/refund-policy', fn() => view('refund-policy'))->name('refund-policy');
 
 Route::get('/categories', [ProductController::class, 'fetchCategories']);

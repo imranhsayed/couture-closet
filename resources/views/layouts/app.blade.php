@@ -147,7 +147,7 @@
             @yield('content')
         </main>
 
-<footer class="py-5">
+<footer>
 	<div class="py-6 bg-black text-white">
 		<div class="container">
 			<div class="row">
@@ -179,6 +179,8 @@
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/shop">Shop</a></li>
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/about">About Us</a></li>
 									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/contact-us">Contact Us</a></li>
+									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/refund-policy">Refund Policy</a></li>
+									<li class="mb-2"> <a class="text-muted text-light-hover link-animated" href="/terms">Terms &amp; Conditions</a></li>
 								</ul>
 							</div>
 						</div>
@@ -188,7 +190,7 @@
 		</div>
 	</div>
 
-	<div class="py-4 fw-light">
+	<div class="py-4 fw-light" style="background: #EDEDED;">
 		<div class="container">
 			<div class="row align-items-center text-sm">
 				<div class="col-lg-4 text-center text-lg-start">
