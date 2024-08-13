@@ -9,32 +9,32 @@
 		</div>
 		<div class="carousel-inner">
 			<div class="carousel-item active" style="background-color: #EFEBDF;">
-				<img src="/images/menu_slider_image1.png" alt="Slide 1" class="d-block w-100" style="height: auto; max-height: 512px; width: auto; max-width: 100%; object-fit: contain;transform: translateX(20%);">
+				<img src="/images/menu_slider_image1.png" alt="Slide 1" class="d-block w-100" style="height: auto; max-height: 512px; width: auto; max-width: 100%; object-fit: contain;transform: translate(20%, 10%);">
 				<div class="container">
-					<div class="carousel-caption text-start" style="color: black; max-width: 600px; left: 15%; bottom: initial; top: 50%; transform: translateY(-50%); right: initial;">
-						<h1 style="font-size: 48px; font-weight: bold;">Elevate Your Style with Timeless Fashion</h1>
+					<div class="carousel-caption text-start" style="background-color: rgb(239, 235, 223, 0.7); padding: 20px; border-radius: 10px; color: black; max-width: 600px; left: 15%; bottom: initial; top: 50%; transform: translateY(-50%); right: initial; ">
+						<h1 style="font-size: 36px; font-weight: bold;">Elevate Your Style with Timeless Fashion</h1>
 						<p style="font-size: 20px;">Crafting Couture for Every Occasion</p>
 						<p><a class="btn btn-lg btn-primary" href="/shop" style="background-color: black; border-color: black;">Get Started</a></p>
 					</div>
 				</div>
 			</div>
-			<div class="carousel-item">
-			<img src="/images/beigh_dress.jpg" alt="Slide 2" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover; object-position: top center;">
+			<div class="carousel-item" style="background-color: #E6D2C2;">
+				<img src="/images/slide2.png" alt="Slide 2" class="d-block w-100" style="height: auto; max-height: 512px; width: auto; max-width: 100%; object-fit: contain;transform: translate(20%, 10%);">
 				<div class="container">
-					<div class="carousel-caption" style="text-align: center;">
-						<h1>Discover the Latest Trends</h1>
-						<p>Explore our wide collection of new arrivals.</p>
-						<p><a class="btn btn-lg btn-primary" href="/shop" style="background-color: #9B8338; border-color: #9B8338; color: #EFEBDF;">Browse Gallery</a></p>
+					<div class="carousel-caption" style="background-color: rgb(230, 210, 194, 0.7); padding: 20px; border-radius: 10px; color: black; max-width: 600px; left: 15%; bottom: initial; top: 50%; transform: translateY(-50%); right: initial;text-align: left;">
+						<h1 style="font-size: 36px; font-weight: bold;">Discover the Latest Trends</h1>
+						<p style="font-size: 20px;">Explore our wide collection of new arrivals.</p>
+						<p><a class="btn btn-lg btn-primary" href="/shop" style="background-color: black; border-color: black;">Browse Gallery</a></p>
 					</div>
 				</div>
 			</div>
-			<div class="carousel-item" >
-			<img src="/images/beige_cardigan_1.jpg" alt="Slide 3" class="d-block w-100" style="aspect-ratio: 4/3; height: 512px; object-fit: cover;">
+			<div class="carousel-item" style="background-color: #DFC2AC;">
+				<img src="/images/slide3.png" alt="Slide 3" class="d-block w-100" style="height: auto; max-height: 512px; width: auto; max-width: 100%; object-fit: contain;transform: translate(20%, 10%);">
 				<div class="container">
-					<div class="carousel-caption text-end">
-						<h1 >Exclusive Deals This Season</h1>
-						<p>Unwrap the gift of fashion with our exclusive seasonal offers.</p>
-						<p><a class="btn btn-lg btn-primary" href="/about" style="background-color: #9B8338; border-color: #9B8338; color: #EFEBDF;">Learn More About Us!</a></p>
+					<div class="carousel-caption text-end" style="background-color: rgb(223, 194, 172, 0.7); padding: 20px; border-radius: 10px; color: black; max-width: 600px; left: 15%; bottom: initial; top: 50%; transform: translateY(-50%); right: initial; text-align: left;">
+						<h1 style="font-size: 36px; font-weight: bold;">Exclusive Deals This Season</h1>
+						<p style="font-size: 20px;">Unwrap the gift of fashion with our exclusive seasonal offers.</p>
+						<p><a class="btn btn-lg btn-primary" href="/about" style="background-color: black; border-color: black;">About Us!</a></p>
 					</div>
 				</div>
 			</div>
