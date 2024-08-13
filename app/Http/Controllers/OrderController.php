@@ -228,7 +228,13 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        echo $order;
+        
+        // Load the user related to the order
+        $user = $order->user;
+
+        
+        // Pass order and user data to the view
+        return view('order-confirmation', compact('order', 'user'));
     }
 
     /**
