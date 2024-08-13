@@ -30,7 +30,7 @@
         <p class="mb-6"><a class="btn btn-outline-dark" style="background-color: #EFEBDF; color: #646464;" href="/order-details/{{$order->id}}">View your order</a></p>
         <div class="p-5 bg-gray-100" style="background-color: #F8F8F8;">
             <div class="row">
-                <div class="col-6 col-lg-3 mb-5 mb-lg-0 d-flex flex-column">
+                <div class="col-6 col-lg-2 mb-5 mb-lg-0 d-flex flex-column">
                     <div class="text-sm text-uppercase text-muted mb-3">Order no.</div>
                     <span class="h5">{{$order->id}}</span>
                 </div>
@@ -42,12 +42,12 @@
                     <div class="text-sm text-uppercase text-muted mb-3">Date</div>
                     <span class="h5">{{ \Carbon\Carbon::parse($order->order_date)->format('M d, Y') }}</span>
                 </div>
-                <div class="col-6 col-lg-3 mb-5 mb-lg-0 d-flex flex-column">
+                <div class="col-6 col-lg-2 mb-5 mb-lg-0 d-flex flex-column">
                     <div class="text-sm text-uppercase text-muted mb-3">Total</div>
                     <span class="h5">{{$order->total_amount}}</span>
                 </div>
-                <div class="col-6 col-lg-3 mb-5 mb-lg-0 d-flex flex-column">
-                    <div class="text-sm text-uppercase text-muted mb-3">Status</div>
+                <div class="col-6 col-lg-2 mb-5 mb-lg-0 d-flex flex-column">
+                    <div class="text-sm text-uppercase text-muted mb-3">Shipped</div>
                     <span class="h5">
                         @switch($order->status)
                             @case(1)
