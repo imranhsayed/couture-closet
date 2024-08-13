@@ -88,7 +88,10 @@
                 </a>
                 <ul id="ddmenu_1" class="collapse dropdown-nav">
                     <li>
-                        <a href="#"> View Orders </a>
+                        <a href="{{ route('admin.orders.index') }}"> View Orders </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.orders.create') }}"> Create Orders </a>
                     </li>
                 </ul>
             </li>
