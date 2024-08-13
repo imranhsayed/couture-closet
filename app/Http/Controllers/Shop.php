@@ -28,12 +28,17 @@ class Shop extends Controller {
 		}
 
 		$products = $productQuery->paginate(16);
-		$categories = Category::where('name', 'Size')->get();
-		$demographies = Category::where('name', 'Demography')->get();
-		$sizes = Category::where('name', 'Size')->get();
-		$brands = Category::where('name', 'Brand')->get();
-		
-		return view('shop.index', compact('title', 'products', 'categories'));
+
+		//$products     = Product::with( 'images' )->paginate( 16 );
+		$categories   = Category::where( 'name', 'Size' )->get();
+		$brands = Category::where('name', 'Brand')->whereHas('products')->get();
+		$sizeFilters   = Category::where( 'name', 'Size' )->whereHas('products')->get();
+
+		$demographies = Category::where( 'name', 'demography' )->get();
+
+		//$product = Product::with(['categories', 'images'])->find($product->id);
+
+		return view( 'shop.index', compact( 'title', 'products', 'categories', 'brands', 'demographies' ) );
 	}
 	
 	/**

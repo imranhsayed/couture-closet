@@ -23,7 +23,7 @@
     <div id="app">
 	<nav class="navbar navbar-expand-lg border-0 shadow-0 navbar-light px-lg-5" style="background-color: #EFEBDF;">
     <a class="navbar-brand d-flex align-items-center" href="/">
-        <img src="/images/site-logo.svg" alt="Site logo" width="200" height="50" class="mr-1">
+        <img src="/images/logo.svg" alt="Site logo" width="200" height="50" class="mr-1">
     </a>
 
     <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">

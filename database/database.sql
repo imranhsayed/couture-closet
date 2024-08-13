@@ -36,6 +36,7 @@ CREATE TABLE `cache` (
 
 LOCK TABLES `cache` WRITE;
 /*!40000 ALTER TABLE `cache` DISABLE KEYS */;
+INSERT INTO `cache` VALUES ('xiaorui0629@gmail.com|127.0.0.1','i:1;',1723471601),('xiaorui0629@gmail.com|127.0.0.1:timer','i:1723471601;',1723471601);
 /*!40000 ALTER TABLE `cache` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -74,11 +75,11 @@ CREATE TABLE `category` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `value` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,10 +170,10 @@ CREATE TABLE `orders` (
   `sub_amount` decimal(10,2) NOT NULL,
   `total_amount` decimal(10,2) NOT NULL,
   `shipping_phone_number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shipping_address` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `billing_phone_number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `billing_address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `status` tinyint DEFAULT '1' COMMENT '1: Pending, 2: Processing, 3:Shipped, 4:Delivered',
+  `shipping_address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `billing_phone_number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `billing_address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1' COMMENT '1: Pending, 2: Processing, 3:Shipped, 4:Delivered',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -180,7 +181,7 @@ CREATE TABLE `orders` (
   KEY `orders_provincial_tax_rate_id_foreign` (`provincial_tax_rate_id`),
   CONSTRAINT `orders_provincial_tax_rate_id_foreign` FOREIGN KEY (`provincial_tax_rate_id`) REFERENCES `provincial_tax_rates` (`id`) ON DELETE RESTRICT,
   CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -189,7 +190,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,1,1,'2024-08-03 15:34:55','test1','test1@example.com',0.00,5.00,0.00,100.00,805.00,'431-331-1234','77 Ulster St, Calgary, AB','431-331-1234','77 Ulster St, Calgary, AB',1,'2024-08-02 15:34:55','2024-08-11 02:18:31'),(2,2,2,'2024-08-04 15:34:55','test2','test2@example.com',7.00,5.00,0.00,200.00,212.00,'431-332-1234','130 Main St, Vancouver, BC','431-332-1234','130 Main St, Vancouver, BC',1,'2024-08-02 15:34:55','2024-08-11 02:18:31'),(3,3,3,'2024-08-02 15:34:55','test3','test3@example.com',7.00,5.00,0.00,300.00,312.00,'431-333-1234','321 Oaken St, Winnipeg, MB','431-333-1234','321 Oaken St, Winnipeg, MB',1,'2024-08-02 15:34:55','2024-08-11 02:18:31'),(4,4,1,'2024-08-01 15:34:55','test4','test1@example.com',0.00,5.00,0.00,100.00,105.00,'431-334-1234','77 Ulster St, Calgary, AB','431-334-1234','77 Ulster St, Calgary, AB',1,'2024-08-02 15:34:55','2024-08-11 02:18:31'),(5,4,1,'2024-08-09 19:37:23','test5','Xiaorui@123.com',0.00,0.05,0.00,6.00,125.98,'431-335-1234','600 Guerrero Street, San Francisco, CA, r2y1z2','431-335-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-10 00:37:23','2024-08-11 02:18:31'),(6,4,1,'2024-08-11 02:30:02','Rui Shaw','xx@123.com',0.00,0.05,0.00,6.00,125.98,'431-331-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',NULL,'600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-11 07:30:02','2024-08-11 07:30:02'),(7,4,1,'2024-08-11 02:33:36','Rui Shaw','xx@123.com',0.00,0.05,0.00,6.00,125.98,'431-331-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',NULL,'600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-11 07:33:36','2024-08-11 07:33:36'),(8,4,1,'2024-08-11 02:34:10','Rui Shaw','xx@123.com',0.00,0.05,0.00,6.00,125.98,'431-331-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',NULL,'600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-11 07:34:10','2024-08-11 07:34:10'),(9,4,1,'2024-08-11 03:08:08','Rui Shaw','xx@123.com',0.00,0.05,0.00,6.00,125.98,'431-331-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',NULL,'600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-11 08:08:08','2024-08-11 08:08:08');
+INSERT INTO `orders` VALUES (1,1,1,'2024-08-03 15:34:55','test1','test1@example.com',0.00,5.00,0.00,100.00,805.00,'431-331-1234','77 Ulster St, Calgary, AB','431-331-1234','77 Ulster St, Calgary, AB',1,'2024-08-02 15:34:55','2024-08-11 02:18:31'),(2,2,2,'2024-08-04 15:34:55','test2','test2@example.com',7.00,5.00,0.00,200.00,212.00,'431-332-1234','130 Main St, Vancouver, BC','431-332-1234','130 Main St, Vancouver, BC',1,'2024-08-02 15:34:55','2024-08-11 02:18:31'),(3,3,3,'2024-08-02 15:34:55','test3','test3@example.com',7.00,5.00,0.00,300.00,312.00,'431-333-1234','321 Oaken St, Winnipeg, MB','431-333-1234','321 Oaken St, Winnipeg, MB',1,'2024-08-02 15:34:55','2024-08-11 02:18:31'),(4,4,1,'2024-08-01 15:34:55','test4','test1@example.com',0.00,5.00,0.00,100.00,105.00,'431-334-1234','77 Ulster St, Calgary, AB','431-334-1234','77 Ulster St, Calgary, AB',1,'2024-08-02 15:34:55','2024-08-11 02:18:31'),(5,4,1,'2024-08-09 19:37:23','test5','Xiaorui@123.com',0.00,0.05,0.00,6.00,125.98,'431-335-1234','600 Guerrero Street, San Francisco, CA, r2y1z2','431-335-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-10 00:37:23','2024-08-11 02:18:31'),(6,4,1,'2024-08-11 02:30:02','Rui Shaw','xx@123.com',0.00,0.05,0.00,6.00,125.98,'431-331-1234','600 Guerrero Street, San Francisco, CA, r2y1z2','431-335-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-11 07:30:02','2024-08-12 18:59:39'),(7,4,1,'2024-08-11 02:33:36','Rui Shaw','xx@123.com',0.00,0.05,0.00,6.00,125.98,'431-331-1234','600 Guerrero Street, San Francisco, CA, r2y1z2','431-335-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-11 07:33:36','2024-08-12 18:59:39'),(8,4,1,'2024-08-11 02:34:10','Rui Shaw','xx@123.com',0.00,0.05,0.00,6.00,125.98,'431-331-1234','600 Guerrero Street, San Francisco, CA, r2y1z2','431-335-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-11 07:34:10','2024-08-12 18:59:39'),(9,4,1,'2024-08-11 03:08:08','Rui Shaw','xx@123.com',0.00,0.05,0.00,6.00,125.98,'431-331-1234','600 Guerrero Street, San Francisco, CA, r2y1z2','431-335-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-11 08:08:08','2024-08-12 18:59:39'),(10,1,1,'2024-08-12 13:59:54','Rui Shaw','1@123.com',0.00,0.05,0.00,6.00,125.98,'431-331-1111','600 Guerrero Street, San Francisco, CA, r2y1z2','431-335-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-12 18:59:54','2024-08-12 18:59:39'),(11,1,1,'2024-08-12 14:47:45','Rui Shaw','1@123.com',0.00,0.05,0.00,6.00,125.98,'431-331-1111','600 Guerrero Street, San Francisco, CA, r2y1z2','431-335-1234','600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-12 19:47:45','2024-08-12 18:59:39'),(42,1,1,'2024-08-12 19:20:37','Rui Shaw','x@123.cim',0.00,0.05,0.00,11.00,230.97,'431-331-1111','600 Guerrero Street, San Francisco, CA, r2y1z2','431-331-3333','600 Guerrero Street, San Francisco, CA, r2y1z2',1,'2024-08-13 00:20:37','2024-08-12 19:40:51'),(43,1,1,'2024-08-12 19:22:39','Rui Shaw','x@123.cim',0.00,0.05,0.00,11.00,230.97,'431-331-1111','600 Guerrero Street, San Francisco, AB, r2y1z1','431-331-3333','600 Guerrero Street, San Francisco, AB, r2y1z1',1,'2024-08-13 00:22:39','2024-08-12 19:40:51'),(44,1,1,'2024-08-12 19:26:21','Rui Shaw','1@123.com',0.00,0.05,0.00,11.00,230.97,'431-331-1111','600 Guerrero Street, San Francisco, AB, r2y1z2','431-331-1111','600 Guerrero Street, San Francisco, AB, r2y1z2',1,'2024-08-13 00:26:21','2024-08-13 00:26:21');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -305,7 +306,7 @@ CREATE TABLE `product_reviews` (
   CONSTRAINT `product_reviews_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
   CONSTRAINT `product_reviews_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
   CONSTRAINT `product_reviews_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -314,7 +315,7 @@ CREATE TABLE `product_reviews` (
 
 LOCK TABLES `product_reviews` WRITE;
 /*!40000 ALTER TABLE `product_reviews` DISABLE KEYS */;
-INSERT INTO `product_reviews` VALUES (1,1,3,1,1,'Review title for product 1','Review text for product 1',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(2,2,2,1,1,'Review title for product 2','Review text for product 2',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(3,3,3,2,5,'Review title for product 3','Review text for product 3',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(4,4,3,1,5,'Review title for product 4','Review text for product 4',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(5,5,1,3,5,'Review title for product 5','Review text for product 5',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(6,6,2,3,2,'Review title for product 6','Review text for product 6',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(7,7,1,1,3,'Review title for product 7','Review text for product 7',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(8,8,2,1,5,'Review title for product 8','Review text for product 8',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(9,9,3,2,1,'Review title for product 9','Review text for product 9',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(10,10,3,2,3,'Review title for product 10','Review text for product 10',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(11,11,2,3,4,'Review title for product 11','Review text for product 11',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(12,12,2,3,5,'Review title for product 12','Review text for product 12',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(13,13,3,3,2,'Review title for product 13','Review text for product 13',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(14,14,2,1,1,'Review title for product 14','Review text for product 14',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(15,15,2,2,4,'Review title for product 15','Review text for product 15',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(16,3,4,2,5,'Review title for product 3','Review text for product 3',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(17,4,4,1,3,'Review title for product 4','Review text for product 4',1,1,'2024-08-02 15:34:55','2024-08-05 21:11:49'),(22,4,4,3,0,'','',1,1,'2024-08-02 15:34:55','2024-08-05 21:09:50'),(28,3,4,4,5,'fdsa','fdas',1,0,'2024-08-06 02:25:09','2024-08-06 02:25:09');
+INSERT INTO `product_reviews` VALUES (1,1,3,1,3,'11111','1111',1,1,'2024-08-02 15:34:55','2024-08-12 20:56:06'),(2,2,2,1,1,'Review title for product 2','Review text for product 2',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(3,3,3,2,5,'Review title for product 3','Review text for product 3',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(4,4,3,1,5,'Review title for product 4','Review text for product 4',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(5,5,1,3,5,'Review title for product 5','Review text for product 5',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(6,6,2,3,2,'Review title for product 6','Review text for product 6',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(7,7,1,1,3,'Review title for product 7','Review text for product 7',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(8,8,2,1,5,'Review title for product 8','Review text for product 8',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(9,9,3,2,1,'Review title for product 9','Review text for product 9',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(10,10,3,2,3,'Review title for product 10','Review text for product 10',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(11,11,2,3,4,'Review title for product 11','Review text for product 11',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(12,12,2,3,5,'Review title for product 12','Review text for product 12',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(13,13,3,3,2,'Review title for product 13','Review text for product 13',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(14,14,2,1,1,'Review title for product 14','Review text for product 14',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(15,15,2,2,4,'Review title for product 15','Review text for product 15',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(16,3,4,2,5,'Review title for product 3','Review text for product 3',1,1,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(17,4,4,1,3,'Review title for product 4','Review text for product 4',1,1,'2024-08-02 15:34:55','2024-08-05 21:11:49'),(22,4,4,3,0,'','',1,1,'2024-08-02 15:34:55','2024-08-05 21:09:50'),(28,3,4,4,5,'fdsa','fdas',1,0,'2024-08-06 02:25:09','2024-08-06 02:25:09'),(29,1,1,1,5,'fdsa','fdsa',1,0,'2024-08-12 21:22:29','2024-08-12 21:22:29');
 /*!40000 ALTER TABLE `product_reviews` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -370,7 +371,7 @@ CREATE TABLE `provincial_tax_rates` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `provincial_tax_rates_province_code_unique` (`province_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -379,7 +380,7 @@ CREATE TABLE `provincial_tax_rates` (
 
 LOCK TABLES `provincial_tax_rates` WRITE;
 /*!40000 ALTER TABLE `provincial_tax_rates` DISABLE KEYS */;
-INSERT INTO `provincial_tax_rates` VALUES (1,'AB','Alberta',0.050,0.000,0.000,0.000,0.050,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(2,'BC','British Columbia',0.050,0.070,0.000,0.000,0.120,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(3,'MB','Manitoba',0.050,0.070,0.000,0.000,0.120,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(4,'NB','New Brunswick',0.000,0.000,0.150,0.000,0.150,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(5,'NL','Newfoundland and Labrador',0.000,0.000,0.150,0.000,0.150,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(6,'NS','Nova Scotia',0.000,0.000,0.150,0.000,0.150,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(7,'ON','Ontario',0.000,0.000,0.130,0.000,0.130,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(8,'PE','Prince Edward Island',0.000,0.000,0.150,0.000,0.150,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(9,'QC','Quebec',0.050,0.100,0.000,0.000,0.150,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(10,'SK','Saskatchewan',0.050,0.060,0.000,0.000,0.110,'2024-08-02 15:34:55','2024-08-02 15:34:55');
+INSERT INTO `provincial_tax_rates` VALUES (1,'AB','Alberta',0.050,0.000,0.000,0.000,0.050,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(2,'BC','British Columbia',0.050,0.070,0.000,0.000,0.120,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(3,'MB','Manitoba',0.050,0.070,0.000,0.000,0.120,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(4,'NB','New Brunswick',0.000,0.000,0.150,0.000,0.150,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(5,'NL','Newfoundland and Labrador',0.000,0.000,0.150,0.000,0.150,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(6,'NS','Nova Scotia',0.000,0.000,0.150,0.000,0.150,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(7,'ON','Ontario',0.000,0.000,0.130,0.000,0.130,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(8,'PE','Prince Edward Island',0.000,0.000,0.150,0.000,0.150,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(9,'QC','Quebec',0.050,0.100,0.000,0.000,0.150,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(10,'SK','Saskatchewan',0.050,0.060,0.000,0.000,0.110,'2024-08-02 15:34:55','2024-08-02 15:34:55'),(11,'NT','Northwest Territories',0.050,0.000,0.000,0.000,0.050,'2024-08-12 19:29:28','2024-08-12 19:29:28'),(12,'NU','Nunavut',0.050,0.000,0.000,0.000,0.050,'2024-08-12 19:29:28','2024-08-12 19:29:28'),(13,'YT','Yukon',0.050,0.000,0.000,0.000,0.050,'2024-08-12 19:29:28','2024-08-12 19:29:28');
 /*!40000 ALTER TABLE `provincial_tax_rates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,7 +410,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('GHnVPgSb8FS9v7PzSiP3VDLq4AtGrCwPvnNsXU8D',4,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36','YTo3OntzOjY6Il90b2tlbiI7czo0MDoicmxySjVycFdhc2hTbVVaeHJ4VXRCV2kzWUhmWnJ6TkJobkUwaE5XQiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jaGVja291dCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjE6e2k6MDtzOjEyOiJ1c2VyLnN1Y2Nlc3MiO31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo0O3M6NDoiYXV0aCI7YToxOntzOjIxOiJwYXNzd29yZF9jb25maXJtZWRfYXQiO2k6MTcyMzM0MDQ2NTt9czo0OiJ1c2VyIjthOjE6e3M6Nzoic3VjY2VzcyI7czozMDoiQ3JlYXRlZCBhbiBvcmRlciBzdWNjZXNzZnVsbHkhIjt9fQ==',1723345688);
+INSERT INTO `sessions` VALUES ('lIbbte8wjQJbQjpGxrPBgojirC51i9PJ6xyxZ9uB',1,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36','YTo4OntzOjY6Il90b2tlbiI7czo0MDoiczdhb0hDR01OY3dhT3d3QlNGSGZKNUk0RGJQd29JVHFTUm81YmlQYyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMwOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvY2hlY2tvdXQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YToxOntpOjA7czoxMjoidXNlci5zdWNjZXNzIjt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NDoiYXV0aCI7YToxOntzOjIxOiJwYXNzd29yZF9jb25maXJtZWRfYXQiO2k6MTcyMzQ3MTU0NTt9czo1OiJhZG1pbiI7YTowOnt9czo0OiJ1c2VyIjthOjE6e3M6Nzoic3VjY2VzcyI7czozMDoiQ3JlYXRlZCBhbiBvcmRlciBzdWNjZXNzZnVsbHkhIjt9fQ==',1723490781);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -432,7 +433,7 @@ CREATE TABLE `transactions` (
   PRIMARY KEY (`id`),
   KEY `transactions_order_id_foreign` (`order_id`),
   CONSTRAINT `transactions_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -441,7 +442,7 @@ CREATE TABLE `transactions` (
 
 LOCK TABLES `transactions` WRITE;
 /*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
-INSERT INTO `transactions` VALUES (1,1,'txn_001','Completed','Transaction completed successfully.','2024-08-02 15:34:55','2024-08-02 15:34:55',NULL),(2,2,'txn_002','Completed','Transaction completed successfully.','2024-08-02 15:34:55','2024-08-02 15:34:55',NULL),(3,3,'txn_003','Pending','Transaction pending.','2024-08-02 15:34:55','2024-08-02 15:34:55',NULL);
+INSERT INTO `transactions` VALUES (1,1,'txn_001','Completed','Transaction completed successfully.','2024-08-02 15:34:55','2024-08-02 15:34:55',NULL),(2,2,'txn_002','Completed','Transaction completed successfully.','2024-08-02 15:34:55','2024-08-02 15:34:55',NULL),(3,3,'txn_003','Pending','Transaction pending.','2024-08-02 15:34:55','2024-08-02 15:34:55',NULL),(5,42,'16020','1','Connection successful','2024-08-13 00:20:37','2024-08-13 00:20:37',NULL),(6,43,'16021','1','Connection successful','2024-08-13 00:22:39','2024-08-13 00:22:39',NULL),(7,44,'16022','1','Connection successful','2024-08-13 00:26:21','2024-08-13 00:26:21',NULL);
 /*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -552,4 +553,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-10 22:23:46
+-- Dump completed on 2024-08-12 14:41:41

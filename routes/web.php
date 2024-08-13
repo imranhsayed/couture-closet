@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserAddressController;
@@ -111,8 +112,7 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 
     // Orders
     Route::post('/order/create-order' , [ OrderController::class, 'store' ])->name( 'order.store' );
-	Route::get('/order-details/{order}', [OrderController::class, 'orderDetails'])->name('order-details.show');
-
+	Route::get('/order-details/{id}', [OrderController::class, 'orderDetails'])->name('order-details.show');
     // Payment
     Route::get( '/payment/{orderId}', [ PaymentController::class, 'show' ])->name('payment.order');
 
@@ -140,6 +140,7 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
     Route::get( '/admin/charts', [ AdminController::class, 'charts' ] )->name( 'admin.charts' );
 
     // Product management.
+    // Product management.
     Route::get( '/admin/products', [ ProductController::class, 'index' ] )->name( 'admin.products.index' );
     Route::get( '/admin/products/search', [ ProductController::class, 'search' ])->name( 'admin.products.search' );
     Route::get( '/admin/products/add', [ ProductController::class , 'create' ])->name( 'admin.products.create' );
@@ -158,4 +159,12 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
 	Route::delete( '/admin/reviews/{review}', [ ProductReviewController::class, 'destroy', ] )->name( 'admin.reviews.destroy' );
 	Route::get( '/admin/reviews/search', [ ProductReviewController::class, 'search' ])->name( 'admin.reviews.search' );
 	Route::get( '/admin/leave-review', [ ProductReviewController::class, 'leaveReview' ] )->name( 'admin.reviews.leave-review' );
+
+    // category management
+    Route::get( '/admin/category', [ CategoryController::class, 'index' ] )->name( 'admin.category.index' );
+    Route::get( '/admin/category/add', [ CategoryController::class , 'create' ])->name( 'admin.category.create' );
+    Route::post( '/admin/category', [ CategoryController::class, 'store' ] )->name( 'admin.category.store' );
+    Route::delete( '/admin/category/{id}', [ CategoryController::class, 'destroy', ] )->name( 'admin.category.destroy' );
+    Route::get( '/admin/category/edit/{category}', [ CategoryController::class , 'edit' ])->name( 'admin.category.edit' );
+    Route::put( '/admin/category/update/{category}', [ CategoryController::class, 'update' ] )->name( 'admin.category.update' );
 } );

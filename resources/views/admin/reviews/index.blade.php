@@ -103,7 +103,7 @@
 											<p class="text-sm">{{ $review->product_id ?? '' }}</p>
 										</td>
 										<td>
-											<p class="text-sm">{{ $review->user_id ?? '' }}</p>
+											<p class="text-sm">{{ $review['user']['first_name'] . ' ' . $review['user']['last_name'] ?? '' }}</p>
 										</td>
 										<td>
 											<p class="text-sm">{{ $review->order_id ?? '' }}</p>

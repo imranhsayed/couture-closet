@@ -31,6 +31,7 @@ return new class extends Migration
             $table->timestamp('order_date')->useCurrent();
             $table->string('full_name')->nullable(false);
             $table->string('email')->nullable(false);
+            $table->string('phone_number')->nullable(false);
             $table->decimal('pst', 10, 2)->nullable(false);
             $table->decimal('gst', 10, 2)->nullable(false);
             $table->decimal('hst', 10, 2)->nullable(false);
@@ -38,8 +39,8 @@ return new class extends Migration
             $table->decimal('total_amount', 10, 2)->nullable(false);
             $table->string('shipping_phone_number')->nullable(false);
             $table->text('shipping_address')->nullable(false);
-            $table->string('billing_phone_number')->nullable();
-            $table->text('billing_address')->nullable();
+            $table->string('billing_phone_number')->nullable(false);
+            $table->text('billing_address')->nullable(false);
             $table->tinyInteger('status')->default(1)->comment('1: Pending, 2: Processing, 3:Shipped, 4:Delivered');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
