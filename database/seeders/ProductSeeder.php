@@ -28,8 +28,18 @@ class ProductSeeder extends Seeder
             ['sku' => 'CC-012', 'name' => 'Denim Jacket', 'description' => 'A classic denim jacket.', 'price' => 110.99, 'stock_quantity' => 50],
             ['sku' => 'CC-013', 'name' => 'Classic Bag', 'description' => 'A timeless classic bag.', 'price' => 150.99, 'stock_quantity' => 25],
             ['sku' => 'CC-014', 'name' => 'Brown Leather Jacket', 'description' => 'A premium brown leather jacket.', 'price' => 250.99, 'stock_quantity' => 20],
+            ['sku' => 'CC-015', 'name' => 'Women_shirt', 'description' => 'A premium brown leather jacket.', 'price' => 250.99, 'stock_quantity' => 20],
+            ['sku' => 'CC-016', 'name' => 'Men_gray_shirt', 'description' => 'A premium brown leather jacket.', 'price' => 250.99, 'stock_quantity' => 20],
+            ['sku' => 'CC-017', 'name' => 'Black_leather_bag', 'description' => 'A premium brown leather jacket.', 'price' => 250.99, 'stock_quantity' => 20],
+            ['sku' => 'CC-018', 'name' => 'Women_yellow_bag', 'description' => 'A premium brown leather jacket.', 'price' => 250.99, 'stock_quantity' => 20],
+            ['sku' => 'CC-019', 'name' => 'H&M_bag', 'description' => 'A premium brown leather jacket.', 'price' => 250.99, 'stock_quantity' => 20],
+            ['sku' => 'CC-020', 'name' => 'Men_black_tshirt', 'description' => 'A premium brown leather jacket.', 'price' => 250.99, 'stock_quantity' => 20],
+            ['sku' => 'CC-021', 'name' => 'Men_black_tshirt', 'description' => 'A premium brown leather jacket.', 'price' => 250.99, 'stock_quantity' => 20],
+            ['sku' => 'CC-022', 'name' => 'Men_black_tshirt', 'description' => 'A premium brown leather jacket.', 'price' => 250.99, 'stock_quantity' => 20],
+            ['sku' => 'CC-023', 'name' => 'Men_black_tshirt', 'description' => 'A premium brown leather jacket.', 'price' => 250.99, 'stock_quantity' => 20],
+            ['sku' => 'CC-024', 'name' => 'Men_black_tshirt', 'description' => 'A premium brown leather jacket.', 'price' => 250.99, 'stock_quantity' => 20],
         ];
-        for ($i = 15; $i <= 50; $i++) {
+        for ($i = 25; $i <= 50; $i++) {
             $products[] = [
                 'sku' => 'CC-' . str_pad($i, 3, '0', STR_PAD_LEFT),
                 'name' => 'Product ' . $i,
