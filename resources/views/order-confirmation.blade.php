@@ -27,7 +27,7 @@
     <div class="container">
         <p class="lead">Thank you, <strong>{{$user->first_name}}</strong>. Your order is confirmed.</p>
         <p class="lead mb-5">Your order hasn't shipped yet but we will send you an email when it does.</p>
-        <p class="mb-6"><a class="btn btn-outline-dark" style="background-color: #EFEBDF; color: #646464;" href="#">View or manage your order</a></p>
+        <p class="mb-6"><a class="btn btn-outline-dark" style="background-color: #EFEBDF; color: #646464;" href="/order-details/{{$order->id}}">View your order</a></p>
         <div class="p-5 bg-gray-100" style="background-color: #F8F8F8;">
             <div class="row">
                 <div class="col-6 col-lg-3 mb-5 mb-lg-0 d-flex flex-column">
