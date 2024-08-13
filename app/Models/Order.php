@@ -49,4 +49,19 @@ class Order extends Model
     {
         return $this->belongsTo(ProvincialTaxRate::class);
     }
+
+    /**
+     * Get the status of the order
+     */
+    public function getStatusAttribute($value)
+    {
+        $statuses = [
+            1 => 'Pending',
+            2 => 'Processing',
+            3 => 'Shipped',
+            4 => 'Delivered',
+        ];
+
+        return $statuses[$value] ?? 'Unknown';
+    }
 }

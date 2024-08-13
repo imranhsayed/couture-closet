@@ -73,7 +73,7 @@
 
             <!-- Orders -->
             <li class="nav-item nav-item-has-children">
-                <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_1"
+                <a href="#" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_1"
                    aria-controls="ddmenu_1"
                    aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon">
