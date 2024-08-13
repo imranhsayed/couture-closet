@@ -2,11 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductReviewController;
-use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserAddressController;
 use App\Models\Product;
 use App\Models\ProvincialTaxRate;
@@ -24,7 +22,7 @@ Route::get('/contact-us', function () {
 })->name('contact.us');
 
 Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
-Route::get('/termsandconditions', fn() => view('termsandconditions'))->name('termsandconditions');
+Route::get('/terms', fn() => view('termsandconditions'))->name('terms');
 Route::get('/refund-policy', fn() => view('refund-policy'))->name('refund-policy');
 
 Route::get('/categories', [ProductController::class, 'fetchCategories']);
