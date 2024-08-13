@@ -1,4 +1,4 @@
-import { setErrors } from '../store/actions.js';
+import { clearCart, setErrors } from '../store/actions.js';
 
 /**
  * Global variables.
@@ -181,18 +181,22 @@ class Checkout extends HTMLElement {
 					} );
 				}
 				
-				console.log( 'res sucess', response );
-				
 				this.placeOrderButton.innerHTML = 'Place your order';
 				return response.json();
 			} )
 			.then( response => {
-				console.log( 'response', response );
-				if ( response.success ) {
-					// Update markup.
-					console.log( 'response.success', response.success );
-				}
 				this.placeOrderButton.innerHTML = 'Place your order';
+				
+				if ( response.success && response.order_confirm_url ) {
+					// Clear Cart first.
+					clearCart();
+					
+					// Wait some time to clear the cart first.
+					setTimeout( () => {
+						// Redirect to order confirmation page.
+						window.location.href = response.order_confirm_url;
+					}, 200 )
+				}
 			} )
 			.catch( error => {
 				this.placeOrderButton.innerHTML = 'Place your order';

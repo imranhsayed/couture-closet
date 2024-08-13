@@ -212,7 +212,7 @@
 					            <!-- Expiry Date -->
 					            <div class="mb-3 col-md-4">
 						            <label class="form-label" for="expiry-date">Expiry Date*</label>
-						            <input class="form-control" type="text" name="expiry_date" placeholder="MM/YY"
+						            <input class="form-control" type="text" name="expiry_date" placeholder="MMYY"
 						                   id="expiry-date">
 						            <cc-form-field-error name="expiry_date" class="invalid-feedback" role="alert">
 							            The expiry is required.
