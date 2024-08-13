@@ -2,11 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductReviewController;
-use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserAddressController;
 use App\Http\Controllers\Shop;
 use App\Models\Product;
@@ -25,7 +23,7 @@ Route::get('/contact-us', function () {
 })->name('contact.us');
 
 Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
-Route::get('/termsandconditions', fn() => view('termsandconditions'))->name('termsandconditions');
+Route::get('/terms', fn() => view('termsandconditions'))->name('terms');
 Route::get('/refund-policy', fn() => view('refund-policy'))->name('refund-policy');
 
 Route::get('/categories', [ProductController::class, 'fetchCategories']);
@@ -37,6 +35,7 @@ Route::get('/categories', [ProductController::class, 'fetchCategories']);
 Route::get('/shop/{category?}', [Shop::class, 'index'])->name('shop.index');
 
 Route::get('/shop/{product}', [ \App\Http\Controllers\Shop::class, 'show' ])->name( 'shop.show' );
+Route::get('/search', [\App\Http\Controllers\Shop::class, 'search'])->name('search');
 
 // Route for the cart page
 Route::get('/cart', function () {
@@ -113,11 +112,7 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
     // Orders
     Route::post('/order/create-order' , [ OrderController::class, 'store' ])->name( 'order.store' );
 	Route::get('/order-details/{id}', [OrderController::class, 'orderDetails'])->name('order-details.show');
-    // Payment
-    Route::get( '/payment/{orderId}', [ PaymentController::class, 'show' ])->name('payment.order');
-
-    // Transaction
-    Route::post( '/transaction' , [ TransactionController::class, 'create' ])->name('transaction.order.payment');
+    Route::get('/order-confirmation/{order}', [OrderController::class, 'show'])->name('order.confirmation');
 
 	Route::get('/order-confirmation', function () {
 		return view('order-confirmation');

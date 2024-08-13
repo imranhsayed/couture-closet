@@ -121,16 +121,17 @@ class OrderController extends Controller
                 DB::commit();
                 session()->flash('user.success', "Created an order successfully!");
 
-                // TODO go to thank you/invoice page
-                return response()->json(['success' => true, 'message' => $transactionConfirmed->message]);
+                //go to order confirmed page
+                $orderConfirmedUrl = route('order.confirmation', [ 'order' => $order->id ]);
+                return response()->json(['success' => true, 'message' => $transactionConfirmed->message, 'order_confirm_url' => $orderConfirmedUrl]);
             } else {
                 DB::rollBack();
                 session()->flash('user.error', "Created an order failed!");
-                return response()->json(['success' => false, 'message' => 'Save Order Error, Please contact Administrator!']);
+                return response()->json(['success' => false, 'message' => 'Save Order Error, Please contact Administrator!', 'order_confirm_url' => '']);
             }
         } catch (Exception $e) {
             DB::rollBack();
-            return response()->json(['success' => false, 'message' => $e->getMessage()]);
+            return response()->json(['success' => false, 'message' => $e->getMessage(), 'order_confirm_url' => '']);
         }
     }
 
@@ -228,7 +229,13 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        echo $order;
+
+        // Load the user related to the order
+        $user = $order->user;
+
+
+        // Pass order and user data to the view
+        return view('order-confirmation', compact('order', 'user'));
     }
 
     /**

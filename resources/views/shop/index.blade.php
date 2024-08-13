@@ -6,12 +6,17 @@
         <!-- Grid -->
         <div class="products-grid col-xl-9 col-lg-8 order-lg-2">
             <!-- Hero Content-->
+             @if(isset($search) && $search)
+                <div class="alert alert-info mb-4">
+                    <h4 class="alert-heading">Search Results</h4>
+                    <p class="mb-0">Your search result for: <strong>{{ $search }}</strong></p>
+                </div> 
+            @endif
             <div class="hero-content pb-5">
                 <h1>Shop</h1>
                 <div class="row">
                     <div class="col-xl-8">
-                        <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                            eiusmod tempor incididunt.</p>
+                        <p class="lead text-muted">Browse through our wide selection of stylish and trendy clothing and express your unique style.</p>
                     </div>
                 </div>
             </div>
@@ -37,13 +42,11 @@
                                     <img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450"
                                         class="img-fluid product-swap-image-front"
                                         src="/{{ $product->images[0]['image_url'] ?? '' }}" alt="product">
-
                                     <img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450"
                                         class="img-fluid"
                                         src="/{{ isset($product->images[1]) ? $product->images[1]['image_url'] : ($product->images[0]['image_url'] ?? '') }}"
                                         alt="product">
                                 </div>
-
                             </a>
 							<div class="product-hover-overlay"><div class="text-dark text-sm">
 									<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
@@ -59,28 +62,26 @@
                             <p class="text-gray-600 text-sm">
                                 <span>${{$product->price}}</span>
                             </p>
-
                         </div>
                     </div>
                 </div>
                 @endforeach
                 <!-- /product -->
-
             </div>
             <nav class="d-flex justify-content-center mb-5 mt-3" aria-label="page navigation">
                 <ul class="pagination">
                     <!-- Previous Page Link -->
                     @if ($products->onFirstPage())
-                    <li class="page-item disabled">
-                        <a class="page-arrow" aria-label="Previous">
-                            <span aria-hidden="true">
-                                <svg class="svg-icon page-icon">
-                                    <use xlink:href="#angle-left-1"></use>
-                                </svg>
-                            </span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
+                        <li class="page-item disabled">
+                            <a class="page-arrow" aria-label="Previous">
+                                <span aria-hidden="true">
+                                    <svg class="svg-icon page-icon">
+                                        <use xlink:href="#angle-left-1"></use>
+                                    </svg>
+                                </span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
                     @else
                     <li class="page-item">
                         <a class="page-arrow" href="{{ $products->previousPageUrl() }}" aria-label="Previous">
@@ -96,11 +97,11 @@
 
                     <!-- Pagination Elements -->
                     @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
-                    @if ($page == $products->currentPage())
-                    <li class="page-item active"><a class="page-link" href="#">{{ $page }}</a></li>
-                    @else
-                    <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
-                    @endif
+                        @if ($page == $products->currentPage())
+                            <li class="page-item active"><a class="page-link" href="#">{{ $page }}</a></li>
+                        @else
+                            <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                        @endif
                     @endforeach
 
                     <!-- Next Page Link -->
@@ -143,7 +144,7 @@
                         <div class="sidebar-icon-menu-item">
                             <div class="d-flex align-items-center">
                                 @php
-                                $path_asset = 'images/' . strtolower( $demogrphy->value ) . '.svg';
+                                    $path_asset = 'images/' . strtolower( $demogrphy->value ) . '.svg';
                                 @endphp
                                 <img src="{{ $path_asset }}" alt="Men's" style="width: 28.85px; height: 32.36px;">
                                 <a style="margin-left: 10px !important;" class="sidebar-icon-menu-link fw-bold me-2"
@@ -183,12 +184,12 @@
 
                     <div class="sidebar-icon-menu mt-4 mt-lg-0">
                         @foreach($categories as $category)
-                        <div class="sidebar-icon-menu-item">
-                            <div class="d-flex align-items-center">
-                                <a style="margin-left: 10px !important;" class="sidebar-icon-menu-link fw-bold me-2"
-                                    href="/shop?size={{ $category->value}}">{{ $category->description}}</a>
+                            <div class="sidebar-icon-menu-item">
+                                <div class="d-flex align-items-center">
+                                    <a style="margin-left: 10px !important;" class="sidebar-icon-menu-link fw-bold me-2"
+                                        href="/shop?size={{ $category->value}}">{{ $category->description}}</a>
+                                </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>

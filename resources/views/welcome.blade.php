@@ -56,7 +56,7 @@
 						<div class="card card-scale shadow-0 border-0 text-white text-hover-gray-900 overlay-hover-light text-center"><img class="card-img img-scale" src="{{ asset('images/mens.jpg') }}" alt="Card image">
 							<div class="card-img-overlay d-flex align-items-center">
 								<div class="w-100 py-3">
-									<h2 class="display-3 fw-bold mb-0" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Men</h2><a class="stretched-link" href="category-full.html"><span class="sr-only">See </span></a>
+									<h2 class="display-3 fw-bold mb-0" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Men</h2><a class="stretched-link" href="/shop?category=men"><span class="sr-only">See </span></a>
 								</div>
 							</div>
 						</div>
@@ -65,7 +65,7 @@
 						<div class="card card-scale shadow-0 border-0 text-white text-hover-gray-900 overlay-hover-light text-center"><img class="card-img img-scale" src="{{ asset('images/women.jpg') }}" alt="Card image">
 							<div class="card-img-overlay d-flex align-items-center">
 								<div class="w-100 py-3">
-									<h2 class="display-3 fw-bold mb-0" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Women</h2><a class="stretched-link" href="category-full.html"><span class="sr-only">See </span></a>
+									<h2 class="display-3 fw-bold mb-0" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Women</h2><a class="stretched-link" href="/shop?category=women"><span class="sr-only">See </span></a>
 								</div>
 							</div>
 						</div>

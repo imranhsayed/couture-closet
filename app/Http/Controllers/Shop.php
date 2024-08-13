@@ -12,6 +12,7 @@ class Shop extends Controller {
 	 * Display a listing of the resource.
 	 */
 	public function index($category = null) {
+
 		$title = "Shop";
 		$productQuery = Product::with('images');
 		if ($category) {
@@ -71,5 +72,23 @@ class Shop extends Controller {
 			
 		return view('shop.show', compact('product','all_products','categories', 'reviews','totalReviews', 'demography','size','brand'));
 
+	}
+
+	public function search(Request $request)
+    {
+		$search = $request->get('query');
+        $title = 'Products';
+		
+        $products = Product::where('name', 'LIKE', '%' . $search . '%')
+               ->orWhereHas('categories', function ($query) use ($search) {
+                   $query->where('value', 'LIKE', '%' . $search . '%');
+               })
+               ->paginate(10);
+			   
+		$demographies = Category::where( 'name', 'demography' )->get();
+		$categories   = Category::where( 'name', 'Size' )->get();
+		$brands = Category::where('name', 'Brand')->whereHas('products')->get();
+
+        return view('shop.index', compact('title','search','products','demographies','brands','categories'));
 	}
 }
