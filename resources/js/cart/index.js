@@ -98,7 +98,7 @@ class Cart extends HTMLElement {
 					<a class="cart-remove close mt-3 d-md-none" href="javascript:void(0);">
 						 <i class="fa fa-times"> </i>
 						<div class="d-flex align-items-center">
-							<a href="/product?id=${product?.id ?? ''}">
+							<a href="/shop/${product?.id ?? ''}">
 								<img style="object-fit: cover;" class="cart-item-img" src="${product?.image_url ?? ''}" alt="" width="80" height="90">
 							</a>
 							<div class="cart-title text-start">

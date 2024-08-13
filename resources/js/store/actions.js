@@ -203,3 +203,8 @@ export const resetNotification = () => {
 	} );
 }
 
+export const setErrors = ( errors ) => {
+	setState( {
+		errors,
+	})
+}
