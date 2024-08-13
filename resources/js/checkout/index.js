@@ -26,10 +26,12 @@ class Checkout extends HTMLElement {
 		this.placeOrderButton = this.querySelector( '#place-order-btn' );
 		this.formElement = this.querySelector( 'form' );
 		this.provinceSelectElement = this.querySelector( 'cc-province-select select' );
+		this.showShippingAddressInput = this.querySelector( '#show-shipping-address' );
 
 		// Event.
 		this.placeOrderButton?.addEventListener( 'click', () => this.handleFormSubmit() );
-		this.provinceSelectElement?.addEventListener( 'change', ( event ) => this.handleProvinceSelectionForTaxCalculation( event ) )
+		this.provinceSelectElement?.addEventListener( 'change', ( event ) => this.handleProvinceSelectionForTaxCalculation( event ) );
+		this.showShippingAddressInput?.addEventListener( 'click', ( event ) => this.handleDifferentShippingAddressButton( event ) );
 
 	}
 
@@ -146,9 +148,6 @@ class Checkout extends HTMLElement {
 		// Get cart data.
 		const cartData = JSON.parse( this.getAttribute( 'cart' ) );
 
-        // TODO Please pass tax's id dynamically
-        const taxRateId = 1;
-
 		// Send a create order request
 		fetch( '/order/create-order', {
 			method: 'POST',
@@ -157,7 +156,6 @@ class Checkout extends HTMLElement {
 				'X-CSRF-TOKEN': document.querySelector( 'meta[name="csrf-token"]' ).content,
 			},
 			body: JSON.stringify( {
-                taxRateId,
 				cartData,
 				formData,
 			} ),
@@ -188,7 +186,7 @@ class Checkout extends HTMLElement {
 				console.error( 'There was a problem with the fetch operation:', error );
 			} );
 	}
-	
+
 	/**
 	 * Tax calculation based on province.
 	 *
@@ -200,21 +198,21 @@ class Checkout extends HTMLElement {
 		const taxesData = JSON.parse( this.getAttribute( 'taxes' ) );
 		const products = JSON.parse( this.getAttribute( 'products' ) );
 		const taxDataForSelectedProvince = taxesData[ targetElement.value ];
-		
+
 		const totalQuantity = products.reduce((total, product) => {
 			return total + product.quantity;
 		}, 0);
-		
+
 		const tax = {
 			id: taxDataForSelectedProvince?.id ?? '',
 			gst_rate: parseFloat((parseFloat(taxDataForSelectedProvince.gst_rate) * totalQuantity).toFixed(2)),
 			hst_rate: parseFloat((parseFloat(taxDataForSelectedProvince.hst_rate) * totalQuantity).toFixed(2)),
 		};
-		
+
 		// Add taxes markup.
 		this.addTaxesMarkup( tax );
 	}
-	
+
 	/**
 	 * Add taxes markup.
 	 *
@@ -222,7 +220,7 @@ class Checkout extends HTMLElement {
 	 */
 	addTaxesMarkup( tax ) {
 		const total = parseFloat( this.getAttribute( 'total' ) ?? '' );
-		
+
 		const markup = `
 		<th class="py-5 border-dark" colspan="2">
 		    <div class="mb-4">Taxes</div>
@@ -238,15 +236,28 @@ class Checkout extends HTMLElement {
 		    </p>
 		</th>
 		`;
-		
+
 		// Add taxes markup.
 		this.querySelector( '#cart-taxes' ).innerHTML = markup;
-		
+
 		// Calculate total with taxes and update the total.
 		this.querySelector( '#checkout-cart-total' ).innerHTML = '$' + parseFloat( total + parseFloat( tax.gst_rate ) + parseFloat( tax.hst_rate ) ).toFixed(2);
-		
+
 		// Add provincial tax id.
 		this.querySelector( '#provincial_tax_rate_id' ).value = tax.id;
+	}
+
+	/**
+	 * Handle different shipping address button click.
+	 *
+	 * @param event
+	 */
+	handleDifferentShippingAddressButton( event ) {
+		if ( event.target.checked ) {
+			event.target.value = 'on';
+		} else {
+			event.target.value = 'off';
+		}
 	}
 }
 

@@ -39,8 +39,8 @@ return new class extends Migration
             $table->decimal('total_amount', 10, 2)->nullable(false);
             $table->string('shipping_phone_number')->nullable(false);
             $table->text('shipping_address')->nullable(false);
-            $table->string('billing_phone_number')->nullable();
-            $table->text('billing_address')->nullable();
+            $table->string('billing_phone_number')->nullable(false);
+            $table->text('billing_address')->nullable(false);
             $table->tinyInteger('status')->default(1)->comment('1: Pending, 2: Processing, 3:Shipped, 4:Delivered');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();

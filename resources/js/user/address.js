@@ -17,7 +17,10 @@ const cities = {
     ON: ["Toronto", "Ottawa", "Mississauga", "Hamilton", "London"],
     PE: ["Charlottetown", "Summerside", "Stratford", "Cornwall", "Montague"],
     QC: ["Montreal", "Quebec City", "Laval", "Gatineau", "Longueuil"],
-    SK: ["Saskatoon", "Regina", "Prince Albert", "Moose Jaw", "Swift Current"]
+    SK: ["Saskatoon", "Regina", "Prince Albert", "Moose Jaw", "Swift Current"],
+    NT: ["Yellowknife", "Hay River", "Inuvik", "Fort Smith", "Behchokǫ̀"],
+    NU: ["Iqaluit", "Rankin Inlet", "Arviat", "Baker Lake", "Cambridge Bay"],
+    YT: ["Whitehorse", "Dawson City", "Watson Lake", "Haines Junction", "Mayo"]
 };
 
 /**
