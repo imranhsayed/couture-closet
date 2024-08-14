@@ -46,6 +46,7 @@
                                 <p><span>Order Date:</span> {{ $order->created_at->format('Y-m-d') }}</p>
                                 <p><span>Amount Paid:</span> ${{ number_format($order->total_amount, 2) }}</p>
                                 <p><span>Order ID:</span> #{{ $order->id }}</p>
+                                <p><span>Auth Code:</span> #{{ $authCode ?? '' }}</p>
                             </div>
                         </div>
                         <div class="invoice-address">

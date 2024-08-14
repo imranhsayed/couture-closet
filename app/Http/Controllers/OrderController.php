@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreOrdersRequest;
 use App\Http\Requests\UpdateOrdersRequest;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\ProvincialTaxRate;
 use App\Models\Transaction;
@@ -55,6 +56,9 @@ class OrderController extends Controller
             // calculate amount
             $amount = 0;
             $subAmount = 0;
+            $orderItems = [];
+            // product size
+            $sizeArray = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
             foreach ($requestParams['cartData']['products'] ?? [] as $product) {
                 $srcProduct = Product::with('primaryImage')->find($product['productId']);
                 $totalPrice = $srcProduct->price * $product['quantity'];
@@ -64,6 +68,16 @@ class OrderController extends Controller
                 $hst = $provincialTaxRate->hst_rate * $totalPrice;
 
                 $subAmount += $pst + $gst + $hst;
+
+                // order items
+                $randomKey = array_rand($sizeArray);
+                $orderItems[] = [
+                    'product_id' => $product['productId'],
+                    'quantity' => $product['quantity'],
+                    'size' => $sizeArray[$randomKey],
+                    'unit_price' => round($srcProduct->price, 2),
+                    'line_price' => round($totalPrice, 2)
+                ];
             }
 
             $billingAddress = $this->getFullAddress(
@@ -105,6 +119,13 @@ class OrderController extends Controller
             ];
             $order = Order::create($order);
             if ($order) {
+                // save order items
+                foreach ($orderItems as $orderItem)
+                {
+                    $orderItem['order_id'] = $order->id;
+                    OrderItem::create($orderItem);
+                }
+
                 // create transaction
                 $cardName = $requestParams['formData']['card_name'];
                 $cardNumber = $requestParams['formData']['card_number'];
@@ -168,7 +189,7 @@ class OrderController extends Controller
                     'order_id' => $orderId,
                     'transaction_id' => $response->transaction_response->trans_id,
                     'transaction_status' => $response->transaction_response->response_code,
-                    'response' => $response->result_message,
+                    'response' => json_encode($response),
                 ];
                 if (Transaction::create($transactionInfo))
                 {
@@ -279,7 +300,16 @@ class OrderController extends Controller
         $subTotal = $orderItems->sum('line_price');
         $totalAmount = $order->total_amount;
 
-        return view('order-details', compact('order', 'orderItems', 'province', 'pst', 'gst', 'hst', 'subTotal', 'totalAmount'));
+        // query transaction
+        $transaction = Transaction::where('order_id', $order->id)->first();
+        $authCode = "";
+        try {
+            $response = json_decode($transaction->response);
+            $authCode = $response->transaction_response->auth_code ?? '';
+        } catch (Exception $ignored)
+        {}
+
+        return view('order-details', compact('order', 'orderItems', 'province', 'pst', 'gst', 'hst', 'subTotal', 'totalAmount', 'authCode'));
     }
 
 }
