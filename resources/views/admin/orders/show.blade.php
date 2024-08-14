@@ -65,7 +65,116 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-                            
+                            <table class="invoice-table table">
+                                <thead>
+                                    <tr>
+                                        <th class="service">
+                                            <h6 class="text-sm text-medium">Product</h6>
+                                        </th>
+                                        <th class="desc">
+                                            <h6 class="text-sm text-medium">Description(s)</h6>
+                                        </th>
+                                        <th class="qty">
+                                            <h6 class="text-sm text-medium">Qty</h6>
+                                        </th>
+                                        <th class="qty">
+                                            <h6 class="text-sm text-medium">Size</h6>
+                                        </th>
+                                        <th class="qty">
+                                            <h6 class="text-sm text-medium">Auth Code</h6>
+                                        </th>
+                                        <th class="qty">
+                                            <h6 class="text-sm text-medium">Unit Price</h6>
+                                        </th>
+                                        <th class="amount">
+                                            <h6 class="text-sm text-medium">Line Price</h6>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($order->orderItems as $item)
+                                    <tr>
+                                        <td>
+                                            <p class="text-sm">{{ $item->product->name }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm">
+                                                {{ Str::limit($item->product->description, 30) }}
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm">{{ $item->quantity }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm">{{ $item->size }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm">#{{ $authCode ?? '' }}</p>
+                                        </td>                                        
+                                        <td>
+                                            <p class="text-sm">${{ number_format($item->unit_price, 2) }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm">${{ number_format($item->line_price, 2) }}</p>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <h6 class="text-sm text-medium">Subtotal</h6>
+                                        </td>
+                                        <td>
+                                            <h6 class="text-sm text-bold">${{ number_format($order->sub_amount, 2) }}
+                                            </h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <h6 class="text-sm text-medium">Total Tax</h6>
+                                        </td>
+                                        <td>
+                                            <h6 class="text-sm text-bold">
+                                                ${{ number_format($order->pst + $order->gst + $order->hst, 2) }}</h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <h6 class="text-sm text-medium">Shipping Charge</h6>
+                                        </td>
+                                        <td>
+                                            <h6 class="text-sm text-bold">Free</h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <h4>Total</h4>
+                                        </td>
+                                        <td>
+                                            <h4>${{ number_format($order->total_amount, 2) }}</h4>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="note-wrapper warning-alert py-4 px-sm-3 px-lg-5">
                             <div class="alert">

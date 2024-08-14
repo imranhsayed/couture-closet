@@ -83,9 +83,9 @@
                                     @php
                                         $statusClasses = [
                                             'Processing' => 'warning-btn close-btn',
-                                            'Cancelled' => 'close-btn',
                                             'Shipped' => 'success-btn',
                                             'Delivered' => 'success-btn',
+                                            'Cancelled' => 'close-btn',
                                         ];
                                         $status = $order->status;
                                         $class = $statusClasses[$status] ?? 'text-muted';
