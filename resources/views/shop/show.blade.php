@@ -2,7 +2,7 @@
 
 @section('content')
     @include('partials.flash')
-	<div class="container">
+	<div class="container mt-5">
 		{{--BreadCrumb--}}
 		<ul class="breadcrumb">
 			<li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -96,8 +96,7 @@
 							<div class="col-md-7">
 								<h5>About</h5>
 								<p class="text-muted">{{$product->description}}</p>
-								<p class="text-muted">He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before.</p>
-							</div>
+								</div>
 							<!-- <div class="col-md-5"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-3.jpg" alt="{{$product->name}}"></div> -->
 						</div>
 					</div>
