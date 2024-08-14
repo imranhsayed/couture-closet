@@ -1,3 +1,5 @@
+import { clearCart, setErrors } from '../store/actions.js';
+
 /**
  * Global variables.
  */
@@ -79,7 +81,6 @@ class Checkout extends HTMLElement {
 			} )
 			.then( response => {
 				if ( response.success ) {
-					console.log( 'response', response );
 					// Update markup.
 					this.addCheckoutItemsMarkup( response?.data ?? [] );
 					this.setAttribute('taxes', JSON.stringify( response?.data?.taxes ?? [] ) );
@@ -147,6 +148,10 @@ class Checkout extends HTMLElement {
 
 		// Get cart data.
 		const cartData = JSON.parse( this.getAttribute( 'cart' ) );
+		
+		// Reset errors first.
+		setErrors( {} );
+		this.placeOrderButton.innerHTML = 'Processing...';
 
 		// Send a create order request
 		fetch( '/order/create-order', {
@@ -167,22 +172,34 @@ class Checkout extends HTMLElement {
 							const errors = data.errors;
 							// Handle validation errors here
 							console.error( 'Validation errors:', errors );
+							
+							setErrors( errors );
 						} else {
 							console.error( 'Response status:', response.status, data );
 						}
 						throw new Error( 'Network response was not ok' );
 					} );
 				}
+				
+				this.placeOrderButton.innerHTML = 'Place your order';
 				return response.json();
 			} )
 			.then( response => {
-				console.log( 'response', response );
-				if ( response.success ) {
-					// Update markup.
-					console.log( 'response.success', response.success );
+				this.placeOrderButton.innerHTML = 'Place your order';
+				
+				if ( response.success && response.order_confirm_url ) {
+					// Clear Cart first.
+					clearCart();
+					
+					// Wait some time to clear the cart first.
+					setTimeout( () => {
+						// Redirect to order confirmation page.
+						window.location.href = response.order_confirm_url;
+					}, 200 )
 				}
 			} )
 			.catch( error => {
+				this.placeOrderButton.innerHTML = 'Place your order';
 				console.error( 'There was a problem with the fetch operation:', error );
 			} );
 	}

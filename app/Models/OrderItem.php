@@ -7,7 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderItem extends Model
 {
+    public $timestamps = false;
     use HasFactory;
+
+    protected $fillable = [
+        'order_id',
+        'product_id',
+        'quantity',
+        'unit_price',
+        'line_price',
+        'size',
+    ];
 
     /**
      * Get the order that owns the order item.

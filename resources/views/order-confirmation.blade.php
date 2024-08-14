@@ -50,25 +50,26 @@
                     <div class="text-sm text-uppercase text-muted mb-3">Shipped</div>
                     <span class="h5">
                         @switch($order->status)
-                            @case(1)
-                                Pending
-                                @break
-                            @case(2)
-                                Processing
-                                @break
-                            @case(3)
-                                Shipped
-                                @break
-                            @case(4)
-                                Delivered
-                                @break
-                            @default
-                                Unknown
-                        @endswitch
+						    @case(1)
+							    Pending
+							    @break
+						    @case(2)
+							    Processing
+							    @break
+						    @case(3)
+							    Shipped
+							    @break
+						    @case(4)
+							    Delivered
+							    @break
+						    @default
+							    Unknown
+					    @endswitch
                     </span>
-                </div>
-            </div>
-        </div>
+			    </div>
+		    </div>
+	    </div>
+        <p class="mt-5 mb-0"><a class="btn btn-outline-dark" style="background-color: #EFEBDF; color: #646464;" href="/order-details/{{$order->id}}">View your order</a></p>
     </div>
 </section>
 @endsection

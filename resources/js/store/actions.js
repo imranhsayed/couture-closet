@@ -197,9 +197,26 @@ export const removeEntireCartItem = ( productId ) => {
 	} );
 }
 
+/**
+ * Clear Cart.
+ */
+export const clearCart = () => {
+	setState( {
+		cart: {
+			products: [],
+			totalProductsCount: 0,
+		}
+	})
+}
+
 export const resetNotification = () => {
 	setState( {
 		notification: '',
 	} );
 }
 
+export const setErrors = ( errors ) => {
+	setState( {
+		errors,
+	})
+}
