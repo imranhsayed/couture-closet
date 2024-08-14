@@ -35,7 +35,7 @@
                             </div>
 
                             <div class="col-xxl-6">
-                                <div class="select-style-2">
+                                <div class="select-style-1">
                                     <label for="product_id">Select Product</label>
                                     <div class="select-position">
                                         <select name="product_id" id="product_id" class="form-control select2 light-bg"
@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="col-xxl-4">
-                                <div class="select-style-2">
+                                <div class="select-style-1">
                                     <label for="size">Select Size</label>
                                     <div class="select-position">
                                         <select name="size" id="size" class="light-bg" required>
@@ -83,7 +83,7 @@
                             </div>
 
                             <div class="col-xxl-4">
-                                <div class="select-style-2">
+                                <div class="select-style-1">
                                     <label for="provincial_tax_rate_id">Select Tax Region</label>
                                     <div class="select-position">
                                         <select name="provincial_tax_rate_id" id="provincial_tax_rate_id"
@@ -92,7 +92,7 @@
                                             @foreach($provinces as $province)
                                             <option value="{{ $province->id }}"
                                                 data-rate="{{ $province->total_tax_rate }}">
-                                                {{ $province->province_name }} x {{ $province->total_tax_rate }}
+                                                {{ $province->province_name }} x {{ $province->total_tax_rate }} %
                                             </option>
                                             @endforeach
                                         </select>
@@ -118,7 +118,7 @@
                                     <label for="shipping_phone_number">Enter Shipping Phone Number</label>
                                     <input type="text" id="shipping_phone_number" name="shipping_phone_number"
                                         value="{{ old('shipping_phone_number') }}" required>
-                                    @error('email')
+                                    @error('shipping_phone_number')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -129,7 +129,7 @@
                                     <label for="billing_phone_number">Enter Billing Phone Number</label>
                                     <input type="text" id="billing_phone_number" name="billing_phone_number"
                                         value="{{ old('billing_phone_number') }}" required>
-                                    @error('email')
+                                    @error('billing_phone_number')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
