@@ -80,7 +80,6 @@ class Checkout extends HTMLElement {
 				return response.json();
 			} )
 			.then( response => {
-				console.log( 'response', response );
 				if ( response.success ) {
 					// Update markup.
 					this.addCheckoutItemsMarkup( response?.data ?? [] );
