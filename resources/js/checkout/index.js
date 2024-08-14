@@ -107,7 +107,10 @@ class Checkout extends HTMLElement {
 		data?.products.forEach( ( product ) => {
 			checkoutItemsMarkup += `
 	            <tr class="text-sm">
-	                <th><img style="object-fit: cover;" src="${ product?.image_url ?? '' }" alt="" width="50" height="50"></th>
+	                <th>
+	                    <img style="object-fit: cover;" src="${ product?.image_url ?? '' }" alt="" width="50" height="50">
+	                    <p class="text-muted text-sm">Size: ${ product?.size ?? '' }</p>
+	                </th>
 	                <th class="py-4 fw-normal text-muted">${ product?.name ?? '' } <span>x ${ product?.quantity ?? 0 }</span></th>
 	                <td class="py-4 text-end text-muted">$${ product?.amount ?? '' }</td>
 	            </tr>
