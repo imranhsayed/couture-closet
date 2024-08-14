@@ -12,6 +12,8 @@ use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\User; 
 use App\Models\Category;
+use App\Models\Transaction;
+use Exception;
 
 class AdminOrderController extends Controller
 {
@@ -84,7 +86,17 @@ class AdminOrderController extends Controller
         $subTotal = $orderItems->sum('line_price');
         $totalAmount = $order->total_amount;
 
-        return view('admin.orders.show', compact('order', 'orderItems', 'province', 'pst', 'gst', 'hst', 'subTotal', 'totalAmount'));
+
+        // query transaction
+        $transaction = Transaction::where('order_id', $order->id)->first();
+        $authCode = "";
+        try {
+            $response = json_decode($transaction->response);
+            $authCode = $response->transaction_response->auth_code ?? '';
+        } catch (Exception $ignored)
+        {}
+
+        return view('admin.orders.show', compact('order', 'orderItems', 'province', 'pst', 'gst', 'hst', 'subTotal', 'totalAmount' , 'authCode'));
     }
 
     public function edit(Order $order)
