@@ -80,15 +80,6 @@ Route::post( '/cart-details', function () {
 	return response()->json( [ 'data' => $data, 'success' => true ] );
 } )->name( 'cart-details' );
 
-// Route for the checkout page
-// Route::get('/checkout', function () {
-//     return view('checkout');
-// })->name('checkout');
-
-// Route::get('/order', function () {
-//     return view('order');
-// })->name('order');
-
 // Authentication Routes
 Auth::routes();
 Route::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'home' );
