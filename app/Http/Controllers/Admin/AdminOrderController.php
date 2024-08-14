@@ -137,7 +137,7 @@ class AdminOrderController extends Controller
 
     private function getFilteredOrders($search = null)
     {
-        $query = Order::with('user', 'provincialTaxRate');
+        $query = Order::with('user', 'provincialTaxRate')->orderBy('id', 'desc');
 
         if ($search) {
             $query->where(function ($q) use ($search) {
