@@ -148,16 +148,17 @@
 					<div class="tab-pane fade" id="reviews" role="tabpanel">
 						<div class="row mb-5">
 							<div class="col-lg-10 col-xl-9">
-								@foreach($reviews as $review)
+								@foreach( $reviews as $review )
 									<div class="media review">
 										<div class="flex-shrink-0 text-center me-4 me-xl-5">
-											<img class="review-image" src="/images/review_logo.svg" alt="{{ $review->user->name }}">
+											<img class="review-image" src="/images/review_logo.svg" alt="{{ $review->user->first_name }}">
 											<span class="text-uppercase text-muted">{{ $review->created_at->format('M Y') }}</span>
 										</div>
 										<div>
-											<h5 class="mt-2 mb-1">{{ $review->user->name }}</h5>
+											<h5 class="mt-2 mb-1">{{ $review->title }}</h5>
+											<x-rating :rating="$review->rating" />
 											<div class="mb-2">
-
+												By {{ $review->user->first_name  . ' ' . $review->user->last_name }}
 											</div>
 											<p class="text-muted">{{ $review->review_text }}</p>
 										</div>
