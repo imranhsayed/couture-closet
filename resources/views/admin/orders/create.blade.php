@@ -7,8 +7,9 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title d-flex align-items-center flex-wrap">
-                        <h2 class="mr-40">Create Custom Order</h2>
-                        <a class="main-btn primary-btn btn-hover btn-sm" href="{{ route('admin.orders.index') }}">
+                        <h2 class="mr-40 mb-3">Create Custom Order</h2>
+                        <a class="main-btn primary-btn btn-hover btn-sm mb-3" href="{{ route('admin.orders.index') }}">
+                            <i class="lni lni-chevron-left me-2"></i>
                             Back to Orders
                         </a>
                     </div>

@@ -65,8 +65,11 @@ class AdminOrderController extends Controller
             'size' => $validated['size'],
         ]);
 
-        return redirect()->route('admin.orders.index')->with('success', 'Order created successfully');
+        $getuser = User::find($validated['user_id']);
+        $getfullName = $getuser->first_name . ' ' . $getuser->last_name;
+        return redirect()->route('admin.orders.index')->with('success', 'Order created successfully for User: ' . $getfullName);
     }
+
 
     public function show($id)
     {
