@@ -14,27 +14,27 @@
 					<div class="carousel-caption text-start" style="background-color: rgb(239, 235, 223, 0.7); padding: 20px; border-radius: 10px; color: black; max-width: 600px; left: 15%; bottom: initial; top: 50%; transform: translateY(-50%); right: initial; ">
 						<h1 style="font-size: 36px; font-weight: bold;">Elevate Your Style with Timeless Fashion</h1>
 						<p style="font-size: 20px;">Crafting Couture for Every Occasion</p>
-						<p><a class="btn btn-lg btn-primary" href="/shop" style="background-color: black; border-color: black;">Get Started</a></p>
+						<p><a class="main-btn primary-btn btn-hover text-center" href="/shop" style="background-color: black; border-color: black;">Visit OUr Shop</a></p>
 					</div>
 				</div>
 			</div>
-			<div class="carousel-item" style="background-color: #E6D2C2;">
+			<div class="carousel-item" style="background-color: #EFEBDF;">
 				<img src="/images/slide2.png" alt="Slide 2" class="d-block w-100" style="height: auto; max-height: 512px; width: auto; max-width: 100%; object-fit: contain;transform: translate(20%, 10%);">
 				<div class="container">
-					<div class="carousel-caption" style="background-color: rgb(230, 210, 194, 0.7); padding: 20px; border-radius: 10px; color: black; max-width: 600px; left: 15%; bottom: initial; top: 50%; transform: translateY(-50%); right: initial;text-align: left;">
+					<div class="carousel-caption" style="background-color: rgb(239, 235, 223, 0.7); padding: 20px; border-radius: 10px; color: black; max-width: 600px; left: 15%; bottom: initial; top: 50%; transform: translateY(-50%); right: initial;text-align: left;">
 						<h1 style="font-size: 36px; font-weight: bold;">Discover the Latest Trends</h1>
 						<p style="font-size: 20px;">Explore our wide collection of new arrivals.</p>
-						<p><a class="btn btn-lg btn-primary" href="/shop" style="background-color: black; border-color: black;">Browse Gallery</a></p>
+						<p><a class="main-btn primary-btn btn-hover text-center" href="/shop?category=Women" style="background-color: black; border-color: black;">Shop Women</a></p>
 					</div>
 				</div>
 			</div>
-			<div class="carousel-item" style="background-color: #DFC2AC;">
+			<div class="carousel-item" style="background-color: #EFEBDF;">
 				<img src="/images/slide3.png" alt="Slide 3" class="d-block w-100" style="height: auto; max-height: 512px; width: auto; max-width: 100%; object-fit: contain;transform: translate(20%, 10%);">
 				<div class="container">
-					<div class="carousel-caption text-end" style="background-color: rgb(223, 194, 172, 0.7); padding: 20px; border-radius: 10px; color: black; max-width: 600px; left: 15%; bottom: initial; top: 50%; transform: translateY(-50%); right: initial; text-align: left;">
+					<div class="carousel-caption" style="background-color: rgb(239, 235, 223, 0.7); padding: 20px; border-radius: 10px; color: black; max-width: 600px; left: 15%; bottom: initial; top: 50%; transform: translateY(-50%); right: initial; text-align: left;">
 						<h1 style="font-size: 36px; font-weight: bold;">Exclusive Deals This Season</h1>
 						<p style="font-size: 20px;">Unwrap the gift of fashion with our exclusive seasonal offers.</p>
-						<p><a class="btn btn-lg btn-primary" href="/about" style="background-color: black; border-color: black;">About Us!</a></p>
+						<p><a class="main-btn primary-btn btn-hover text-center" href="/shop?category=Men" style="background-color: black; border-color: black;">Shop Men</a></p>
 					</div>
 				</div>
 			</div>
