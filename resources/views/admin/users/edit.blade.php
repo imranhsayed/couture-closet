@@ -7,7 +7,7 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title">
-                        <h2>Create User</h2>
+                        <h2>Edit User</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -21,14 +21,15 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card-style mb-30">
-                    <form action="{{ route('admin.users.store') }}" method="POST">
+                    <form action="{{ route('admin.users.update', $user) }}" method="POST">
                         @csrf
+                        @method('PUT')
 
                         <div class="row">
                             <div class="col-12">
                                 <div class="input-style-1">
                                     <label>First Name</label>
-                                    <input type="text" name="first_name" value="{{ old('first_name') }}" required>
+                                    <input type="text" name="first_name" value="{{ old('first_name', $user->first_name) }}" required>
                                     <x-val-error field="first_name"/>
                                 </div>
                             </div>
@@ -36,7 +37,7 @@
                             <div class="col-12">
                                 <div class="input-style-1">
                                     <label>Last Name</label>
-                                    <input type="text" name="last_name" value="{{ old('last_name') }}" required>
+                                    <input type="text" name="last_name" value="{{ old('last_name', $user->last_name) }}" required>
                                     <x-val-error field="last_name"/>
                                 </div>
                             </div>
@@ -44,7 +45,7 @@
                             <div class="col-12">
                                 <div class="input-style-1">
                                     <label>Email</label>
-                                    <input type="email" name="email" value="{{ old('email') }}" required>
+                                    <input type="email" name="email" value="{{ old('email', $user->email) }}" required>
                                     <x-val-error field="email"/>
                                 </div>
                             </div>
@@ -52,7 +53,7 @@
                             <div class="col-12">
                                 <div class="input-style-1">
                                     <label>Password</label>
-                                    <input type="password" name="password" required>
+                                    <input type="password" name="password">
                                     <x-val-error field="password"/>
                                 </div>
                             </div>
@@ -60,7 +61,7 @@
                             <div class="col-12">
                                 <div class="input-style-1">
                                     <label>Confirm Password</label>
-                                    <input type="password" name="password_confirmation" required>
+                                    <input type="password" name="password_confirmation">
                                     <x-val-error field="password_confirmation"/>
                                 </div>
                             </div>
@@ -69,14 +70,14 @@
                                 <div class="input-style-1">
                                     <label>Admin</label>
                                     <select name="is_admin">
-                                        <option value="0">No</option>
-                                        <option value="1">Yes</option>
+                                        <option value="0" {{ $user->is_admin ? '' : 'selected' }}>No</option>
+                                        <option value="1" {{ $user->is_admin ? 'selected' : '' }}>Yes</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="col-12">
-                                <button type="submit" class="main-btn primary-btn btn-hover w-100 text-center">Create User</button>
+                                <button type="submit" class="main-btn primary-btn btn-hover w-100 text-center">Update User</button>
                             </div>
                         </div>
                     </form>

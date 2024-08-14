@@ -6,6 +6,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\UserAddressController;
+use App\Http\Controllers\UserController;
+
 use App\Models\Product;
 use App\Models\ProvincialTaxRate;
 use Illuminate\Support\Facades\Route;
