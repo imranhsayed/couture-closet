@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
 
+use App\Models\OrderItem;
+use App\Http\Controllers\Admin\AdminOrderController;
 
 Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welcome' );
 
@@ -110,11 +112,6 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
     Route::post('/order/create-order' , [ OrderController::class, 'store' ])->name( 'order.store' );
 	Route::get('/order-details/{id}', [OrderController::class, 'orderDetails'])->name('order-details.show');
     Route::get('/order-confirmation/{order}', [OrderController::class, 'show'])->name('order.confirmation');
-	// Payment
-    Route::get( '/payment/{orderId}', [ PaymentController::class, 'show' ])->name('payment.order');
-
-    // Transaction
-    Route::post( '/transaction' , [ TransactionController::class, 'create' ])->name('transaction.order.payment');
 
 	Route::get('/order-confirmation', function () {
 		return view('order-confirmation');
@@ -164,4 +161,17 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
     Route::delete( '/admin/category/{id}', [ CategoryController::class, 'destroy', ] )->name( 'admin.category.destroy' );
     Route::get( '/admin/category/edit/{category}', [ CategoryController::class , 'edit' ])->name( 'admin.category.edit' );
     Route::put( '/admin/category/update/{category}', [ CategoryController::class, 'update' ] )->name( 'admin.category.update' );
+
+    // Admin Order management
+    Route::get('admin/orders/search', [AdminOrderController::class, 'search'])->name('admin.orders.search');
+    Route::resource('admin/orders', AdminOrderController::class)->names([
+        'index' => 'admin.orders.index',
+        'create' => 'admin.orders.create',
+        'store' => 'admin.orders.store',
+        'show' => 'admin.orders.show',
+        'edit' => 'admin.orders.edit',
+        'update' => 'admin.orders.update',
+        'destroy' => 'admin.orders.destroy',
+    ]);
+
 } );
