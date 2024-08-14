@@ -245,12 +245,12 @@ class Checkout extends HTMLElement {
 		<th class="py-5 border-dark" colspan="2">
 		    <div class="mb-4">Taxes</div>
 		    <p class="fw-normal">
-		        <img src="/pictures/checked.svg" alt="Right Icon" class="ms-2"
+		        <img src="/images/checked.svg" alt="Right Icon" class="ms-2"
 		             style="width: 16px; height: 16px; margin-right: 10px;"> GST
 		        <span class="fw-bold">$${tax.gst_rate}</span>
 		    </p>
 		    <p class="fw-normal">
-		        <img src="/pictures/checked.svg" alt="Right Icon" class="ms-2"
+		        <img src="/images/checked.svg" alt="Right Icon" class="ms-2"
 		             style="width: 16px; height: 16px; margin-right: 10px;"> HST
 		        <span class="fw-bold">$${tax.hst_rate}</span>
 		    </p>
