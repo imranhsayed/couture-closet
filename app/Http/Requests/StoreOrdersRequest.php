@@ -39,7 +39,7 @@ class StoreOrdersRequest extends FormRequest
             'formData.card_name' => 'required|string|min:5|max:255',
             'formData.card_number' => 'required|string|regex:/^\d{15,16}$/',
             'formData.card_type' => 'required|string',
-            'formData.expiry_date' => 'required|integer|digits:4',
+            'formData.expiry_date' => 'required|string',
             'formData.cvv' => 'required|digits:3'
         ];
     }
