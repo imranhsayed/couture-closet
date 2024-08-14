@@ -41,7 +41,7 @@ return new class extends Migration
             $table->text('shipping_address')->nullable(false);
             $table->string('billing_phone_number')->nullable(false);
             $table->text('billing_address')->nullable(false);
-            $table->tinyInteger('status')->default(1)->comment('1: Pending, 2: Processing, 3:Shipped, 4:Delivered');
+            $table->tinyInteger('status')->default(1)->comment('1: Processing, 2: Shipped, 3:Delivered, 4:Cancelled');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');

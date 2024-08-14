@@ -27,7 +27,7 @@
                         </div>
                         <div class="content">
                             <h6 class="mb-10">Orders</h6>
-                            <h3 class="text-bold mb-10">{{ $currentOrderCount ?? '0' }}</h3>
+                            <h3 class="text-bold mb-10">{{ $currentOrderCount ?? 0 }}</h3>
                             <!-- // Query to count new orders in the last 7 days
                                 const query = `
                                 SELECT COUNT(*) AS newOrders
@@ -97,7 +97,7 @@
                         </div>
                         <div class="content">
                             <h6 class="mb-10">Total Products</h6>
-                            <h3 class="text-bold mb-10">{{ $productCount }}</h3>
+                            <h3 class="text-bold mb-10">{{ $productCount ?? 0 }}</h3>
                             <p class="text-sm text-success">
                                 <i class="lni lni-layers"></i> {{ $categoryCount }}
                                 <span class="text-gray">Categories</span>
@@ -113,8 +113,8 @@
                             <i class="lni lni-user"></i>
                         </div>
                         <div class="content">
-                            <h6 class="mb-10">Users</h6>
-                            <h3 class="text-bold mb-10">{{ $currentUserCount }}</h3>
+                            <h6 class="mb-10">Total Users</h6>
+                            <h3 class="text-bold mb-10">{{ $currentTotalUserCount ?? 0 }}</h3>
                             @if ($userRateOfChange > 0)
                                 <p class="text-sm text-success"><i
                                         class="lni lni-arrow-up"></i>{{ (round($userRateOfChange ?? '0', 2)) . '%' }}
