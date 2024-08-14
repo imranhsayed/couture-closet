@@ -20,6 +20,7 @@ export const DEFAULT_STATE = {
         activeTab: 'orders'
     },
 	errors: {},
+	apiFailureMessage: '',
 	loading: false,
 	initialized: false,
 	notification: '',

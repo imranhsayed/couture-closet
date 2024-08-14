@@ -15,7 +15,9 @@ class Welcome extends Controller
 	 */
 	public function index()
 	{
-		$products = Product::paginate(12);
+		$products = Product::with('categories', 'images')->whereHas('categories', function ($query) {
+			                   $query->where('name', 'size');
+		                   })->paginate(10);
 
 		return view( 'welcome', compact( 'products' ) );
 	}
