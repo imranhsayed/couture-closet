@@ -42,6 +42,7 @@ class AdminOrderController extends Controller
         
         $order = Order::create([
             'user_id' => $validated['user_id'],
+            'full_name' => $validated['full_name'] ?? User::find($validated['user_id'])->first_name . ' ' . User::find($validated['user_id'])->last_name,
             'provincial_tax_rate_id' => $validated['provincial_tax_rate_id'],
             'email' => $validated['email'],
             'pst' => $subAmount * $provincialTaxRate->pst_rate,
@@ -51,6 +52,8 @@ class AdminOrderController extends Controller
             'total_amount' => $totalAmount,
             'shipping_address' => $validated['shipping_address'],
             'billing_address' => $validated['billing_address'],
+            'shipping_phone_number' => $validated['shipping_phone_number'],
+            'billing_phone_number' => $validated['billing_phone_number'],
         ]);
 
         OrderItem::create([

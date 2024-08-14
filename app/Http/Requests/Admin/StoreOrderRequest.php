@@ -22,6 +22,8 @@ class StoreOrderRequest extends FormRequest
             'email' => 'required|email',
             'shipping_address' => 'required|string',
             'billing_address' => 'required|string',
+            'billing_phone_number' => 'required|string|regex:/^[0-9\s\-\+\(\)]{10,}$/|min:10|max:18',
+            'shipping_phone_number' => 'required|string|regex:/^[0-9\s\-\+\(\)]{10,}$/|min:10|max:18',
         ];
     }
 
@@ -37,6 +39,18 @@ class StoreOrderRequest extends FormRequest
             'quantity.min' => 'Quantity must be at least 1',
             'size.required' => 'Size selection is required',
             'provincial_tax_rate_id.required' => 'Tax Selection is required',
+            'email.required' => 'Email is required',
+            'email.email' => 'Email must be a valid email address',
+            'shipping_address.required' => 'Shipping address is required',
+            'billing_address.required' => 'Billing address is required',
+            'billing_phone_number.required' => 'Billing phone number is required',
+            'billing_phone_number.regex' => 'Billing phone number must be a valid phone number',
+            'billing_phone_number.min' => 'Billing phone number must be at least 10 characters',
+            'billing_phone_number.max' => 'Billing phone number must be at most 18 characters',
+            'shipping_phone_number.required' => 'Shipping phone number is required',
+            'shipping_phone_number.regex' => 'Shipping phone number must be a valid phone number',
+            'shipping_phone_number.min' => 'Shipping phone number must be at least 10 characters',
+            'shipping_phone_number.max' => 'Shipping phone number must be at most 18 characters',
         ];
     }
 }
