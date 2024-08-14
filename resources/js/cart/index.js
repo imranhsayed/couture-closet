@@ -160,7 +160,7 @@ class Cart extends HTMLElement {
 						 </div>
 						 <cc-remove-cart-item class="col-2 d-none d-md-block text-center" product-id="${product?.id ?? ''}">
 							<a class="cart-remove" href="javascript:void(0);">
-							   <img src="pictures/close.svg" alt="Close Icon" style="width: 12px !important; height: 12px !important;">
+							   <img src="/images/close.svg" alt="Close Icon" style="width: 12px !important; height: 12px !important;">
 						    </a>
 						</cc-remove-cart-item>
 
