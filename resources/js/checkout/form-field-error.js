@@ -29,7 +29,6 @@ class FormFieldError extends HTMLElement {
 	 * @param state
 	 */
 	update( state ) {
-		console.log( 'state', state );
 		const fieldName = this.getAttribute( 'name' );
 		
 		// If the error object contains error key, show the error.
