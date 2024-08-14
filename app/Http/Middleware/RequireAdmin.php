@@ -21,6 +21,6 @@ class RequireAdmin
             return $next($request);
         }
 
-        return redirect('/home')->with('error', 'You do not have admin access.');
+        return redirect('/home')->with('user.error', 'You dont have the permission to view this page.');
     }
 }

@@ -253,9 +253,10 @@
                     href="#">privacy policy</a>.
             </p>
             <div class="d-grid">
-                <button id="place-order-btn" class="btn btn-dark btn-lg mb-5 mt-4 text-uppercase fw-normal text-sm"
+                <button id="place-order-btn" class="btn btn-dark btn-lg mb-2 mt-4 text-uppercase fw-normal text-sm"
                     href="/order">Place
                     Your order</button>
+	            <div id="api-failure-message" class="invalid-feedback" active role="alert"></div>
             </div>
         </div>
     </div>

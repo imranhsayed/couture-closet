@@ -42,7 +42,7 @@
 					<div id="buyForm">
 						<div class="row">
 							<div class="col-sm-6 col-lg-12 detail-option mb-4">
-								@if($size)
+								@if( $size )
 									<h6 class="detail-option-heading d-inline">Size: </h6>
 									<span>{{$size->description}}</span>
 								@else
@@ -52,7 +52,7 @@
 							</div>
 						</div>
 						{{--Add to cart--}}
-						<x-counter-add-to-cart product_id="{{ $product->id }}" />
+						<x-counter-add-to-cart product_id="{{ $product->id }}" size="{{ $size->description ?? '' }}"/>
 
 						<ul class="list-unstyled border-top">
 							{{--@TODO To make category and brand dyanamic--}}
@@ -147,16 +147,17 @@
 					<div class="tab-pane fade" id="reviews" role="tabpanel">
 						<div class="row mb-5">
 							<div class="col-lg-10 col-xl-9">
-								@foreach($reviews as $review)
+								@foreach( $reviews as $review )
 									<div class="media review">
 										<div class="flex-shrink-0 text-center me-4 me-xl-5">
-											<img class="review-image" src="/images/review_logo.svg" alt="{{ $review->user->name }}">
+											<img class="review-image" src="/images/review_logo.svg" alt="{{ $review->user->first_name }}">
 											<span class="text-uppercase text-muted">{{ $review->created_at->format('M Y') }}</span>
 										</div>
 										<div>
-											<h5 class="mt-2 mb-1">{{ $review->user->name }}</h5>
+											<h5 class="mt-2 mb-1">{{ $review->title }}</h5>
+											<x-rating :rating="$review->rating" />
 											<div class="mb-2">
-
+												By {{ $review->user->first_name  . ' ' . $review->user->last_name }}
 											</div>
 											<p class="text-muted">{{ $review->review_text }}</p>
 										</div>
@@ -209,6 +210,10 @@
 				<div class="row">
 				@foreach($all_products as $single_product)
 					@foreach($single_product->images as $image)
+						@php $size = ''; @endphp
+						@foreach( $single_product->categories as $category )
+							@php $size = $category->value @endphp
+						@endforeach
 					<div class="col-lg-3 col-md-4">
 						<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 							<div class="product-image mb-md-3">
@@ -219,10 +224,10 @@
 									</div>
 								</a>
 								<div class="product-hover-overlay"><div class="text-dark text-sm">
-										<svg class="d-none svg-icon text-primary-hover svg-icon-heavy d-lg-inline">
+										<svg class="d-none svg-icon text-primary-hover svg-icon-heavy d-lg-inline mr-2">
 											<use xlink:href="#retail-bag-1"> </use>
 										</svg>
-										<x-add-to-cart-button product_id="{{$image->product_id}}" quantity="1" />
+										<x-add-to-cart-button size="{{ $size }}" product_id="{{$image->product_id}}" quantity="1" />
 									</div>
 								</div>
 							</div>

@@ -56,10 +56,10 @@ class Order extends Model
     public function getStatusAttribute($value)
     {
         $statuses = [
-            1 => 'Pending',
-            2 => 'Processing',
-            3 => 'Shipped',
-            4 => 'Delivered',
+            1 => 'Processing',
+            2 => 'Shipped',
+            3 => 'Delivered',
+            4 => 'Cancelled',
         ];
 
         return $statuses[$value] ?? 'Unknown';

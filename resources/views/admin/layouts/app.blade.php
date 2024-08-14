@@ -44,7 +44,7 @@
 <!-- sidebar-nav start -->
 <aside class="sidebar-nav-wrapper">
     <div class="navbar-logo">
-        <a href="{{ route('home') }}">
+        <a href="/admin">
             <img src="/images/logo.svg" style="width: 130px; height: 40px;" alt="logo"/>
         </a>
     </div>
@@ -232,12 +232,11 @@
           <hr/>
         </span>
             <li class="nav-item">
-                <a href="#">
-            <span class="icon">
-              <i class="lni lni-book align-middle"></i>
+                <a href="/">
+	            <span class="icon">
+	              <i class="lni lni-book align-middle"></i>
             </span>
-                    </span>
-                    <span class="text">CRUD Elements</span>
+                <span class="text">Back to main site</span>
                 </a>
             </li>
             <!-- CRUD Elements End -->

@@ -52,7 +52,11 @@
 									<svg class="d-none svg-icon text-primary-hover svg-icon-heavy d-lg-inline">
 										<use xlink:href="#retail-bag-1"> </use>
 									</svg>
-									<x-add-to-cart-button product_id="{{ $product->id }}" quantity="1" />
+									@php $size = ''; @endphp
+									@foreach( $product->categories as $category )
+										@php $size = $category->value @endphp
+									@endforeach
+									<x-add-to-cart-button product_id="{{ $product->id }}" quantity="1" size="{{ $size }}" />
 								</div>
 							</div>
                         </div>
