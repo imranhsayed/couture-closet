@@ -18,6 +18,7 @@ class Order extends Model
         'gst',
         'hst',
         'sub_amount',
+        'status',
         'total_amount',
         'shipping_phone_number',
         'shipping_address',
@@ -31,5 +32,36 @@ class Order extends Model
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    /**
+     * Get the user 
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the provincial tax rate
+     */
+    public function provincialTaxRate()
+    {
+        return $this->belongsTo(ProvincialTaxRate::class);
+    }
+
+    /**
+     * Get the status of the order
+     */
+    public function getStatusAttribute($value)
+    {
+        $statuses = [
+            1 => 'Processing',
+            2 => 'Shipped',
+            3 => 'Delivered',
+            4 => 'Cancelled',
+        ];
+
+        return $statuses[$value] ?? 'Unknown';
     }
 }

@@ -44,7 +44,7 @@
 <!-- sidebar-nav start -->
 <aside class="sidebar-nav-wrapper">
     <div class="navbar-logo">
-        <a href="{{ route('home') }}">
+        <a href="/admin">
             <img src="/images/logo.svg" style="width: 130px; height: 40px;" alt="logo"/>
         </a>
     </div>
@@ -73,7 +73,7 @@
 
             <!-- Orders -->
             <li class="nav-item nav-item-has-children">
-                <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_1"
+                <a href="#" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_1"
                    aria-controls="ddmenu_1"
                    aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon">
@@ -88,7 +88,10 @@
                 </a>
                 <ul id="ddmenu_1" class="collapse dropdown-nav">
                     <li>
-                        <a href="#"> View Orders </a>
+                        <a href="{{ route('admin.orders.index') }}"> View Orders </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.orders.create') }}"> Create Orders </a>
                     </li>
                 </ul>
             </li>
@@ -229,12 +232,11 @@
           <hr/>
         </span>
             <li class="nav-item">
-                <a href="#">
-            <span class="icon">
-              <i class="lni lni-book align-middle"></i>
+                <a href="/">
+	            <span class="icon">
+	              <i class="lni lni-book align-middle"></i>
             </span>
-                    </span>
-                    <span class="text">CRUD Elements</span>
+                <span class="text">Back to main site</span>
                 </a>
             </li>
             <!-- CRUD Elements End -->

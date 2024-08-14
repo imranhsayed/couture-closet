@@ -8,7 +8,7 @@
 						<div class="col-12 col-md-5"><a class="cart-remove close mt-3 d-md-none" href="#">
 								<i class="fa fa-times"> </i> </a>
 							<div class="d-flex align-items-center"><a href="#"><img class="cart-item-img"
-							                                                        src="/pictures/Mask.jpg" alt=""></a>
+							                                                        src="/images/mask.jpg" alt=""></a>
 								<div class="cart-title text-start"><a class="text-dark link-animated"
 								                                      href="#"><strong>Skull Tee</strong></a><br><span
 											class="text-muted text-sm">Size: Large</span><br>
@@ -36,7 +36,7 @@
 								</div>
 								<div class="col-2 d-none d-md-block text-center">
 									<a class="cart-remove" href="#">
-										<img src="pictures/close.svg" alt="Close Icon" style="width: 12px !important; height: 12px !important;">
+										<img src="/images/close.svg" alt="Close Icon" style="width: 12px !important; height: 12px !important;">
 									</a>
 								</div>
 
@@ -48,7 +48,7 @@
 		</div>
 		<div class="d-flex justify-content-between flex-column flex-lg-row mb-5 mb-lg-0">
 			<a class="btn btn-link" href="#">
-				<img src="pictures/black-left.svg" alt="Right Icon" style="width: 16px; height: 16px;">
+				<img src="/images/black-left.svg" alt="Right Icon" style="width: 16px; height: 16px;">
 				Continue Shopping
 			</a>
 		</div>
@@ -84,7 +84,7 @@
 			<div class="card-footer overflow-hidden p-0">
 				<div class="d-grid"> <a class="btn btn-primary py-3 text-white" href="#">
 						Proceed to Checkout
-						<img src="pictures/white-right.svg" alt="Right Icon" class="ms-2"
+						<img src="/images/white-right.svg" alt="Right Icon" class="ms-2"
 						     style="width: 16px; height: 16px;">
 					</a>
 				</div>

@@ -11,3 +11,9 @@
   - Rui 
   - Parth
   - Snigdha
+
+* Credentials
+    - admin user: admin@pace.com/mypass
+    - regular user: 
+      - john@example.com/password123
+      - jane@example.com/password456

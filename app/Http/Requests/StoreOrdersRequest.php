@@ -26,16 +26,21 @@ class StoreOrdersRequest extends FormRequest
         return [
             'formData.fullname' => 'required|string|min:5|max:255',
             'formData.emailaddress' => 'required|email',
-            'formData.phonenumber_shipping' => 'required|string|phone:CA,US',
-            'formData.street_shipping' => 'required|string|min:5|max:255',
-            'formData.zip_shipping' => 'required|string|regex:/^[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d$/|min:6|max:7',
-            'formData.state_shipping' => 'required|string|min:2|max:2',
-            'formData.city_shipping' => 'required|string|max:255',
-            'formData.street_billing' => 'nullable|string|min:5|max:255',
-            'formData.zip_billing' => 'nullable|string|regex:/^[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d$/|min:6|max:7',
-            'formData.state_billing' => 'nullable|string|min:2|max:2',
-            'formData.city_billing' => 'nullable|string|max:255',
-            'formData.phonenumber_billing' => 'nullable|string|phone:CA,US',
+            'formData.phonenumber_shipping' => 'nullable|string|phone:CA,US',
+            'formData.street_shipping' => 'nullable|string|min:5|max:255',
+            'formData.zip_shipping' => 'nullable|string|regex:/^[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d$/|min:6|max:7',
+            'formData.state_shipping' => 'nullable|string|min:2|max:2',
+            'formData.city_shipping' => 'nullable|string|max:255',
+            'formData.street_billing' => 'required|string|min:5|max:255',
+            'formData.zip_billing' => 'required|string|regex:/^[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d$/|min:6|max:7',
+            'formData.state_billing' => 'required|string|min:2|max:2',
+            'formData.city_billing' => 'required|string|max:255',
+            'formData.phonenumber_billing' => 'required|string|phone:CA,US',
+            'formData.card_name' => 'required|string|min:5|max:255',
+            'formData.card_number' => 'required|string|regex:/^\d{15,16}$/',
+            'formData.card_type' => 'required|string',
+            'formData.expiry_date' => 'required|string',
+            'formData.cvv' => 'required|digits:3'
         ];
     }
 
@@ -78,6 +83,11 @@ class StoreOrdersRequest extends FormRequest
             'formData.state_billing' => 'billing state',
             'formData.city_billing' => 'billing city',
             'formData.phonenumber_billing' => 'billing phone number',
+            'formData.card_name' => 'card name',
+            'formData.card_number' => 'card number',
+            'formData.card_type' => 'card type',
+            'formData.expiry_date' => 'expiry date',
+            'formData.cvv' => 'cvv'
         ];
     }
 

@@ -39,3 +39,33 @@
 		padding: 0 10px;
 	}
 }
+
+
+.the-add-to-cart-button {
+	background-color: #ad9853;
+	border-color: #ad9853;
+	padding: 10px 20px;
+	border-radius: 4px;
+
+	button {
+		color: #ffffff !important;
+	}
+}
+
+@media (min-width: 768px) {
+	.the-add-to-cart-button {
+		background-color: transparent;
+		padding: 0;
+		padding-left: 16px;
+
+		button {
+			color: inherit !important;
+		}
+	}
+}
+
+.product-hover-overlay > div {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}

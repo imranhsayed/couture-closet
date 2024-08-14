@@ -14,8 +14,7 @@
 			<div class="col-lg-6 col-xl-7 pt-4 order-2 order-lg-1 photoswipe-gallery">
                 <a class="d-block mb-4" href="img/product/detail-3-gray.jpg" data-caption="Push-up Jeans 1 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
 					@foreach($product->images as $image)
-
-                    <div data-toggle="zoom" data-image="img/product/detail-3-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="/{{ $image->image_url}}" alt="{{$product->name}}"><img role="presentation" alt="{{$product->name}}" src="/{{ $image->image_url}}" class="zoomImg" style="position: absolute; top: -94.9611px; left: -187.658px; opacity: 0; width: 1313px; height: 1313px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="#" data-caption="Push-up Jeans 2 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
+                    	<div data-toggle="zoom" data-image="img/product/detail-3-gray.jpg" style="position: relative; overflow: hidden;"><img class="img-fluid" src="/{{ $image->image_url}}" alt="{{$product->name}}"><img role="presentation" alt="{{$product->name}}" src="/{{ $image->image_url}}" class="zoomImg" style="position: absolute; top: -94.9611px; left: -187.658px; opacity: 0; width: 1313px; height: 1313px; border: none; max-width: none; max-height: none;"></div></a><a class="d-block mb-4" href="#" data-caption="Push-up Jeans 2 - Caption text" data-toggle="photoswipe" data-width="1200" data-height="1200">
                     @endforeach
                 </a>
 			</div>
@@ -36,16 +35,14 @@
 								<li class="list-inline-item me-0"><i class="fa fa-star text-primary"></i></li>
 								<li class="list-inline-item me-0"><i class="fa fa-star text-gray-300"></i></li>
 							</ul>
-							@foreach($reviews as $review)
-								<span class="text-muted text-uppercase">{{ $totalReviews }}reviews</span>
-							@endforeach
+                            <span class="text-muted text-uppercase">{{ $totalReviews }} reviews</span>
 						</div>
 					</div>
 					<h6 class="detail-option-heading d-inline">Description</h6><p class="mb-4 text-muted">{{ $product->description }}</p>
 					<div id="buyForm">
 						<div class="row">
 							<div class="col-sm-6 col-lg-12 detail-option mb-4">
-								@if($size)
+								@if( $size )
 									<h6 class="detail-option-heading d-inline">Size: </h6>
 									<span>{{$size->description}}</span>
 								@else
@@ -55,7 +52,7 @@
 							</div>
 						</div>
 						{{--Add to cart--}}
-						<x-counter-add-to-cart product_id="{{ $product->id }}" />
+						<x-counter-add-to-cart product_id="{{ $product->id }}" size="{{ $size->description ?? '' }}"/>
 
 						<ul class="list-unstyled border-top">
 							{{--@TODO To make category and brand dyanamic--}}
@@ -68,16 +65,16 @@
 									@endif
 							</li>
 							@if($demography)
-							<li class="border-top pt-2">
-                                <strong class="text d-block" class="border-top pt-2">Demography</strong>
-                                <strong><a class="text-muted d-block" href="#" class="border-top pt-2">{{$demography->value}}</a></strong>
-                            </li>
+								<li class="border-top pt-2">
+									<strong class="text d-block" class="border-top pt-2">Demography</strong>
+									<strong><a class="text-muted d-block" href="#" class="border-top pt-2">{{$demography->value}}</a></strong>
+								</li>
 							@endif
 							@if($brand)
-                            <li class="border-top pt-2">
-                                <strong class="d-block">Brand:</strong>
-                                <strong><a class="text-muted d-block" href="#">{{$brand->value}}</a></strong>
-                            </li>
+								<li class="border-top pt-2">
+									<strong class="d-block">Brand:</strong>
+									<strong><a class="text-muted d-block" href="#">{{$brand->value}}</a></strong>
+								</li>
 							@endif
                         </ul>
 					</div>
@@ -93,7 +90,7 @@
 					<li class="nav-item"><a class="nav-link detail-nav-link" data-bs-toggle="tab" href="#additional-information" role="tab">Additional Information</a></li>
 					<li class="nav-item"><a class="nav-link detail-nav-link" data-bs-toggle="tab" href="#reviews" role="tab">Reviews</a></li>
 				</ul>
-				<div class="tab-content py-4">
+				<div class="tab-content pt-4 pb-0">
 					<div class="tab-pane fade show active px-3" id="description" role="tabpanel">
 						<div class="row">
 							<div class="col-md-7">
@@ -129,44 +126,47 @@
 								</table>
 							</div>
 							<div class="col-lg-6">
-								<table class="table text-sm">
+								<table class="table text-sm mt-5">
 									<tbody>
-									@foreach($reviews as $review)
-									<tr>
-										<th class="font-weight-normal ">Total Reviews</th>
-										<td class="text-muted ">{{$totalReviews}} reviews</td>
-									</tr>
-									@endforeach
-									@foreach($reviews as $review)
-									<tr>
-										<th class="font-weight-normal ">Rating</th>
-										<td class="text-muted ">{{ $review->rating}}</td>
-									</tr>
-									@endforeach
+										@php $total_rating_score = 0; @endphp
+										@foreach($reviews as $review)
+											@php
+												$total_rating_score += $review->rating;
+											@endphp
+										@endforeach
+										<tr>
+											<th class="font-weight-normal ">Total Reviews</th>
+											<td class="text-muted ">{{ $totalReviews }} reviews</td>
+										</tr>
+										<tr>
+											<th class="font-weight-normal ">Rating</th>
+											<td class="text-muted ">{{ number_format( $total_rating_score / $totalReviews, 1 ) }}</td>
+										</tr>
 									</tbody>
 								</table>
 							</div>
 						</div>
 					</div>
 					<div class="tab-pane fade" id="reviews" role="tabpanel">
-						<div class="row mb-5">
+						<div class="row">
 							<div class="col-lg-10 col-xl-9">
-								@foreach($reviews as $review)
-								<div class="media review">
-									<div class="flex-shrink-0 text-center me-4 me-xl-5">
-										<img class="review-image" src="/images/review_logo.svg" alt="{{ $review->user->name }}">
-										<span class="text-uppercase text-muted">{{ $review->created_at->format('M Y') }}</span>
-									</div>
-									<div>
-										<h5 class="mt-2 mb-1">{{ $review->user->name }}</h5>
-										<div class="mb-2">
-
+								@foreach( $reviews as $review )
+									<div class="media review">
+										<div class="flex-shrink-0 text-center me-4 me-xl-5">
+											<img class="review-image" src="/images/review_logo.svg" alt="{{ $review->user->first_name }}">
+											<span class="text-uppercase text-muted">{{ $review->created_at->format('M Y') }}</span>
 										</div>
-										<p class="text-muted">{{ $review->review_text }}</p>
+										<div>
+											<h5 class="mt-2 mb-1">{{ $review->title }}</h5>
+											<x-rating :rating="$review->rating" />
+											<div class="mb-2">
+												By {{ $review->user->first_name  . ' ' . $review->user->last_name }}
+											</div>
+											<p class="text-muted">{{ $review->review_text }}</p>
+										</div>
 									</div>
-								</div>
 								@endforeach
-								<div class="py-5 px-3">
+								<div class="pt-5 px-3">
 									<h5 class="mb-4">Leave a review</h5>
 									<form class="mb-4 form" id="reviewForm" method="post" action="{{ route('product.review.store') }}">
                                         @csrf
@@ -205,40 +205,32 @@
 				</div>
 			</cc-tabs>
 		</section>
-
 		{{--Related Products--}}
-
-
 		<section class="py-5">
 			<div class="container">
-				<h5 class="mb-4">You might also like these</h5>
+				<h5 class="mb-4">Similar Products</h5>
 				<!-- product-->
 				<div class="row">
 				@foreach($all_products as $single_product)
 					@foreach($single_product->images as $image)
+						@php $size = ''; @endphp
+						@foreach( $single_product->categories as $category )
+							@php $size = $category->value @endphp
+						@endforeach
 					<div class="col-lg-3 col-md-4">
 						<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 							<div class="product-image mb-md-3">
-								<div class="product-badge badge bg-secondary">Fresh</div>
 								<a href="{{ route('shop.show', ['product'=> $image->product->id])}}">
 									<div class="product-swap-image">
-										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $image->image_url ?? '' }}" alt="product">
-										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $image->image_url ?? '' }}" alt="product">
+										<img style="width: 100%; aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $image->image_url ?? '' }}" alt="product">
+										<img style="width: 100%; aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $image->image_url ?? '' }}" alt="product">
 									</div>
 								</a>
 								<div class="product-hover-overlay"><div class="text-dark text-sm">
-										<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
+										<svg class="d-none svg-icon text-primary-hover svg-icon-heavy d-lg-inline">
 											<use xlink:href="#retail-bag-1"> </use>
 										</svg>
-										<x-add-to-cart-button product_id="{{$image->product_id}}" quantity="1" />
-									</div>
-									<div><a class="text-dark text-primary-hover me-2" href="#!">
-											<svg class="svg-icon svg-icon-heavy">
-												<use xlink:href="#heart-1"> </use>
-											</svg></a><a class="text-dark text-primary-hover text-decoration-none" href="#!" data-bs-toggle="modal" data-bs-target="#quickView">
-											<svg class="svg-icon svg-icon-heavy">
-												<use xlink:href="#expand-1"> </use>
-											</svg></a>
+										<x-add-to-cart-button size="{{ $size }}" product_id="{{$image->product_id}}" quantity="1" />
 									</div>
 								</div>
 							</div>

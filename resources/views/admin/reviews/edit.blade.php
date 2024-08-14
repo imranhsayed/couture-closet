@@ -49,7 +49,7 @@
 
                             <div class="col-12">
                                 <div class="input-style-1">
-                                    <label>Stock Quantity</label>
+                                    <label>Rating</label>
                                     <input type="number" id="rating" min="1" max="5" name="rating" placeholder="5"
                                            value="{{ old( 'rating', $review->rating ?? '' ) }}"
                                            step="1" required>

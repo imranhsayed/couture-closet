@@ -1,3 +1,5 @@
+import { clearCart, setErrors } from '../store/actions.js';
+
 /**
  * Global variables.
  */
@@ -25,9 +27,15 @@ class Checkout extends HTMLElement {
 		this.checkoutCartContainerElement = this.querySelector( '#checkout-cart-items' );
 		this.placeOrderButton = this.querySelector( '#place-order-btn' );
 		this.formElement = this.querySelector( 'form' );
+		this.provinceSelectElement = this.querySelector( 'cc-province-select select' );
+		this.showShippingAddressInput = this.querySelector( '#show-shipping-address' );
+		this.apiFailureMessageElement = this.querySelector( '#api-failure-message' );
+		console.log( 'this.apiFailureMessageElement', this.apiFailureMessageElement );
 
 		// Event.
-		this.placeOrderButton?.addEventListener( 'click', () => this.handleFormSubmit() )
+		this.placeOrderButton?.addEventListener( 'click', () => this.handleFormSubmit() );
+		this.provinceSelectElement?.addEventListener( 'change', ( event ) => this.handleProvinceSelectionForTaxCalculation( event ) );
+		this.showShippingAddressInput?.addEventListener( 'click', ( event ) => this.handleDifferentShippingAddressButton( event ) );
 
 	}
 
@@ -75,11 +83,11 @@ class Checkout extends HTMLElement {
 			} )
 			.then( response => {
 				if ( response.success ) {
-					console.log( 'response', response );
 					// Update markup.
-					// this.updateCartItemsCountMarkup( response?.data?.products?.length ?? 0 );
 					this.addCheckoutItemsMarkup( response?.data ?? [] );
-					// this.updateCartSummaryMarkup( response?.data ?? [] );
+					this.setAttribute('taxes', JSON.stringify( response?.data?.taxes ?? [] ) );
+					this.setAttribute('total', response?.data?.amount.toString() ?? '' );
+					this.setAttribute('products', JSON.stringify( response?.data?.products ?? [] ) );
 				}
 			} )
 			.catch( error => {
@@ -101,7 +109,10 @@ class Checkout extends HTMLElement {
 		data?.products.forEach( ( product ) => {
 			checkoutItemsMarkup += `
 	            <tr class="text-sm">
-	                <th><img style="object-fit: cover;" src="${ product?.image_url ?? '' }" alt="" width="50" height="50"></th>
+	                <th>
+	                    <img style="object-fit: cover;" src="${ product?.image_url ?? '' }" alt="" width="50" height="50">
+	                    <p class="text-muted text-sm">Size: ${ product?.size ?? '' }</p>
+	                </th>
 	                <th class="py-4 fw-normal text-muted">${ product?.name ?? '' } <span>x ${ product?.quantity ?? 0 }</span></th>
 	                <td class="py-4 text-end text-muted">$${ product?.amount ?? '' }</td>
 	            </tr>
@@ -109,24 +120,13 @@ class Checkout extends HTMLElement {
 		} );
 
 		// Add the taxes.
-		checkoutItemsMarkup += `
-            <tr>
-                <th class="py-5 border-dark" colspan="2">
-                    <div class="mb-4">Shipping &amp; Taxes</div>
-                    <p class="fw-normal"><img src="pictures/checked.svg" alt="Right Icon" class="ms-2" style="width: 16px; height: 16px; margin-right:10px;"> GST <span class="fw-bold">
-                            $20</span></p>
-                    <p class="fw-normal"><img src="pictures/checked.svg" alt="Right Icon" class="ms-2" style="width: 16px; height: 16px; margin-right:10px;"> HST <span class="fw-bold">
-                            $17.5</span></p>
-                    <p class="fw-normal"><img src="pictures/checked.svg" alt="Right Icon" class="ms-2" style="width: 16px; height: 16px; margin-right:10px;"> Shipping and Handling <span class="fw-bold"> $20</span></p>
-                </th>
-            </tr>
-		`;
+		checkoutItemsMarkup += `<tr id="cart-taxes"></tr>`;
 
 		// Add total.
 		checkoutItemsMarkup += `
             <tr>
                 <th class="py-4 text-uppercase fw-bold border-dark align-bottom">Total</th>
-                <td class="py-4 text-end h3 fw-bold border-dark">$${ data?.amount ?? 0 }</td>
+                <td id="checkout-cart-total" class="py-4 text-end h3 fw-bold border-dark">$${ data?.amount ?? 0 }</td>
             </tr>
 		`;
 
@@ -153,9 +153,11 @@ class Checkout extends HTMLElement {
 
 		// Get cart data.
 		const cartData = JSON.parse( this.getAttribute( 'cart' ) );
-
-        // TODO Please pass tax's id dynamically
-        const taxRateId = 1;
+		
+		// Reset errors first.
+		setErrors( {} );
+		this.apiFailureMessageElement.innerHTML = '';
+		this.placeOrderButton.innerHTML = 'Processing...';
 
 		// Send a create order request
 		fetch( '/order/create-order', {
@@ -165,7 +167,6 @@ class Checkout extends HTMLElement {
 				'X-CSRF-TOKEN': document.querySelector( 'meta[name="csrf-token"]' ).content,
 			},
 			body: JSON.stringify( {
-                taxRateId,
 				cartData,
 				formData,
 			} ),
@@ -177,23 +178,112 @@ class Checkout extends HTMLElement {
 							const errors = data.errors;
 							// Handle validation errors here
 							console.error( 'Validation errors:', errors );
+							
+							setErrors( errors );
 						} else {
 							console.error( 'Response status:', response.status, data );
 						}
 						throw new Error( 'Network response was not ok' );
 					} );
 				}
+				
+				this.placeOrderButton.innerHTML = 'Place your order';
 				return response.json();
 			} )
 			.then( response => {
-				if ( response.success ) {
-					// Update markup.
-					console.log( 'response.success', response.success );
+				this.placeOrderButton.innerHTML = 'Place your order';
+				
+				if ( response.success && response.order_confirm_url ) {
+					// Clear Cart first.
+					clearCart();
+					
+					// Wait some time to clear the cart first.
+					setTimeout( () => {
+						// Redirect to order confirmation page.
+						window.location.href = response.order_confirm_url;
+					}, 200 )
+				} else {
+					// Set api response failure message.
+					this.apiFailureMessageElement.innerHTML = response.message;
 				}
 			} )
 			.catch( error => {
+				this.placeOrderButton.innerHTML = 'Place your order';
 				console.error( 'There was a problem with the fetch operation:', error );
 			} );
+	}
+
+	/**
+	 * Tax calculation based on province.
+	 *
+	 * @param event
+	 */
+	handleProvinceSelectionForTaxCalculation( event ) {
+		// Get target element and tax data.
+		const targetElement = event.target;
+		const taxesData = JSON.parse( this.getAttribute( 'taxes' ) );
+		const products = JSON.parse( this.getAttribute( 'products' ) );
+		const taxDataForSelectedProvince = taxesData[ targetElement.value ];
+
+		const totalQuantity = products.reduce((total, product) => {
+			return total + product.quantity;
+		}, 0);
+
+		const tax = {
+			id: taxDataForSelectedProvince?.id ?? '',
+			gst_rate: parseFloat((parseFloat(taxDataForSelectedProvince.gst_rate) * totalQuantity).toFixed(2)),
+			hst_rate: parseFloat((parseFloat(taxDataForSelectedProvince.hst_rate) * totalQuantity).toFixed(2)),
+		};
+
+		// Add taxes markup.
+		this.addTaxesMarkup( tax );
+	}
+
+	/**
+	 * Add taxes markup.
+	 *
+	 * @param tax
+	 */
+	addTaxesMarkup( tax ) {
+		const total = parseFloat( this.getAttribute( 'total' ) ?? '' );
+
+		const markup = `
+		<th class="py-5 border-dark" colspan="2">
+		    <div class="mb-4">Taxes</div>
+		    <p class="fw-normal">
+		        <img src="/images/checked.svg" alt="Right Icon" class="ms-2"
+		             style="width: 16px; height: 16px; margin-right: 10px;"> GST
+		        <span class="fw-bold">$${tax.gst_rate}</span>
+		    </p>
+		    <p class="fw-normal">
+		        <img src="/images/checked.svg" alt="Right Icon" class="ms-2"
+		             style="width: 16px; height: 16px; margin-right: 10px;"> HST
+		        <span class="fw-bold">$${tax.hst_rate}</span>
+		    </p>
+		</th>
+		`;
+
+		// Add taxes markup.
+		this.querySelector( '#cart-taxes' ).innerHTML = markup;
+
+		// Calculate total with taxes and update the total.
+		this.querySelector( '#checkout-cart-total' ).innerHTML = '$' + parseFloat( total + parseFloat( tax.gst_rate ) + parseFloat( tax.hst_rate ) ).toFixed(2);
+
+		// Add provincial tax id.
+		this.querySelector( '#provincial_tax_rate_id' ).value = tax.id;
+	}
+
+	/**
+	 * Handle different shipping address button click.
+	 *
+	 * @param event
+	 */
+	handleDifferentShippingAddressButton( event ) {
+		if ( event.target.checked ) {
+			event.target.value = 'on';
+		} else {
+			event.target.value = 'off';
+		}
 	}
 }
 

@@ -1,5 +1,6 @@
 @props( [
 	'product_id' => 0,
+	'size'       => '',
 ] )
 
 @php
@@ -8,7 +9,7 @@
 	}
 @endphp
 
-<cc-counter-add-to-cart class="input-group w-100 mb-4" product-id="{{ $product_id }}">
+<cc-counter-add-to-cart class="input-group w-100 mb-4" product-id="{{ $product_id }}" size="{{ $size }}">
 	<input id="product-detail-quantity-input" class="form-control form-control-lg detail-quantity" name="items" type="number" value="1" min="1">
 	<div class="flex-grow-1">
 		<div class="d-grid h-100">

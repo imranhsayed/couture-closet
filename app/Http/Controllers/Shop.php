@@ -11,7 +11,8 @@ class Shop extends Controller {
 	/**
 	 * Display a listing of the resource.
 	 */
-	public function index() {
+	public function index() 
+	{
 
 		$title = "Shop";
 
@@ -50,7 +51,9 @@ class Shop extends Controller {
 
 		//$products     = Product::with( 'images' )->paginate( 16 );
 		$categories   = Category::where( 'name', 'Size' )->get();
-		$brands       = Category::where( 'name', 'Brand' )->get();
+		$brands = Category::where('name', 'Brand')->whereHas('products')->get();
+		$sizeFilters   = Category::where( 'name', 'Size' )->whereHas('products')->get();
+
 		$demographies = Category::where( 'name', 'demography' )->get();
 
 		//$product = Product::with(['categories', 'images'])->find($product->id);
@@ -88,5 +91,23 @@ class Shop extends Controller {
 			
 		return view('shop.show', compact('product','all_products','categories', 'reviews','totalReviews', 'demography','size','brand'));
 
+	}
+
+	public function search(Request $request)
+    {
+		$search = $request->get('query');
+        $title = 'Products';
+		
+        $products = Product::where('name', 'LIKE', '%' . $search . '%')
+               ->orWhereHas('categories', function ($query) use ($search) {
+                   $query->where('value', 'LIKE', '%' . $search . '%');
+               })
+               ->paginate(10);
+			   
+		$demographies = Category::where( 'name', 'demography' )->get();
+		$categories   = Category::where( 'name', 'Size' )->get();
+		$brands = Category::where('name', 'Brand')->whereHas('products')->get();
+
+        return view('shop.index', compact('title','search','products','demographies','brands','categories'));
 	}
 }

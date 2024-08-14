@@ -19,6 +19,8 @@ export const DEFAULT_STATE = {
     userProfile: {
         activeTab: 'orders'
     },
+	errors: {},
+	apiFailureMessage: '',
 	loading: false,
 	initialized: false,
 	notification: '',

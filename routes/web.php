@@ -2,11 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductReviewController;
-use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserAddressController;
 use App\Models\Product;
 use App\Models\ProvincialTaxRate;
@@ -14,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
 
+use App\Http\Controllers\Admin\AdminOrderController;
 
 Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welcome' );
 
@@ -24,7 +23,7 @@ Route::get('/contact-us', function () {
 })->name('contact.us');
 
 Route::get( '/thank-you', fn() => view( 'thank-you' ) )->name( 'thank-you' );
-Route::get('/termsandconditions', fn() => view('termsandconditions'))->name('termsandconditions');
+Route::get('/terms', fn() => view('termsandconditions'))->name('terms');
 Route::get('/refund-policy', fn() => view('refund-policy'))->name('refund-policy');
 
 Route::get('/categories', [ProductController::class, 'fetchCategories']);
@@ -34,59 +33,12 @@ Route::get('/categories', [ProductController::class, 'fetchCategories']);
  */
 Route::get( '/shop', [ \App\Http\Controllers\Shop::class, 'index' ] )->name( 'shop.index' );
 Route::get('/shop/{product}', [ \App\Http\Controllers\Shop::class, 'show' ])->name( 'shop.show' );
+Route::get('/search', [\App\Http\Controllers\Shop::class, 'search'])->name('search');
 
 // Route for the cart page
 Route::get('/cart', function () {
     return view('cart');
 })->name('cart');
-
-// Cart Details.
-Route::post( '/cart-details', function () {
-	$requestPayload = request()->all();
-	$products       = [];
-	$amount         = 0;
-	foreach ( $requestPayload['products'] as $product ) {
-		$srcProduct = Product::with( 'primaryImage' )->find( $product['productId'] );
-		$totalPrice = $srcProduct->price * $product['quantity'];
-		$amount     += $totalPrice;
-		$products[] = [
-			'id'             => $srcProduct->id,
-			'name'           => $srcProduct->name,
-			'size'           => $product['size'] ?? '',
-			'image_url'      => $srcProduct['primaryImage']['image_url'],
-			'unit_price'     => $srcProduct->price,
-			'quantity'       => $product['quantity'],
-			'stock_quantity' => $srcProduct->stock_quantity,
-			'amount'         => round( $totalPrice, 2 ),
-		];
-	}
-
-    // get all provincial tax rate
-    $taxes = ProvincialTaxRate::select('id', 'province_code', 'gst_rate', 'hst_rate')->get();
-    $transformedTaxes = $taxes->mapWithKeys(function ($item) {
-        return [$item->province_code => [
-            'id'       => $item->id,
-            'gst_rate' => $item->gst_rate,
-            'hst_rate' => $item->hst_rate,
-        ]];
-    });
-    $data = [
-        'products' => $products,
-        'amount'   => round( $amount, 2 ),
-        'taxes'    => $transformedTaxes ?? [],
-    ];
-
-	return response()->json( [ 'data' => $data, 'success' => true ] );
-} )->name( 'cart-details' );
-
-// Route for the checkout page
-// Route::get('/checkout', function () {
-//     return view('checkout');
-// })->name('checkout');
-
-// Route::get('/order', function () {
-//     return view('order');
-// })->name('order');
 
 // Authentication Routes
 Auth::routes();
@@ -94,6 +46,45 @@ Route::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] )->
 
 // User Routes
 Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( function () {
+    // Cart Details.
+    Route::post( '/cart-details', function () {
+        $requestPayload = request()->all();
+        $products       = [];
+        $amount         = 0;
+        foreach ( $requestPayload['products'] as $product ) {
+            $srcProduct = Product::with( 'primaryImage' )->find( $product['productId'] );
+            $totalPrice = $srcProduct->price * $product['quantity'];
+            $amount     += $totalPrice;
+            $products[] = [
+                'id'             => $srcProduct->id,
+                'name'           => $srcProduct->name,
+                'size'           => $product['size'] ?? '',
+                'image_url'      => $srcProduct['primaryImage']['image_url'],
+                'unit_price'     => $srcProduct->price,
+                'quantity'       => $product['quantity'],
+                'stock_quantity' => $srcProduct->stock_quantity,
+                'amount'         => round( $totalPrice, 2 ),
+            ];
+        }
+
+        // get all provincial tax rate
+        $taxes = ProvincialTaxRate::select('id', 'province_code', 'gst_rate', 'hst_rate')->get();
+        $transformedTaxes = $taxes->mapWithKeys(function ($item) {
+            return [$item->province_code => [
+                'id'       => $item->id,
+                'gst_rate' => $item->gst_rate,
+                'hst_rate' => $item->hst_rate,
+            ]];
+        });
+        $data = [
+            'products' => $products,
+            'amount'   => round( $amount, 2 ),
+            'taxes'    => $transformedTaxes ?? [],
+        ];
+
+        return response()->json( [ 'data' => $data, 'success' => true ] );
+    } )->name( 'cart-details' );
+
 	// User Profile
 	Route::get( '/user/profile', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'user.profile' );
 
@@ -109,13 +100,8 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 
     // Orders
     Route::post('/order/create-order' , [ OrderController::class, 'store' ])->name( 'order.store' );
-	Route::get('/order-details/{order}', [OrderController::class, 'orderDetails'])->name('order-details.show');
-
-    // Payment
-    Route::get( '/payment/{orderId}', [ PaymentController::class, 'show' ])->name('payment.order');
-
-    // Transaction
-    Route::post( '/transaction' , [ TransactionController::class, 'create' ])->name('transaction.order.payment');
+	Route::get('/order-details/{id}', [OrderController::class, 'orderDetails'])->name('order-details.show');
+    Route::get('/order-confirmation/{order}', [OrderController::class, 'show'])->name('order.confirmation');
 
 	Route::get('/order-confirmation', function () {
 		return view('order-confirmation');
@@ -165,4 +151,17 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
     Route::delete( '/admin/category/{id}', [ CategoryController::class, 'destroy', ] )->name( 'admin.category.destroy' );
     Route::get( '/admin/category/edit/{category}', [ CategoryController::class , 'edit' ])->name( 'admin.category.edit' );
     Route::put( '/admin/category/update/{category}', [ CategoryController::class, 'update' ] )->name( 'admin.category.update' );
+
+    // Admin Order management
+    Route::get('admin/orders/search', [AdminOrderController::class, 'search'])->name('admin.orders.search');
+    Route::resource('admin/orders', AdminOrderController::class)->names([
+        'index' => 'admin.orders.index',
+        'create' => 'admin.orders.create',
+        'store' => 'admin.orders.store',
+        'show' => 'admin.orders.show',
+        'edit' => 'admin.orders.edit',
+        'update' => 'admin.orders.update',
+        'destroy' => 'admin.orders.destroy',
+    ]);
+
 } );

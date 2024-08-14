@@ -32,9 +32,11 @@ export const initialize = ( settings = {}) => {
  *
  * @param productId
  * @param quantity
+ * @param size
+ *
  * @return {null}
  */
-export const addToCart = ( productId = 0, quantity = 1 ) => {
+export const addToCart = ( productId = 0, quantity = 1, size = '' ) => {
 	// If product id is not passed, early return.
 	if ( ! productId ) {
 		return null;
@@ -43,7 +45,7 @@ export const addToCart = ( productId = 0, quantity = 1 ) => {
 	// Initialize.
 	let productExists = false;
 	const { cart } = getState();
-	const newProduct = { productId, quantity };
+	const newProduct = { productId, quantity, size };
 	const updatedProducts = cart.products;
 
 	// Loop through existing cart array and check if the product already exists.
@@ -197,9 +199,26 @@ export const removeEntireCartItem = ( productId ) => {
 	} );
 }
 
+/**
+ * Clear Cart.
+ */
+export const clearCart = () => {
+	setState( {
+		cart: {
+			products: [],
+			totalProductsCount: 0,
+		}
+	})
+}
+
 export const resetNotification = () => {
 	setState( {
 		notification: '',
 	} );
 }
 
+export const setErrors = ( errors ) => {
+	setState( {
+		errors,
+	})
+}
