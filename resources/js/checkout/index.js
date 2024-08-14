@@ -29,6 +29,8 @@ class Checkout extends HTMLElement {
 		this.formElement = this.querySelector( 'form' );
 		this.provinceSelectElement = this.querySelector( 'cc-province-select select' );
 		this.showShippingAddressInput = this.querySelector( '#show-shipping-address' );
+		this.apiFailureMessageElement = this.querySelector( '#api-failure-message' );
+		console.log( 'this.apiFailureMessageElement', this.apiFailureMessageElement );
 
 		// Event.
 		this.placeOrderButton?.addEventListener( 'click', () => this.handleFormSubmit() );
@@ -154,6 +156,7 @@ class Checkout extends HTMLElement {
 		
 		// Reset errors first.
 		setErrors( {} );
+		this.apiFailureMessageElement.innerHTML = '';
 		this.placeOrderButton.innerHTML = 'Processing...';
 
 		// Send a create order request
@@ -199,6 +202,9 @@ class Checkout extends HTMLElement {
 						// Redirect to order confirmation page.
 						window.location.href = response.order_confirm_url;
 					}, 200 )
+				} else {
+					// Set api response failure message.
+					this.apiFailureMessageElement.innerHTML = response.message;
 				}
 			} )
 			.catch( error => {
