@@ -83,7 +83,7 @@
                                     @php
                                         $statusClasses = [
                                             'Processing' => 'warning-btn close-btn',
-                                            'Canceled' => 'close-btn',
+                                            'Cancelled' => 'close-btn',
                                             'Shipped' => 'success-btn',
                                             'Delivered' => 'success-btn',
                                         ];
