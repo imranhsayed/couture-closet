@@ -80,7 +80,19 @@
                                     <td class="text-sm">{{ number_format($order->pst + $order->gst + $order->hst, 2) }}</td>
                                     <td class="text-sm">{{ number_format($order->total_amount, 2) }}</td>
                                     <td class="text-sm">{{ Str::limit($order->shipping_address, 30) }}</td>
-                                    <td class="text-sm">{{ $order->status }}</td>
+                                    @php
+                                        $statusClasses = [
+                                            'Processing' => 'warning-btn close-btn',
+                                            'Shipped' => 'success-btn',
+                                            'Delivered' => 'success-btn',
+                                            'Cancelled' => 'close-btn',
+                                        ];
+                                        $status = $order->status;
+                                        $class = $statusClasses[$status] ?? 'text-muted';
+                                    @endphp
+                                    <td>
+                                        <span class="status-btn {{ $class }}">{{ $status }}</span>
+                                    </td>
                                     <td>
                                         <div class="action">
                                             <a href="{{ route('admin.orders.show', $order->id) }}"

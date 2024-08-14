@@ -42,7 +42,7 @@
 					<div id="buyForm">
 						<div class="row">
 							<div class="col-sm-6 col-lg-12 detail-option mb-4">
-								@if($size)
+								@if( $size )
 									<h6 class="detail-option-heading d-inline">Size: </h6>
 									<span>{{$size->description}}</span>
 								@else
@@ -52,7 +52,7 @@
 							</div>
 						</div>
 						{{--Add to cart--}}
-						<x-counter-add-to-cart product_id="{{ $product->id }}" />
+						<x-counter-add-to-cart product_id="{{ $product->id }}" size="{{ $size->description ?? '' }}"/>
 
 						<ul class="list-unstyled border-top">
 							{{--@TODO To make category and brand dyanamic--}}
@@ -90,7 +90,7 @@
 					<li class="nav-item"><a class="nav-link detail-nav-link" data-bs-toggle="tab" href="#additional-information" role="tab">Additional Information</a></li>
 					<li class="nav-item"><a class="nav-link detail-nav-link" data-bs-toggle="tab" href="#reviews" role="tab">Reviews</a></li>
 				</ul>
-				<div class="tab-content py-4">
+				<div class="tab-content pt-4 pb-0">
 					<div class="tab-pane fade show active px-3" id="description" role="tabpanel">
 						<div class="row">
 							<div class="col-md-7">
@@ -126,44 +126,47 @@
 								</table>
 							</div>
 							<div class="col-lg-6">
-								<table class="table text-sm">
+								<table class="table text-sm mt-5">
 									<tbody>
-									@foreach($reviews as $review)
+										@php $total_rating_score = 0; @endphp
+										@foreach($reviews as $review)
+											@php
+												$total_rating_score += $review->rating;
+											@endphp
+										@endforeach
 										<tr>
 											<th class="font-weight-normal ">Total Reviews</th>
-											<td class="text-muted ">{{$totalReviews}} reviews</td>
+											<td class="text-muted ">{{ $totalReviews }} reviews</td>
 										</tr>
-									@endforeach
-									@foreach($reviews as $review)
 										<tr>
 											<th class="font-weight-normal ">Rating</th>
-											<td class="text-muted ">{{ $review->rating}}</td>
+											<td class="text-muted ">{{ number_format( $total_rating_score / $totalReviews, 1 ) }}</td>
 										</tr>
-									@endforeach
 									</tbody>
 								</table>
 							</div>
 						</div>
 					</div>
 					<div class="tab-pane fade" id="reviews" role="tabpanel">
-						<div class="row mb-5">
+						<div class="row">
 							<div class="col-lg-10 col-xl-9">
-								@foreach($reviews as $review)
+								@foreach( $reviews as $review )
 									<div class="media review">
 										<div class="flex-shrink-0 text-center me-4 me-xl-5">
-											<img class="review-image" src="/images/review_logo.svg" alt="{{ $review->user->name }}">
+											<img class="review-image" src="/images/review_logo.svg" alt="{{ $review->user->first_name }}">
 											<span class="text-uppercase text-muted">{{ $review->created_at->format('M Y') }}</span>
 										</div>
 										<div>
-											<h5 class="mt-2 mb-1">{{ $review->user->name }}</h5>
+											<h5 class="mt-2 mb-1">{{ $review->title }}</h5>
+											<x-rating :rating="$review->rating" />
 											<div class="mb-2">
-
+												By {{ $review->user->first_name  . ' ' . $review->user->last_name }}
 											</div>
 											<p class="text-muted">{{ $review->review_text }}</p>
 										</div>
 									</div>
 								@endforeach
-								<div class="py-5 px-3">
+								<div class="pt-5 px-3">
 									<h5 class="mb-4">Leave a review</h5>
 									<form class="mb-4 form" id="reviewForm" method="post" action="{{ route('product.review.store') }}">
                                         @csrf
@@ -210,6 +213,10 @@
 				<div class="row">
 				@foreach($all_products as $single_product)
 					@foreach($single_product->images as $image)
+						@php $size = ''; @endphp
+						@foreach( $single_product->categories as $category )
+							@php $size = $category->value @endphp
+						@endforeach
 					<div class="col-lg-3 col-md-4">
 						<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 							<div class="product-image mb-md-3">
@@ -223,7 +230,7 @@
 										<svg class="d-none svg-icon text-primary-hover svg-icon-heavy d-lg-inline">
 											<use xlink:href="#retail-bag-1"> </use>
 										</svg>
-										<x-add-to-cart-button product_id="{{$image->product_id}}" quantity="1" />
+										<x-add-to-cart-button size="{{ $size }}" product_id="{{$image->product_id}}" quantity="1" />
 									</div>
 								</div>
 							</div>

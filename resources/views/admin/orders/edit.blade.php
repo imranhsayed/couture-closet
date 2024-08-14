@@ -53,13 +53,13 @@
                                         <label for="status" class="mb-2 text-sm">Select Status</label>
                                         <div class="select-position">
                                             <select id="status" name="status" class="light-bg">
-                                                <option value="1" {{ $order->status == 1 ? 'selected' : '' }}>Pending
+                                                <option value="1" {{ $order->status == 1 ? 'selected' : '' }}>Processing
                                                 </option>
-                                                <option value="2" {{ $order->status == 2 ? 'selected' : '' }}>Processing
+                                                <option value="2" {{ $order->status == 2 ? 'selected' : '' }}>Shipped
                                                 </option>
-                                                <option value="3" {{ $order->status == 3 ? 'selected' : '' }}>Shipped
+                                                <option value="3" {{ $order->status == 3 ? 'selected' : '' }}>Delivered
                                                 </option>
-                                                <option value="4" {{ $order->status == 4 ? 'selected' : '' }}>Delivered
+                                                <option value="4" {{ $order->status == 4 ? 'selected' : '' }}>Cancelled
                                                 </option>
                                             </select>
                                         </div>

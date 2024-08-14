@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
 
-use App\Models\OrderItem;
 use App\Http\Controllers\Admin\AdminOrderController;
 
 Route::get( '/', [ App\Http\Controllers\Welcome::class, 'index' ] )->name( 'welcome' );
@@ -41,60 +40,51 @@ Route::get('/cart', function () {
     return view('cart');
 })->name('cart');
 
-// Cart Details.
-Route::post( '/cart-details', function () {
-	$requestPayload = request()->all();
-	$products       = [];
-	$amount         = 0;
-	foreach ( $requestPayload['products'] as $product ) {
-		$srcProduct = Product::with( 'primaryImage' )->find( $product['productId'] );
-		$totalPrice = $srcProduct->price * $product['quantity'];
-		$amount     += $totalPrice;
-		$products[] = [
-			'id'             => $srcProduct->id,
-			'name'           => $srcProduct->name,
-			'size'           => $product['size'] ?? '',
-			'image_url'      => $srcProduct['primaryImage']['image_url'],
-			'unit_price'     => $srcProduct->price,
-			'quantity'       => $product['quantity'],
-			'stock_quantity' => $srcProduct->stock_quantity,
-			'amount'         => round( $totalPrice, 2 ),
-		];
-	}
-
-    // get all provincial tax rate
-    $taxes = ProvincialTaxRate::select('id', 'province_code', 'gst_rate', 'hst_rate')->get();
-    $transformedTaxes = $taxes->mapWithKeys(function ($item) {
-        return [$item->province_code => [
-            'id'       => $item->id,
-            'gst_rate' => $item->gst_rate,
-            'hst_rate' => $item->hst_rate,
-        ]];
-    });
-    $data = [
-        'products' => $products,
-        'amount'   => round( $amount, 2 ),
-        'taxes'    => $transformedTaxes ?? [],
-    ];
-
-	return response()->json( [ 'data' => $data, 'success' => true ] );
-} )->name( 'cart-details' );
-
-// Route for the checkout page
-// Route::get('/checkout', function () {
-//     return view('checkout');
-// })->name('checkout');
-
-// Route::get('/order', function () {
-//     return view('order');
-// })->name('order');
-
 // Authentication Routes
 Auth::routes();
 Route::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'home' );
 
 // User Routes
 Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( function () {
+    // Cart Details.
+    Route::post( '/cart-details', function () {
+        $requestPayload = request()->all();
+        $products       = [];
+        $amount         = 0;
+        foreach ( $requestPayload['products'] as $product ) {
+            $srcProduct = Product::with( 'primaryImage' )->find( $product['productId'] );
+            $totalPrice = $srcProduct->price * $product['quantity'];
+            $amount     += $totalPrice;
+            $products[] = [
+                'id'             => $srcProduct->id,
+                'name'           => $srcProduct->name,
+                'size'           => $product['size'] ?? '',
+                'image_url'      => $srcProduct['primaryImage']['image_url'],
+                'unit_price'     => $srcProduct->price,
+                'quantity'       => $product['quantity'],
+                'stock_quantity' => $srcProduct->stock_quantity,
+                'amount'         => round( $totalPrice, 2 ),
+            ];
+        }
+
+        // get all provincial tax rate
+        $taxes = ProvincialTaxRate::select('id', 'province_code', 'gst_rate', 'hst_rate')->get();
+        $transformedTaxes = $taxes->mapWithKeys(function ($item) {
+            return [$item->province_code => [
+                'id'       => $item->id,
+                'gst_rate' => $item->gst_rate,
+                'hst_rate' => $item->hst_rate,
+            ]];
+        });
+        $data = [
+            'products' => $products,
+            'amount'   => round( $amount, 2 ),
+            'taxes'    => $transformedTaxes ?? [],
+        ];
+
+        return response()->json( [ 'data' => $data, 'success' => true ] );
+    } )->name( 'cart-details' );
+
 	// User Profile
 	Route::get( '/user/profile', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'user.profile' );
 

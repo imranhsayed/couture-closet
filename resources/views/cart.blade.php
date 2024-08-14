@@ -30,7 +30,7 @@
 			        </div>
 			        <div class="d-flex justify-content-between flex-column flex-lg-row mb-5 mb-lg-0">
 				        <a class="btn btn-link" href="/shop">
-					        <img src="pictures/black-left.svg" alt="Right Icon" style="width: 16px; height: 16px;">
+					        <img src="/images/black-left.svg" alt="Right Icon" style="width: 16px; height: 16px;">
 					        Continue Shopping
 				        </a>
 			        </div>
@@ -51,7 +51,7 @@
 				        <div class="card-footer overflow-hidden p-0">
 					        <div class="d-grid"> <a class="btn btn-primary py-3 text-white" href="/checkout">
 							        Proceed to Checkout
-							        <img src="/pictures/white-right.svg" alt="Right Icon" class="ms-2"
+							        <img src="/images/white-right.svg" alt="Right Icon" class="ms-2"
 							             style="width: 16px; height: 16px;">
 						        </a>
 					        </div>

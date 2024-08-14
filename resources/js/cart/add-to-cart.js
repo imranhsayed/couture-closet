@@ -25,6 +25,7 @@ class AddToCartButton extends HTMLElement {
 		
 		this.productId = Number( this.getAttribute( 'product-id' ) ?? '' );
 		this.quantity = Number( this.getAttribute( 'quantity' ) ?? 1 );
+		this.size = this.getAttribute( 'size' ) ?? '';
 		this.button = this.querySelector( 'button' );
 		this.button?.addEventListener( 'click', () => this.handleAddToCart() );
 	}
@@ -39,7 +40,7 @@ class AddToCartButton extends HTMLElement {
 			return;
 		}
 		
-		addToCart( this.productId, this.quantity );
+		addToCart( this.productId, this.quantity, this.size );
 	}
 }
 

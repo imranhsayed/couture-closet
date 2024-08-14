@@ -29,6 +29,8 @@ class Checkout extends HTMLElement {
 		this.formElement = this.querySelector( 'form' );
 		this.provinceSelectElement = this.querySelector( 'cc-province-select select' );
 		this.showShippingAddressInput = this.querySelector( '#show-shipping-address' );
+		this.apiFailureMessageElement = this.querySelector( '#api-failure-message' );
+		console.log( 'this.apiFailureMessageElement', this.apiFailureMessageElement );
 
 		// Event.
 		this.placeOrderButton?.addEventListener( 'click', () => this.handleFormSubmit() );
@@ -107,7 +109,10 @@ class Checkout extends HTMLElement {
 		data?.products.forEach( ( product ) => {
 			checkoutItemsMarkup += `
 	            <tr class="text-sm">
-	                <th><img style="object-fit: cover;" src="${ product?.image_url ?? '' }" alt="" width="50" height="50"></th>
+	                <th>
+	                    <img style="object-fit: cover;" src="${ product?.image_url ?? '' }" alt="" width="50" height="50">
+	                    <p class="text-muted text-sm">Size: ${ product?.size ?? '' }</p>
+	                </th>
 	                <th class="py-4 fw-normal text-muted">${ product?.name ?? '' } <span>x ${ product?.quantity ?? 0 }</span></th>
 	                <td class="py-4 text-end text-muted">$${ product?.amount ?? '' }</td>
 	            </tr>
@@ -151,6 +156,7 @@ class Checkout extends HTMLElement {
 		
 		// Reset errors first.
 		setErrors( {} );
+		this.apiFailureMessageElement.innerHTML = '';
 		this.placeOrderButton.innerHTML = 'Processing...';
 
 		// Send a create order request
@@ -196,6 +202,9 @@ class Checkout extends HTMLElement {
 						// Redirect to order confirmation page.
 						window.location.href = response.order_confirm_url;
 					}, 200 )
+				} else {
+					// Set api response failure message.
+					this.apiFailureMessageElement.innerHTML = response.message;
 				}
 			} )
 			.catch( error => {
@@ -242,12 +251,12 @@ class Checkout extends HTMLElement {
 		<th class="py-5 border-dark" colspan="2">
 		    <div class="mb-4">Taxes</div>
 		    <p class="fw-normal">
-		        <img src="/pictures/checked.svg" alt="Right Icon" class="ms-2"
+		        <img src="/images/checked.svg" alt="Right Icon" class="ms-2"
 		             style="width: 16px; height: 16px; margin-right: 10px;"> GST
 		        <span class="fw-bold">$${tax.gst_rate}</span>
 		    </p>
 		    <p class="fw-normal">
-		        <img src="/pictures/checked.svg" alt="Right Icon" class="ms-2"
+		        <img src="/images/checked.svg" alt="Right Icon" class="ms-2"
 		             style="width: 16px; height: 16px; margin-right: 10px;"> HST
 		        <span class="fw-bold">$${tax.hst_rate}</span>
 		    </p>

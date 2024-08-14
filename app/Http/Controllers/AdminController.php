@@ -41,6 +41,7 @@ class AdminController extends Controller
                                 ->count('product_categories.category_id');
 
         // users
+        $currentTotalUserCount = User::count();
         $currentUserCount = User::where('created_at', '>=', DB::raw('NOW() - INTERVAL 7 DAY'))->count();
         $previousUserCount = User::where('created_at', '>=', DB::raw('NOW() - INTERVAL 7 DAY'))
                                  ->where('created_at', '<', DB::raw('NOW() - INTERVAL 7 DAY'))->count();
@@ -68,6 +69,7 @@ class AdminController extends Controller
                                             'productCount',
                                             'categoryCount',
                                             'currentUserCount',
+                                            'currentTotalUserCount',
                                             'userRateOfChange',
                                             'weeklySales',
                                             'topProducts'
