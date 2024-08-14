@@ -51,7 +51,7 @@
 				        <div class="card-footer overflow-hidden p-0">
 					        <div class="d-grid"> <a class="btn btn-primary py-3 text-white" href="/checkout">
 							        Proceed to Checkout
-							        <img src="/imags/white-right.svg" alt="Right Icon" class="ms-2"
+							        <img src="/images/white-right.svg" alt="Right Icon" class="ms-2"
 							             style="width: 16px; height: 16px;">
 						        </a>
 					        </div>
