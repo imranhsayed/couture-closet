@@ -29,6 +29,7 @@ import './cart/notification.js';
  * Checkout.
  */
 import './checkout/index.js';
+import './checkout/form-field-error.js';
 
 /**
  * User.

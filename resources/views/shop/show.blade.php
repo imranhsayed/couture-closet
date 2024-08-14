@@ -215,12 +215,12 @@
 							<div class="product-image mb-md-3">
 								<a href="{{ route('shop.show', ['product'=> $image->product->id])}}">
 									<div class="product-swap-image">
-										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $image->image_url ?? '' }}" alt="product">
-										<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $image->image_url ?? '' }}" alt="product">
+										<img style="width: 100%; aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $image->image_url ?? '' }}" alt="product">
+										<img style="width: 100%; aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $image->image_url ?? '' }}" alt="product">
 									</div>
 								</a>
 								<div class="product-hover-overlay"><div class="text-dark text-sm">
-										<svg class="svg-icon text-primary-hover svg-icon-heavy d-sm-none">
+										<svg class="d-none svg-icon text-primary-hover svg-icon-heavy d-lg-inline">
 											<use xlink:href="#retail-bag-1"> </use>
 										</svg>
 										<x-add-to-cart-button product_id="{{$image->product_id}}" quantity="1" />
