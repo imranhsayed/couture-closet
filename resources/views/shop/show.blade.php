@@ -210,6 +210,10 @@
 				<div class="row">
 				@foreach($all_products as $single_product)
 					@foreach($single_product->images as $image)
+						@php $size = ''; @endphp
+						@foreach( $single_product->categories as $category )
+							@php $size = $category->value @endphp
+						@endforeach
 					<div class="col-lg-3 col-md-4">
 						<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 							<div class="product-image mb-md-3">
@@ -223,7 +227,7 @@
 										<svg class="d-none svg-icon text-primary-hover svg-icon-heavy d-lg-inline">
 											<use xlink:href="#retail-bag-1"> </use>
 										</svg>
-										<x-add-to-cart-button product_id="{{$image->product_id}}" quantity="1" />
+										<x-add-to-cart-button size="{{ $size }}" product_id="{{$image->product_id}}" quantity="1" />
 									</div>
 								</div>
 							</div>

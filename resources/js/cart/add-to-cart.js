@@ -28,8 +28,6 @@ class AddToCartButton extends HTMLElement {
 		this.size = this.getAttribute( 'size' ) ?? '';
 		this.button = this.querySelector( 'button' );
 		this.button?.addEventListener( 'click', () => this.handleAddToCart() );
-		
-		console.log( 'this.size', this.size );
 	}
 	
 	update() {
