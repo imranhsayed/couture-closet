@@ -42,7 +42,7 @@
 					<div id="buyForm">
 						<div class="row">
 							<div class="col-sm-6 col-lg-12 detail-option mb-4">
-								@if($size)
+								@if( $size )
 									<h6 class="detail-option-heading d-inline">Size: </h6>
 									<span>{{$size->description}}</span>
 								@else
@@ -52,7 +52,7 @@
 							</div>
 						</div>
 						{{--Add to cart--}}
-						<x-counter-add-to-cart product_id="{{ $product->id }}" />
+						<x-counter-add-to-cart product_id="{{ $product->id }}" size="{{ $size->description ?? '' }}"/>
 
 						<ul class="list-unstyled border-top">
 							{{--@TODO To make category and brand dyanamic--}}
