@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderItem extends Model
 {
+    public $timestamps = false;
     use HasFactory;
 
     protected $fillable = [
@@ -15,6 +16,7 @@ class OrderItem extends Model
         'quantity',
         'unit_price',
         'line_price',
+        'size',
     ];
 
     /**
