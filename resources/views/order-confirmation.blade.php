@@ -29,11 +29,11 @@
         <p class="lead mb-5">Your order hasn't shipped yet but we will send you an email when it does.</p>
 	    <div class="p-4 bg-gray-100" style="background-color: #F8F8F8;">
 		    <div class="row">
-			    <div class="col-6 col-lg-3 mb-5 mb-lg-0 d-flex flex-column">
+			    <div class="col-6 col-lg-2 mb-5 mb-lg-0 d-flex flex-column">
 				    <div class="text-sm text-uppercase text-muted mb-3">Order no.</div>
 				    <span class="h5">{{$order->id}}</span>
 			    </div>
-			    <div class="col-6 col-lg-3 mb-5 mb-lg-0 d-flex flex-column">
+			    <div class="col-6 col-lg-2 mb-5 mb-lg-0 d-flex flex-column">
 				    <div class="text-sm text-uppercase text-muted mb-3">Cust. Name</div>
 				    <span class="h5">{{$user->first_name}}</span>
 			    </div>
@@ -45,26 +45,9 @@
 				    <div class="text-sm text-uppercase text-muted mb-3">Total</div>
 				    <span class="h5">{{$order->total_amount}}</span>
 			    </div>
-			    <div class="col-6 col-lg-3 mb-5 mb-lg-0 d-flex flex-column">
+			    <div class="col-6 col-lg-2 mb-5 mb-lg-0 d-flex flex-column">
 				    <div class="text-sm text-uppercase text-muted mb-3">Status</div>
-				    <span class="h5">
-                        @switch($order->status)
-						    @case(1)
-							    Pending
-							    @break
-						    @case(2)
-							    Processing
-							    @break
-						    @case(3)
-							    Shipped
-							    @break
-						    @case(4)
-							    Delivered
-							    @break
-						    @default
-							    Unknown
-					    @endswitch
-                    </span>
+				    <span class="h5">{{$order->status}}</span>
 			    </div>
 		    </div>
 	    </div>
