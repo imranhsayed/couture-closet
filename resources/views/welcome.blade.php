@@ -14,7 +14,7 @@
 					<div class="carousel-caption text-start" style="background-color: rgb(239, 235, 223, 0.7); padding: 20px; border-radius: 10px; color: black; max-width: 600px; left: 15%; bottom: initial; top: 50%; transform: translateY(-50%); right: initial; ">
 						<h1 style="font-size: 36px; font-weight: bold;">Elevate Your Style with Timeless Fashion</h1>
 						<p style="font-size: 20px;">Crafting Couture for Every Occasion</p>
-						<p><a class="main-btn primary-btn btn-hover text-center" href="/shop" style="background-color: black; border-color: black;">Visit OUr Shop</a></p>
+						<p><a class="main-btn primary-btn btn-hover text-center text-decoration-none text-uppercase mt-2" href="/shop" style="background-color: black; border-color: black; letter-spacing: .1rem">Visit Our Shop</a></p>
 					</div>
 				</div>
 			</div>
@@ -24,7 +24,7 @@
 					<div class="carousel-caption" style="background-color: rgb(239, 235, 223, 0.7); padding: 20px; border-radius: 10px; color: black; max-width: 600px; left: 15%; bottom: initial; top: 50%; transform: translateY(-50%); right: initial;text-align: left;">
 						<h1 style="font-size: 36px; font-weight: bold;">Discover the Latest Trends</h1>
 						<p style="font-size: 20px;">Explore our wide collection of new arrivals.</p>
-						<p><a class="main-btn primary-btn btn-hover text-center" href="/shop?category=Women" style="background-color: black; border-color: black;">Shop Women</a></p>
+						<p><a class="main-btn primary-btn btn-hover text-center tracking-wide" href="/shop?category=Women" style="background-color: black; border-color: black;">Shop Women</a></p>
 					</div>
 				</div>
 			</div>
@@ -34,7 +34,7 @@
 					<div class="carousel-caption" style="background-color: rgb(239, 235, 223, 0.7); padding: 20px; border-radius: 10px; color: black; max-width: 600px; left: 15%; bottom: initial; top: 50%; transform: translateY(-50%); right: initial; text-align: left;">
 						<h1 style="font-size: 36px; font-weight: bold;">Exclusive Deals This Season</h1>
 						<p style="font-size: 20px;">Unwrap the gift of fashion with our exclusive seasonal offers.</p>
-						<p><a class="main-btn primary-btn btn-hover text-center" href="/shop?category=Men" style="background-color: black; border-color: black;">Shop Men</a></p>
+						<p><a class="main-btn primary-btn btn-hover text-center tracking-wide" href="/shop?category=Men" style="background-color: black; border-color: black;">Shop Men's Wear</a></p>
 					</div>
 				</div>
 			</div>
