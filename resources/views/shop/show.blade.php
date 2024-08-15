@@ -7,10 +7,10 @@
 		<ul class="breadcrumb mt-5">
 			<li class="breadcrumb-item"><a href="/">Home</a></li>
 			@if($demography)
-        		<li class="breadcrumb-item"><a href="/category?name=demography">{{ $demography->value }}</a></li>
+        		<li class="breadcrumb-item"><a href="/shop?category={{ $demography->value }}">{{ $demography->value }}</a></li>
     		@endif
     		@if($brand)
-        		<li class="breadcrumb-item"><a href="/category?name=brand">{{ $brand->value }}</a></li>
+        		<li class="breadcrumb-item"><a href="/shop?brand={{ $brand->value }}">{{ $brand->value }}</a></li>
     		@endif
 			<li class="breadcrumb-item active">{{ $product->name}}</li>
 		</ul>
