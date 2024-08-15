@@ -63,6 +63,11 @@ cc-checkout {
 	transform: translateY(-20px);
 }
 
+.btn-dark:not(:disabled):not(.disabled).active
+{
+    background-color: #9b8338;
+    border-color: #ffffff;
+}
 
 // Donalds Custom
 @import 'donalds';
