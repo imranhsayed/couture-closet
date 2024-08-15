@@ -5,7 +5,7 @@
 	<div class="container">
 		{{--BreadCrumb--}}
 		<ul class="breadcrumb mt-5">
-			<li class="breadcrumb-item"><a href="/">Home</a></li>
+			<li class="breadcrumb-item"><a href="/shop">Shop</a></li>
 			@if($demography)
         		<li class="breadcrumb-item"><a href="/shop?category={{ $demography->value }}">{{ $demography->value }}</a></li>
     		@endif
