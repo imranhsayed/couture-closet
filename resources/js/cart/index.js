@@ -52,6 +52,7 @@ class Cart extends HTMLElement {
 			body: JSON.stringify( { ...cartData } ),
 		} )
 			.then( response => {
+				console.log( 'res', response );
 				if ( ! response.ok ) {
 					return response.json().then( data => {
 						if ( response.status === 422 ) {
