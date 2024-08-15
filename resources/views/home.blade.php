@@ -88,6 +88,9 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Date</th>
+                                    <th>Order ID</th>
+                                    <th>Shipping Address</th>
+                                    <th>Phone Number</th>
                                     <th>Amount</th>
                                     <th>Action</th>
                                 </tr>
@@ -98,6 +101,9 @@
                                 <tr>
                                     <td>{{ ++$key }}</td>
                                     <td>{{ $order->order_date ?? '' }}</td>
+                                    <td>{{ '#' . $order->id ?? '' }}</td>
+                                    <td>{{ $order->shipping_address ?? '' }}</td>
+                                    <td>{{ $order->shipping_phone_number ?? '' }}</td>
                                     <td>${{ $order->total_amount ?? '' }}</td>
                                     <td>
                                     <div class="button-group d-flex justify-content-center flex-wrap">
