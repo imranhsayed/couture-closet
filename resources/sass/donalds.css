@@ -10,3 +10,9 @@
 body {
 	color: #202529;
 }
+
+.btn-dark:not(:disabled):not(.disabled).active
+{
+    background-color: #9b8338;
+    border-color: #ffffff;
+}
