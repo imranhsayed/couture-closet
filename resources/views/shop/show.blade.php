@@ -138,10 +138,12 @@
 											<th class="font-weight-normal ">Total Reviews</th>
 											<td class="text-muted ">{{ $totalReviews }} reviews</td>
 										</tr>
-										<tr>
-											<th class="font-weight-normal ">Rating</th>
-											<td class="text-muted ">{{ number_format( $total_rating_score / $totalReviews, 1 ) }}</td>
-										</tr>
+										@if( $totalReviews )
+											<tr>
+												<th class="font-weight-normal ">Rating</th>
+												<td class="text-muted ">{{ number_format( $total_rating_score / $totalReviews, 1 ) }}</td>
+											</tr>
+										@endif
 									</tbody>
 								</table>
 							</div>
