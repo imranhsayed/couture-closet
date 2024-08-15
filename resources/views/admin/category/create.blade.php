@@ -28,10 +28,18 @@
                         @csrf
                         <div class="row">
                             <div class="col-12">
-                                <div class="input-style-2">
-                                    <label>Name</label>
-                                    <input type="text" id="name" name="name" placeholder="category name"
-                                           value="{{ old( 'name', $category->name ?? '' ) }}">
+                                <div class="select-style-1">
+                                    <label for="name">Name</label>
+                                    <div class="select-position">
+                                        <select name="name" id="name" class="form-control select2 light-bg">
+                                            <option value="">Select Category</option>
+                                                @foreach($categories as $category)
+                                                    <option value="{{ $category->name }}" {{ old('name') == $category->name ? 'selected' : '' }}>
+                                                        {{ $category->name }}
+                                                    </option>
+                                                @endforeach
+                                        </select>
+                                    </div>
                                     <x-val-error field="name"/>
                                 </div>
                             </div>
@@ -40,8 +48,8 @@
                                 <div class="input-style-2">
                                     <label>value</label>
                                     <input type="text" id="value" name="value" placeholder="category value"
-                                           value="{{ old( 'name', $category->value ?? '' ) }}">
-                                    <x-val-error field="name"/>
+                                           value="{{ old( 'value', $category->value ?? '' ) }}">
+                                    <x-val-error field="value"/>
                                 </div>
                             </div>
 
