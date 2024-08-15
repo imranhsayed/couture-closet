@@ -36,9 +36,9 @@
                                     <div class="select-position">
                                         <select name="name" id="name" class="form-control select2 light-bg">
                                             <option value="">Select Category</option>
-                                                @foreach($categories as $category)
-                                                    <option value="{{ $category->name }}" {{ old('name') == $category->name ? 'selected' : '' }}>
-                                                        {{ $category->name }}
+                                                @foreach($categories as $cat)
+                                                    <option value="{{ $cat->name }}" {{ old('name', $category->name) == $cat->name ? 'selected' : '' }}>
+                                                        {{ $cat->name }}
                                                     </option>
                                                 @endforeach
                                         </select>
