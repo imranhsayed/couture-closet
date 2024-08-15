@@ -245,7 +245,7 @@
         </div>
         <div class="col-lg-5 summary">
             <h5 class="text-primary mb-5">Order Summary</h5>
-            <table id="checkout-cart-items" class="table border-bottom border-dark mb-5">
+            <table id="checkout-cart-items" class="table border-bottom mb-5">
 				{{--Content will be added via JS--}}
             </table>
             <p class="text-muted text-sm">Your personal data will be used to process your order,
