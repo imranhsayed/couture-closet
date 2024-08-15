@@ -2,7 +2,7 @@
 
 @section('content')
     @include('partials.flash')
-	<div class="container">
+	<div class="container mt-5">
 		{{--BreadCrumb--}}
 		<ul class="breadcrumb mt-5">
 			<li class="breadcrumb-item"><a href="/shop">Shop</a></li>
@@ -233,7 +233,7 @@
 									</div>
 								</a>
 								<div class="product-hover-overlay"><div class="text-dark text-sm">
-										<svg class="d-none svg-icon text-primary-hover svg-icon-heavy d-lg-inline">
+										<svg class="d-none svg-icon text-primary-hover svg-icon-heavy d-lg-inline mr-2">
 											<use xlink:href="#retail-bag-1"> </use>
 										</svg>
 										<x-add-to-cart-button size="{{ $size }}" product_id="{{$image->product_id}}" quantity="1" />
