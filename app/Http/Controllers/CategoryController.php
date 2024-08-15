@@ -39,7 +39,8 @@ class CategoryController extends Controller
     public function create()
     {
         $title = 'Create Category';
-        return view('admin.category.create', compact('title'));
+        $categories = Category::select('name')->distinct()->get();
+        return view('admin.category.create', compact('title','categories'));
     }
 
     /**
@@ -83,9 +84,11 @@ class CategoryController extends Controller
     {
         $title = 'Edit Category';
 
+        $categories = Category::select('name')->distinct()->get();
+
         $category = Category::findorFail($id);
 
-        return view('admin.category.edit', compact('title','category'));
+        return view('admin.category.edit', compact('title','categories','category'));
     }
 
     /**
