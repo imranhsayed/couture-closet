@@ -44,27 +44,32 @@ class UserController extends Controller
         return view('admin.users.edit', compact('user'));
     }
 
-    public function update(Request $request, User $user)
+    public function updateInfo(Request $request)
     {
-        // Validate and update the user
+        // Validate the request data
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'nullable|string|min:8|confirmed',
+            'email' => 'required|email|unique:users,email,' . \Auth::id(),
+            'telephone' => 'nullable|string|max:20',
         ]);
-
-        $user->update([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'password' => $request->password ? bcrypt($request->password) : $user->password,
-            'is_admin' => $request->has('is_admin'),
-        ]);
-
-        return redirect()->route('admin.users.index')->with('success', 'User updated successfully.');
+    
+        // Update the authenticated user's info
+        $user = \Auth::user();
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        $user->telephone = $request->input('telephone');
+        
+        if ($user->save()) {
+            session()->flash('success', 'Information updated successfully.');
+        } else {
+            session()->flash('error', 'Failed to update information.');
+        }
+    
+        return redirect()->route('user.profile');
     }
-
+    
     public function destroy(User $user)
     {
         $user->delete();

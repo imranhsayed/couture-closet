@@ -86,6 +86,46 @@
         </div>
     </div>
                 </div>
+                <!-- Modal for editing user info -->
+                <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="infoModalLabel">Update Your Information</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('user.update') }}" method="POST">
+                    @csrf
+                    @method('PUT')
+
+                    <div class="mb-3">
+                        <label for="first_name" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name" value="{{ \Auth::user()->first_name }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="last_name" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" value="{{ \Auth::user()->last_name }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ \Auth::user()->email }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="telephone" class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="telephone" name="telephone" value="{{ \Auth::user()->telephone }}">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Update Info</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                </div>
+
 
                 <!-- Orders tab -->
                 <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">

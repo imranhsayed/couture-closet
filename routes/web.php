@@ -90,6 +90,8 @@ Route::get( '/home', [ App\Http\Controllers\HomeController::class, 'index' ] )->
 Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( function () {
 	// User Profile
 	Route::get( '/user/profile', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'user.profile' );
+    Route::put('/user/update', [UserController::class, 'updateInfo'])->name('user.update');
+
 
     // User Address
 	Route::post( '/user/address', [ UserAddressController::class, 'store' ])->name( 'user.address.store' );
