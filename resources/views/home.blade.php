@@ -59,26 +59,34 @@
             <div class="tab-content mb-100" id="profileTabsContent">
                 <!-- User info tab -->
                 <div class="tab-pane fade show active" id="user-info" role="tabpanel" aria-labelledby="user-info-tab">
-                    <h3 class="mb-40 mt-40">Your Account Information</h3>
-                    <div class="row">
-                        <div class="col-md-6 mb-3 border-bottom border-top pt-4">
-                            <h5>First Name</h5>
-                            <p class="text-muted">{{ \Auth::user()->first_name ?? '' }}</p>
-                        </div>
-                        <div class="col-md-6 mb-3 border-bottom border-top pt-4">
-                            <h5>Last Name</h5>
-                            <p class="text-muted">{{ \Auth::user()->last_name ?? '' }}</p>
-                        </div>
-                        <div class="col-md-6 mb-3 border-bottom">
-                            <h5>Email</h5>
-                            <p class="text-muted">{{ \Auth::user()->email ?? '' }}</p>
-                        </div>
-                        <div class="col-md-6 mb-3 border-bottom">
-                            <h5>Phone</h5>
-                            <p class="text-muted">{{ \Auth::user()->telephone ?? '' }}</p>
-                        </div>
-                    </div>
+    <div class="d-flex justify-content-between align-items-center mb-40 mt-40">
+        <h3>Your Account Information</h3>
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#infoModal" data-operation="edit">
+            Update Info
+        </button>
+    </div>
+
+    <!-- User Information display -->
+    <div class="row">
+        <div class="col-md-6 mb-3 border-bottom border-top pt-4">
+            <h5>First Name</h5>
+            <p class="text-muted">{{ \Auth::user()->first_name ?? '' }}</p>
+        </div>
+        <div class="col-md-6 mb-3 border-bottom border-top pt-4">
+            <h5>Last Name</h5>
+            <p class="text-muted">{{ \Auth::user()->last_name ?? '' }}</p>
+        </div>
+        <div class="col-md-6 mb-3 border-bottom">
+            <h5>Email</h5>
+            <p class="text-muted">{{ \Auth::user()->email ?? '' }}</p>
+        </div>
+        <div class="col-md-6 mb-3 border-bottom">
+            <h5>Phone</h5>
+            <p class="text-muted">{{ \Auth::user()->telephone ?? '' }}</p>
+        </div>
+    </div>
                 </div>
+
                 <!-- Orders tab -->
                 <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                     <h3 class="mb-40 mt-40">Your Orders</h3>
