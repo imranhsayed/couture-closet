@@ -126,6 +126,7 @@ class Checkout extends HTMLElement {
 		checkoutItemsMarkup += `
             <tr>
                 <th class="py-4 text-uppercase fw-bold border-dark align-bottom">Total</th>
+				<th class="py-4 text-uppercase fw-bold border-dark align-bottom"></th>
                 <td id="checkout-cart-total" class="py-4 text-end h3 fw-bold border-dark">$${ data?.amount ?? 0 }</td>
             </tr>
 		`;

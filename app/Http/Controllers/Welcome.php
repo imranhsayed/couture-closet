@@ -19,6 +19,8 @@ class Welcome extends Controller
 			                   $query->where('name', 'size');
 		                   })->paginate(10);
 
-		return view( 'welcome', compact( 'products' ) );
+		$categories = Category::where( 'name', 'demography' )->distinct()->get();
+		
+		return view( 'welcome', compact( 'products','categories' ) );
 	}
 }
