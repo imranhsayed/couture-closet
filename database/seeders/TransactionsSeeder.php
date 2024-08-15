@@ -15,22 +15,22 @@ class TransactionsSeeder extends Seeder
     {
         DB::table('transactions')->insert([
             [
-                'order_id' => 1, 
-                'transaction_id' => 'txn_001', 
-                'transaction_status' => 'Completed', 
-                'response' => 'Transaction completed successfully.'
+                'order_id' => 1,
+                'transaction_id' => '16020',
+                'transaction_status' => '1',
+                'response' => '{"ref_number":50,"result_code":"ok","result_message":"Connection successful","transaction_response":{"response_code":"1","auth_code":"2024-16122","errors":[],"trans_id":16122}}'
             ],
             [
-                'order_id' => 2, 
-                'transaction_id' => 'txn_002', 
-                'transaction_status' => 'Completed', 
-                'response' => 'Transaction completed successfully.'
+                'order_id' => 2,
+                'transaction_id' => '16021',
+                'transaction_status' => '1',
+                'response' => '{"ref_number":50,"result_code":"ok","result_message":"Connection successful","transaction_response":{"response_code":"1","auth_code":"2024-16122","errors":[],"trans_id":16122}}'
             ],
             [
-                'order_id' => 3, 
-                'transaction_id' => 'txn_003', 
-                'transaction_status' => 'Pending', 
-                'response' => 'Transaction pending.'
+                'order_id' => 3,
+                'transaction_id' => '16022',
+                'transaction_status' => '1',
+                'response' => '{"ref_number":50,"result_code":"ok","result_message":"Connection successful","transaction_response":{"response_code":"1","auth_code":"2024-16122","errors":[],"trans_id":16122}}'
             ],
         ]);
     }
