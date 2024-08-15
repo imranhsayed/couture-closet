@@ -31,10 +31,18 @@
                             <input type="hidden" id="category_id" name="category_id" value="{{ $category->id ?? ''}}">
 
                             <div class="col-12">
-                                <div class="input-style-2">
-                                    <label>Name</label>
-                                    <input type="text" id="name" name="name" placeholder="Category name"
-                                           value="{{ old( 'name', $category->name ?? '' ) }}">
+                                <div class="select-style-1">
+                                    <label for="name">Name</label>
+                                    <div class="select-position">
+                                        <select name="name" id="name" class="form-control select2 light-bg">
+                                            <option value="">Select Category</option>
+                                                @foreach($categories as $cat)
+                                                    <option value="{{ $cat->name }}" {{ old('name', $category->name) == $cat->name ? 'selected' : '' }}>
+                                                        {{ $cat->name }}
+                                                    </option>
+                                                @endforeach
+                                        </select>
+                                    </div>
                                     <x-val-error field="name"/>
                                 </div>
                             </div>
@@ -52,7 +60,7 @@
                                 <div class="input-style-1">
                                     <label>Description</label>
                                     <textarea id="description" name="description" placeholder="description" rows="6"
-                                              required>{{ old( 'description', $category->description ?? '' ) }}</textarea>
+                                              >{{ old( 'description', $category->description ?? '' ) }}</textarea>
                                     <x-val-error field="description"/>
                                 </div>
                             </div>

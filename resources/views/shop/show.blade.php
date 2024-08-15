@@ -4,10 +4,15 @@
     @include('partials.flash')
 	<div class="container mt-5">
 		{{--BreadCrumb--}}
-		<ul class="breadcrumb">
-			<li class="breadcrumb-item"><a href="/">Home</a></li>
-			<li class="breadcrumb-item"><a href="/category?slug=jeans">Jeans</a></li>
-			<li class="breadcrumb-item active">Push-up Jeans</li>
+		<ul class="breadcrumb mt-5">
+			<li class="breadcrumb-item"><a href="/shop">Shop</a></li>
+			@if($demography)
+        		<li class="breadcrumb-item"><a href="/shop?category={{ $demography->value }}">{{ $demography->value }}</a></li>
+    		@endif
+    		@if($brand)
+        		<li class="breadcrumb-item"><a href="/shop?brand={{ $brand->value }}">{{ $brand->value }}</a></li>
+    		@endif
+			<li class="breadcrumb-item active">{{ $product->name}}</li>
 		</ul>
 		{{--Product Details--}}
 		<div class="row">
@@ -96,7 +101,7 @@
 							<div class="col-md-7">
 								<h5>About</h5>
 								<p class="text-muted">{{$product->description}}</p>
-								</div>
+							</div>
 							<!-- <div class="col-md-5"><img class="img-fluid" src="https://d19m59y37dris4.cloudfront.net/varkala/2-1/img/product/detail-3.jpg" alt="{{$product->name}}"></div> -->
 						</div>
 					</div>
@@ -137,10 +142,12 @@
 											<th class="font-weight-normal ">Total Reviews</th>
 											<td class="text-muted ">{{ $totalReviews }} reviews</td>
 										</tr>
-										<tr>
-											<th class="font-weight-normal ">Rating</th>
-											<td class="text-muted ">{{ number_format( $total_rating_score / $totalReviews, 1 ) }}</td>
-										</tr>
+										@if( $totalReviews )
+											<tr>
+												<th class="font-weight-normal ">Rating</th>
+												<td class="text-muted ">{{ number_format( $total_rating_score / $totalReviews, 1 ) }}</td>
+											</tr>
+										@endif
 									</tbody>
 								</table>
 							</div>

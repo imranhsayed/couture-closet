@@ -85,9 +85,9 @@
 			<div class="col-12 col-sm">
 				<ul class="list-inline text-center text-sm-start mb-3 mb-sm-0">
 					<li class="list-inline-item"><a class="text-dark" href="/shop">All Products </a></li>
-					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="/shop?category=Women">Women</a></li>
-					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="/shop?category=Men">Men</a></li>
-					<li class="list-inline-item"><a class="text-muted text-dark-hover" href="/shop?category=Kids">Kids</a></li>
+					@foreach($categories as $category)
+						<li class="list-inline-item"><a class="text-muted text-dark-hover" href="/shop?category={{$category->value}}">{{$category->value}}</a></li>
+					@endforeach
 				</ul>
 			</div>
 			<div class="col-12 col-sm-auto text-center"><a class="btn btn-link px-0" href="/shop">All products</a></div>
