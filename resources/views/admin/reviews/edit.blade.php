@@ -22,7 +22,7 @@
             <div class="col-lg-12">
                 <div class="card-style mb-30">
                     <div class="title mb-30">
-                        <h6>Edit Product Form</h6>
+                        <h6>Edit Review Form</h6>
                     </div>
                     <form action="{{ route('admin.reviews.update', $review) }}" method="POST" enctype="multipart/form-data" novalidate>
                         @csrf
