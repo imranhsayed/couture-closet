@@ -67,6 +67,15 @@
 
                             <div class="col-12">
                                 <div class="input-style-1">
+                                    <label>Telephone</label>
+                                    <input type="text" name="telephone" value="{{ old('telephone') }}">
+                                    <x-val-error field="telephone"/>
+                                </div>
+                            </div>
+
+
+                            <div class="col-12">
+                                <div class="input-style-1">
                                     <label>Admin</label>
                                     <select name="is_admin">
                                         <option value="0">No</option>

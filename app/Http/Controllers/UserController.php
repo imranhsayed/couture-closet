@@ -36,6 +36,7 @@ class UserController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
+            'telephone' => 'nullable|string|max:20',
         ]);
 
         // Create a new user
@@ -44,7 +45,8 @@ class UserController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'password' => Hash::make($request->password), // Hash password
-            'is_admin' => $request->has('is_admin') ? 1 : 0, // Admin flag
+            'is_admin' => $request->has('is_admin') ? 1 : 0, // Admin 
+            'telephone' => $request->telephone,
         ]);
 
         return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
