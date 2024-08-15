@@ -17,8 +17,8 @@ class OrdersSeeder extends Seeder
             [
                 'user_id' => 1,
                 'provincial_tax_rate_id' => 1,
-                'full_name' => 'test1',
-                'email' => 'test1@example.com',
+                'full_name' => 'Administrator',
+                'email' => 'admin@pace.com',
                 'pst' => 0.00,
                 'gst' => 5.00,
                 'hst' => 0.00,
@@ -33,8 +33,8 @@ class OrdersSeeder extends Seeder
             [
                 'user_id' => 2,
                 'provincial_tax_rate_id' => 2,
-                'full_name' => 'test2',
-                'email' => 'test2@example.com',
+                'full_name' => 'John Smith',
+                'email' => 'john@example.com',
                 'pst' => 7.00,
                 'gst' => 5.00,
                 'hst' => 0.00,
@@ -44,13 +44,13 @@ class OrdersSeeder extends Seeder
                 'shipping_phone_number' => '431-333-1234',
                 'billing_address' => '130 Main St, Vancouver, BC',
                 'billing_phone_number' => '431-333-1234',
-                'status' => 1
+                'status' => 2
             ],
             [
                 'user_id' => 3,
                 'provincial_tax_rate_id' => 3,
-                'full_name' => 'test3',
-                'email' => 'test3@example.com',
+                'full_name' => 'Jane Smith',
+                'email' => 'jane@example.com',
                 'pst' => 7.00,
                 'gst' => 5.00,
                 'hst' => 0.00,
@@ -60,7 +60,23 @@ class OrdersSeeder extends Seeder
                 'shipping_phone_number' => '431-333-1234',
                 'billing_address' => '321 Oaken St, Winnipeg, MB',
                 'billing_phone_number' => '431-333-1234',
-                'status' => 1
+                'status' => 3
+            ],
+            [
+                'user_id' => 4,
+                'provincial_tax_rate_id' => 4,
+                'full_name' => 'Rui Xio',
+                'email' => 'rui@example.com',
+                'pst' => 7.00,
+                'gst' => 5.00,
+                'hst' => 0.00,
+                'sub_amount' => 400.00,
+                'total_amount' => 412.00,
+                'shipping_address' => '1234 Elm St, Toronto, ON',
+                'shipping_phone_number' => '431-333-1234',
+                'billing_address' => '1234 Elm St, Toronto, ON',
+                'billing_phone_number' => '431-333-1234',
+                'status' => 4
             ],
         ]);
     }
