@@ -129,7 +129,6 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
     Route::get( '/admin/charts', [ AdminController::class, 'charts' ] )->name( 'admin.charts' );
 
     // Product management.
-    // Product management.
     Route::get( '/admin/products', [ ProductController::class, 'index' ] )->name( 'admin.products.index' );
     Route::get( '/admin/products/search', [ ProductController::class, 'search' ])->name( 'admin.products.search' );
     Route::get( '/admin/products/add', [ ProductController::class , 'create' ])->name( 'admin.products.create' );

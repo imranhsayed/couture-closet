@@ -46,7 +46,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password), // Hash password
             'is_admin' => $request->has('is_admin') ? 1 : 0, // Admin 
-            'telephone' => $request->telephone,
+            'telephone' => $request->telephone ?: null,
         ]);
 
         return redirect()->route('admin.users.index')->with('success', 'User created successfully.');

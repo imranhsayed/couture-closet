@@ -52,17 +52,9 @@
 
                             <div class="col-12">
                                 <div class="input-style-1">
-                                    <label>Password</label>
-                                    <input type="password" name="password">
-                                    <x-val-error field="password"/>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="input-style-1">
-                                    <label>Confirm Password</label>
-                                    <input type="password" name="password_confirmation">
-                                    <x-val-error field="password_confirmation"/>
+                                    <label>Telephone</label>
+                                    <input type="text" name="telephone" value="{{ old('telephone', $user->telephone) }}">
+                                    <x-val-error field="telephone"/>
                                 </div>
                             </div>
 

@@ -59,71 +59,71 @@
             <div class="tab-content mb-100" id="profileTabsContent">
                 <!-- User info tab -->
                 <div class="tab-pane fade show active" id="user-info" role="tabpanel" aria-labelledby="user-info-tab">
-    <div class="d-flex justify-content-between align-items-center mb-40 mt-40">
-        <h3>Your Account Information</h3>
-        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#infoModal" data-operation="edit">
-            Update Info
-        </button>
-    </div>
+                <div class="d-flex justify-content-between align-items-center mb-40 mt-40">
+                    <h3>Your Account Information</h3>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#infoModal" data-operation="edit">
+                        Update Info
+                    </button>
+                </div>
 
-    <!-- User Information display -->
-    <div class="row">
-        <div class="col-md-6 mb-3 border-bottom border-top pt-4">
-            <h5>First Name</h5>
-            <p class="text-muted">{{ \Auth::user()->first_name ?? '' }}</p>
-        </div>
-        <div class="col-md-6 mb-3 border-bottom border-top pt-4">
-            <h5>Last Name</h5>
-            <p class="text-muted">{{ \Auth::user()->last_name ?? '' }}</p>
-        </div>
-        <div class="col-md-6 mb-3 border-bottom">
-            <h5>Email</h5>
-            <p class="text-muted">{{ \Auth::user()->email ?? '' }}</p>
-        </div>
-        <div class="col-md-6 mb-3 border-bottom">
-            <h5>Phone</h5>
-            <p class="text-muted">{{ \Auth::user()->telephone ?? '' }}</p>
-        </div>
-    </div>
+                <!-- User Information display -->
+                <div class="row">
+                    <div class="col-md-6 mb-3 border-bottom border-top pt-4">
+                        <h5>First Name</h5>
+                        <p class="text-muted">{{ \Auth::user()->first_name ?? '' }}</p>
+                    </div>
+                    <div class="col-md-6 mb-3 border-bottom border-top pt-4">
+                        <h5>Last Name</h5>
+                        <p class="text-muted">{{ \Auth::user()->last_name ?? '' }}</p>
+                    </div>
+                    <div class="col-md-6 mb-3 border-bottom">
+                        <h5>Email</h5>
+                        <p class="text-muted">{{ \Auth::user()->email ?? '' }}</p>
+                    </div>
+                    <div class="col-md-6 mb-3 border-bottom">
+                        <h5>Phone</h5>
+                        <p class="text-muted">{{ \Auth::user()->telephone ?? '' }}</p>
+                    </div>
+                </div>
                 </div>
                 <!-- Modal for editing user info -->
                 <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="infoModalLabel">Update Your Information</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ route('user.update') }}" method="POST">
-                    @csrf
-                    @method('PUT')
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title" id="infoModalLabel">Update Your Information</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{{ route('user.update') }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
 
-                    <div class="mb-3">
-                        <label for="first_name" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="first_name" name="first_name" value="{{ \Auth::user()->first_name }}" required>
+                                    <div class="mb-3">
+                                        <label for="first_name" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="first_name" name="first_name" value="{{ \Auth::user()->first_name }}" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="last_name" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="last_name" name="last_name" value="{{ \Auth::user()->last_name }}" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" value="{{ \Auth::user()->email }}" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="telephone" class="form-label">Phone</label>
+                                        <input type="text" class="form-control" id="telephone" name="telephone" value="{{ \Auth::user()->telephone }}">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary w-100">Update Info</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="last_name" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="last_name" name="last_name" value="{{ \Auth::user()->last_name }}" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ \Auth::user()->email }}" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="telephone" class="form-label">Phone</label>
-                        <input type="text" class="form-control" id="telephone" name="telephone" value="{{ \Auth::user()->telephone }}">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary w-100">Update Info</button>
-                </form>
-            </div>
-        </div>
-    </div>
                 </div>
 
 

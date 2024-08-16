@@ -168,27 +168,27 @@
             <!-- End -->
 
             <!-- Users -->
-            <span class="divider">
-          <hr/>
-        </span>
             <li class="nav-item nav-item-has-children">
                 <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_4"
-                   aria-controls="ddmenu_4"
-                   aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon">
-              <i class="lni lni-users align-middle"></i>
-            </span>
+                aria-controls="ddmenu_4"
+                aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon">
+                        <i class="lni lni-users align-middle"></i>
+                    </span>
                     <span class="text">Users</span>
                 </a>
                 <ul id="ddmenu_4" class="collapse dropdown-nav">
+                    <!-- Link to view users page -->
                     <li>
-                        <a href="#"> View Users </a>
+                        <a href="{{ route('admin.users.index') }}"> View Users </a>
                     </li>
+                    <!-- Link to create users page -->
                     <li>
-                        <a href="#"> Create User </a>
+                        <a href="{{ route('admin.users.create') }}"> Create User </a>
                     </li>
                 </ul>
             </li>
+
             <!-- End -->
 
             <!-- Auth -->
