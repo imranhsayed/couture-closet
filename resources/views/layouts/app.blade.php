@@ -211,8 +211,10 @@
 									<div class="expand-lg collapse" id="footerMenu2">
 										<h6 class="letter-spacing-1 mb-4 d-none d-lg-block">Your account</h6>
 										<ul class="list-unstyled text-sm pt-2 pt-lg-0">
-											<li class="mb-2"> <a class="text-light text-light-hover link-animated" href="/login">Login</a></li>
-											<li class="mb-2"> <a class="text-light text-light-hover link-animated" href="/register">Register</a></li>
+											@guest
+                                                <li class="mb-2"> <a class="text-light text-light-hover link-animated" href="/login">Login</a></li>
+                                                <li class="mb-2"> <a class="text-light text-light-hover link-animated" href="/register">Register</a></li>
+                                            @endguest
 											<li class="mb-2"> <a class="text-light text-light-hover link-animated" href="/cart">Cart</a></li>
 											<li class="mb-2"> <a class="text-light text-light-hover link-animated" href="/checkout">Checkout</a></li>
 										</ul>
