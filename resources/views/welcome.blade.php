@@ -102,10 +102,10 @@
 				<div class="col-lg-3 col-md-4">
 					<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
 						<div class="product-image mb-md-3">
-							<a href="/shop/{{ $product->id }}">
+							<a href="/shop/{{ $product->id }}" class="mb-1">
 								<div class="product-swap-image">
-									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="{{ $product->images[0]['image_url'] ?? '' }}" alt="product">
-									<img style="aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="{{ $product->images[1]['image_url'] ?? $product->images[0]['image_url'] ?? '' }}" alt="product">
+									<img style="aspect-ratio: 2/3; object-fit: cover;" width="400" height="450" class="img-fluid product-swap-image-front" src="{{ $product->images[0]['image_url'] ?? '' }}" alt="product">
+									<img style="aspect-ratio: 2/3; object-fit: cover;" width="400" height="450" class="img-fluid" src="{{ $product->images[1]['image_url'] ?? $product->images[0]['image_url'] ?? '' }}" alt="product">
 								</div>
 							</a>
 							<div class="product-hover-overlay"><div class="text-dark text-sm">
@@ -121,7 +121,7 @@
 							</div>
 						</div>
 						<div class="position-relative">
-							<h3 class="text-base mb-1">
+							<h3 class="text-base mt-1 mb-1">
 								<a class="text-dark" href="/shop?id={{ $product->id }}">
 									{{ $product->name }}
 								</a>

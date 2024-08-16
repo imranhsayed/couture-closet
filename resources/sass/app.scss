@@ -69,5 +69,22 @@ cc-checkout {
     border-color: #ffffff;
 }
 
+// Toggler Styles
+.block-toggler {
+    color: #9b8338;
+}
+.block-toggler .block-toggler-icon:before, .block-toggler .block-toggler-icon:after {
+    background-color: #9b8338;
+}
+.block-toggler[aria-expanded=true], .block-toggler:focus{
+    color: #9b8338;
+}
+.block-toggler[aria-expanded=true]{
+    color: #9b8338;
+}
+.block-toggler[aria-expanded=true] .block-toggler-icon:after {
+    background-color: #9b8338;
+}
+
 // Donalds Custom
 @import 'donalds';
