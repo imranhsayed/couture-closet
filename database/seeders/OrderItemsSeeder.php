@@ -198,7 +198,118 @@ class OrderItemsSeeder extends Seeder
                 'unit_price' => 130.99,
                 'line_price' => 130.99
             ],
-
+            [
+                'order_id' => 17,
+                'product_id' => 11,
+                'quantity' => 2,
+                'size' => 'S',
+                'unit_price' => 95.99,
+                'line_price' => 191.98
+            ],
+            [
+                'order_id' => 18,
+                'product_id' => 14,
+                'quantity' => 1,
+                'size' => 'M',
+                'unit_price' => 250.99,
+                'line_price' => 250.99
+            ],
+            [
+                'order_id' => 19,
+                'product_id' => 17,
+                'quantity' => 3,
+                'size' => 'S',
+                'unit_price' => 35.99,
+                'line_price' => 107.97
+            ],
+            [
+                'order_id' => 19,
+                'product_id' => 20,
+                'quantity' => 1,
+                'size' => 'M',
+                'unit_price' => 65.99,
+                'line_price' => 65.99
+            ],
+            [
+                'order_id' => 20,
+                'product_id' => 23,
+                'quantity' => 2,
+                'size' => 'L',
+                'unit_price' => 60.99,
+                'line_price' => 121.98
+            ],
+            [
+                'order_id' => 20,
+                'product_id' => 26,
+                'quantity' => 2,
+                'size' => 'S',
+                'unit_price' => 40.99,
+                'line_price' => 81.98
+            ],
+            [
+                'order_id' => 21,
+                'product_id' => 29,
+                'quantity' => 1,
+                'size' => 'M',
+                'unit_price' => 120.99,
+                'line_price' => 120.99
+            ],
+            [
+                'order_id' => 21,
+                'product_id' => 32,
+                'quantity' => 2,
+                'size' => 'L',
+                'unit_price' => 55.99,
+                'line_price' => 111.98
+            ],
+            [
+                'order_id' => 22,
+                'product_id' => 35,
+                'quantity' => 1,
+                'size' => 'M',
+                'unit_price' => 85.99,
+                'line_price' => 85.99
+            ],
+            [
+                'order_id' => 22,
+                'product_id' => 38,
+                'quantity' => 2,
+                'size' => 'S',
+                'unit_price' => 75.99,
+                'line_price' => 151.98
+            ],
+            [
+                'order_id' => 23,
+                'product_id' => 41,
+                'quantity' => 2,
+                'size' => 'L',
+                'unit_price' => 85.99,
+                'line_price' => 171.98
+            ],
+            [
+                'order_id' => 23,
+                'product_id' => 44,
+                'quantity' => 1,
+                'size' => 'M',
+                'unit_price' => 130.99,
+                'line_price' => 130.99
+            ],
+            [
+                'order_id' => 24,
+                'product_id' => 47,
+                'quantity' => 2,
+                'size' => 'S',
+                'unit_price' => 95.99,
+                'line_price' => 191.98
+            ],
+            [
+                'order_id' => 25,
+                'product_id' => 50,
+                'quantity' => 3,
+                'size' => 'M',
+                'unit_price' => 85.99,
+                'line_price' => 257.97
+            ],
         ]);
     }
 }
