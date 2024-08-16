@@ -122,8 +122,17 @@ class AdminOrderController extends Controller
         return redirect()->route('admin.orders.index')->with('success', "Status for Order # $order->id was updated successfully");
     }
 
+    // public function destroy(Order $order)
+    // {
+    //     $order->delete();
+    //     return redirect()->route('admin.orders.index')->with('success', 'Order deleted successfully');
+    // }
+
     public function destroy(Order $order)
     {
+        // First Delete related transaction records
+        $order->transactions()->delete();
+
         $order->delete();
         return redirect()->route('admin.orders.index')->with('success', 'Order deleted successfully');
     }
