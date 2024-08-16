@@ -17,7 +17,7 @@ class Welcome extends Controller
 	{
 		$products = Product::with('categories', 'images')->whereHas('categories', function ($query) {
 			                   $query->where('name', 'size');
-		                   })->paginate(10);
+		                   })->paginate(12);
 
 		$categories = Category::where( 'name', 'demography' )->distinct()->get();
 		

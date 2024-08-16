@@ -54,7 +54,7 @@ class Shop extends Controller {
 		$brands = Category::where('name', 'Brand')->whereHas('products')->get();
 		$sizeFilters   = Category::where( 'name', 'Size' )->whereHas('products')->get();
 
-		$demographies = Category::where( 'name', 'demography' )->get();
+		$demographies = Category::where( 'name', 'demography' )->take(3)->get();
 
 		//$product = Product::with(['categories', 'images'])->find($product->id);
 
