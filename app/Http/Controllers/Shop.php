@@ -11,7 +11,7 @@ class Shop extends Controller {
 	/**
 	 * Display a listing of the resource.
 	 */
-	public function index() 
+	public function index()
 	{
 
 		$title = "Shop";
@@ -21,7 +21,7 @@ class Shop extends Controller {
 
 		// Check if a specific category, brand, or demography is selected via query parameters
 		$selectedCategory = request()->query('category');
-		
+
 		$selectedBrand = request()->query('brand');
 		$selectedDemography = request()->query('demography');
 
@@ -31,30 +31,31 @@ class Shop extends Controller {
 				$query->where('value', $selectedCategory);
 			});
 		}
-		
+
 		if ($selectedBrand) {
 			// Filter products by the selected brand
 			$productQuery->whereHas('categories', function ($query) use ($selectedBrand) {
 				$query->where('value', $selectedBrand);
 			});
 		}
-		
+
 		if ($selectedDemography) {
 			// Filter products by the selected demography
 			$productQuery->whereHas('categories', function ($query) use ($selectedDemography) {
 				$query->where('value', $selectedDemography);
 			});
 		}
-		
+
 		// Paginate the filtered products
 		$products = $productQuery->paginate(16);
+        $products->appends(request()->query());
 
 		//$products     = Product::with( 'images' )->paginate( 16 );
 		$categories   = Category::where( 'name', 'Size' )->get();
 		$brands = Category::where('name', 'Brand')->whereHas('products')->get();
 		$sizeFilters   = Category::where( 'name', 'Size' )->whereHas('products')->get();
 
-		$demographies = Category::where( 'name', 'demography' )->get();
+		$demographies = Category::where( 'name', 'demography' )->take(3)->get();
 
 		//$product = Product::with(['categories', 'images'])->find($product->id);
 
@@ -78,17 +79,17 @@ class Shop extends Controller {
 		$reviews = ProductReview::where('product_id', $product->id)
 		                        ->with('user')
 		                        ->get();
-		
-		$totalReviews = ProductReview::where('product_id', $product->id)->count();	
-		
+
+		$totalReviews = ProductReview::where('product_id', $product->id)->count();
+
 		$categoryIds = $product->categories->pluck('id');
-		
+
 		$cat_id_val = Category::whereIn('id', $categoryIds)->get();
 
 		$demography = $cat_id_val->firstWhere('name', 'demography');
     	$size = $cat_id_val->firstWhere('name', 'size');
     	$brand = $cat_id_val->firstWhere('name', 'brand');
-			
+
 		return view('shop.show', compact('product','all_products','categories', 'reviews','totalReviews', 'demography','size','brand'));
 
 	}
@@ -97,13 +98,13 @@ class Shop extends Controller {
     {
 		$search = $request->get('query');
         $title = 'Products';
-		
+
         $products = Product::where('name', 'LIKE', '%' . $search . '%')
                ->orWhereHas('categories', function ($query) use ($search) {
                    $query->where('value', 'LIKE', '%' . $search . '%');
                })
                ->paginate(10);
-			   
+
 		$demographies = Category::where( 'name', 'demography' )->get();
 		$categories   = Category::where( 'name', 'Size' )->get();
 		$brands = Category::where('name', 'Brand')->whereHas('products')->get();

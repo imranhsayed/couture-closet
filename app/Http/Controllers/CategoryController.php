@@ -50,8 +50,10 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'value' => 'required|string|max:255',
+            'value' => 'required|string|max:255|unique:category,value',
             'description' => 'nullable|string',
+        ], [
+            'value.unique' => 'The category value must be unique. Please choose a different value.',
         ]);
     
         try {
@@ -98,8 +100,10 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'value' => 'required|string|max:255',
+            'value' => 'required|string|max:255|unique:category,value',
             'description' => 'nullable|string',
+            ], [
+            'value.unique' => 'The category value must be unique. Please choose a different value.',
         ]);
     
         try {

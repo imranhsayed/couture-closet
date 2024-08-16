@@ -211,8 +211,10 @@
 									<div class="expand-lg collapse" id="footerMenu2">
 										<h6 class="letter-spacing-1 mb-4 d-none d-lg-block">Your account</h6>
 										<ul class="list-unstyled text-sm pt-2 pt-lg-0">
-											<li class="mb-2"> <a class="text-light text-light-hover link-animated" href="/login">Login</a></li>
-											<li class="mb-2"> <a class="text-light text-light-hover link-animated" href="/register">Register</a></li>
+											@guest
+                                                <li class="mb-2"> <a class="text-light text-light-hover link-animated" href="/login">Login</a></li>
+                                                <li class="mb-2"> <a class="text-light text-light-hover link-animated" href="/register">Register</a></li>
+                                            @endguest
 											<li class="mb-2"> <a class="text-light text-light-hover link-animated" href="/cart">Cart</a></li>
 											<li class="mb-2"> <a class="text-light text-light-hover link-animated" href="/checkout">Checkout</a></li>
 										</ul>
@@ -241,7 +243,7 @@
 				<div class="container">
 					<div class="row align-items-center text-sm">
 						<div class="col-lg-4 text-center text-lg-start">
-							<p class="mb-lg-0">© 2024, Your company.  All rights reserved.</p>
+							<p class="mb-lg-0">© 2024, Couture Closet.  All rights reserved.</p>
 						</div>
 						<div class="col-lg-8">
 							<ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-lg-end">
