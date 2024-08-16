@@ -15,7 +15,7 @@ class UserSeeder extends Seeder {
         // Admin user
         DB::table('users')->insert([
             'password' => Hash::make('mypass'),
-            'first_name' => 'admin',
+            'first_name' => 'Store Manager',
             'last_name' => '',
             'email' => 'admin@pace.com',
             'telephone' => '4318889201',

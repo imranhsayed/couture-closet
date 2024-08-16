@@ -28,12 +28,6 @@
                         <div class="content">
                             <h6 class="mb-10">Orders</h6>
                             <h3 class="text-bold mb-10">{{ $currentOrderCount ?? 0 }}</h3>
-                            <!-- // Query to count new orders in the last 7 days
-                                const query = `
-                                SELECT COUNT(*) AS newOrders
-                                FROM orders
-                                WHERE order_date >= NOW() - INTERVAL 7 DAY
-                                `; -->
                             @if ($orderRateOfChange > 0)
                                 <p class="text-sm text-success"><i
                                         class="lni lni-arrow-up"></i>{{ (round($orderRateOfChange ?? '0', 2)) . '%' }}
@@ -48,16 +42,6 @@
                                 <p class="text-sm"><i class="lni"></i>{{ ($orderRateOfChange ?? '0') . '%' }} <span
                                         class="text-gray">(Last 7 Days)</span></p>
                             @endif
-                            <!-- query to count new orders in the last 7 days and the previous 7 days
-                            const query = `
-                                SELECT
-                                (SELECT COUNT(*) FROM orders WHERE order_date >= NOW() - INTERVAL 7 DAY) AS currentPeriod,
-                                (SELECT COUNT(*) FROM orders WHERE order_date >= NOW() - INTERVAL 7 DAY AND order_date < NOW() - INTERVAL 7 DAY) AS previousPeriod
-                            `;
-                                const rateOfChange = ((currentPeriod - previousPeriod) / previousPeriod) * 100;
-                                const rateOfChangeFormatted = rateOfChange.toFixed(2) + '%';
-                            -->
-                            <!-- <p class="text-sm text-danger"> <i class="lni lni-arrow-down"></i> -2.00% <span class="text-gray">(1 Week)</span></p> -->
                         </div>
                     </div>
                     <!-- End Icon Cart -->
