@@ -6,6 +6,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\UserAddressController;
+use App\Http\Controllers\UserController;
+
 use App\Models\Product;
 use App\Models\ProvincialTaxRate;
 use Illuminate\Support\Facades\Route;
@@ -88,6 +90,8 @@ Route::middleware( [ 'auth', EnsureUserIsAuthenticated::class ] )->group( functi
 
 	// User Profile
 	Route::get( '/user/profile', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'user.profile' );
+    Route::put('/user/update', [UserController::class, 'updateInfo'])->name('user.update');
+
 
     // User Address
 	Route::post( '/user/address', [ UserAddressController::class, 'store' ])->name( 'user.address.store' );
@@ -124,7 +128,6 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
     Route::get( '/admin', [ AdminController::class, 'index' ] )->name( 'admin.index' );
     Route::get( '/admin/charts', [ AdminController::class, 'charts' ] )->name( 'admin.charts' );
 
-    // Product management.
     // Product management.
     Route::get( '/admin/products', [ ProductController::class, 'index' ] )->name( 'admin.products.index' );
     Route::get( '/admin/products/search', [ ProductController::class, 'search' ])->name( 'admin.products.search' );
@@ -165,4 +168,11 @@ Route::middleware( [ 'auth', RequireAdmin::class ] )->group( function () {
         'destroy' => 'admin.orders.destroy',
     ]);
 
-} );
+    //Admin User Management
+    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users.index');
+    Route::get('/admin/users/create', [UserController::class, 'create'])->name('admin.users.create');
+    Route::post('/admin/users', [UserController::class, 'store'])->name('admin.users.store');
+    Route::get('/admin/users/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
+    Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
+});

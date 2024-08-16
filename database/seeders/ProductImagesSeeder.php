@@ -15,69 +15,64 @@ class ProductImagesSeeder extends Seeder
     {
         $productImages = [];
         $images = [
-            1 => ['grey_sweater_1.jpg', 'grey_sweater_2.jpg'],
-            2 => ['black_cardigan_1.jpg'],
-            3 => ['beige_cardigan_1.jpg', 'beige_cardigan_2.jpg'],
-            4 => ['orange_cardigan_1.jpg', 'orange_cardigan_2.jpg'],
-            5 => ['grey_check_jacket.jpg'],
-            6 => ['cream_jacket_1.jpg'],
-            7 => ['yellow_jacket_1.jpg', 'yellow_jacket_2.jpg'],
-            8 => ['pink_feather_jacket_1.jpg', 'pink_feather_jacket_2.jpg'],
-            9 => ['grey_jacket_1.jpg', 'grey_jacket_2.jpg'],
-            10 => ['rust_cardigan_1.jpg'],
-            11 => ['beige_dress_1.jpg'],
-            12 => ['denim_jacket_1.jpg'],
-            13 => ['classic_bag.jpg'],
-            14 => ['brown_leather_jacket_1.jpg'],
-            15 => ['women_shirt_1.jpg'],
-            16 => ['red_sweater_1.jpg', 'red_sweater_2.jpg'],
-            17 => ['blue_scarf_1.jpg'],
-            18 => ['green_cardigan_1.jpg', 'green_cardigan_2.jpg'],
-            19 => ['purple_jacket_1.jpg', 'purple_jacket_2.jpg'],
-            20 => ['brown_boots_1.jpg'],
-            21 => ['white_sneakers_1.jpg', 'white_sneakers_2.jpg'],
-            22 => ['black_jeans_1.jpg'],
-            23 => ['tan_coat_1.jpg', 'tan_coat_2.jpg'],
-            24 => ['red_dress_1.jpg'],
-            25 => ['navy_blazer_1.jpg', 'navy_blazer_2.jpg'],
-            26 => ['gold_necklace_1.jpg'],
-            27 => ['silver_ring_1.jpg'],
-            28 => ['black_hat_1.jpg', 'black_hat_2.jpg'],
-            29 => ['plaid_shirt_1.jpg'],
-            30 => ['green_sweater_1.jpg', 'green_sweater_2.jpg'],
-            31 => ['blue_jeans_1.jpg'],
-            32 => ['yellow_dress_1.jpg'],
-            33 => ['black_shoes_1.jpg', 'black_shoes_2.jpg'],
-            34 => ['red_scarf_1.jpg'],
-            35 => ['white_shirt_1.jpg', 'white_shirt_2.jpg'],
-            36 => ['grey_pants_1.jpg'],
-            37 => ['leather_jacket_1.jpg', 'leather_jacket_2.jpg'],
-            38 => ['denim_shorts_1.jpg'],
-            39 => ['purple_scarf_1.jpg'],
-            40 => ['pink_dress_1.jpg', 'pink_dress_2.jpg'],
-            41 => ['blue_jacket_1.jpg'],
-            42 => ['beige_boots_1.jpg'],
-            43 => ['black_suit_1.jpg', 'black_suit_2.jpg'],
-            44 => ['red_heels_1.jpg'],
-            45 => ['green_trench_coat_1.jpg'],
-            46 => ['white_dress_1.jpg', 'white_dress_2.jpg'],
-            47 => ['orange_sweater_1.jpg'],
-            48 => ['grey_shoes_1.jpg'],
-            49 => ['blue_tshirt_1.jpg', 'blue_tshirt_2.jpg'],
-            50 => ['yellow_skirt_1.jpg'],
-            51 => ['black_coat_1.jpg'],
-            52 => ['pink_blouse_1.jpg', 'pink_blouse_2.jpg'],
-            53 => ['brown_pants_1.jpg'],
-            54 => ['green_shirt_1.jpg'],
-            55 => ['white_cardigan_1.jpg', 'white_cardigan_2.jpg'],
+            1 => ['men_grey_sweater_1.jpg'],  // Grey Sweater
+            2 => ['women_black_cardigan_1.jpg'],  // Black Cardigan
+            3 => ['men_beige_cardigan_1.jpg', 'men_beige_cardigan_2.jpg'],  // Beige Cardigan
+            4 => ['women_orange_cardigan_1.jpg', 'women_orange_cardigan_2.jpg'],  // Orange Cardigan
+            5 => ['men_grey_check_jacket.jpg'],  // Grey Check Jacket
+            6 => ['men_cream_jacket_1.jpg'],  // Cream Jacket
+            7 => ['women_yellow_jacket_1.jpg', 'women_yellow_jacket_2.jpg'],  // Yellow Jacket
+            8 => ['women_pink_feather_jacket_1.jpg', 'women_pink_feather_jacket_2.jpg'],  // Pink Feather Jacket
+            9 => ['women_grey_jacket_1.jpg', 'women_grey_jacket_2.jpg'],  // Grey Jacket
+            10 => ['men_rust_cardigan_1.jpg'],  // Rust Cardigan
+            11 => ['women_beige_dress_1.jpg'],  // Beige Dress
+            12 => ['men_denim_jacket_1.jpg'],  // Denim Jacket
+            13 => ['women_classic_bag.jpg'],  // Classic Bag
+            14 => ['women_brown_leather_jacket_1.jpg'],  // Brown Leather Jacket
+            15 => ['women_red_dress.jpg'],  // Red Dress
+            16 => ['kids_blue_jacket.jpg'],  // Kids Blue Jacket
+            17 => ['women_pink_off-shoulder_top.jpg'],  // Pink Off-Shoulder Top
+            18 => ['men_black_coat.jpg'],  // Men's Black Coat
+            19 => ['men_white_cardigan.jpg'],  // Men's White Cardigan
+            20 => ['women_mustard_dress.jpg'],  // Women's Mustard Dress
+            21 => ['men_beige_long_coat.jpg'],  // Men's Beige Long Coat
+            22 => ['men_red_jacket.jpg'],  // Men's Red Jacket
+            23 => ['men_brown_trousers.jpg'],  // Men's Brown Trousers
+            24 => ['men_hat_1.jpg', 'men_hat_2.jpg'],  // Men's Hat
+            25 => ['women_denim_cord_set_1.jpg', 'women_denim_cord_set_2.jpg'],  // Women's Denim Cord Set
+            26 => ['women_white_polka_dot_top.jpg'],  // Women's White Polka Dot Top
+            27 => ['men_black_cap.jpg'],  // Men's Black Cap
+            28 => ['men_black_nike_tee.jpg'],  // Men's Black Nike Tee
+            29 => ['women_grey_cord_set.jpg'],  // Women's Grey Cord Set
+            30 => ['men_black_cord_set.jpg'],  // Men's Black Cord Set
+            31 => ['women_beige_long_coat.jpg'],  // Women's Beige Long Coat
+            32 => ['women_green_top.jpg'],  // Women's Green Top
+            33 => ['women_white_dress.jpg'],  // Women's White Dress
+            34 => ['men_maroon_cardigan.jpg'],  // Men's Maroon Cardigan
+            35 => ['women_purple_bag.jpg'],  // Women's Purple Bag
+            36 => ['women_yellow_skirt.jpg'],  // Women's Yellow Skirt
+            37 => ['men_olive_green_jacket.jpg'],  // Men's Olive Green Jacket
+            38 => ['women_pink_sweater.jpg'],  // Women's Pink Sweater
+            39 => ['men_rust_shirt.jpg'],  // Men's Rust Shirt
+            40 => ['women_white_bag.jpg'],  // Women's White Bag
+            41 => ['men_brown_sweater.jpg'],  // Men's Brown Sweater
+            42 => ['men_black_long_coat.jpg'],  // Men's Black Long Coat
+            43 => ['men_brown_sweat_shirt.jpg'],  // Men's Brown Leather sweatshirt
+            44 => ['women_beige_cord_set.jpg'],  // Women's Beige Cord Set
+            45 => ['women_pink_feather_jacket_1.jpg'],  // Women's Pink Feather Jacket
+            46 => ['women_beige_jacket.jpg'],  // Women's Beige Jacket
+            47 => ['men_wool_thread_jacket.jpg'],  // Men's Wool Thread Jacket
+            48 => ['women_yellow_cord_set.jpg'],  // Women's Yellow Cord Set
+            49 => ['men_white_cardigan.jpg'],  // "Men Blue Sweater"
+            50 => ['women_beige_long_coat.jpg'],  // "Women White Skirt"
         ];
-        
+
         foreach ($images as $productId => $imageList) {
             foreach ($imageList as $index => $imageUrl) {
                 $productImages[] = [
                     'product_id' => $productId,
                     'image_url' => 'images/' . $imageUrl,
-                    'is_primary' => $index === 0, 
+                    'is_primary' => $index === 0,
                     'display_order' => $index + 1
                 ];
             }
@@ -85,5 +80,4 @@ class ProductImagesSeeder extends Seeder
 
         DB::table('product_images')->insert($productImages);
     }
-
 }

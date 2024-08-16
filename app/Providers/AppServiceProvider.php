@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         \View::composer('partials.header',function($view){
-            $categories = Category::where('name','demography')->distinct()->get();
+            $categories = Category::where('name','demography')->take(3)->distinct()->get();
 
 		    $brands = Category::where('name','Brand')->take(5)->distinct()->get();
 

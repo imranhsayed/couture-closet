@@ -217,45 +217,39 @@
 				<h5 class="mb-4">Similar Products</h5>
 				<!-- product-->
 				<div class="row">
-				@foreach($all_products as $single_product)
-					@foreach($single_product->images as $image)
-						@php $size = ''; @endphp
-						@foreach( $single_product->categories as $category )
-							@php $size = $category->value @endphp
-						@endforeach
-					<div class="col-lg-3 col-md-4">
-						<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
-							<div class="product-image mb-md-3">
-								<a href="{{ route('shop.show', ['product'=> $image->product->id])}}">
-									<div class="product-swap-image">
-										<img style="width: 100%; aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $image->image_url ?? '' }}" alt="product">
-										<img style="width: 100%; aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $image->image_url ?? '' }}" alt="product">
-									</div>
-								</a>
-								<div class="product-hover-overlay"><div class="text-dark text-sm">
-										<svg class="d-none svg-icon text-primary-hover svg-icon-heavy d-lg-inline mr-2">
-											<use xlink:href="#retail-bag-1"> </use>
-										</svg>
-										<x-add-to-cart-button size="{{ $size }}" product_id="{{$image->product_id}}" quantity="1" />
+					@foreach($all_products as $single_product)
+						<div class="col-lg-3 col-md-4">
+							<div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
+								<div class="product-image mb-md-3">
+									<a href="{{ route('shop.show', ['product'=> $single_product->id])}}">
+										<div class="product-swap-image">
+											<img style="width: 100%; aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid product-swap-image-front" src="/{{ $single_product->images[0]['image_url'] ?? '' }}" alt="product">
+											<img style="width: 100%; aspect-ratio: 2/3; object-fit: cover;" width="300" height="450" class="img-fluid" src="/{{ $single_product->images[1]['image_url'] ?? $single_product->images[0]['image_url'] ?? '' }}" alt="product">
+										</div>
+									</a>
+									<div class="product-hover-overlay"><div class="text-dark text-sm">
+											<svg class="d-none svg-icon text-primary-hover svg-icon-heavy d-lg-inline mr-2">
+												<use xlink:href="#retail-bag-1"> </use>
+											</svg>
+											<x-add-to-cart-button size="{{ $size }}" product_id="{{$image->product_id}}" quantity="1" />
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="position-relative">
-								<h3 class="text-base mb-1">
-									<a class="text-dark" href="#">
-										{{ $single_product->name }}
-									</a>
-								</h3>
-								<p class="text-gray-600 text-sm">
-									<span>${{ $single_product->price }}</span>
-								</p>
-								<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
+								<div class="position-relative">
+									<h3 class="text-base mb-1">
+										<a class="text-dark" href="#">
+											{{ $single_product->name }}
+										</a>
+									</h3>
+									<p class="text-gray-600 text-sm">
+										<span>${{ $single_product->price }}</span>
+									</p>
+									<div class="product-stars text-xs"><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></div>
+								</div>
 							</div>
 						</div>
-					</div>
 					@endforeach
-				@endforeach
-			</div>
+				</div>
 			<!-- /product   -->
 			</div>
 		</section>
