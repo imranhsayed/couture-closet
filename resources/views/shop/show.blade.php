@@ -214,7 +214,7 @@
 		{{--Related Products--}}
 		<section class="py-5">
 			<div class="container">
-				<h5 class="mb-4">Similar Products</h5>
+				<h5 class="mb-4">More Products</h5>
 				<!-- product-->
 				<div class="row">
 					@foreach($all_products as $single_product)
