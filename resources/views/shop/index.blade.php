@@ -51,7 +51,7 @@
                 <div class="col-xl-3 col-sm-4 col-6">
                     <div class="product product-type-0 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="0">
                         <div class="product-image mb-md-3">
-                            <a href="{{ route('shop.show', ['product'=> $product->id])}}">
+                            <a href="{{ route('shop.show', ['product'=> $product->id])}}" class="mb-1">
                                 <div class="product-swap-image">
                                     <img style="width: 100% !important; aspect-ratio: 2/3; object-fit: cover;" width="300" height="450"
                                         class="img-fluid product-swap-image-front"
@@ -75,7 +75,7 @@
 							</div>
                         </div>
                         <div class="position-relative">
-                            <h3 class="text-base mb-1"><a class="text-dark" href="detail-1.html">{{$product->name}}</a>
+                            <h3 class="text-base mt-1 mb-1"><a class="text-dark" href="detail-1.html">{{$product->name}}</a>
                             </h3>
                             <p class="text-gray-600 text-sm">
                                 <span>${{$product->price}}</span>
