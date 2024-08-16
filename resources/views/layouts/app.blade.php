@@ -241,7 +241,7 @@
 				<div class="container">
 					<div class="row align-items-center text-sm">
 						<div class="col-lg-4 text-center text-lg-start">
-							<p class="mb-lg-0">© 2024, Your company.  All rights reserved.</p>
+							<p class="mb-lg-0">© 2024, Couture Closet.  All rights reserved.</p>
 						</div>
 						<div class="col-lg-8">
 							<ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-lg-end">
