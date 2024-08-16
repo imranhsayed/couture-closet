@@ -11,12 +11,20 @@ class UserController extends Controller
     /**
      * Display a listing of the users.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(10); 
-        return view('admin.users.index', compact('users'));
-    }
+        // Capture the search query if it exists
+        $search = $request->input('search');
 
+        // Modify the query to filter users by first name, last name, or email
+        $users = User::when($search, function($query, $search) {
+            return $query->where('first_name', 'like', "%{$search}%")
+                ->orWhere('last_name', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%");
+        })->paginate(10);
+
+        return view('admin.users.index', compact('users', 'search'));
+    }
     /**
      * Show the form for creating a new user.
      */
