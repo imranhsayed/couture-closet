@@ -64,4 +64,12 @@ class Order extends Model
 
         return $statuses[$value] ?? 'Unknown';
     }
+
+    // Added Transactions Relationship
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
 }
