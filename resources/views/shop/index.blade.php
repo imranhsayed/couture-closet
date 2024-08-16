@@ -7,11 +7,25 @@
         <div class="products-grid col-xl-9 col-lg-8 order-lg-2">
             <!-- Hero Content-->
              @if(isset($search) && $search)
-                <div class="alert alert-info mb-4">
-                    <h4 class="alert-heading">Search Results</h4>
-                    <p class="mb-0">Your search result for: <strong>{{ $search }}</strong></p>
-                </div>
+                @if($products->isNotEmpty())             
+                    <div class="alert alert-info mb-4" style="background-color: white; color: black; border: 2px solid white; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
+                        <h4 class="alert-heading" style="color: black;">Search Results</h4>
+                        <p class="mb-0" style="color: black;">Your search result for: <strong>{{ $search }}</strong></p>
+                    </div>
+                @else
+                    <div class="alert alert-info mb-4" style="background-color: white; color: black; border: 2px solid white; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
+                        <h4 class="alert-heading" style="color: black;">No Results Found</h4>
+                        <p class="mb-0" style="color: black;">No results were found for: <strong>{{ $search }}</strong></p>
+                        <p>
+                            
+                            <a class="main-btn primary-btn btn-hover btn-sm mt-5" href="/shop" style="padding: 10px 20px; font-size: 18px;">
+                                Go To Shop
+                            </a>
+                        </p>
+                    </div>
+                @endif
             @endif
+            @if($products->isNotEmpty())
             <div class="hero-content pb-5">
                 <h1>Shop</h1>
                 <div class="row">
@@ -134,6 +148,7 @@
                     @endif
                 </ul>
             </nav>
+            @endif
         </div>
         <!-- Sidebar-->
         <div class="sidebar col-xl-3 col-lg-4 pe-xl-5 order-lg-1">
