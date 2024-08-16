@@ -7,10 +7,17 @@
         <div class="products-grid col-xl-9 col-lg-8 order-lg-2">
             <!-- Hero Content-->
              @if(isset($search) && $search)
-                <div class="alert alert-info mb-4">
-                    <h4 class="alert-heading">Search Results</h4>
-                    <p class="mb-0">Your search result for: <strong>{{ $search }}</strong></p>
-                </div>
+                @if($products->isNotEmpty())             
+                    <div class="alert alert-info mb-4">
+                        <h4 class="alert-heading">Search Results</h4>
+                        <p class="mb-0">Your search result for: <strong>{{ $search }}</strong></p>
+                    </div>
+                @else
+                    <div class="alert alert-info mb-4">
+                        <h4 class="alert-heading">No Results Found</h4>
+                        <p class="mb-0">No results were found for: <strong>{{ $search }}</strong></p>
+                    </div>
+                @endif
             @endif
             <div class="hero-content pb-5">
                 <h1>Shop</h1>
